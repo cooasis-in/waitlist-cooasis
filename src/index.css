@@ -1,0 +1,90 @@
+/* src/index.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.bg-clip-text {
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+
+/* fonts */
+
+.f-PowerGrotesk {
+    font-family: PowerGrotesk;
+  }
+  
+  .f-HelveticaNeueUltraLight {
+    font-family: HelveticaNeueUltraLight;
+  }
+  
+  .f-HelveticaNeueRoman {
+    font-family: HelveticaNeueRoman;
+  }
+  
+  .f-HelveticaNeueLight {
+    font-family: HelveticaNeueLight;
+  }
+  
+  .f-HelveticaNeueMedium {
+    font-family: HelveticaNeueMedium;
+  }
+  
+  @font-face {
+    font-family: "HelveticaNeueBold";
+    src: url("/public/font/HelveticaNeueBold.otf") format("truetype");
+    font-weight: 700;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: "HelveticaNeueHeavy";
+    src: url("/public/font/HelveticaNeueHeavy.otf") format("truetype");
+    font-weight: 600;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: "HelveticaNeueLight";
+    src: url("/public/font/HelveticaNeueLight.otf") format("truetype");
+    font-weight: 300;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: "HelveticaNeueMedium";
+    src: url("/public/font/HelveticaNeueMedium.otf") format("truetype");
+    font-weight: 500;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: "HelveticaNeueRoman";
+    src: url("/public/font/HelveticaNeueRoman.otf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: "HelveticaNeueThin";
+    src: url("/public/font/HelveticaNeueThin.otf") format("truetype");
+    font-weight: 100;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: "HelveticaNeueUltraLight";
+    src: url("/public/font/HelveticaNeueUltraLight.otf") format("truetype");
+    font-weight: 200;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: "PowerGrotesk";
+    src: url("/public/font/PowerGrotesk-Regular.ttf");
+    font-weight: 400;
+    font-style: normal;
+  }
+  

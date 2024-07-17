@@ -1,0 +1,6 @@
+.bg-nexgen-gradient {
+    background: linear-gradient(135deg, #00FFA3, #DC1FFF);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  
