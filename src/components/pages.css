@@ -1,6 +1,41 @@
-.bg-nexgen-gradient {
-    background: linear-gradient(135deg, #00FFA3, #DC1FFF);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+.nex-gen-container {
+  display: inline-block;
+  position: relative;
+}
+
+.nex-gen-text {
+  position: relative;
+  z-index: 1;
+}
+
+.arrow-animation {
+  position: absolute;
+  top: -40px; /* Adjust as needed to align with the text */
+  left: -80px; /* Adjust as needed to align with the text */
+  width: calc(100% + 10px);
+  height: calc(100% + 10px);
+  animation: arrowBorderAnimation 4s linear 1;
+}
+
+@keyframes arrowBorderAnimation {
+  0% {
+    transform: translate(0, 0);
   }
-  
+  25% {
+    transform: translate(100%, 0);
+  }
+  50% {
+    transform: translate(100%, 100%);
+  }
+  75% {
+    transform: translate(0, 100%);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+.arrow-image {
+  width:70px; /* Adjust based on your needs */
+  height: 70px; /* Adjust based on your needs */
+}

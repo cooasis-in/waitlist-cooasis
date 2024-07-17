@@ -1,30 +1,40 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Typical from "react-typical";
+import '../components/pages.css';
 
 const LandingPage = () => {
+  const [showTyping, setShowTyping] = useState(false);
+
+  useEffect(() => {
+    // Start typing animation after a delay
+    const timeout = setTimeout(() => {
+      setShowTyping(true);
+    }, 4000); // Adjust timing to match your arrowBorderAnimation duration
+
+    return () => clearTimeout(timeout);
+  }, []);
+
   return (
     <div className="min-h-screen bg-black text-white flex flex-col items-center justify-center">
-      <h1 className="text-[10px] bg-waitlist-gradient bg-clip-text text-transparent f-PowerGrotesk ">
+      <h1 className="text-[10px] bg-waitlist-gradient bg-clip-text text-transparent f-PowerGrotesk">
         Join waitlist for
       </h1>
-      <h2 className="text-7xl f-PowerGrotesk text-[#FCFCD8] mb-8">
-        {/* <span className="bg-nexgen-gradient bg-clip-text">Nex-gen </span> */}
-        <Typical
-          steps={["Nex-gen", 1000]}
-          wrapper="span"
-          className="bg-nexgen-gradient bg-clip-text"
-        />
-        <Typical
-          steps={["design", 1000]}
-          wrapper="span"
-          className="text-[#FCFCD8]"
-        />
-        <br />
-        <Typical
-          steps={["ecosystem!", 1000]}
-          wrapper="span"
-          className="text-[#FCFCD8]"
-        />
+      <h2 className="text-7xl f-PowerGrotesk text-[#FCFCD8] mb-8 relative">
+        <div className="relative inline-block nex-gen-container">
+          <span className="bg-nexgen-gradient bg-clip-text nex-gen-text">Nex-gen</span>
+          <div className="arrow-animation">
+            <img src="/images/arrow.svg" alt="Arrow" className="arrow-image w-30" />
+          </div>
+        </div>
+        <div className="typical-wrapper">
+          {showTyping && (
+            <Typical
+              steps={["design ecosystem ", 1000]}
+              wrapper="span"
+              className="text-[#FCFCD8]"
+            />
+          )}
+        </div>
       </h2>
       {/* Form */}
       <form className="flex flex-col items-center">
@@ -33,7 +43,7 @@ const LandingPage = () => {
             type="email"
             name="email"
             placeholder="Eg. Jeff@cooasis.in"
-            className="f-HelveticaNeueUltraLight text-sm text-[#000000] leading-tight w-[290px] h-[55px] px-6 py-4 mt-0 lg:mt-3 border border-[#014F5917] rounded-full custom-inset custom-gradient"
+            className="f-HelveticaNeueUltraLight text-sm text-[white] leading-tight w-[290px] h-[55px] px-6 py-4 mt-0 lg:mt-3 border border-[#014F5917] rounded-full custom-inset custom-gradient bg-transparent placeholder-black"
           />
           <div className="absolute right-[18px] bottom-[20px] cursor-pointer">
             <img src="/images/email-2.svg" alt="Email Icon" />
@@ -50,7 +60,9 @@ const LandingPage = () => {
         <img src="/images/Join.svg" alt="People Join" className="h-10" />
       </div>
       <div className="mt-6 flex flex-col space-x-4">
-        <span className="text-center mb-4">Backed by</span>
+        <span className="text-center f-PowerGrotesk font-bold mb-4 text-[#313F42]">
+          Backed by
+        </span>
         <img src="/images/PoweredBy.svg" alt="AWS" className="w-[500px]" />
       </div>
     </div>
