@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 import Typical from "react-typical";
 import "../components/pages.css";
+import Refer from "./Refer";
 
 const LandingPage = () => {
   const [showTyping, setShowTyping] = useState(false);
+  const [showRefer, setShowRefer] = useState(false); // New state to manage refer component visibility
 
   useEffect(() => {
     const timeout = setTimeout(() => {
@@ -12,6 +14,17 @@ const LandingPage = () => {
 
     return () => clearTimeout(timeout);
   }, []);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setShowRefer(true); // Show the refer component on button click
+    console.log("Handling submit...");
+  };
+
+  // Conditionally render either the landing page or the refer component
+  if (showRefer) {
+    return <Refer />;
+  }
 
   return (
     <div className="min-h-screen bg-black text-white flex flex-col items-center justify-center">
@@ -24,11 +37,7 @@ const LandingPage = () => {
             Nex-gen
           </span>
           <div className="arrow-container">
-            <img
-              src="/images/arrow.svg"
-              alt="Arrow"
-              className="arrow-image"
-            />
+            <img src="/images/arrow.svg" alt="Arrow" className="arrow-image" />
             <div className="border-animation"></div>
           </div>
         </div>
@@ -43,7 +52,7 @@ const LandingPage = () => {
         </div>
       </h2>
       {/* Form */}
-      <form className="flex flex-col items-center">
+      <form className="flex flex-col items-center" onSubmit={handleSubmit}>
         <div className="relative">
           <input
             type="email"
