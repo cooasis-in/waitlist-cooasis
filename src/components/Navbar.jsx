@@ -2,7 +2,7 @@ import React from "react";
 
 const Navbar = () => {
   return (
-    <header className=" bg-[#131515] absolute top-0 w-full">
+<header className=" bg-[#131515] w-full">
       <div className="container h-20 flex justify-between items-center">
         <div className="flex ml-10">
           <img

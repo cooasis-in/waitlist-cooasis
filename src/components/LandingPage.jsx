@@ -17,7 +17,7 @@ const LandingPage = () => {
     return <Refer />;
   }
   return (
-    <section className="bg-color pt-[80px]">
+    <section className="bg-color">
       <div>
         <h1 className="text-[12px] text-center bg-waitlist-gradient bg-clip-text text-transparent f-PowerGrotesk">
           Join waitlist for

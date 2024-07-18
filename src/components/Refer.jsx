@@ -13,7 +13,7 @@ const Refer = () => {
   }, []);
 
   return (
-    <div className="bg-colorRefer bg-[black] min-h-screen flex flex-col items-center relative overflow-hidden">
+    <div className="bg-colorRefer bg-[#131515] min-h-screen flex flex-col items-center relative overflow-hidden">
       <ConfettiBackground />
       <Box>
         <div className="bg-[#0000000D] border-[#FFFFFF21] p-10 pb-5 text-center relative z-100">
