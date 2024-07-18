@@ -31,7 +31,7 @@ export function Box({
     return (
         <Component
             className={cn(
-                "bg-transparent relative text-xl  h-[350px] mt-2 w-[370px] p-[1px] overflow-hidden ",
+                "bg-transparent relative text-xl h-[350px] mt-2 w-[370px] p-[1px] overflow-hidden ",
                 containerClassName
             )}
             style={{
