@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from "react";
 import Typical from "react-typical";
-import '../components/pages.css';
+import "../components/pages.css";
 
 const LandingPage = () => {
   const [showTyping, setShowTyping] = useState(false);
 
   useEffect(() => {
-    // Start typing animation after a delay
     const timeout = setTimeout(() => {
       setShowTyping(true);
     }, 4000); // Adjust timing to match your arrowBorderAnimation duration
@@ -21,15 +20,22 @@ const LandingPage = () => {
       </h1>
       <h2 className="text-7xl f-PowerGrotesk text-[#FCFCD8] mb-8 relative">
         <div className="relative inline-block nex-gen-container">
-          <span className="bg-nexgen-gradient bg-clip-text nex-gen-text">Nex-gen</span>
-          <div className="arrow-animation">
-            <img src="/images/arrow.svg" alt="Arrow" className="arrow-image w-30" />
+          <span className="bg-nexgen-gradient bg-clip-text nex-gen-text">
+            Nex-gen
+          </span>
+          <div className="arrow-container">
+            <img
+              src="/images/arrow.svg"
+              alt="Arrow"
+              className="arrow-image"
+            />
+            <div className="border-animation"></div>
           </div>
         </div>
         <div className="typical-wrapper">
           {showTyping && (
             <Typical
-              steps={["design ecosystem ", 1000]}
+              steps={["design ecosystem", 1000]}
               wrapper="span"
               className="text-[#FCFCD8]"
             />
