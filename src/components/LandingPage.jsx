@@ -62,7 +62,7 @@ const LandingPage = () => {
           </button> */}
           <Button
             borderRadius="2rem"
-            className="bg-[#131515] f-PowerGrotesk text-[#E1FF26] rounded-full hover:shadow-lg hover:bg-[#E1FF26] hover:text-[black] hover:font-bold transform transition-transform duration-200"
+            className="bg-[#131515] f-PowerGrotesk text-[#E1FF26] rounded-full hover:shadow-lg hover:bg-[#E1FF26] hover:text-black hover:font-bold transform transition-all duration-300 ease-in-out"
           >
             Get Early Access
           </Button>
