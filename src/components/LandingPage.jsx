@@ -17,30 +17,35 @@ const LandingPage = () => {
     return <Refer />;
   }
   return (
-    <section className="bg-color">
+    <section className="bg-color pt-[80px]">
       <div>
         <h1 className="text-[12px] text-center bg-waitlist-gradient bg-clip-text text-transparent f-PowerGrotesk">
           Join waitlist for
         </h1>
-        <h2 className="text-[70px] leading-[70px] xxl:text-7xl f-PowerGrotesk text-[#FCFCD8] mb-4 text-center">
-          {/* <span className="bg-nexgen-gradient bg-clip-text">Nex-gen </span> */}
-          <Typical
-            steps={["Nex-gen", 1000]}
-            wrapper="span"
-            className="bg-nexgen-gradient bg-clip-text"
-          />
-          <Typical
-            steps={["design", 1000]}
-            wrapper="span"
-            className="text-[#FCFCD8]"
-          />
-          <br />
-          <Typical
-            steps={["ecosystem", 1000]}
-            wrapper="span"
-            className="text-[#FCFCD8]"
-          />
-        </h2>
+        <div className="reletive">
+          <h2 className="text-[70px] leading-[70px] xxl:text-7xl f-PowerGrotesk text-[#FCFCD8] mb-4 text-center">
+            {/* <span className="bg-nexgen-gradient bg-clip-text">Nex-gen </span> */}
+            <Typical
+              steps={["Nex-gen", 1000]}
+              wrapper="span"
+              className="bg-nexgen-gradient bg-clip-text"
+            />
+            <Typical
+              steps={["design", 1000]}
+              wrapper="span"
+              className="text-[#FCFCD8]"
+            />
+            <br />
+            <Typical
+              steps={["ecosystem", 1000]}
+              wrapper="span"
+              className="text-[#FCFCD8]"
+            />
+          </h2>
+          <div className="absolute top-0 left-[343px]">
+        <img src="images/james.svg" alt="" />
+        </div>
+        </div>
         {/* Form */}
         <form className="flex flex-col items-center " onSubmit={handleSubmit}>
           <div className="relative">
@@ -77,7 +82,15 @@ const LandingPage = () => {
             +200 people joined
           </span>
         </div>
-        <div className="mt-6 flex flex-col justify-center items-center space-x-4">
+        <div className="relative">
+          <div className="flex justify-center items-center mt-11">
+            <img src="images/moon-1.svg" alt="" />
+          </div>
+          <div className="flex justify-center items-center">
+            <img src="images/moon-2.svg" alt="" className=" absolute top-[-35px]" />
+          </div>
+        </div>
+        <div className="mt-[-2rem] flex flex-col justify-center items-center space-x-4">
           <span className="f-PowerGrotesk text-[14.5px] xxl:text-[17.5px] leading-[14.54px] text-[#6A9298] text-center mb-4">
             Backed by
           </span>
