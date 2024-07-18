@@ -13,7 +13,7 @@ const Refer = () => {
   return (
     <div className="bg-[#131515] min-h-screen flex flex-col items-center relative overflow-hidden">
       <ConfettiBackground />
-      <div className="bg-[#141918] w-[300px] mt-[80px] rounded-[30px] p-8 text-center shadow-lg relative z-10">
+      <div className="bg-[#141918] w-[300px] mt-[80px] rounded-[30px] p-10 text-center shadow-lg relative z-10">
         <h1 className="f-PowerGrotesk text-3xl text-[#FCFCD8]">
           You are on the <br />
           <span className="bg-nexgen-gradient bg-clip-text nex-gen-text">
@@ -27,7 +27,7 @@ const Refer = () => {
         </p>
         <button
           type="submit"
-          className="f-PowerGrotesk text-base btn-color text-[#FFF5D9] leading-tight font-normal px-6 py-4 w-full h-[55px] mt-8 rounded-full flex items-center dark:bg-[#1D2121] justify-center"
+          className="f-PowerGrotesk text-base btn-color text-[#FFF5D9] leading-tight font-normal px-6 py-4 w-full h-[55px] mt-8 rounded-full flex items-center dark:bg-[#000000] justify-center"
         >
           Refer a friend
         </button>
