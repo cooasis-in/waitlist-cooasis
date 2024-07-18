@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import Typical from "react-typical";
 import "./pages.css";
-import Refer from "./Refer";
 import { Button } from "../ui/moving-border";
+import ReferPage from "./ReferPage";
+import { AnimatedTooltip } from "../ui/animated-tooltip";
 
 const LandingPage = () => {
   const [showRefer, setShowRefer] = useState(false);
@@ -14,8 +15,27 @@ const LandingPage = () => {
   };
 
   if (showRefer) {
-    return <Refer />;
+    return <ReferPage />;
   }
+
+  const people = [
+    {
+      id: 1,
+      image:
+        "https://images.unsplash.com/photo-1599566150163-29194dcaad36?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=3387&q=80",
+    },
+    {
+      id: 2,
+      image:
+        "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YXZhdGFyfGVufDB8fDB8fHww&auto=format&fit=crop&w=800&q=60",
+    },
+    {
+      id: 3,
+      image:
+        "https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8YXZhdGFyfGVufDB8fDB8fHww&auto=format&fit=crop&w=800&q=60",
+    },
+  ];
+
   return (
     <section className="bg-color">
       <div>
@@ -43,8 +63,8 @@ const LandingPage = () => {
             />
           </h2>
           <div className="absolute top-0 left-[343px]">
-        <img src="images/james.svg" alt="" />
-        </div>
+            <img src="images/james.svg" alt="" />
+          </div>
         </div>
         {/* Form */}
         <form className="flex flex-col items-center " onSubmit={handleSubmit}>
@@ -82,12 +102,25 @@ const LandingPage = () => {
             +200 people joined
           </span>
         </div>
+
+        {/* <div className="flex flex-row items-center justify-center mb-2 mt-6 w-full">
+          <AnimatedTooltip items={people} />
+        </div>
+        <span className="f-PowerGrotesk text-[14.5px] text-[#6A92985E] xxl:text-[17.5px] leading-[14.54px] flex justify-center items-center">
+          +200 people joined
+        </span> */}
+
+        {/*  */}
         <div className="relative">
           <div className="flex justify-center items-center mt-11">
             <img src="images/moon-1.svg" alt="" />
           </div>
           <div className="flex justify-center items-center">
-            <img src="images/moon-2.svg" alt="" className=" absolute top-[-35px]" />
+            <img
+              src="images/moon-2.svg"
+              alt=""
+              className=" absolute top-[-35px]"
+            />
           </div>
         </div>
         <div className="mt-[-2rem] flex flex-col justify-center items-center space-x-4">
