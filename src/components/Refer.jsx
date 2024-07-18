@@ -11,16 +11,16 @@ const Refer = () => {
   }, []);
 
   return (
-    <div className="bg-[#131515] min-h-screen flex flex-col items-center relative overflow-hidden">
+    <div className="bg-colorRefer min-h-screen flex flex-col items-center relative overflow-hidden">
       <ConfettiBackground />
-      <div className="bg-[#141918] w-[300px] mt-[80px] rounded-[30px] p-10 text-center shadow-lg relative z-10">
+      <div className="bg-[#141918] w-[310px] mt-10 rounded-[30px] p-10 text-center shadow-lg relative z-10">
         <h1 className="f-PowerGrotesk text-3xl text-[#FCFCD8]">
           You are on the <br />
           <span className="bg-nexgen-gradient bg-clip-text nex-gen-text">
             waitlist!
           </span>
         </h1>
-        <p className="text-[#FFF5D9] mt-7 f-HelveticaNeueLight text-[10px]">
+        <p className="text-[#FFF5D9] mt-7 f-HelveticaNeueLight text-[8px]">
           We’ve added you to our waitlist. We will notify you once we are ready
           to launch our beta version. In the meantime, you can share it and get
           a chance to earn 500 for early access to the platform.

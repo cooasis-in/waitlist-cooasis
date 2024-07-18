@@ -1,3 +1,15 @@
+.bg-color {
+  background-image: radial-gradient(circle, blue -100%, black 30%);
+  min-height: calc(100vh - 80px) !important;
+  width: 100%;
+}
+
+.bg-colorRefer{
+  background-color: black;
+  min-height: calc(100vh - 80px) !important;
+  width: 100%;
+}
+
 .nex-gen-container {
   display: inline-block;
   position: relative;
