@@ -2,7 +2,7 @@ import React from "react";
 
 const Navbar = () => {
   return (
-    <section className=" bg-[black]">
+    <header className=" bg-[#131515] absolute top-0 w-full">
       <div className="container h-20 flex justify-between items-center">
         <div className="flex ml-10">
           <img
@@ -12,7 +12,7 @@ const Navbar = () => {
           />
         </div>
       </div>
-    </section>
+    </header>
   );
 };
 

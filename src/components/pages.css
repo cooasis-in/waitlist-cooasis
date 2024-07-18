@@ -1,7 +1,10 @@
 .bg-color {
-  background-image: radial-gradient(circle, blue -100%, black 30%);
-  min-height: calc(100vh - 80px) !important;
+  background-image: radial-gradient(farthest-side at 48% 40%, #7D22FF -100%, #131515 40%);
+  min-height:100vh;
   width: 100%;
 }
+ .reletive {
+  position: relative !important;
+ }
 
 
