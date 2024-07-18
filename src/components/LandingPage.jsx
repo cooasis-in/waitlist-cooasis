@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Typical from "react-typical";
 import "./pages.css";
 import Refer from "./Refer";
+import { Button } from "../ui/moving-border";
 
 const LandingPage = () => {
   const [showRefer, setShowRefer] = useState(false);
@@ -18,7 +19,7 @@ const LandingPage = () => {
   return (
     <section className="bg-color">
       <div>
-        <h1 className="text-[12px] text-center bg-waitlist-gradient bg-clip-text text-transparent f-PowerGrotesk ">
+        <h1 className="text-[12px] text-center bg-waitlist-gradient bg-clip-text text-transparent f-PowerGrotesk">
           Join waitlist for
         </h1>
         <h2 className="text-[70px] leading-[70px] xxl:text-7xl f-PowerGrotesk text-[#FCFCD8] mb-4 text-center">
@@ -47,18 +48,24 @@ const LandingPage = () => {
               type="email"
               name="email"
               placeholder="Eg. Jeff@cooasis.in"
-              className="f-HelveticaNeueUltraLight bg-transparent	text-[14px] xxl:text-[17px] text-[#000000] leading-[14.13px] w-[290px] h-[55px] px-6 py-4 mt-0 lg:mt-3 border-[1px] border-[#FFFFFF17] rounded-full custom-inset custom-gradient"
+              className="f-HelveticaNeueUltraLight bg-transparent	text-[14px] xxl:text-[17px] text-[white] leading-[14.13px] w-[290px] h-[55px] px-6 py-4 mt-0 lg:mt-3 border-[1px] border-[#FFFFFF17] rounded-full custom-inset custom-gradient"
             />
             <div className="absolute right-[18px] bottom-[20px] cursor-pointer">
               <img src="/images/maillandingpage.svg" alt="Email Icon" />
             </div>
           </div>
-          <button
+          {/* <button
             type="submit"
             className="f-PowerGrotesk bg-[#0000006B] w-[290px] h-[55px] text-[14px] xxl:text-[17px] text-[#E1FF26] leading-[14.13px] px-6 py-4 mt-4 rounded-full flex items-center dark:bg-[#1D2121] justify-center"
           >
             Get Early Access
-          </button>
+          </button> */}
+          <Button
+            borderRadius="2rem"
+            className="bg-[#131515] f-PowerGrotesk text-[#E1FF26] rounded-full hover:shadow-lg hover:bg-[#E1FF26] hover:text-[black] hover:font-bold transform transition-transform duration-200"
+          >
+            Get Early Access
+          </Button>
         </form>
         <div className="mt-7 ">
           <img

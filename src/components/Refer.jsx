@@ -27,7 +27,7 @@ const Refer = () => {
         </p>
         <button
           type="submit"
-          className="f-PowerGrotesk text-base btn-color text-[#FFF5D9] leading-tight font-normal px-6 py-4 w-full h-[55px] mt-8 rounded-full flex items-center dark:bg-[#000000] justify-center"
+          className="f-PowerGrotesk text-base btn-color text-[#FFF5D9] leading-tight font-normal px-6 py-4 w-full h-[55px] mt-8 rounded-full flex items-center bg-[#000000] justify-center"
         >
           Refer a friend
         </button>
