@@ -13,18 +13,21 @@ const LandingPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log(email);
-    const content = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.";
+    const content =
+      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.";
     try {
       const response = await axios.post("http://localhost:3001/users", {
         email,
-        content
+        content,
       });
       console.log("User created successfully:", response.data);
       setShowRefer(true);
     } catch (error) {
-      console.error("Error creating user:", error.response ? error.response.data : error.message);
+      console.error(
+        "Error creating user:",
+        error.response ? error.response.data : error.message
+      );
     }
-    setShowRefer(true);
     console.log("Handling submit...");
   };
 
