@@ -13,3 +13,27 @@
   width: 100%;
 }
 
+.gradient-box {
+  background: linear-gradient(
+    rgba(0, 0, 0, 0.05), 
+    rgba(0, 0, 0, 0.05)
+  ),
+  radial-gradient(
+    circle at 10% 10%,
+    rgba(0, 100, 120, 0.40) 0%,
+    transparent 70%
+  ),
+  radial-gradient(
+    circle at 70% 70%,
+    rgba(217, 217, 217, 0.15) 0%,
+    transparent 70%
+  ),
+  radial-gradient(
+    circle at center,
+    rgba(0, 200, 135, 0.28) 0%,
+    transparent 70%
+  );
+  background-blend-mode: screen;
+  border-radius: 30px; /* Matches the border-radius of your card */
+}
+

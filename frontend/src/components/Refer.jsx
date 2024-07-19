@@ -14,7 +14,7 @@ const Refer = () => {
   return (
     <div className="bg-colorRefer bg-[#131515] min-h-screen flex flex-col items-center relative overflow-hidden">
       <ConfettiBackground />
-      <div className="bg-[#0000000D] border-[1px] border-[#FFFFFF21] max-w-[380px] mt-4 rounded-[30px] p-10 pb-5 text-center shadow-lg relative z-10">
+      <div className="gradient-box border-[1px] border-[#FFFFFF21] max-w-[380px] mt-4 rounded-[30px] p-10 pb-5 text-center shadow-lg relative z-10">
         <h1 className="f-PowerGrotesk text-[40px] xxl:text-[50px] leading-[40px] text-[#FCFCD8]">
           You are on the <br />
           <span className="bg-nexgen-gradient bg-clip-text nex-gen-text">
