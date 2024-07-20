@@ -1,5 +1,5 @@
 .bg-color {
-  background-image: radial-gradient(farthest-side at 48% 40%, #7D22FF -100%, #131515 40%);
+  background-image: radial-gradient(farthest-side at 47% 28%, #7D22FF -100%, #131515 36%);
   min-height: calc(100vh - 80px) !important;
   width: 100%;
 }
@@ -12,4 +12,3 @@
   min-height: calc(100vh - 80px) !important;
   width: 100%;
 }
-

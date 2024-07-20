@@ -109,12 +109,12 @@ const LandingPage = () => {
           </Button>
         </form>
         <div className="mt-7 ">
-          <img
-            src="/images/avtars.svg"
-            alt="People Join"
-            className="h-10 mx-auto"
-          />
-          <span className="f-PowerGrotesk text-[14.5px] text-[#6A92985E] xxl:text-[17.5px] leading-[14.54px] flex justify-center items-center mt-2">
+          <div className="flex justify-center items-center">
+            <img src="/images/avtar-1.svg" alt="People Join" className="overflow-hidden" />
+            <img src="/images/avtar-2.svg" alt="People Join" className="ml-[-7px] overflow-hidden" />
+            <img src="/images/avtar-3.svg" alt="People Join" className="ml-[-7px] overflow-hidden" />
+          </div>
+          <span className="f-PowerGrotesk text-[14.5px] text-[#6A92985E] xxl:text-[17.5px] leading-[14.54px] flex justify-center items-center mt-1">
             +200 people joined
           </span>
         </div>
@@ -143,12 +143,12 @@ const LandingPage = () => {
           <span className="f-PowerGrotesk text-[14.5px] xxl:text-[17.5px] leading-[14.54px] text-[#6A9298] text-center mb-4">
             Backed by
           </span>
-          <div className="flex items-center justify-center space-x-7 max-w-[642px] ml-0 mt-2">
-            <img src="images/start.svg" alt="" />
-            <img src="images/yourstory.svg" alt="" />
-            <img src="images/aws.svg" alt="" />
-            <img src="images/launch.svg" alt="" />
-            <img src="images/google.svg" alt="" />
+          <div className="flex items-center justify-center space-x-7 max-w-[642px] ml-0">
+            <img src="images/start.svg" alt="" className="w-[75px]" />
+            <img src="images/yourstory.svg" alt="" className="w-[75px]" />
+            <img src="images/aws.svg" alt="" className="w-[75px]" />
+            <img src="images/launch.svg" alt="" className="w-[75px]" />
+            <img src="images/google.svg" alt="" className="w-[75px]" />
           </div>
         </div>
       </div>
