@@ -8,6 +8,9 @@
   position: relative !important;
  }
 
+
+ /* Card Background Color */
+ 
 .bg-colorRefer{
   min-height: calc(100vh - 80px) !important;
   width: 100%;
