@@ -39,8 +39,12 @@ const LandingPage = () => {
             <Typical
               steps={["design ecosystem", 1000]}
               wrapper="span"
-              className="text-[#FCFCD8]"
+              classN
+              ame="text-[#FCFCD8]"
             />
+            <div className="absolute bottom-10 left-[360px] fade-in ">
+            <img src="images/star.svg" alt="" />
+          </div>
           </h2>
           <div className="absolute top-0 left-[450px] fade-in ">
             <img src="images/james.svg" alt="" />

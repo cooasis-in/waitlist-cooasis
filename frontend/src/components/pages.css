@@ -1,45 +1,44 @@
 .bg-color {
-  background-image: radial-gradient(farthest-side at 47% 28%, #7D22FF -100%, #131515 36%);
+  background-image: radial-gradient(
+    farthest-side at 47% 28%,
+    #7d22ff -100%,
+    #131515 36%
+  );
   min-height: calc(100vh - 80px) !important;
   width: 100%;
 }
 
- .reletive {
+.reletive {
   position: relative !important;
- }
+}
 
+/* Card Background Color */
 
- /* Card Background Color */
- 
-.bg-colorRefer{
+.bg-colorRefer {
   min-height: calc(100vh - 80px) !important;
   width: 100%;
 }
 
 .gradient-box {
-  background: linear-gradient(
-    rgba(0, 0, 0, 0.05), 
-    rgba(0, 0, 0, 0.05)
-  ),
-  radial-gradient(
-    circle at 10% 10%,
-    rgba(0, 100, 120, 0.40) 0%,
-    transparent 70%
-  ),
-  radial-gradient(
-    circle at 70% 70%,
-    rgba(217, 217, 217, 0.15) 0%,
-    transparent 70%
-  ),
-  radial-gradient(
-    circle at center,
-    rgba(0, 200, 135, 0.28) 0%,
-    transparent 70%
-  );
+  background: linear-gradient(rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.05)),
+    radial-gradient(
+      circle at 20% 20%,
+      rgba(0, 100, 120, 0.4) 0%,
+      transparent 70%
+    ),
+    radial-gradient(
+      circle at 80% 80%,
+      rgba(217, 217, 217, 0.15) 0%,
+      transparent 70%
+    ),
+    radial-gradient(
+      circle at center,
+      rgba(0, 200, 135, 0.28) 0%,
+      transparent 70%
+    );
   background-blend-mode: screen;
   border-radius: 30px; /* Matches the border-radius of your card */
 }
-
 
 /*  */
 
@@ -56,6 +55,4 @@
   animation: fadeIn 1.5s ease-in-out;
 }
 
-
 /* Card  css refer */
-
