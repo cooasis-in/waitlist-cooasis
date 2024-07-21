@@ -39,3 +39,23 @@
   background-blend-mode: screen;
   border-radius: 30px; /* Matches the border-radius of your card */
 }
+
+
+/*  */
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.fade-in {
+  animation: fadeIn 1.5s ease-in-out;
+}
+
+
+/* Card  css refer */
+
