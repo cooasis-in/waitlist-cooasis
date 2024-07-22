@@ -15,14 +15,14 @@ exports.createUser = async (req, res) => {
         // Generate unique referral code
         const referralCode = crypto.randomBytes(4).toString('hex');
 
-        // Create a new user with the referral code and referrer if provided
+        
         const newUser = new User({ email, referralCode, referrer: referrer || null });
         await newUser.save();
 
         const content = "Lorem Ipsum is simply dummy text of the printing and typesetting industry.";
 
-        // Send verification email
-        ///  await sendVerificationEmail(email, content);
+        
+          await sendVerificationEmail(email, content);
 
         // Return waitlist number and referral link
         const waitlistNumber = await User.countDocuments();
