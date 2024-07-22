@@ -9,7 +9,7 @@ const LandingPage = () => {
   const [showRefer, setShowRefer] = useState(false);
 
   const handleSubmit = (e) => {
-    e.preventDefault(); 
+    e.preventDefault();
     setShowRefer(true);
   };
 
@@ -43,8 +43,8 @@ const LandingPage = () => {
               ame="text-[#FCFCD8]"
             />
             <div className="absolute bottom-10 left-[360px] fade-in ">
-            <img src="images/star.svg" alt="" />
-          </div>
+              <img src="images/star.svg" alt="" />
+            </div>
           </h2>
           <div className="absolute top-0 left-[450px] fade-in ">
             <img src="images/james.svg" alt="" />
@@ -72,9 +72,21 @@ const LandingPage = () => {
         </form>
         <div className="mt-7">
           <div className="flex justify-center items-center">
-            <img src="/images/avtar-1.svg" alt="People Join" className="overflow-hidden" />
-            <img src="/images/avtar-2.svg" alt="People Join" className="ml-[-7px] overflow-hidden" />
-            <img src="/images/avtar-3.svg" alt="People Join" className="ml-[-7px] overflow-hidden" />
+            <img
+              src="/images/avtar-1.svg"
+              alt="People Join"
+              className="overflow-hidden"
+            />
+            <img
+              src="/images/avtar-2.svg"
+              alt="People Join"
+              className="ml-[-7px] overflow-hidden"
+            />
+            <img
+              src="/images/avtar-3.svg"
+              alt="People Join"
+              className="ml-[-7px] overflow-hidden"
+            />
           </div>
           <span className="f-PowerGrotesk text-[14.5px] text-[#6A92985E] xxl:text-[17.5px] leading-[14.54px] flex justify-center items-center mt-1">
             +200 people joined
