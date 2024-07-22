@@ -68,5 +68,28 @@
 }
 
 
-/* curser move */
+/* typing text */
+
+
+@keyframes typing {
+  from { width: 0; }
+  to { width: 44%; }
+}
+
+@keyframes blink {
+  0%, 100% { border-color: transparent; }
+  50% { border-color: #FCFCD8; }
+}
+
+.typing-text {
+  display: inline-block;
+  overflow: hidden;
+  border-right: 5px solid #FCFCD8; /* Same as text color */
+  white-space: nowrap;
+  animation: typing 2s steps(30, end) 1s 1 normal both, blink 0.75s step-end infinite;
+}
+
+.typing-text.design {
+  animation: typing 5s steps(30, end) 1s 1 normal both, blink 0.75s step-end infinite;
+}
 

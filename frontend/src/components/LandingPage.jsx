@@ -23,11 +23,6 @@ const LandingPage = () => {
         cursorRef.current.style.top = `${rect1.top + window.scrollY}px`;
         cursorRef.current.style.left = `${rect1.right + window.scrollX}px`;
       }
-      if (typicalRef2.current && cursorRef.current) {
-        const rect2 = typicalRef2.current.getBoundingClientRect();
-        cursorRef.current.style.top = `${rect2.top + window.scrollY}px`;
-        cursorRef.current.style.left = `${rect2.right + window.scrollX}px`;
-      }
     };
 
     const interval = setInterval(updateCursorPosition, 50);
@@ -46,21 +41,13 @@ const LandingPage = () => {
           Join waitlist for
         </h1>
         <div className="relative">
-          <h2 className="text-[70px] leading-[70px] xxl:text-7xl f-PowerGrotesk text-[#FCFCD8] mb-4 text-center">
-            <span ref={typicalRef1}>
-              <Typical
-                steps={["Nex-gen", 500]}
-                wrapper="span"
-                className="bg-nexgen-gradient bg-clip-text"
-              />
+        <h2 className="text-[70px] leading-[70px] xxl:text-7xl f-PowerGrotesk text-[#FCFCD8] mb-4 text-center">
+            <span className="bg-nexgen-gradient bg-clip-text fade-in ">
+              Nex-gen
             </span>
             <br />
-            <span ref={typicalRef2}>
-              <Typical
-                steps={["design ecosystem", 1000]}
-                wrapper="span"
-                className="text-[#FCFCD8]"
-              />
+            <span className="text-[#FCFCD8] typing-text" ref={typicalRef1}>
+              design ecosystem
             </span>
             <div className="absolute bottom-10 left-[360px] fade-in">
               <img src="images/star.svg" alt="" />
