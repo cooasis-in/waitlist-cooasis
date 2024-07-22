@@ -7,7 +7,8 @@ import Refer from "./components/Refer";
 function App() {
   return (
     <>
-      <LandingPage />
+      {/* <LandingPage /> */}
+      <Refer/>
     </>
   );
 }

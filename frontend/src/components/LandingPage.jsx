@@ -3,7 +3,7 @@ import Typical from "react-typical";
 import "./pages.css";
 import { Button } from "../ui/moving-border";
 import Refer from "./Refer";
-import cursorImage from "../../public/images/cursorImg.png"; // Adjust the path accordingly
+import cursorImage from "../../public/images/cursorImg.png";
 
 const LandingPage = () => {
   const [showRefer, setShowRefer] = useState(false);
