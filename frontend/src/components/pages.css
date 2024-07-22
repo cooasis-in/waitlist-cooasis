@@ -57,5 +57,16 @@
 }
 
 
-/* Card  css refer */
+/* 200 Peple Joined */
+
+.image-hover-effect {
+  transition: transform 0.3s ease-in-out;
+}
+
+.image-hover-effect:hover {
+  transform: scale(1.1); /* Adjust the scale value to your preference */
+}
+
+
+/* curser move */
 

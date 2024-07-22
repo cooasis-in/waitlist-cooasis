@@ -1,17 +1,39 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Typical from "react-typical";
-import axios from "axios";
 import "./pages.css";
 import { Button } from "../ui/moving-border";
 import Refer from "./Refer";
+import cursorImage from "../../public/images/cursorImg.png"; // Adjust the path accordingly
 
 const LandingPage = () => {
   const [showRefer, setShowRefer] = useState(false);
+  const cursorRef = useRef(null);
+  const typicalRef1 = useRef(null);
+  const typicalRef2 = useRef(null);
 
   const handleSubmit = (e) => {
-    e.preventDefault(); 
+    e.preventDefault();
     setShowRefer(true);
   };
+
+  useEffect(() => {
+    const updateCursorPosition = () => {
+      if (typicalRef1.current && cursorRef.current) {
+        const rect1 = typicalRef1.current.getBoundingClientRect();
+        cursorRef.current.style.top = `${rect1.top + window.scrollY}px`;
+        cursorRef.current.style.left = `${rect1.right + window.scrollX}px`;
+      }
+      if (typicalRef2.current && cursorRef.current) {
+        const rect2 = typicalRef2.current.getBoundingClientRect();
+        cursorRef.current.style.top = `${rect2.top + window.scrollY}px`;
+        cursorRef.current.style.left = `${rect2.right + window.scrollX}px`;
+      }
+    };
+
+    const interval = setInterval(updateCursorPosition, 50);
+
+    return () => clearInterval(interval);
+  }, []);
 
   if (showRefer) {
     return <Refer />;
@@ -25,29 +47,38 @@ const LandingPage = () => {
         </h1>
         <div className="relative">
           <h2 className="text-[70px] leading-[70px] xxl:text-7xl f-PowerGrotesk text-[#FCFCD8] mb-4 text-center">
-            <Typical
-              steps={["Nex-gen", 1000]}
-              wrapper="span"
-              className="bg-nexgen-gradient bg-clip-text"
-            />
-            {/* <Typical
-              steps={["", 1000]}
-              wrapper="span"
-              className="text-[#FCFCD8]"
-            /> */}
+            <span ref={typicalRef1}>
+              <Typical
+                steps={["Nex-gen", 500]}
+                wrapper="span"
+                className="bg-nexgen-gradient bg-clip-text"
+              />
+            </span>
             <br />
-            <Typical
-              steps={["design ecosystem", 1000]}
-              wrapper="span"
-              className="text-[#FCFCD8]"
+            <span ref={typicalRef2}>
+              <Typical
+                steps={["design ecosystem", 1000]}
+                wrapper="span"
+                className="text-[#FCFCD8]"
+              />
+            </span>
+            <div className="absolute bottom-10 left-[360px] fade-in">
+              <img src="images/star.svg" alt="" />
+            </div>
+            <img
+              src={cursorImage}
+              alt="Cursor"
+              ref={cursorRef}
+              className="absolute w-10 md:hidden sm:hidden lg:block"
+              style={{ pointerEvents: "none" }} // Ensure the image doesn't interfere with user interaction
             />
           </h2>
-          <div className="absolute top-0 left-[450px] fade-in ">
+          <div className="absolute top-0 left-[450px] fade-in">
             <img src="images/james.svg" alt="" />
           </div>
         </div>
         {/* Form */}
-        <form className="flex flex-col items-center " onSubmit={handleSubmit}>
+        <form className="flex flex-col items-center" onSubmit={handleSubmit}>
           <div className="relative">
             <input
               type="email"
@@ -68,9 +99,21 @@ const LandingPage = () => {
         </form>
         <div className="mt-7">
           <div className="flex justify-center items-center">
-            <img src="/images/avtar-1.svg" alt="People Join" className="overflow-hidden" />
-            <img src="/images/avtar-2.svg" alt="People Join" className="ml-[-7px] overflow-hidden" />
-            <img src="/images/avtar-3.svg" alt="People Join" className="ml-[-7px] overflow-hidden" />
+            <img
+              src="/images/avtar-1.svg"
+              alt="People Join"
+              className="overflow-hidden image-hover-effect"
+            />
+            <img
+              src="/images/avtar-2.svg"
+              alt="People Join"
+              className="ml-[-7px] overflow-hidden image-hover-effect"
+            />
+            <img
+              src="/images/avtar-3.svg"
+              alt="People Join"
+              className="ml-[-7px] overflow-hidden image-hover-effect"
+            />
           </div>
           <span className="f-PowerGrotesk text-[14.5px] text-[#6A92985E] xxl:text-[17.5px] leading-[14.54px] flex justify-center items-center mt-1">
             +200 people joined
