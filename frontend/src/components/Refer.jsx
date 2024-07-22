@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import confetti from "canvas-confetti";
 import "./pages.css";
 
-const Refer = () => {
+const Refer = ({ waitlistInfo }) => {
   useEffect(() => {
     confetti({
       particleCount: 100,
@@ -12,9 +12,8 @@ const Refer = () => {
   }, []);
 
   const handlePaste = () => {
-    const referralLink = "https://waitlist.coasis.app/refer?1eg%@v";
     navigator.clipboard
-      .writeText(referralLink)
+      .writeText(waitlistInfo.referralLink)
       .then(() => {
         alert("Referral link copied to clipboard!");
       })
@@ -31,17 +30,17 @@ const Refer = () => {
           Welcome to the
         </h1>
         <div className="mb-6">
-        <h1 className="text-[#FFF5D9] f-PowerGrotesk text-[60px]">
-          <span className="bg-nexgen-gradient bg-clip-text mr-3">
-            exclusive
-          </span>
-          waitlist
-        </h1>
+          <h1 className="text-[#FFF5D9] f-PowerGrotesk text-[60px]">
+            <span className="bg-nexgen-gradient bg-clip-text mr-3">
+              exclusive
+            </span>
+            waitlist
+          </h1>
         </div>
       </div>
       <div className="card gradient-box border-[1px] border-[#FFFFFF21] max-w-[340px] mt-2 rounded-[40px] p-4 text-center shadow-lg relative z-10 transform transition-transform duration-300 hover:scale-105 hover:shadow-2xl">
         <div className=" ">
-          <h1 className="text-[#FCFCD8] font-bold text-[30px]">1,150</h1>
+          <h1 className="text-[#FCFCD8] font-bold text-[30px]">{waitlistInfo.waitlistNumber}</h1>
           <p className="f-PowerGrotesk text-[12px] leading-[1]   text-[#FCFCD8]">
             You are on the waitlist <br /> Get ahead of the crowd!
             {/* <span className="bg-nexgen-gradient bg-clip-text nex-gen-text">
@@ -61,7 +60,7 @@ const Refer = () => {
           className="f-PowerGrotesk bg-[#131515] text-[11px] gap-2 btn-color text-[#FFF5D9] leading-tight font-normal px-6 py-8 w-full h-[55px] mt-6 rounded-full flex items-center dark:bg-[#000000] justify-between"
           onClick={handlePaste}
         >
-          https://waitlist.coasis.app/refer?1eg%@v
+          {waitlistInfo.referralLink}
           <img
             src="images/paste.svg"
             alt="Email Icon"

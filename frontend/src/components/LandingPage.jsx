@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import Typical from "react-typical";
+import axios from 'axios';
 import "./pages.css";
 import { Button } from "../ui/moving-border";
 import Refer from "./Refer";
@@ -7,14 +8,51 @@ import cursorImage from "../../public/images/cursorImg.png";
 
 const LandingPage = () => {
   const [showRefer, setShowRefer] = useState(false);
+  const [waitlistInfo, setWaitlistInfo] = useState(null);
   const cursorRef = useRef(null);
   const typicalRef1 = useRef(null);
   const typicalRef2 = useRef(null);
+  const [referrer, setReferrer] = useState(null);
 
-  const handleSubmit = (e) => {
+  useEffect(() => {
+    const queryParams = new URLSearchParams(window.location.search);
+    setReferrer(queryParams.get("refer"));
+  }, []);
+
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setShowRefer(true);
+    const email = e.target.email.value;
+
+    try {
+      const response = await axios.post('http://localhost:3001/users', { email, referrer });
+      setWaitlistInfo(response.data);
+      console.log(response.data);
+      setShowRefer(true);
+    } catch (error) {
+      console.error('Error creating user', error);
+    }
   };
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   const email = e.target.email.value;
+  //   console.log(email);
+  //   const content =
+  //     "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.";
+  //   try {
+  //     const response = await axios.post('http://localhost:3001/users', { email });
+  //     console.log("User created successfully:", response.data);
+  //     setWaitlistInfo(response.data);
+  //     setShowRefer(true);
+  //   } catch (error) {
+  //     console.error(
+  //       "Error creating user:",
+  //       error.response ? error.response.data : error.message
+  //     );
+  //   }
+  //   setShowRefer(true);
+  //   console.log("Handling submit...");
+  // };
 
   useEffect(() => {
     const updateCursorPosition = () => {
@@ -31,7 +69,7 @@ const LandingPage = () => {
   }, []);
 
   if (showRefer) {
-    return <Refer />;
+    return <Refer waitlistInfo={waitlistInfo} />;
   }
 
   return (
@@ -41,7 +79,7 @@ const LandingPage = () => {
           Join waitlist for
         </h1>
         <div className="relative">
-        <h2 className="text-[70px] leading-[70px] xxl:text-7xl f-PowerGrotesk text-[#FCFCD8] mb-4 text-center">
+          <h2 className="text-[70px] leading-[70px] xxl:text-7xl f-PowerGrotesk text-[#FCFCD8] mb-4 text-center">
             <span className="bg-nexgen-gradient bg-clip-text fade-in ">
               Nex-gen
             </span>
