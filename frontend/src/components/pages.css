@@ -1,45 +1,126 @@
 .bg-color {
-  background-image: radial-gradient(farthest-side at 47% 28%, #7D22FF -100%, #131515 36%);
+  background-image: radial-gradient(
+    farthest-side at 47% 28%,
+    #7d22ff -100%,
+    #131515 36%
+  );
   min-height: calc(100vh - 80px) !important;
   width: 100%;
 }
+/* Media Query */
+@media (max-width: 640px) {
 
- .reletive {
+  .bg-color-res {
+    background-image: radial-gradient(farthest-side at 5% 42%, #7D22FF -200%, #131515 70%);
+    width: 100%;
+  }
+
+}
+
+/* Cooasis Logo Set Width */
+@media (max-width: 640px) {
+
+.set-width img {
+  max-width: 70px;
+}
+
+}
+
+/* Landing Page Icon Res */
+
+@media (max-width: 640px) {
+  
+  .container {
+    padding-right: 1.2rem;
+    padding-left: 1.2rem;
+  }
+
+  .bg-color {
+    background-image: radial-gradient(farthest-side at 47% 28%, #7D22FF -100%, #131515 72%);
+    min-height: calc(100vh - 80px) !important;
+    width: 100%;
+  }
+
+}
+
+@media screen and (min-device-width: 487px) and (max-device-width: 600px) { 
+
+  .res-align img {
+    margin-right: 10px;
+    margin-left: 10px;
+    max-width: 70px;
+  } 
+
+}
+
+@media screen and (min-device-width: 400px) and (max-device-width: 486px) { 
+
+  .res-align img {
+    margin-right: 7px;
+    margin-left: 7px;
+    max-width: 60px;
+  } 
+
+}
+
+@media screen and (min-device-width: 335px) and (max-device-width: 400px) { 
+
+  .res-align img {
+    margin-right: 5px;
+    margin-left: 5px;
+    max-width: 50px;
+  } 
+
+}
+
+@media (max-device-width: 335px) { 
+
+  .res-align img {
+    margin-right: 3px;
+    margin-left: 3px;
+    max-width: 40px;
+  } 
+
+}
+
+.reletive {
   position: relative !important;
- }
+}
 
+/* Card Background Color */
 
- /* Card Background Color */
- 
-.bg-colorRefer{
+.bg-colorRefer {
+  /* min-height: calc(100vh - 80px) !important;
+  width: 100%; */
+  background-image: radial-gradient(
+    farthest-side at 47% 28%,
+    #7d22ff -100%,
+    #131515 36%
+  );
   min-height: calc(100vh - 80px) !important;
   width: 100%;
 }
 
 .gradient-box {
-  background: linear-gradient(
-    rgba(0, 0, 0, 0.05), 
-    rgba(0, 0, 0, 0.05)
-  ),
-  radial-gradient(
-    circle at 10% 10%,
-    rgba(0, 100, 120, 0.40) 0%,
-    transparent 70%
-  ),
-  radial-gradient(
-    circle at 70% 70%,
-    rgba(217, 217, 217, 0.15) 0%,
-    transparent 70%
-  ),
-  radial-gradient(
-    circle at center,
-    rgba(0, 200, 135, 0.28) 0%,
-    transparent 70%
-  );
+  background: linear-gradient(rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.05)),
+    radial-gradient(
+      circle at 10% 10%,
+      rgba(0, 100, 120, 0.4) 0%,
+      transparent 70%
+    ),
+    radial-gradient(
+      circle at 70% 70%,
+      rgba(190, 190, 217, 0.15) 0%,
+      transparent 70%
+    ),
+    radial-gradient(
+      circle at center,
+      rgba(0, 190, 135, 0.2) 0%,
+      transparent 70%
+    );
   background-blend-mode: screen;
-  border-radius: 30px; /* Matches the border-radius of your card */
+  border-radius: 30px;
 }
-
 
 /*  */
 
@@ -56,7 +137,6 @@
   animation: fadeIn 1.5s ease-in-out;
 }
 
-
 /* 200 Peple Joined */
 
 .image-hover-effect {
@@ -64,32 +144,87 @@
 }
 
 .image-hover-effect:hover {
-  transform: scale(1.1); /* Adjust the scale value to your preference */
+  transform: scale(1.1);
 }
-
 
 /* typing text */
 
-
 @keyframes typing {
-  from { width: 0; }
-  to { width: 44%; }
+  from {
+    width: 0;
+  }
+  to {
+    width: 44%;
+  }
 }
 
 @keyframes blink {
-  0%, 100% { border-color: transparent; }
-  50% { border-color: #FCFCD8; }
+  0%,
+  100% {
+    border-color: transparent;
+  }
+  50% {
+    border-color: #fcfcd8;
+  }
 }
 
 .typing-text {
   display: inline-block;
   overflow: hidden;
-  border-right: 5px solid #FCFCD8; /* Same as text color */
+  border-right: 5px solid #fcfcd8; /* Same as text color */
   white-space: nowrap;
-  animation: typing 2s steps(30, end) 1s 1 normal both, blink 0.75s step-end infinite;
+  animation: typing 2s steps(30, end) 1s 1 normal both,
+    blink 0.75s step-end infinite;
 }
 
 .typing-text.design {
-  animation: typing 5s steps(30, end) 1s 1 normal both, blink 0.75s step-end infinite;
+  animation: typing 5s steps(30, end) 1s 1 normal both,
+    blink 0.75s step-end infinite;
 }
 
+/* Card Border */
+:root {
+  --primary-color: #e1ff26;
+}
+
+.card {
+  width: 640px;
+  position: relative;
+  background-color: rgb(16 16 16);
+  border: 1px solid rgb(255 255 255 / 5%);
+  border-radius: 1.5rem;
+  padding: 1rem;
+}
+
+.card:before,
+.card:after {
+  content: "";
+  height: 70px;
+  width: 1px;
+  position: absolute;
+  transition: top, opacity;
+  transition-duration: 600ms;
+  transition-timing-function: ease;
+  background: linear-gradient(transparent, var(--primary-color), transparent);
+  opacity: 0;
+}
+
+.card:before {
+  left: -1px;
+  top: 65%;
+}
+
+.card:after {
+  right: -1px;
+  top: 25%;
+}
+
+.card:hover:before {
+  top: 25%;
+  opacity: 1;
+}
+
+.card:hover:after {
+  top: 65%;
+  opacity: 1;
+}
