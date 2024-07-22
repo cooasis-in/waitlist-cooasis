@@ -1,9 +1,82 @@
 .bg-color {
   background-image: radial-gradient(farthest-side at 47% 28%, #7D22FF -100%, #131515 36%);
-  min-height: calc(100vh - 80px) !important;
   width: 100%;
 }
 
+@media (max-width: 640px) {
+
+  .bg-color-res {
+    background-image: radial-gradient(farthest-side at 5% 42%, #7D22FF -200%, #131515 70%);
+    width: 100%;
+  }
+
+}
+
+/* Cooasis Logo Set Width */
+@media (max-width: 640px) {
+
+.set-width img {
+  max-width: 70px;
+}
+
+}
+
+/* Landing Page Icon Res */
+
+@media (max-width: 640px) {
+  
+  .container {
+    padding-right: 1.2rem;
+    padding-left: 1.2rem;
+  }
+
+  .bg-color {
+    background-image: radial-gradient(farthest-side at 47% 28%, #7D22FF -100%, #131515 72%);
+    min-height: calc(100vh - 80px) !important;
+    width: 100%;
+  }
+
+}
+
+@media screen and (min-device-width: 487px) and (max-device-width: 600px) { 
+
+  .res-align img {
+    margin-right: 10px;
+    margin-left: 10px;
+    max-width: 70px;
+  } 
+
+}
+
+@media screen and (min-device-width: 400px) and (max-device-width: 486px) { 
+
+  .res-align img {
+    margin-right: 7px;
+    margin-left: 7px;
+    max-width: 60px;
+  } 
+
+}
+
+@media screen and (min-device-width: 335px) and (max-device-width: 400px) { 
+
+  .res-align img {
+    margin-right: 5px;
+    margin-left: 5px;
+    max-width: 50px;
+  } 
+
+}
+
+@media (max-device-width: 335px) { 
+
+  .res-align img {
+    margin-right: 3px;
+    margin-left: 3px;
+    max-width: 40px;
+  } 
+
+}
  .reletive {
   position: relative !important;
  }
