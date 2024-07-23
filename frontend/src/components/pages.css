@@ -9,6 +9,7 @@
   width: 100%;
 }
 
+
 /* Media Query */
 @media (max-width: 640px) {
   .bg-color-res {
@@ -176,7 +177,7 @@
 @media screen and (min-width: 1024px) {
   .typing-text {
     display: inline-block;
-    overflow: hidden;
+    overflow: hidden   ;
     border-right: 5px solid #fcfcd8; /* Same as text color */
     white-space: nowrap;
     animation: typing 2s steps(30, end) 1s 1 normal both,

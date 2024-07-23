@@ -74,30 +74,40 @@ const LandingPage = () => {
           <h1 className="text-[12px] leading-[12px] text-center bg-waitlist-gradient bg-clip-text text-transparent f-PowerGrotesk">
             Join waitlist for
           </h1>
-          <div className="relative">
-            <h2 className="text-[30px] sm:text-[70px] leading-[30px] sm:leading-[70px] xxl:text-7xl mt-4 sm:mt-0 f-PowerGrotesk text-[#FCFCD8] mb-4 text-center">
-              <span className="bg-nexgen-gradient bg-clip-text fade-in ">
+          <div className="relative text-center mt-4 sm:mt-0 mb-4">
+            <h2 className="text-[30px] sm:text-[70px] leading-[30px] sm:leading-[70px] xxl:text-7xl f-PowerGrotesk text-[#FCFCD8]">
+              <span className="bg-nexgen-gradient bg-clip-text fade-in">
                 Nex-gen
               </span>
-              <br />
-              <span className="text-[#FCFCD8] typing-text" ref={typicalRef1}>
-                design ecosystem
-              </span>
-              <div className="absolute hidden lg:block bottom-16 left-[340px] fade-in">
-                <img src="images/star.svg" alt="" />
-              </div>
-              <img
-                src={cursorImage}
-                alt="Cursor"
-                ref={cursorRef}
-                className="absolute w-10 hidden lg:block "
-                style={{ pointerEvents: "none" }} // Ensure the image doesn't interfere with user interaction
-              />
             </h2>
-            {/* <div className="absolute top-0 left-[450px] fade-in">
-          <img src="images/james.svg" alt="" />
-        </div> */}
+            <h2
+              className="text-[30px] sm:text-[70px] leading-[30px] sm:leading-[70px] xxl:text-7xl f-PowerGrotesk text-[#FCFCD8] typing-text"
+              ref={typicalRef1}
+            >
+              design ecosystem
+            </h2>
+
+            <div className="absolute hidden lg:block bottom-16 left-[340px] fade-in">
+              <img src="images/star.svg" alt="Star" />
+            </div>
+
+            <img
+              src={cursorImage}
+              alt="Cursor"
+              ref={cursorRef}
+              className="absolute w-10 hidden lg:block"
+              style={{ pointerEvents: "none" }}
+            />
+
+            <div className="absolute bottom-[40px] left-20 md:left-[200px] lg:bottom-[120px] lg:left-[400px] fade-in">
+              <img
+                src="images/james.svg"
+                alt="James"
+                className="w-10 lg:w-20"
+              />
+            </div>
           </div>
+
           {/* Form */}
           <form
             className="flex flex-col items-center mt-8 sm:mt-0"
