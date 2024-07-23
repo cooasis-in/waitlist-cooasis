@@ -157,7 +157,7 @@ const Refer = ({ waitlistInfo }) => {
             <div>
               <ul className="flex space-x-3 justify-start items-center">
                 <li className="bg-[#000000] h-10 w-10 rounded-full">
-                  <a href="#" className="hover:text-white flex justify-center">
+                  <a href="https://www.instagram.com/cooasis.in/"  target="_blank" className="hover:text-white flex justify-center">
                     <img
                       src="/images/ins.svg"
                       alt="Instagram"
@@ -166,7 +166,7 @@ const Refer = ({ waitlistInfo }) => {
                   </a>
                 </li>
                 <li className="bg-[#000000] h-10 w-10 rounded-full">
-                  <a href="#" className="hover:text-white flex justify-center">
+                  <a href="https://www.linkedin.com/company/cooasis-in" target="blank" className="hover:text-white flex justify-center">
                     <img
                       src="/images/logo-1.svg"
                       alt="LinkedIn"
@@ -175,7 +175,7 @@ const Refer = ({ waitlistInfo }) => {
                   </a>
                 </li>
                 <li className="bg-[#000000] h-10 w-10 rounded-full">
-                  <a href="#" className="hover:text-white flex justify-center">
+                  <a href="https://www.behance.net/coasis" target="blank" className="hover:text-white flex justify-center">
                     <img
                       src="/images/logo-2.svg"
                       alt="Behance"
@@ -184,7 +184,7 @@ const Refer = ({ waitlistInfo }) => {
                   </a>
                 </li>
                 <li className="bg-[#000000] h-10 w-10 rounded-full">
-                  <a href="#" className="hover:text-white flex justify-center">
+                  <a href="https://dribbble.com/Cooasis" target="blank" className="hover:text-white flex justify-center">
                     <img
                       src="/images/logo-3.svg"
                       alt="Dribbble"
@@ -193,7 +193,7 @@ const Refer = ({ waitlistInfo }) => {
                   </a>
                 </li>
                 <li className="bg-[#000000] h-10 w-10 rounded-full">
-                  <a href="#" className="hover:text-white flex justify-center">
+                  <a href="https://www.facebook.com/cooasis.in"  target="_blank" className="hover:text-white flex justify-center">
                     <img
                       src="/images/logo-4.svg"
                       alt="Facebook"
@@ -202,7 +202,7 @@ const Refer = ({ waitlistInfo }) => {
                   </a>
                 </li>
                 <li className="bg-[#000000] h-10 w-10 rounded-full">
-                  <a href="#" className="hover:text-white flex justify-center">
+                  <a href="https://www.behance.net/coasis" target="_blank" className="hover:text-white flex justify-center">
                     <img
                       src="/images/logo-5.svg"
                       alt="Your Icon"
