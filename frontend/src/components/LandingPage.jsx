@@ -154,7 +154,7 @@ const LandingPage = () => {
               <img
                 src="images/moon-2.svg"
                 alt=""
-                className="absolute max-w-[70px] top-[-19px]"
+                className="absolute top-[-35px]"
               />
             </div>
           </div>

@@ -1,7 +1,6 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import confetti from "canvas-confetti";
 import "./pages.css";
-import { useState } from "react";
 import ShareLink from "../components/ShareLinks";
 
 const Refer = ({ waitlistInfo }) => {
@@ -39,10 +38,10 @@ const Refer = ({ waitlistInfo }) => {
   };
 
   return (
-    <section className="bg-[#131515] bg-colorRefer bg-color-res">
+    <section className="bg-[#131515] bg-colorRefe bg-color-res">
       <div className="container mx-auto relative">
         <div className="h-20 flex justify-between items-center">
-          <div className="set-width">
+          <div className="w-1/2 sm:w-auto">
             <img
               src="images/darkmode.svg"
               alt="Cooasis Logo"
@@ -51,14 +50,14 @@ const Refer = ({ waitlistInfo }) => {
           </div>
           <div className="bg-[#0000006B] rounded-full border-[0.5px] border-[#99999982]">
             <button
-              className="flex justify-center !items-center py-2 px-4 sm:py-3 sm:px-7 max-w-[91px] sm:max-w-[147px] f-PowerGrotesk text-[12px] sm:text-[17.5px] text-[#6A929857] leading-[12px] sm:leading-[17.5px]"
+              className="flex justify-center items-center py-2 px-4 sm:py-3 sm:px-7 max-w-[91px] sm:max-w-[147px] f-PowerGrotesk text-[12px] sm:text-[17.5px] text-[#6A929857] leading-[12px] sm:leading-[17.5px]"
               onClick={toggleBoxVisibility}
             >
               <span className="mr-[7px]">
                 <img
                   src="images/bellicon.svg"
                   alt=""
-                  className="max-w-[8.91px] sm:max-w-[100%]"
+                  className="max-w-[8.91px] sm:max-w-full"
                 />
               </span>
               <span className="mb-[4px] sm:mb-[7px]">updates</span>
@@ -79,7 +78,7 @@ const Refer = ({ waitlistInfo }) => {
             </div>
           </div>
         )}
-        <div className="min-h-screen flex flex-col items-center relative overflow-hidden">
+        <div className="min-h-screen mt-20 lg:mt-0 flex flex-col items-center relative overflow-hidden">
           <ConfettiBackground />
           <div className="heading hidden sm:block">
             <h1 className="text-[12px] text-center bg-waitlist-gradient bg-clip-text text-transparent f-PowerGrotesk">
@@ -95,7 +94,7 @@ const Refer = ({ waitlistInfo }) => {
             </div>
           </div>
           <div className="heading-res block sm:hidden">
-            <h1 className="text-[40px] !text-white leading-[40px] text-center f-PowerGrotesk">
+            <h1 className="text-[40px] text-white leading-[40px] text-center f-PowerGrotesk">
               Welcome to the&nbsp;
               <span className="bg-nexgen-gradient bg-clip-text mr-3">
                 exclusive
@@ -107,7 +106,7 @@ const Refer = ({ waitlistInfo }) => {
           {showShareLink ? (
             <ShareLink setShowShareLink={setShowShareLink} />
           ) : (
-            <div className="card gradient-box border-[1px] border-[#FFFFFF21] max-w-[340px] mt-6 sm:mt-2 rounded-[40px] p-4 text-center shadow-lg relative z-10 sm:mt-0">
+            <div className="card gradient-box border-[1px] border-[#FFFFFF21] max-w-[340px] mt-6 sm:mt-2 rounded-[40px] p-4 text-center shadow-lg relative z-10 ">
               <div className=" ">
                 <h1 className="text-[#FFF5D9] font-bold text-[30px]">
                   {waitlistInfo.waitlistNumber}
@@ -115,7 +114,7 @@ const Refer = ({ waitlistInfo }) => {
                 <p className="f-PowerGrotesk text-[12px] md:text-[14px] mt-2 leading-[1] text-[#FFF5D9]">
                   You are on the waitlist <br /> Get ahead of the crowd!
                 </p>
-                <p className="text-[#FFF5D947] max-w-[268px] sm:max-w-[] mx-auto mt-4  text-[10px] md:text-[12px] leading-[12px] md:leading-[16px]">
+                <p className="text-[#FFF5D947] max-w-[268px] mx-auto mt-4 text-[10px] md:text-[12px] leading-[12px] md:leading-[16px]">
                   We’ve added you to our waitlist. We will notify you once we
                   are ready to launch our beta version. In the meantime, you can
                   share it and get a chance to earn 500 for early access to the
@@ -125,7 +124,7 @@ const Refer = ({ waitlistInfo }) => {
               {/* Button 2 */}
               <button
                 type="submit"
-                className="f-PowerGrotesk  bg-[#131515] text-[10px] sm:text-[10px] gap-2 btn-color text-[#505050] leading-tight font-normal px-5 py-4 sm:px-6 sm:py-8 w-full h-[55px] mt-6 rounded-full flex items-center dark:bg-[#000000] justify-between"
+                className="f-PowerGrotesk bg-[#131515] text-[10px] sm:text-[10px] gap-2 btn-color text-[#505050] leading-tight font-normal px-5 py-4 sm:px-6 sm:py-8 w-full h-[55px] mt-6 rounded-full flex items-center dark:bg-[#000000] justify-between"
                 onClick={handlePaste}
               >
                 {waitlistInfo.referralLink}
@@ -148,7 +147,7 @@ const Refer = ({ waitlistInfo }) => {
           )}
           {/* Footer Secttion */}
           <div className="mt-4 flex flex-col items-center text-[#6A9298] space-y-4 max-w-[272px]">
-            <h1 className="f-PowerGrotesk text-[15.5px] xxl:text-[17.5px] leading-[14.54px] text-[#6A929857]">
+            <h1 className="f-PowerGrotesk text-[15.5px] sm:text-[17.5px] leading-[14.54px] text-[#6A929857]">
               Stay tuned
             </h1>
             <div>
@@ -209,7 +208,7 @@ const Refer = ({ waitlistInfo }) => {
                 </li>
               </ul>
             </div>
-            <p className="text-[12px] f-HelveticaNeueLight text-[#6A929854] leading-[17px] !mt-3 text-center">
+            <p className="text-[12px] f-HelveticaNeueLight text-[#6A929854] leading-[17px] mt-3 text-center">
               All Rights Reserved, Copyright 2024
               <br />
               Designed and developed by cooasis studio
