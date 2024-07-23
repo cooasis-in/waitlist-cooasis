@@ -26,7 +26,7 @@ exports.createUser = async (req, res) => {
 
         // Return waitlist number and referral link
         const waitlistNumber = await User.countDocuments();
-        const referralLink = `https://waitlist.coasis.app/refer?code=${referralCode}`;
+        const referralLink = `waitlist.coasis.app/refer?code=${referralCode}`;
 
         res.status(201).json({ message: 'User created successfully', user: newUser, waitlistNumber, referralLink });
     } catch (error) {

@@ -1,4 +1,5 @@
 import React from "react";
+import './pages.css'
 import {
   FacebookShareButton,
   WhatsappShareButton,
@@ -54,7 +55,7 @@ const ShareLinks = ({ setShowShareLink }) => {
           navigator.clipboard.writeText(shareUrl);
           alert("Link copied! Open Instagram and paste the link.");
         }}
-        className="f-PowerGrotesk flex items-center bg-[#131515] mb-2 text-[12px] md:text-[12px] xxl:text-[17.5px] btn-color text-[#E1FF26] leading-tight font-normal px-6 py-4 w-full h-[55px] rounded-full dark:bg-[#000000] justify-center"
+        className="f-PowerGrotesk flex items-center bg-[#131515] mb-2 text-[12px] md:text-[12px] xxl:text-[17.5px] btn-color text-[#E1FF26] leading-tight font-normal px-6 py-4 w-full h-[55px] rounded-full dark:bg-[#000000] justify-center custom-button"
       >
         <img src="images/instagram-2.svg" alt="" className="mr-[8px] max-w-[25px]  xxl:max-w-[100%]" />
         Share on Instagram
@@ -64,7 +65,7 @@ const ShareLinks = ({ setShowShareLink }) => {
       <FacebookShareButton url={shareUrl} quote={title} className="w-full mb-2">
         <button
           type="button"
-          className="f-PowerGrotesk bg-[#131515] text-[12px] md:text-[12px] xxl:text-[17.5px] btn-color text-[#E1FF26] leading-tight font-normal px-6 py-4 w-full h-[55px] rounded-full flex items-center dark:bg-[#000000] justify-center"
+          className="f-PowerGrotesk bg-[#131515] text-[12px] md:text-[12px] xxl:text-[17.5px] btn-color text-[#E1FF26] leading-tight font-normal px-6 py-4 w-full h-[55px] rounded-full flex items-center dark:bg-[#000000] justify-center custom-button"
         >
           <img src="images/face-book.svg" alt="" className="mr-[8px] max-w-[13px]  xxl:max-w-[100%]" />
           Share on Facebook
@@ -80,7 +81,7 @@ const ShareLinks = ({ setShowShareLink }) => {
       >
         <button
           type="button"
-          className="f-PowerGrotesk bg-[#131515] text-[12px] md:text-[12px] xxl:text-[17.5px] btn-color text-[#E1FF26] leading-tight font-normal px-6 py-4 w-full h-[55px] rounded-full flex items-center dark:bg-[#000000] justify-center"
+          className="f-PowerGrotesk bg-[#131515] text-[12px] md:text-[12px] xxl:text-[17.5px] btn-color text-[#E1FF26] leading-tight font-normal px-6 py-4 w-full h-[55px] rounded-full flex items-center dark:bg-[#000000] justify-center custom-button"
         >
           <img src="images/whats-app.svg" alt="" className="mr-[8px] max-w-[13px]  xxl:max-w-[100%]" />
           Share on Whatsapp
@@ -107,7 +108,7 @@ const ShareLinks = ({ setShowShareLink }) => {
       <TwitterShareButton url={shareUrl} title={title} className="w-full">
         <button
           type="button"
-          className="f-PowerGrotesk bg-[#131515] text-[12px] md:text-[12px] xxl:text-[17.5px] btn-color text-[#E1FF26] leading-tight font-normal py-2 px-6 sm:py-4 w-full h-[55px] rounded-full flex items-center dark:bg-[#000000] justify-center"
+          className="f-PowerGrotesk bg-[#131515] text-[12px] md:text-[12px] xxl:text-[17.5px] btn-color text-[#E1FF26] leading-tight font-normal py-2 px-6 sm:py-4 w-full h-[55px] rounded-full flex items-center dark:bg-[#000000] justify-center custom-button"
         >
           <img src="images/insta-gram.svg" alt="" className="mr-[8px] max-w-[13px]  xxl:max-w-[100%]" />
           Share on email

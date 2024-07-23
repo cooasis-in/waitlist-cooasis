@@ -8,6 +8,24 @@
   width: 100%;
 }
 
+/* styles.css */
+
+/* .custom-button {
+  transition: transform 300ms linear, background 300ms linear, color 300ms linear;
+} */
+
+.custom-button:hover {
+  background: linear-gradient(rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.05)),
+    radial-gradient(circle at 10% 10%, rgba(0, 100, 120, 0.4) 0%, transparent 70%),
+    radial-gradient(circle at 70% 70%, rgba(190, 190, 217, 0.15) 0%, transparent 70%),
+    radial-gradient(circle at center, rgba(0, 190, 135, 0.2) 0%, transparent 70%);
+  background-blend-mode: screen;
+  /* border-radius: 30px; */
+  color: #FFF5D9;
+  border: 1px solid;
+  transform: scale(1.05);
+}
+
 
 /* Media Query */
 @media (max-width: 640px) {

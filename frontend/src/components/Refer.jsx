@@ -111,7 +111,7 @@ const Refer = ({ waitlistInfo }) => {
            <div className="set-large-align">
              <div className="card gradient-box border-[1px] border-[#FFFFFF21] max-w-[340px] mt-6  rounded-[40px] p-4 text-center shadow-lg relative z-10 sm:mt-0">
               <div className=" ">
-                <h1 className="text-[#FFF5D9] font-bold text-[30px]">
+                <h1 className="text-[#FFF5D9] f-PowerGrotesk font-bold text-[35px]">
                   {/* {waitlistInfo.waitlistNumber} */}
                 </h1>
                 <p className="f-PowerGrotesk text-[12px] md:text-[14px] mt-2 leading-[1] text-[#FFF5D9]">
@@ -127,7 +127,7 @@ const Refer = ({ waitlistInfo }) => {
               {/* Button 2 */}
               <button
                 type="submit"
-                className="f-PowerGrotesk  bg-[#131515] text-[9px] sm:text-[10px] gap-2 btn-color text-[#505050] leading-tight font-normal px-5 py-4 sm:px-6 sm:py-8 w-full h-[55px] mt-6 rounded-full flex items-center dark:bg-[#000000] justify-between"
+                className="f-PowerGrotesk  bg-[#131515] text-[9px] sm:text-[10px] gap-2 btn-color text-[#505050] leading-tight font-normal px-5 py-4 sm:px-6 sm:py-8 w-full h-[55px] mt-6 rounded-full flex items-center dark:bg-[#000000] justify-between custom-button"
                 onClick={handlePaste}
               >
                 {/* {waitlistInfo.referralLink} */}
@@ -141,7 +141,7 @@ const Refer = ({ waitlistInfo }) => {
               {/* Refer Friend */}
               <button
                 type="submit"
-                className="f-PowerGrotesk text-[12px] sm:text-[17.5px] bg-[#131515] btn-color text-[#E1FF26] leading-tight font-normal px-5 py-4 sm:px-6 sm:py-8 w-full h-[55px] mt-2 rounded-full flex items-center dark:bg-[#000000] justify-center"
+                className="f-PowerGrotesk text-[12px] sm:text-[17.5px] bg-[#131515] btn-color text-[#E1FF26] leading-tight font-normal px-5 py-4 sm:px-6 sm:py-8 w-full h-[55px] mt-2 rounded-full flex items-center dark:bg-[#000000] justify-center custom-button"
                 onClick={handleShareClick}
               >
                 Refer a friend

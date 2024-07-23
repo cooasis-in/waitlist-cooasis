@@ -3,13 +3,23 @@ import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
+const imageData = [
+  { src: 'images/start.svg', alt: 'Start' },
+  { src: 'images/yourstory.svg', alt: 'Your Story' },
+  { src: 'images/aws.svg', alt: 'AWS' },
+  { src: 'images/launch.svg', alt: 'Launch' },
+  { src: 'images/google.svg', alt: 'Google' },
+];
+
 const ImageSlider = () => {
   const settings = {
-    dots: true,
+    dots: false,
     infinite: true,
     speed: 500,
     slidesToShow: 4,
     slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 2000,
     centerMode: true,
     variableWidth: true,
     responsive: [
@@ -19,7 +29,7 @@ const ImageSlider = () => {
           slidesToShow: 2,
           slidesToScroll: 1,
           infinite: true,
-          dots: true
+          dots: false
         }
       },
       {
@@ -41,23 +51,15 @@ const ImageSlider = () => {
   };
 
   return (
-      <Slider {...settings}>
-        <div>
-          <img src="images/start.svg" alt="" className="w-[75px]" />
+    <div className="w-full overflow-hidden">
+    <Slider {...settings} className="flex justify-center items-center">
+      {imageData.map((image, index) => (
+        <div key={index} className="w-1/5 flex justify-center items-center p-4">
+          <img src={image.src} alt={image.alt} className="max-w-[75px]" />
         </div>
-        <div>
-          <img src="images/yourstory.svg" alt="" className="w-[75px]" />
-        </div>
-        <div>
-          <img src="images/aws.svg" alt="" className="w-[75px]" />
-        </div>
-        <div>
-          <img src="images/launch.svg" alt="" className="w-[75px]" />
-        </div>
-        <div>
-          <img src="images/google.svg" alt="" className="w-[75px]" />
-        </div>
-      </Slider>
+      ))}
+    </Slider>
+    </div>
   );
 };
 
