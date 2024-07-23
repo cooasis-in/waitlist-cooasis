@@ -39,9 +39,8 @@ const Refer = ({ waitlistInfo }) => {
   };
 
   return (
-    <section className="bg-colorRefer !min-h-screen bg-color-res">
-      <div className="container mx-auto relative">
-        <div className="set-alignment h-20 flex justify-between items-center">
+    <>
+      <header className="set-alignment set-alignment-logo flex justify-between items-center">
           <div className="set-width">
             <img
               src="images/darkmode.svg"
@@ -64,7 +63,9 @@ const Refer = ({ waitlistInfo }) => {
               <span className="mb-[4px] sm:mb-[7px]">updates</span>
             </button>
           </div>
-        </div>
+        </header>
+        <section className="bg-colorRefer adjest !min-h-screen bg-color-res">
+      <div className="container mx-auto relative">
         {isBoxVisible && (
           <div className="absolute right-0">
             <div className="bg-[#0000006B] rounded-[20px] border-[0.5px] border-[#99999982] h-[400px] w-[267px] flex items-center justify-center">
@@ -81,7 +82,7 @@ const Refer = ({ waitlistInfo }) => {
         )}
         <div className="flex flex-col items-center relative overflow-hidden">
           <ConfettiBackground />
-          <div className="heading hidden sm:block">
+          <div className="heading hidden sm:block pt-[100px] larg-pb">
             <h1 className="text-[12px] text-center bg-waitlist-gradient bg-clip-text text-transparent f-PowerGrotesk">
               Welcome to the
             </h1>
@@ -107,10 +108,11 @@ const Refer = ({ waitlistInfo }) => {
           {showShareLink ? (
             <ShareLink setShowShareLink={setShowShareLink} />
           ) : (
-            <div className="card gradient-box border-[1px] border-[#FFFFFF21] max-w-[340px] mt-6  rounded-[40px] p-4 text-center shadow-lg relative z-10 sm:mt-0">
+           <div className="set-large-align">
+             <div className="card gradient-box border-[1px] border-[#FFFFFF21] max-w-[340px] mt-6  rounded-[40px] p-4 text-center shadow-lg relative z-10 sm:mt-0">
               <div className=" ">
                 <h1 className="text-[#FFF5D9] font-bold text-[30px]">
-                  {waitlistInfo.waitlistNumber}
+                  {/* {waitlistInfo.waitlistNumber} */}
                 </h1>
                 <p className="f-PowerGrotesk text-[12px] md:text-[14px] mt-2 leading-[1] text-[#FFF5D9]">
                   You are on the waitlist <br /> Get ahead of the crowd!
@@ -128,7 +130,7 @@ const Refer = ({ waitlistInfo }) => {
                 className="f-PowerGrotesk  bg-[#131515] text-[9px] sm:text-[10px] gap-2 btn-color text-[#505050] leading-tight font-normal px-5 py-4 sm:px-6 sm:py-8 w-full h-[55px] mt-6 rounded-full flex items-center dark:bg-[#000000] justify-between"
                 onClick={handlePaste}
               >
-                {waitlistInfo.referralLink}
+                {/* {waitlistInfo.referralLink} */}
                 <img
                   src="images/copy.svg"
                   alt="Email Icon"
@@ -145,6 +147,7 @@ const Refer = ({ waitlistInfo }) => {
                 Refer a friend
               </button>
             </div>
+           </div>
           )}
           {/* Footer Secttion */}
           <div className="mt-7 sm:mt-4 flex flex-col items-center text-[#6A9298] space-y-4 max-w-[272px]">
@@ -218,6 +221,8 @@ const Refer = ({ waitlistInfo }) => {
         </div>
       </div>
     </section>
+    </>
+    
   );
 };
 

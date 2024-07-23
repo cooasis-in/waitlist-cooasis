@@ -36,12 +36,15 @@
 
 /* Landing Page Icon Res */
 
-@media (max-width: 640px) {
- 
+@media (max-width: 768px) {
+
   .set-alignment {
-    margin-right: 1.2rem !important;
-    margin-left: 1.2rem !important;
+     padding: 20px !important;
   }
+
+}
+
+@media (max-width: 640px) {
 
   .bg-color {
     background-image:
@@ -256,4 +259,54 @@
 .card:hover:after {
   top: 65%;
   opacity: 1;
+}
+
+.adjest-res {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.adjest {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.set-alignment-logo {
+  position: absolute;
+  padding: 30px 50px;
+  width: 100%;
+}
+
+@media(min-width: 1450px) {
+
+  .larg-pb {
+    padding-bottom: 3rem;
+  }
+
+  .set-large-align {
+    padding-bottom: 3rem;
+  }
+
+  .adjest-res {
+    padding-top: 4rem;
+  }
+
+}
+
+@media(min-width: 1700px) {
+
+  .larg-pb {
+    padding-bottom: 6rem;
+  }
+
+  .set-large-align {
+    padding-bottom: 6rem;
+  }
+
+  .adjest-res {
+    padding-top: 4rem;
+  }
+
 }

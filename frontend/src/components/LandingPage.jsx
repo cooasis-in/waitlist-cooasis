@@ -59,9 +59,9 @@ const LandingPage = () => {
   }
 
   return (
-    <section className="bg-color !min-h-screen">
+    <section className="bg-color !min-h-screen adjest-res">
       <div className="container mx-auto">
-        <div className="set-alignment h-20 flex justify-between items-center">
+        <div className="set-alignment set-alignment-logo flex justify-between items-center">
           <div className="flex set-width">
             <img
               src="images/darkmode.svg"
@@ -74,7 +74,7 @@ const LandingPage = () => {
           <h1 className="text-[12px] leading-[12px] text-center bg-waitlist-gradient bg-clip-text text-transparent f-PowerGrotesk">
             Join waitlist for
           </h1>
-          <div className="relative text-center mt-4 sm:mt-0 mb-4">
+          <div className="larg-pb relative text-center mt-4 sm:mt-0 mb-4">
             <h2 className="text-[30px] sm:text-[70px] leading-[30px] sm:leading-[70px] xxl:text-7xl f-PowerGrotesk text-[#FCFCD8]">
               <span className="bg-nexgen-gradient bg-clip-text fade-in">
                 Nex-gen
@@ -110,7 +110,7 @@ const LandingPage = () => {
 
           {/* Form */}
           <form
-            className="flex flex-col items-center my-16 sm:my-0"
+            className="set-large-align flex flex-col items-center my-16 sm:my-0"
             onSubmit={handleSubmit}
           >
             <div className="relative">
@@ -134,7 +134,7 @@ const LandingPage = () => {
               Get Early Access
             </Button>
           </form>
-          <div className="mt-8 sm:mt-4">
+          <div className="mt-8 sm:mt-6">
             <div className="flex justify-center items-center ml-2">
               <img
                 src="/images/avtar-1.svg"
@@ -156,7 +156,10 @@ const LandingPage = () => {
               +200 people joined
             </span>
           </div>
-          <div className="relative">
+          <div>
+            <img src="images/moon.png" alt="" className="max-w-[900px] w-full m-auto mt-[-130px]" />
+          </div>
+          {/* <div className="relative">
             <div className="flex justify-center items-center mt-11">
               <img src="images/moon-1.svg" alt="" />
             </div>
@@ -164,10 +167,13 @@ const LandingPage = () => {
               <img
                 src="images/moon-2.svg"
                 alt=""
-                className="absolute top-[-35px]"
+                className="absolute top-[-18px] max-w-[60px]"
               />
             </div>
-          </div>
+            <div className="flex justify-center items-center">
+              <img src="images/globelight.png" alt="" className="absolute bottom-[10px]" />
+            </div>
+          </div> */}
           <div className="sm:mt-[-2rem] flex flex-col justify-center items-center space-x-4">
             <span className="f-PowerGrotesk text-[14.5px] xxl:text-[17.5px] leading-[14.54px] text-[#6A92985E] text-center mb-4">
               Backed by
