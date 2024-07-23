@@ -124,7 +124,7 @@ const LandingPage = () => {
               Get Early Access
             </Button>
           </form>
-          <div className="mt-7">
+          <div className="mt-4">
             <div className="flex justify-center items-center ml-2">
               <img
                 src="/images/avtar-1.svg"
