@@ -61,7 +61,7 @@ const LandingPage = () => {
   return (
     <section className="bg-color !min-h-screen">
       <div className="container mx-auto">
-        <div className="h-20 flex justify-between items-center">
+        <div className="set-alignment h-20 flex justify-between items-center">
           <div className="flex set-width">
             <img
               src="images/darkmode.svg"
@@ -70,7 +70,7 @@ const LandingPage = () => {
             />
           </div>
         </div>
-        <div>
+        <div className="mt-6 sm:mt-0">
           <h1 className="text-[12px] leading-[12px] text-center bg-waitlist-gradient bg-clip-text text-transparent f-PowerGrotesk">
             Join waitlist for
           </h1>
@@ -110,7 +110,7 @@ const LandingPage = () => {
 
           {/* Form */}
           <form
-            className="flex flex-col items-center mt-8 sm:mt-0"
+            className="flex flex-col items-center my-16 sm:my-0"
             onSubmit={handleSubmit}
           >
             <div className="relative">
@@ -134,7 +134,7 @@ const LandingPage = () => {
               Get Early Access
             </Button>
           </form>
-          <div className="mt-4">
+          <div className="mt-8 sm:mt-4">
             <div className="flex justify-center items-center ml-2">
               <img
                 src="/images/avtar-1.svg"
