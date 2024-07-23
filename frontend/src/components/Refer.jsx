@@ -108,7 +108,7 @@ const Refer = ({ waitlistInfo }) => {
           ) : (
             <div className="card gradient-box border-[1px] border-[#FFFFFF21] max-w-[340px] mt-2 rounded-[40px] p-4 text-center shadow-lg relative z-10 sm:mt-0">
               <div className=" ">
-                <h1 className="text-[#FCFCD8] font-bold text-[30px]">
+                <h1 className="text-[#FFF5D9] font-bold text-[30px]">
                   {waitlistInfo.waitlistNumber}
                 </h1>
                 <p className="f-PowerGrotesk text-[12px] md:text-[14px] leading-[1] text-[#FFF5D9]">

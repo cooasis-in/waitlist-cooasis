@@ -83,14 +83,14 @@ const LandingPage = () => {
               <span className="text-[#FCFCD8] typing-text" ref={typicalRef1}>
                 design ecosystem
               </span>
-              <div className="absolute bottom-10 left-[360px] fade-in">
+              <div className="absolute hidden lg:block bottom-16 left-[340px] fade-in">
                 <img src="images/star.svg" alt="" />
               </div>
               <img
                 src={cursorImage}
                 alt="Cursor"
                 ref={cursorRef}
-                className="absolute w-10 md:hidden sm:hidden lg:block"
+                className="absolute w-10 hidden lg:block "
                 style={{ pointerEvents: "none" }} // Ensure the image doesn't interfere with user interaction
               />
             </h2>
