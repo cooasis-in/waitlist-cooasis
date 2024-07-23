@@ -39,9 +39,9 @@ const Refer = ({ waitlistInfo }) => {
   };
 
   return (
-    <section className="bg-[#131515] bg-colorRefer bg-color-res">
+    <section className="bg-colorRefer !min-h-screen bg-color-res">
       <div className="container mx-auto relative">
-        <div className="h-20 flex justify-between items-center">
+        <div className="set-alignment h-20 flex justify-between items-center">
           <div className="set-width">
             <img
               src="images/darkmode.svg"
@@ -79,14 +79,14 @@ const Refer = ({ waitlistInfo }) => {
             </div>
           </div>
         )}
-        <div className="min-h-screen flex flex-col items-center relative overflow-hidden">
+        <div className="flex flex-col items-center relative overflow-hidden">
           <ConfettiBackground />
           <div className="heading hidden sm:block">
             <h1 className="text-[12px] text-center bg-waitlist-gradient bg-clip-text text-transparent f-PowerGrotesk">
               Welcome to the
             </h1>
             <div className="mb-0">
-              <h1 className="text-[#FFF5D9] f-PowerGrotesk text-[60px]">
+              <h1 className="text-[#FFF5D9] f-PowerGrotesk text-[60px] leading-[0px] mt-[27px] mb-[37px]">
                 <span className="bg-nexgen-gradient bg-clip-text mr-3">
                   exclusive
                 </span>
@@ -95,7 +95,7 @@ const Refer = ({ waitlistInfo }) => {
             </div>
           </div>
           <div className="heading-res block sm:hidden">
-            <h1 className="text-[40px] !text-white leading-[40px] text-center f-PowerGrotesk">
+            <h1 className="mt-5 text-[40px] !text-white leading-[40px] text-center f-PowerGrotesk">
               Welcome to the&nbsp;
               <span className="bg-nexgen-gradient bg-clip-text mr-3">
                 exclusive
@@ -125,14 +125,14 @@ const Refer = ({ waitlistInfo }) => {
               {/* Button 2 */}
               <button
                 type="submit"
-                className="f-PowerGrotesk  bg-[#131515] text-[10px] sm:text-[10px] gap-2 btn-color text-[#505050] leading-tight font-normal px-5 py-4 sm:px-6 sm:py-8 w-full h-[55px] mt-6 rounded-full flex items-center dark:bg-[#000000] justify-between"
+                className="f-PowerGrotesk  bg-[#131515] text-[9px] sm:text-[10px] gap-2 btn-color text-[#505050] leading-tight font-normal px-5 py-4 sm:px-6 sm:py-8 w-full h-[55px] mt-6 rounded-full flex items-center dark:bg-[#000000] justify-between"
                 onClick={handlePaste}
               >
                 {waitlistInfo.referralLink}
                 <img
                   src="images/copy.svg"
                   alt="Email Icon"
-                  className="f-PowerGrotesk h-7 ml-auto max-w-[12px] sm:max-w-[16px]"
+                  className="f-PowerGrotesk h-7 ml-[4px] sm:ml-auto max-w-[12px] sm:max-w-[16px]"
                 />
               </button>
 
@@ -147,7 +147,7 @@ const Refer = ({ waitlistInfo }) => {
             </div>
           )}
           {/* Footer Secttion */}
-          <div className="mt-4 flex flex-col items-center text-[#6A9298] space-y-4 max-w-[272px]">
+          <div className="mt-7 sm:mt-4 flex flex-col items-center text-[#6A9298] space-y-4 max-w-[272px]">
             <h1 className="f-PowerGrotesk text-[15.5px] xxl:text-[17.5px] leading-[14.54px] text-[#6A929857]">
               Stay tuned
             </h1>
@@ -156,9 +156,9 @@ const Refer = ({ waitlistInfo }) => {
                 <li className="bg-[#000000] h-10 w-10 rounded-full">
                   <a href="#" className="hover:text-white flex justify-center">
                     <img
-                      src="/images/logo-1.svg"
+                      src="/images/ins.svg"
                       alt="Instagram"
-                      className="w-[16px] mt-3"
+                      className="w-[32px] mt-1"
                     />
                   </a>
                 </li>
@@ -209,7 +209,7 @@ const Refer = ({ waitlistInfo }) => {
                 </li>
               </ul>
             </div>
-            <p className="text-[12px] f-HelveticaNeueLight text-[#6A929854] leading-[17px] !mt-3 text-center">
+            <p className="text-[12px] !mb-2 sm:!mb-3 f-HelveticaNeueLight text-[#6A929854] leading-[17px] !mt-3 text-center">
               All Rights Reserved, Copyright 2024
               <br />
               Designed and developed by cooasis studio

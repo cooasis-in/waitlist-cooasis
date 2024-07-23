@@ -61,7 +61,7 @@ const LandingPage = () => {
   return (
     <section className="bg-color !min-h-screen">
       <div className="container mx-auto">
-        <div className="h-20 flex justify-between items-center">
+        <div className="set-alignment h-20 flex justify-between items-center">
           <div className="flex set-width">
             <img
               src="images/darkmode.svg"
@@ -70,12 +70,12 @@ const LandingPage = () => {
             />
           </div>
         </div>
-        <div>
+        <div className="mt-6 sm:mt-0">
           <h1 className="text-[12px] leading-[12px] text-center bg-waitlist-gradient bg-clip-text text-transparent f-PowerGrotesk">
             Join waitlist for
           </h1>
-          <div className="relative">
-            <h2 className="text-[30px] sm:text-[70px] leading-[30px] sm:leading-[70px] xxl:text-7xl mt-4 sm:mt-0 f-PowerGrotesk text-[#FCFCD8] mb-4 text-center">
+          <div>
+            <h2 className="relative text-[40px] leading-[40px] sm:text-[70px] sm:leading-[70px] xxl:text-7xl mt-4 sm:mt-0 f-PowerGrotesk text-[#FCFCD8] mb-4 text-center">
               <span className="bg-nexgen-gradient bg-clip-text fade-in ">
                 Nex-gen
               </span>
@@ -94,13 +94,16 @@ const LandingPage = () => {
                 style={{ pointerEvents: "none" }} // Ensure the image doesn't interfere with user interaction
               />
             </h2>
+            {/* <div className="absolute top-[36px] left-[341px]">
+              <img src="images/nexgenbox.svg" alt="" className="max-w-[72%]" />
+            </div> */}
             {/* <div className="absolute top-0 left-[450px] fade-in">
           <img src="images/james.svg" alt="" />
         </div> */}
           </div>
           {/* Form */}
           <form
-            className="flex flex-col items-center mt-8 sm:mt-0"
+            className="flex flex-col items-center my-16 sm:my-0"
             onSubmit={handleSubmit}
           >
             <div className="relative">
@@ -124,7 +127,7 @@ const LandingPage = () => {
               Get Early Access
             </Button>
           </form>
-          <div className="mt-4">
+          <div className="mt-8 sm:mt-4">
             <div className="flex justify-center items-center ml-2">
               <img
                 src="/images/avtar-1.svg"
