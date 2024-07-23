@@ -279,6 +279,30 @@
   width: 100%;
 }
 
+@media (max-width: 640px) {
+
+  .adjest-res {
+    padding-top: 50px !important;
+  }
+
+}
+
+@media (max-width: 480px) {
+
+  .adjest-res {
+    padding-top: 30px !important;
+  }
+
+}
+
+@media (max-width: 420px) {
+
+  .adjest-res {
+    padding-top: 0px !important;
+  }
+
+}
+
 @media(min-width: 1450px) {
 
   .larg-pb {

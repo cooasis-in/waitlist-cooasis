@@ -59,9 +59,8 @@ const LandingPage = () => {
   }
 
   return (
-    <section className="bg-color !min-h-screen adjest-res">
-      <div className="container mx-auto">
-        <div className="set-alignment set-alignment-logo flex justify-between items-center">
+    <>
+     <div className="set-alignment set-alignment-logo flex justify-between items-center">
           <div className="flex set-width">
             <img
               src="images/darkmode.svg"
@@ -70,6 +69,8 @@ const LandingPage = () => {
             />
           </div>
         </div>
+        <section className="bg-color !min-h-screen adjest-res pt-[100px]">
+      <div className="container mx-auto">
         <div className="mt-6 sm:mt-0">
           <h1 className="text-[12px] leading-[12px] text-center bg-waitlist-gradient bg-clip-text text-transparent f-PowerGrotesk">
             Join waitlist for
@@ -179,7 +180,7 @@ const LandingPage = () => {
               Backed by
             </span>
 
-            <div className="res-align flex items-center justify-center space-x-4 sm:space-x-7 max-w-[642px] !ml-0">
+            <div className="res-align flex items-center justify-center space-x-4 sm:space-x-7 max-w-[642px] !ml-0 !pb-4">
               <img src="images/start.svg" alt="" className="max-w-[75px]" />
               <img src="images/yourstory.svg" alt="" className="max-w-[75px]" />
               <img src="images/aws.svg" alt="" className="max-w-[75px]" />
@@ -193,6 +194,8 @@ const LandingPage = () => {
         </div>
       </div>
     </section>
+    </>
+   
   );
 };
 
