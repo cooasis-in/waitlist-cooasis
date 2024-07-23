@@ -1,4 +1,3 @@
-
 const mongoose = require('mongoose');
 
 const userSchema = new mongoose.Schema({
@@ -6,6 +5,15 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true,
         unique: true
+    },
+    referralCode: {
+        type: String,
+        required: true,
+        unique: true
+    },
+    referrer: {
+        type: String,
+        default: null
     }
 });
 

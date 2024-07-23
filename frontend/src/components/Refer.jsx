@@ -2,8 +2,13 @@ import React, { useEffect } from "react";
 import confetti from "canvas-confetti";
 import "./pages.css";
 import { useState } from "react";
+import ShareLink from "../components/ShareLinks";
 
-const Refer = () => {
+const Refer = ({ waitlistInfo }) => {
+  const [showShareLink, setShowShareLink] = useState(false);
+  const [isBoxVisible, setIsBoxVisible] = useState(false);
+
+  // confetti
   useEffect(() => {
     confetti({
       particleCount: 100,
@@ -12,10 +17,14 @@ const Refer = () => {
     });
   }, []);
 
+  const handleShareClick = () => {
+    setShowShareLink(true);
+  };
+
+  // Refer Code Logic
   const handlePaste = () => {
-    const referralLink = "https://waitlist.coasis.app/refer?1eg%@v";
     navigator.clipboard
-      .writeText(referralLink)
+      .writeText(waitlistInfo.referralLink)
       .then(() => {
         alert("Referral link copied to clipboard!");
       })
@@ -23,8 +32,6 @@ const Refer = () => {
         console.error("Failed to copy text: ", err);
       });
   };
-
-  const [isBoxVisible, setIsBoxVisible] = useState(false);
 
   const toggleBoxVisibility = () => {
     setIsBoxVisible(!isBoxVisible);
@@ -47,7 +54,11 @@ const Refer = () => {
               onClick={toggleBoxVisibility}
             >
               <span className="mr-[7px]">
-                <img src="images/bellicon.svg" alt="" className="max-w-[8.91px] sm:max-w-[100%]" />
+                <img
+                  src="images/bellicon.svg"
+                  alt=""
+                  className="max-w-[8.91px] sm:max-w-[100%]"
+                />
               </span>
               <span className="mb-[4px] sm:mb-[7px]">updates</span>
             </button>
@@ -61,8 +72,7 @@ const Refer = () => {
                   <span className="flex justify-center mb-1">
                     <img src="images/bellicon.svg" alt="" />
                   </span>
-                  No updates yet
-                  Check back later!
+                  No updates yet Check back later!
                 </p>
               </div>
             </div>
@@ -92,44 +102,50 @@ const Refer = () => {
               waitlist
             </h1>
           </div>
-          <div className="card gradient-box border-[1px] border-[#FFFFFF21] max-w-[340px] mt-2 rounded-[40px] p-4 text-center shadow-lg relative z-10 transform transition-transform duration-300 hover:scale-105 hover:shadow-2xl mt-4 sm:mt-0">
-            <div className=" ">
-              <h1 className="f-PowerGrotesk text-[#FCFCD8] font-bold text-[30px]">1,150</h1>
-              <p className="f-PowerGrotesk text-[12px] leading-[1] text-[##FFF5D969]">
-                You are on the waitlist <br /> Get ahead of the crowd!
-                {/* <span className="bg-nexgen-gradient bg-clip-text nex-gen-text">
-              waitlist!
-            </span> */}
-              </p>
-              <p className="text-[#FFF5D947] mt-6 f-HelveticaNeueLight text-[12px] leading-[12px] text-center">
-                We’ve added you to our waitlist. We will notify you once we <br />{" "}
-                are ready to launch our beta version. In the meantime, <br /> you
-                can share it and get a br chance to earn 500 for early access to the
-                platform.
-              </p>
+          {/* Conditional Rendering for Card */}
+          {showShareLink ? (
+            <ShareLink setShowShareLink={setShowShareLink} />
+          ) : (
+            <div className="card gradient-box border-[1px] border-[#FFFFFF21] max-w-[340px] mt-2 rounded-[40px] p-4 text-center shadow-lg relative z-10 sm:mt-0">
+              <div className=" ">
+                <h1 className="text-[#FFF5D9] font-bold text-[30px]">
+                  {waitlistInfo.waitlistNumber}
+                </h1>
+                <p className="f-PowerGrotesk text-[12px] md:text-[14px] leading-[1] text-[#FFF5D9]">
+                  You are on the waitlist <br /> Get ahead of the crowd!
+                </p>
+                <p className="text-[#FFF5D947] mt-6  text-[10px] md:text-[12px] leading-[12px] md:leading-[16px]">
+                  We’ve added you to our waitlist. We will notify you once we
+                  are ready to launch our beta version. In the meantime, you can
+                  share it and get a chance to earn 500 for early access to the
+                  platform.
+                </p>
+              </div>
+              {/* Button 2 */}
+              <button
+                type="submit"
+                className="f-PowerGrotesk bg-[#131515] text-[10px] sm:text-[11px] gap-2 btn-color text-[#505050] leading-tight font-normal px-5 py-4 sm:px-6 sm:py-8 w-full h-[55px] mt-6 rounded-full flex items-center dark:bg-[#000000] justify-between"
+                onClick={handlePaste}
+              >
+                {waitlistInfo.referralLink}
+                <img
+                  src="images/paste.svg"
+                  alt="Email Icon"
+                  className="f-PowerGrotesk h-7 ml-auto max-w-[12px] sm:max-w-[100%]"
+                />
+              </button>
+
+              {/* Refer Friend */}
+              <button
+                type="submit"
+                className="f-PowerGrotesk text-[12px] sm:text-[17.5px] bg-[#131515] btn-color text-[#E1FF26] leading-tight font-normal px-5 py-4 sm:px-6 sm:py-8 w-full h-[55px] mt-2 rounded-full flex items-center dark:bg-[#000000] justify-center"
+                onClick={handleShareClick}
+              >
+                Refer a friend
+              </button>
             </div>
-            {/* Button 2 */}
-            <button
-              type="submit"
-              className="f-PowerGrotesk bg-[#131515] text-[10px] sm:text-[11px] gap-2 btn-color text-[#505050] leading-tight font-normal px-5 py-4 sm:px-6 sm:py-8 w-full h-[55px] mt-6 rounded-full flex items-center dark:bg-[#000000] justify-between"
-              onClick={handlePaste}
-            >
-              https://waitlist.coasis.app/refer?1eg%@v
-              <img
-                src="images/copy.svg"
-                alt="Email Icon"
-                className="f-PowerGrotesk h-7 ml-auto max-w-[12px] sm:max-w-[100%]"
-              />
-            </button>
-
-            <button
-              type="submit"
-              className="f-PowerGrotesk text-[12px] sm:text-[17.5px] bg-[#131515] btn-color text-[#E1FF26] leading-tight font-normal px-5 py-4 sm:px-6 sm:py-8 w-full h-[55px] mt-2 rounded-full flex items-center dark:bg-[#000000] justify-center"
-            >
-              Refer a friend
-            </button>
-          </div>
-
+          )}
+          {/* Footer Secttion */}
           <div className="mt-4 flex flex-col items-center text-[#6A9298] space-y-4 max-w-[272px]">
             <h1 className="f-PowerGrotesk text-[15.5px] xxl:text-[17.5px] leading-[14.54px] text-[#6A929857]">
               Stay tuned
@@ -156,12 +172,20 @@ const Refer = () => {
                 </li>
                 <li>
                   <a href="#" className="hover:text-white">
-                    <img src="/images/be.svg" alt="Behance" className="w-9 h-9" />
+                    <img
+                      src="/images/be.svg"
+                      alt="Behance"
+                      className="w-9 h-9"
+                    />
                   </a>
                 </li>
                 <li>
                   <a href="#" className="hover:text-white">
-                    <img src="/images/net.svg" alt="Dribbble" className="w-9 h-9" />
+                    <img
+                      src="/images/net.svg"
+                      alt="Dribbble"
+                      className="w-9 h-9"
+                    />
                   </a>
                 </li>
                 <li>
@@ -184,7 +208,7 @@ const Refer = () => {
                 </li>
               </ul>
             </div>
-            <p className="text-[14px] f-HelveticaNeueLight text-[#6A929854] leading-[21px] !mt-3 text-center">
+            <p className="text-[12px] f-HelveticaNeueLight text-[#6A929854] leading-[17px] !mt-3 text-center">
               All Rights Reserved, Copyright 2024
               <br />
               Designed and developed by cooasis studio

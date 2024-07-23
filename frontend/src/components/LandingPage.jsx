@@ -1,19 +1,43 @@
 import React, { useState, useEffect, useRef } from "react";
+import axios from "axios";
 import "./pages.css";
 import { Button } from "../ui/moving-border";
 import Refer from "./Refer";
 import cursorImage from "../../public/images/cursorImg.png";
-// import ImageSlider from "./ResSlider";
 
 const LandingPage = () => {
   const [showRefer, setShowRefer] = useState(false);
+  const [waitlistInfo, setWaitlistInfo] = useState(null);
+  const [errorMessage, setErrorMessage] = useState("");
   const cursorRef = useRef(null);
   const typicalRef1 = useRef(null);
-  const typicalRef2 = useRef(null);
+  const [referrer, setReferrer] = useState(null);
 
-  const handleSubmit = (e) => {
+  useEffect(() => {
+    const queryParams = new URLSearchParams(window.location.search);
+    setReferrer(queryParams.get("refer"));
+  }, []);
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setShowRefer(true);
+    const email = e.target.email.value;
+    try {
+      const response = await axios.post("http://localhost:3001/users", {
+        email,
+        referrer,
+      });
+      setWaitlistInfo(response.data);
+      console.log(response.data);
+      setShowRefer(true);
+      setErrorMessage("");
+    } catch (error) {
+      if (error.response && error.response.status === 400) {
+        setErrorMessage("This email is already on the waitlist.");
+      } else {
+        setErrorMessage("An error occurred. Please try again.");
+      }
+      console.error("Error creating user", error);
+    }
   };
 
   useEffect(() => {
@@ -31,7 +55,7 @@ const LandingPage = () => {
   }, []);
 
   if (showRefer) {
-    return <Refer />;
+    return <Refer waitlistInfo={waitlistInfo} />;
   }
 
   return (
@@ -59,23 +83,26 @@ const LandingPage = () => {
               <span className="text-[#FCFCD8] typing-text" ref={typicalRef1}>
                 design ecosystem
               </span>
-              <div className="absolute bottom-10 left-[360px] fade-in">
+              <div className="absolute hidden lg:block bottom-16 left-[340px] fade-in">
                 <img src="images/star.svg" alt="" />
               </div>
               <img
                 src={cursorImage}
                 alt="Cursor"
                 ref={cursorRef}
-                className="absolute w-10 md:hidden sm:hidden lg:block"
+                className="absolute w-10 hidden lg:block "
                 style={{ pointerEvents: "none" }} // Ensure the image doesn't interfere with user interaction
               />
             </h2>
             {/* <div className="absolute top-0 left-[450px] fade-in">
-            <img src="images/james.svg" alt="" />
-          </div> */}
+          <img src="images/james.svg" alt="" />
+        </div> */}
           </div>
           {/* Form */}
-          <form className="flex flex-col items-center mt-8 sm:mt-0" onSubmit={handleSubmit}>
+          <form
+            className="flex flex-col items-center mt-8 sm:mt-0"
+            onSubmit={handleSubmit}
+          >
             <div className="relative">
               <input
                 type="email"
@@ -87,6 +114,9 @@ const LandingPage = () => {
                 <img src="/images/maillandingpage.svg" alt="Email Icon" />
               </div>
             </div>
+            {errorMessage && (
+              <p className="text-red-500 text-[12px] mt-1">{errorMessage}</p>
+            )}
             <Button
               borderRadius="2rem"
               className="bg-[#131515] f-PowerGrotesk text-[#E1FF26] rounded-full hover:shadow-lg hover:bg-[#E1FF26] hover:text-black hover:font-bold transform transition-all duration-300 ease-in-out"
@@ -94,7 +124,7 @@ const LandingPage = () => {
               Get Early Access
             </Button>
           </form>
-          <div className="mt-7">
+          <div className="mt-4">
             <div className="flex justify-center items-center ml-2">
               <img
                 src="/images/avtar-1.svg"
@@ -141,8 +171,8 @@ const LandingPage = () => {
               <img src="images/google.svg" alt="" className="max-w-[75px]" />
             </div>
             {/*  <div className="block sm:hidden">
-           <ImageSlider /> 
-          </div>*/}
+         <ImageSlider /> 
+        </div>*/}
           </div>
         </div>
       </div>
