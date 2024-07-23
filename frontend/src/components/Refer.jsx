@@ -6,7 +6,6 @@ import ShareLink from "../components/ShareLinks";
 
 const Refer = ({ waitlistInfo }) => {
   const [showShareLink, setShowShareLink] = useState(false);
-  const [isBoxVisible, setIsBoxVisible] = useState(false);
 
   // confetti
   useEffect(() => {
@@ -33,12 +32,14 @@ const Refer = ({ waitlistInfo }) => {
       });
   };
 
+  const [isBoxVisible, setIsBoxVisible] = useState(false);
+
   const toggleBoxVisibility = () => {
     setIsBoxVisible(!isBoxVisible);
   };
 
   return (
-    <section className="bg-[#131515] bg-color-res">
+    <section className="bg-[#131515] bg-colorRefer bg-color-res">
       <div className="container mx-auto relative">
         <div className="h-20 flex justify-between items-center">
           <div className="set-width">
@@ -78,13 +79,13 @@ const Refer = ({ waitlistInfo }) => {
             </div>
           </div>
         )}
-        <div className="bg-colorRefer min-h-screen flex flex-col items-center relative overflow-hidden">
+        <div className="min-h-screen flex flex-col items-center relative overflow-hidden">
           <ConfettiBackground />
           <div className="heading hidden sm:block">
             <h1 className="text-[12px] text-center bg-waitlist-gradient bg-clip-text text-transparent f-PowerGrotesk">
               Welcome to the
             </h1>
-            <div className="mb-6">
+            <div className="mb-0">
               <h1 className="text-[#FFF5D9] f-PowerGrotesk text-[60px]">
                 <span className="bg-nexgen-gradient bg-clip-text mr-3">
                   exclusive
@@ -106,15 +107,15 @@ const Refer = ({ waitlistInfo }) => {
           {showShareLink ? (
             <ShareLink setShowShareLink={setShowShareLink} />
           ) : (
-            <div className="card gradient-box border-[1px] border-[#FFFFFF21] max-w-[340px] mt-2 rounded-[40px] p-4 text-center shadow-lg relative z-10 sm:mt-0">
+            <div className="card gradient-box border-[1px] border-[#FFFFFF21] max-w-[340px] mt-6 sm:mt-2 rounded-[40px] p-4 text-center shadow-lg relative z-10 sm:mt-0">
               <div className=" ">
                 <h1 className="text-[#FFF5D9] font-bold text-[30px]">
                   {waitlistInfo.waitlistNumber}
                 </h1>
-                <p className="f-PowerGrotesk text-[12px] md:text-[14px] leading-[1] text-[#FFF5D9]">
+                <p className="f-PowerGrotesk text-[12px] md:text-[14px] mt-2 leading-[1] text-[#FFF5D9]">
                   You are on the waitlist <br /> Get ahead of the crowd!
                 </p>
-                <p className="text-[#FFF5D947] mt-6  text-[10px] md:text-[12px] leading-[12px] md:leading-[16px]">
+                <p className="text-[#FFF5D947] max-w-[268px] sm:max-w-[] mx-auto mt-4  text-[10px] md:text-[12px] leading-[12px] md:leading-[16px]">
                   We’ve added you to our waitlist. We will notify you once we
                   are ready to launch our beta version. In the meantime, you can
                   share it and get a chance to earn 500 for early access to the
@@ -124,14 +125,14 @@ const Refer = ({ waitlistInfo }) => {
               {/* Button 2 */}
               <button
                 type="submit"
-                className="f-PowerGrotesk bg-[#131515] text-[10px] sm:text-[11px] gap-2 btn-color text-[#505050] leading-tight font-normal px-5 py-4 sm:px-6 sm:py-8 w-full h-[55px] mt-6 rounded-full flex items-center dark:bg-[#000000] justify-between"
+                className="f-PowerGrotesk  bg-[#131515] text-[10px] sm:text-[10px] gap-2 btn-color text-[#505050] leading-tight font-normal px-5 py-4 sm:px-6 sm:py-8 w-full h-[55px] mt-6 rounded-full flex items-center dark:bg-[#000000] justify-between"
                 onClick={handlePaste}
               >
                 {waitlistInfo.referralLink}
                 <img
-                  src="images/paste.svg"
+                  src="images/copy.svg"
                   alt="Email Icon"
-                  className="f-PowerGrotesk h-7 ml-auto max-w-[12px] sm:max-w-[100%]"
+                  className="f-PowerGrotesk h-7 ml-auto max-w-[12px] sm:max-w-[16px]"
                 />
               </button>
 
@@ -152,57 +153,57 @@ const Refer = ({ waitlistInfo }) => {
             </h1>
             <div>
               <ul className="flex space-x-3 justify-start items-center">
-                <li>
-                  <a href="#" className="hover:text-white">
+                <li className="bg-[#000000] h-10 w-10 rounded-full">
+                  <a href="#" className="hover:text-white flex justify-center">
                     <img
-                      src="/images/instagram.svg"
+                      src="/images/logo-1.svg"
                       alt="Instagram"
-                      className="w-9 h-9"
+                      className="w-[16px] mt-3"
                     />
                   </a>
                 </li>
-                <li>
-                  <a href="#" className="hover:text-white">
+                <li className="bg-[#000000] h-10 w-10 rounded-full">
+                  <a href="#" className="hover:text-white flex justify-center">
                     <img
-                      src="/images/linked.svg"
+                      src="/images/logo-1.svg"
                       alt="LinkedIn"
-                      className="w-9 h-9"
+                      className="w-[16px] mt-3 "
                     />
                   </a>
                 </li>
-                <li>
-                  <a href="#" className="hover:text-white">
+                <li className="bg-[#000000] h-10 w-10 rounded-full">
+                  <a href="#" className="hover:text-white flex justify-center">
                     <img
-                      src="/images/be.svg"
+                      src="/images/logo-2.svg"
                       alt="Behance"
-                      className="w-9 h-9"
+                      className="w-[16px] mt-3"
                     />
                   </a>
                 </li>
-                <li>
-                  <a href="#" className="hover:text-white">
+                <li className="bg-[#000000] h-10 w-10 rounded-full">
+                  <a href="#" className="hover:text-white flex justify-center">
                     <img
-                      src="/images/net.svg"
+                      src="/images/logo-3.svg"
                       alt="Dribbble"
-                      className="w-9 h-9"
+                      className="w-[16px] mt-3"
                     />
                   </a>
                 </li>
-                <li>
-                  <a href="#" className="hover:text-white">
+                <li className="bg-[#000000] h-10 w-10 rounded-full">
+                  <a href="#" className="hover:text-white flex justify-center">
                     <img
-                      src="/images/facebook.svg"
+                      src="/images/logo-4.svg"
                       alt="Facebook"
-                      className="w-9 h-9"
+                      className="w-[16px] mt-3"
                     />
                   </a>
                 </li>
-                <li>
-                  <a href="#" className="hover:text-white">
+                <li className="bg-[#000000] h-10 w-10 rounded-full">
+                  <a href="#" className="hover:text-white flex justify-center">
                     <img
-                      src="/images/hut.svg"
+                      src="/images/logo-5.svg"
                       alt="Your Icon"
-                      className="w-9 h-9"
+                      className="w-[16px] mt-3"
                     />
                   </a>
                 </li>

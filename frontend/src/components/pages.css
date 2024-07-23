@@ -7,6 +7,7 @@
   min-height: calc(100vh - 80px) !important;
   width: 100%;
 }
+
 /* Media Query */
 @media (max-width: 640px) {
   .bg-color-res {
@@ -14,8 +15,15 @@
       farthest-side at 5% 42%,
       #7d22ff -200%,
       #131515 70%
-    );
-    width: 100%;
+    ) !important;
+    min-height: calc(100vh - 80px) !important;
+    width: 100% !important;
+  }
+}
+
+@media (max-width: 400px) {
+  .card {
+    max-width: 270px !important;
   }
 }
 
