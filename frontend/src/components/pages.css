@@ -8,6 +8,86 @@
   width: 100%;
 }
 
+
+/* Media Query */
+@media (max-width: 640px) {
+  .bg-color-res {
+    background-image: radial-gradient(
+      farthest-side at 5% 42%,
+      #7d22ff -200%,
+      #131515 70%
+    ) !important;
+    width: 100% !important;
+  }
+}
+
+@media (max-width: 400px) {
+  .card {
+    max-width: 270px !important;
+  }
+}
+
+/* Cooasis Logo Set Width */
+@media (max-width: 640px) {
+  .set-width img {
+    max-width: 70px;
+  }
+}
+
+/* Landing Page Icon Res */
+
+@media (max-width: 640px) {
+ 
+  .set-alignment {
+    margin-right: 1.2rem !important;
+    margin-left: 1.2rem !important;
+  }
+
+  .bg-color {
+    background-image:
+      radial-gradient(
+      farthest-side at 47% 31%,
+      #7d22ff -100%,
+      #131515 60%
+    );
+    min-height: 100vh;
+    width: 100%;
+  }
+}
+
+@media screen and (min-device-width: 487px) and (max-device-width: 600px) {
+  .res-align img {
+    margin-right: 10px;
+    margin-left: 10px;
+    max-width: 70px;
+  }
+}
+
+@media screen and (min-device-width: 400px) and (max-device-width: 486px) {
+  .res-align img {
+    margin-right: 7px;
+    margin-left: 7px;
+    max-width: 60px;
+    margin-top: 10px;
+  }
+}
+
+@media screen and (min-device-width: 335px) and (max-device-width: 400px) {
+  .res-align img {
+    margin-right: 5px;
+    margin-left: 5px;
+    max-width: 50px;
+  }
+}
+
+@media (max-device-width: 335px) {
+  .res-align img {
+    margin-right: 3px;
+    margin-left: 3px;
+    max-width: 40px;
+  }
+}
+
 .reletive {
   position: relative !important;
 }
@@ -15,6 +95,13 @@
 /* Card Background Color */
 
 .bg-colorRefer {
+  /* min-height: calc(100vh - 80px) !important;
+  width: 100%; */
+  background-image: radial-gradient(
+    farthest-side at 47% 28%,
+    #7d22ff -100%,
+    #131515 36%
+  );
   min-height: calc(100vh - 80px) !important;
   width: 100%;
 }
@@ -22,22 +109,22 @@
 .gradient-box {
   background: linear-gradient(rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.05)),
     radial-gradient(
-      circle at 20% 20%,
+      circle at 10% 10%,
       rgba(0, 100, 120, 0.4) 0%,
       transparent 70%
     ),
     radial-gradient(
-      circle at 80% 80%,
-      rgba(217, 217, 217, 0.15) 0%,
+      circle at 70% 70%,
+      rgba(190, 190, 217, 0.15) 0%,
       transparent 70%
     ),
     radial-gradient(
       circle at center,
-      rgba(0, 200, 135, 0.28) 0%,
+      rgba(0, 190, 135, 0.2) 0%,
       transparent 70%
     );
   background-blend-mode: screen;
-  border-radius: 30px; /* Matches the border-radius of your card */
+  border-radius: 30px;
 }
 
 /*  */
@@ -55,4 +142,118 @@
   animation: fadeIn 1.5s ease-in-out;
 }
 
-/* Card  css refer */
+/* 200 Peple Joined */
+
+.image-hover-effect {
+  transition: transform 0.3s ease-in-out;
+}
+
+.image-hover-effect:hover {
+  transform: scale(1.1);
+}
+
+/* typing text */
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 44%;
+  }
+}
+
+@keyframes blink {
+  0%,
+  100% {
+    border-color: transparent;
+  }
+  50% {
+    border-color: #fcfcd8;
+  }
+}
+
+/* Typing Animatoion */
+
+@media screen and (min-width: 1024px) {
+  .typing-text {
+    display: inline-block;
+    overflow: hidden   ;
+    border-right: 5px solid #fcfcd8; /* Same as text color */
+    white-space: nowrap;
+    animation: typing 2s steps(30, end) 1s 1 normal both,
+      blink 0.75s step-end infinite;
+    line-height: 1.2; /* Adjust if necessary */
+  }
+
+  .typing-text.design {
+    animation: typing 5s steps(30, end) 1s 1 normal both,
+      blink 0.75s step-end infinite;
+  }
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 46%;
+  } /* Increased width to accommodate descender */
+}
+
+@keyframes blink {
+  from,
+  to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: #fcfcd8;
+  }
+}
+
+/* Card Border */
+:root {
+  --primary-color: #e1ff26;
+}
+
+.card {
+  width: 640px;
+  position: relative;
+  background-color: rgb(16 16 16);
+  border: 1px solid rgb(255 255 255 / 5%);
+  border-radius: 1.5rem;
+  padding: 1rem;
+}
+
+.card:before,
+.card:after {
+  content: "";
+  height: 70px;
+  width: 1px;
+  position: absolute;
+  transition: top, opacity;
+  transition-duration: 600ms;
+  transition-timing-function: ease;
+  background: linear-gradient(transparent, var(--primary-color), transparent);
+  opacity: 0;
+}
+
+.card:before {
+  left: -1px;
+  top: 65%;
+}
+
+.card:after {
+  right: -1px;
+  top: 25%;
+}
+
+.card:hover:before {
+  top: 25%;
+  opacity: 1;
+}
+
+.card:hover:after {
+  top: 65%;
+  opacity: 1;
+}
