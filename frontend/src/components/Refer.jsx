@@ -64,8 +64,8 @@ const Refer = ({ waitlistInfo }) => {
             </button>
           </div>
           {isBoxVisible && (
-          <div className="absolute right-0">
-            <div className="bg-[#0000006B] rounded-[20px] border-[0.5px] border-[#99999982] h-[400px] w-[267px] flex items-center justify-center">
+          <div className="absolute top-[70px] sm:top-[100px] right-[20px] sm:right-[50px]">
+            <div className="bg-[#0000006B] rounded-[20px] border-[0.5px] border-[#99999982] h-[300px] w-[267px] flex items-center justify-center">
               <div className="flex items-center justify-center h-full w-full">
                 <p className="mx-auto max-w-[146px] f-PowerGrotesk text-[12px] text-[#6A929857] leading-[12px] text-center">
                   <span className="flex justify-center mb-1">
@@ -96,7 +96,7 @@ const Refer = ({ waitlistInfo }) => {
             </div>
           </div>
           <div className="heading-res block sm:hidden">
-            <h1 className="mt-5 text-[40px] !text-white leading-[40px] text-center f-PowerGrotesk">
+            <h1 className="pt-[70px] text-[40px] !text-white leading-[40px] text-center f-PowerGrotesk">
               Welcome to the&nbsp;
               <span className="bg-nexgen-gradient bg-clip-text mr-3">
                 exclusive
@@ -111,8 +111,8 @@ const Refer = ({ waitlistInfo }) => {
            <div className="set-large-align">
              <div className="card gradient-box border-[1px] border-[#FFFFFF21] max-w-[340px] mt-6  rounded-[40px] p-4 text-center shadow-lg relative z-10 sm:mt-0">
               <div className=" ">
-                <h1 className="text-[#FFF5D9] f-PowerGrotesk font-bold text-[35px]">
-                  {/* {waitlistInfo.waitlistNumber} */}
+                <h1 className="text-[#FFF5D9] f-PowerGrotesk text-[50px]">
+                  {waitlistInfo.waitlistNumber}
                 </h1>
                 <p className="f-PowerGrotesk text-[12px] md:text-[14px] mt-2 leading-[1] text-[#FFF5D9]">
                   You are on the waitlist <br /> Get ahead of the crowd!
@@ -130,7 +130,7 @@ const Refer = ({ waitlistInfo }) => {
                 className="f-PowerGrotesk  bg-[#131515] opacity-[75%] text-[9px] sm:text-[10px] gap-2 btn-color text-[#505050] leading-tight font-normal px-5 py-4 sm:px-6 sm:py-8 w-full h-[55px] mt-6 rounded-full flex items-center dark:bg-[#000000] justify-between hover:opacity-[100%] duration-300 !hover:border-[solid] !hover:border-[#FFF5D9]"
                 onClick={handlePaste}
               >
-                {/* {waitlistInfo.referralLink} */}
+                {waitlistInfo.referralLink}
                 <img
                   src="images/copy.svg"
                   alt="Email Icon"
