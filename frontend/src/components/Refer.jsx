@@ -22,14 +22,18 @@ const Refer = ({ waitlistInfo }) => {
 
   // Refer Code Logic
   const handlePaste = () => {
-    navigator.clipboard
-      .writeText(waitlistInfo.referralLink)
-      .then(() => {
-        alert("Referral link copied to clipboard!");
-      })
-      .catch((err) => {
-        console.error("Failed to copy text: ", err);
-      });
+    if (waitlistInfo?.referralLink) {
+      navigator.clipboard
+        .writeText(waitlistInfo.referralLink)
+        .then(() => {
+         console.log("Referral link copied to clipboard!");
+        })
+        .catch((err) => {
+          console.error("Failed to copy text: ", err);
+        });
+    } else {
+      alert("Referral link is not available.");
+    }
   };
 
   const [isBoxVisible, setIsBoxVisible] = useState(false);
