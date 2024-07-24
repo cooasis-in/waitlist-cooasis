@@ -21,15 +21,36 @@ const Refer = ({ waitlistInfo }) => {
   };
 
   // Refer Code Logic
-  const handlePaste = () => {
-    navigator.clipboard
-      .writeText(waitlistInfo.referralLink)
-      .then(() => {
-        alert("Referral link copied to clipboard!");
-      })
-      .catch((err) => {
-        console.error("Failed to copy text: ", err);
-      });
+const handlePaste = () => {
+    if (waitlistInfo?.referralLink) {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard
+          .writeText(waitlistInfo.referralLink)
+          .then(() => {
+            console.log("Referral link copied to clipboard!");
+          })
+          .catch((err) => {
+            console.error("Failed to copy text: ", err);
+          });
+      } else {
+        // Fallback method for older browsers
+        const textArea = document.createElement("textarea");
+        textArea.value = waitlistInfo.referralLink;
+        textArea.style.position = "fixed";  // Avoid scrolling to bottom
+        document.body.appendChild(textArea);
+        textArea.focus();
+        textArea.select();
+        try {
+          document.execCommand("copy");
+          console.log("Referral link copied to clipboard!");
+        } catch (err) {
+          console.error("Fallback: Oops, unable to copy", err);
+        }
+        document.body.removeChild(textArea);
+      }
+    } else {
+      alert("Referral link is not available.");
+    }
   };
 
   const [isBoxVisible, setIsBoxVisible] = useState(false);
@@ -106,7 +127,7 @@ const Refer = ({ waitlistInfo }) => {
           </div>
           {/* Conditional Rendering for Card */}
           {showShareLink ? (
-            <ShareLink setShowShareLink={setShowShareLink} />
+            <ShareLink setShowShareLink={setShowShareLink}  sharelink={waitlistInfo.referralLink} />
           ) : (
            <div className="set-large-align">
              <div className="card gradient-box border-[1px] border-[#FFFFFF21] max-w-[340px] mt-6  rounded-[40px] p-4 text-center shadow-lg relative z-10 sm:mt-0">

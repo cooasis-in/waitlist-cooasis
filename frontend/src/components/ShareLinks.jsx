@@ -7,8 +7,8 @@ import {
   TwitterShareButton,
 } from "react-share";
 
-const ShareLinks = ({ setShowShareLink }) => {
-  const shareUrl = "https://yourwebsite.com"; // Replace with your actual URL
+const ShareLinks = ({ setShowShareLink,sharelink }) => {
+  const shareUrl = sharelink; // Replace with your actual URL
   const title = "Check this out!"; // Customize your message
 
   return (
