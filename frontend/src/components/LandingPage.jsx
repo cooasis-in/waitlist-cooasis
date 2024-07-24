@@ -22,7 +22,7 @@ const LandingPage = () => {
     e.preventDefault();
     const email = e.target.email.value;
     try {
-      const response = await axios.post("http://localhost:3001/users", {
+      const response = await axios.post("http://3.25.112.171:3001/users", {
         email,
         referrer,
       });
@@ -43,7 +43,7 @@ const LandingPage = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowImage(true);
-    }, 3000);
+    }, 1000);
     return () => clearTimeout(timer);
   }, []);
 
@@ -74,7 +74,7 @@ const LandingPage = () => {
                   Nex-gen
                 </span>
               </h2>
-              <h2 className="text-[40px] sm:text-[70px] leading-[40px] sm:leading-[70px] xxl:text-7xl f-PowerGrotesk text-[#FCFCD8] typing-text">
+              <h2 className="text-[40px] sm:text-[70px] leading-[40px] sm:leading-[70px] xxl:text-7xl f-PowerGrotesk text-[#FCFCD8] fade-in">
                 design ecosystem
               </h2>
 
@@ -86,11 +86,11 @@ const LandingPage = () => {
                 <img
                   src={cursorImage}
                   alt="Cursor"
-                  className="absolute w-10 ml-[870px] mt-6 hidden lg:block fade-in"
+                  className="absolute w-14 ml-[890px] mt-4 hidden lg:block fade-in"
                 />
               )}
 
-              <div className="absolute bottom-[40px] left-20 md:left-[200px] lg:bottom-[120px] lg:left-[400px] fade-in">
+              <div className="absolute hidden lg:block bottom-[40px] left-20 md:left-[200px] lg:bottom-[120px] lg:left-[400px] fade-in">
                 <img
                   src="images/james.svg"
                   alt="James"
@@ -103,6 +103,7 @@ const LandingPage = () => {
             <form
               className="set-large-align flex flex-col items-center my-16 sm:my-0"
               onSubmit={handleSubmit}
+              x
             >
               <div className="relative">
                 <input
@@ -148,7 +149,11 @@ const LandingPage = () => {
               </span>
             </div>
             <div className="set-image">
-              <img src="images/moon-1.png" alt="" className="max-w-[800px] w-full m-auto mt-[-190px] hidden sm:block" />
+              <img
+                src="images/moon-1.png"
+                alt=""
+                className="max-w-[800px] w-full m-auto mt-[-190px] hidden sm:block"
+              />
               <img
                 src="images/moon.png"
                 alt=""
@@ -169,8 +174,16 @@ const LandingPage = () => {
                     className="max-w-[75px]"
                   />
                   <img src="images/aws.svg" alt="" className="max-w-[75px]" />
-                  <img src="images/launch.svg" alt="" className="max-w-[75px]" />
-                  <img src="images/google.svg" alt="" className="max-w-[75px]" />
+                  <img
+                    src="images/launch.svg"
+                    alt=""
+                    className="max-w-[75px]"
+                  />
+                  <img
+                    src="images/google.svg"
+                    alt=""
+                    className="max-w-[75px]"
+                  />
                 </div>
               </div>
             </div>

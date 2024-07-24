@@ -10,7 +10,7 @@ const PORT = 3001;
 
 app.use(bodyParser.json());
 const corsOptions = {
-    origin: 'http://localhost',
+    origin: 'http://localhost:5173',
     methods: ['GET', 'POST'],
     allowedHeaders: ['Content-Type'],
     credentials: true

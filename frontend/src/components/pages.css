@@ -13,6 +13,22 @@
 /* .custom-button {
   transition: transform 300ms linear, background 300ms linear, color 300ms linear;
 } */
+/* Animation to design ecosystem */
+
+/* @keyframes flyIn {
+  0% {
+    transform: translateY(-100px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+.animate-fly {
+  animation: flyIn 2s ease-in-out;
+} */
+
 
 .custom-button {
   border: 1px solid transparent;
