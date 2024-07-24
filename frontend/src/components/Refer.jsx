@@ -21,16 +21,33 @@ const Refer = ({ waitlistInfo }) => {
   };
 
   // Refer Code Logic
-  const handlePaste = () => {
+const handlePaste = () => {
     if (waitlistInfo?.referralLink) {
-      navigator.clipboard
-        .writeText(waitlistInfo.referralLink)
-        .then(() => {
-         console.log("Referral link copied to clipboard!");
-        })
-        .catch((err) => {
-          console.error("Failed to copy text: ", err);
-        });
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard
+          .writeText(waitlistInfo.referralLink)
+          .then(() => {
+            console.log("Referral link copied to clipboard!");
+          })
+          .catch((err) => {
+            console.error("Failed to copy text: ", err);
+          });
+      } else {
+        // Fallback method for older browsers
+        const textArea = document.createElement("textarea");
+        textArea.value = waitlistInfo.referralLink;
+        textArea.style.position = "fixed";  // Avoid scrolling to bottom
+        document.body.appendChild(textArea);
+        textArea.focus();
+        textArea.select();
+        try {
+          document.execCommand("copy");
+          console.log("Referral link copied to clipboard!");
+        } catch (err) {
+          console.error("Fallback: Oops, unable to copy", err);
+        }
+        document.body.removeChild(textArea);
+      }
     } else {
       alert("Referral link is not available.");
     }
