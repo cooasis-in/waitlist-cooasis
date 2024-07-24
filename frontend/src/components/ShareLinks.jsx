@@ -7,9 +7,11 @@ import {
   TwitterShareButton,
 } from "react-share";
 
-const ShareLinks = ({ setShowShareLink }) => {
-  const shareUrl = "https://yourwebsite.com"; // Replace with your actual URL
-  const title = "Check this out!"; // Customize your message
+const ShareLinks = ({ setShowShareLink, sharelink }) => {
+  const shareUrl = sharelink; 
+  const title = "Check this out!";
+
+  console.log("shalink", shareUrl)
 
   return (
     <div className="set-large-align">

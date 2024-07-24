@@ -22,7 +22,7 @@ const LandingPage = () => {
     e.preventDefault();
     const email = e.target.email.value;
     try {
-      const response = await axios.post("http://3.25.112.171:3001/users", {
+      const response = await axios.post("http://localhost:3001/users", {
         email,
         referrer,
       });
@@ -40,17 +40,16 @@ const LandingPage = () => {
     }
   };
 
-  if (showRefer) {
-    return <Refer waitlistInfo={waitlistInfo} />;
-  }
-
-  // show arrowicon
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowImage(true);
     }, 3000);
     return () => clearTimeout(timer);
   }, []);
+
+  if (showRefer) {
+    return <Refer waitlistInfo={waitlistInfo} />;
+  }
 
   return (
     <>
@@ -156,42 +155,27 @@ const LandingPage = () => {
                 className="max-w-[700px] w-full m-auto mt-[-130px] block sm:hidden"
               />
             </div>
-            {/* <div className="relative">
-            <div className="flex justify-center items-center mt-11">
-              <img src="images/moon-1.svg" alt="" />
-            </div>
-            <div className="flex justify-center items-center">
-              <img
-                src="images/moon-2.svg"
-                alt=""
-                className="absolute top-[-18px] max-w-[60px]"
-              />
-            </div>
-            <div className="flex justify-center items-center">
-              <img src="images/globelight.png" alt="" className="absolute bottom-[10px]" />
-            </div>
-          </div> */}
-           <div className="hidden sm:block mt-[-70px]">
-           <div className="sm:mt-[-2rem] flex flex-col justify-center items-center space-x-4">
-              <span className="f-PowerGrotesk text-[14.5px] xxl:text-[17.5px] leading-[14.54px] text-[#6A92985E] text-center mb-2">
-                Backed by
-              </span>
+            <div className="hidden sm:block mt-[-70px]">
+              <div className="sm:mt-[-2rem] flex flex-col justify-center items-center space-x-4">
+                <span className="f-PowerGrotesk text-[14.5px] xxl:text-[17.5px] leading-[14.54px] text-[#6A92985E] text-center mb-2">
+                  Backed by
+                </span>
 
-              <div className="res-align flex  items-center justify-center space-x-4 sm:space-x-7 max-w-[642px] !ml-0 !pb-4 sm:pt-3">
-                <img src="images/start.svg" alt="" className="max-w-[75px]" />
-                <img
-                  src="images/yourstory.svg"
-                  alt=""
-                  className="max-w-[75px]"
-                />
-                <img src="images/aws.svg" alt="" className="max-w-[75px]" />
-                <img src="images/launch.svg" alt="" className="max-w-[75px]" />
-                <img src="images/google.svg" alt="" className="max-w-[75px]" />
+                <div className="res-align flex  items-center justify-center space-x-4 sm:space-x-7 max-w-[642px] !ml-0 !pb-4 sm:pt-3">
+                  <img src="images/start.svg" alt="" className="max-w-[75px]" />
+                  <img
+                    src="images/yourstory.svg"
+                    alt=""
+                    className="max-w-[75px]"
+                  />
+                  <img src="images/aws.svg" alt="" className="max-w-[75px]" />
+                  <img src="images/launch.svg" alt="" className="max-w-[75px]" />
+                  <img src="images/google.svg" alt="" className="max-w-[75px]" />
+                </div>
               </div>
             </div>
-           </div>
           </div>
-          <div className="block text-center  sm:hidden py-4 w-full res-margin-fix">
+          <div className="block text-center sm:hidden py-4 w-full res-margin-fix">
             <span className="f-PowerGrotesk text-[14.5px] xxl:text-[17.5px] leading-[14.54px] text-[#6A92985E] text-center">
               Backed by
             </span>
