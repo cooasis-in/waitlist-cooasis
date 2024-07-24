@@ -110,7 +110,7 @@ const Refer = ({ waitlistInfo }) => {
           </div>
           {/* Conditional Rendering for Card */}
           {showShareLink ? (
-            <ShareLink setShowShareLink={setShowShareLink} />
+            <ShareLink setShowShareLink={setShowShareLink}  sharelink={waitlistInfo.referralLink} />
           ) : (
            <div className="set-large-align">
              <div className="card gradient-box border-[1px] border-[#FFFFFF21] max-w-[340px] mt-6  rounded-[40px] p-4 text-center shadow-lg relative z-10 sm:mt-0">
