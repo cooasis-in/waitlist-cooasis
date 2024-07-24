@@ -2,7 +2,7 @@ import "./App.css";
 import LandingPage from "./components/LandingPage";
 import Refer from "./components/Refer";
 import ShareLinks from "./components/ShareLinks";
-import { Routes, Route } from "react-router-dom";
+import {Routes, Route } from "react-router-dom";
 
 function App() {
   return (

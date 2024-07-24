@@ -39,9 +39,8 @@ const Refer = ({ waitlistInfo }) => {
   };
 
   return (
-    <section className="bg-colorRefer !min-h-screen bg-color-res">
-      <div className="container mx-auto relative">
-        <div className="set-alignment h-20 flex justify-between items-center">
+    <>
+      <header className="set-alignment set-alignment-logo flex justify-between items-center">
           <div className="set-width">
             <img
               src="images/darkmode.svg"
@@ -64,10 +63,9 @@ const Refer = ({ waitlistInfo }) => {
               <span className="mb-[4px] sm:mb-[7px]">updates</span>
             </button>
           </div>
-        </div>
-        {isBoxVisible && (
-          <div className="absolute right-0">
-            <div className="bg-[#0000006B] rounded-[20px] border-[0.5px] border-[#99999982] h-[400px] w-[267px] flex items-center justify-center">
+          {isBoxVisible && (
+          <div className="absolute top-[70px] sm:top-[100px] right-[20px] sm:right-[50px]">
+            <div className="bg-[#0000006B] rounded-[20px] border-[0.5px] border-[#99999982] h-[300px] w-[267px] flex items-center justify-center">
               <div className="flex items-center justify-center h-full w-full">
                 <p className="mx-auto max-w-[146px] f-PowerGrotesk text-[12px] text-[#6A929857] leading-[12px] text-center">
                   <span className="flex justify-center mb-1">
@@ -79,14 +77,17 @@ const Refer = ({ waitlistInfo }) => {
             </div>
           </div>
         )}
-        <div className="flex flex-col items-center relative overflow-hidden">
+        </header>
+        <section className="bg-colorRefer adjest !min-h-screen bg-color-res">
+      <div className="container mx-auto relative">
+          <div className="flex flex-col items-center relative overflow-hidden">
           <ConfettiBackground />
-          <div className="heading hidden sm:block">
+          <div className="heading hidden sm:block pt-[100px] larg-pb">
             <h1 className="text-[12px] text-center bg-waitlist-gradient bg-clip-text text-transparent f-PowerGrotesk">
               Welcome to the
             </h1>
             <div className="mb-0">
-              <h1 className="text-[#FFF5D9] f-PowerGrotesk text-[60px] leading-[0px] mt-[27px] mb-[37px]">
+              <h1 className="text-[#FFF5D9] f-PowerGrotesk text-[60px] leading-[0px] pt-[35px] pb-[55px]">
                 <span className="bg-nexgen-gradient bg-clip-text mr-3">
                   exclusive
                 </span>
@@ -95,7 +96,7 @@ const Refer = ({ waitlistInfo }) => {
             </div>
           </div>
           <div className="heading-res block sm:hidden">
-            <h1 className="mt-5 text-[40px] !text-white leading-[40px] text-center f-PowerGrotesk">
+            <h1 className="pt-[70px] text-[40px] !text-white leading-[40px] text-center f-PowerGrotesk">
               Welcome to the&nbsp;
               <span className="bg-nexgen-gradient bg-clip-text mr-3">
                 exclusive
@@ -107,9 +108,10 @@ const Refer = ({ waitlistInfo }) => {
           {showShareLink ? (
             <ShareLink setShowShareLink={setShowShareLink} />
           ) : (
-            <div className="card gradient-box border-[1px] border-[#FFFFFF21] max-w-[340px] mt-6  rounded-[40px] p-4 text-center shadow-lg relative z-10 sm:mt-0">
+           <div className="set-large-align">
+             <div className="card gradient-box border-[1px] border-[#FFFFFF21] max-w-[340px] mt-6  rounded-[40px] p-4 text-center shadow-lg relative z-10 sm:mt-0">
               <div className=" ">
-                <h1 className="text-[#FFF5D9] font-bold text-[30px]">
+                <h1 className="text-[#FFF5D9] f-PowerGrotesk text-[50px]">
                   {waitlistInfo.waitlistNumber}
                 </h1>
                 <p className="f-PowerGrotesk text-[12px] md:text-[14px] mt-2 leading-[1] text-[#FFF5D9]">
@@ -125,7 +127,7 @@ const Refer = ({ waitlistInfo }) => {
               {/* Button 2 */}
               <button
                 type="submit"
-                className="f-PowerGrotesk  bg-[#131515] text-[9px] sm:text-[10px] gap-2 btn-color text-[#505050] leading-tight font-normal px-5 py-4 sm:px-6 sm:py-8 w-full h-[55px] mt-6 rounded-full flex items-center dark:bg-[#000000] justify-between"
+                className="f-PowerGrotesk  bg-[#131515] opacity-[75%] text-[9px] sm:text-[10px] gap-2 btn-color text-[#505050] leading-tight font-normal px-5 py-4 sm:px-6 sm:py-8 w-full h-[55px] mt-6 rounded-full flex items-center dark:bg-[#000000] justify-between hover:opacity-[100%] duration-300 !hover:border-[solid] !hover:border-[#FFF5D9]"
                 onClick={handlePaste}
               >
                 {waitlistInfo.referralLink}
@@ -139,12 +141,13 @@ const Refer = ({ waitlistInfo }) => {
               {/* Refer Friend */}
               <button
                 type="submit"
-                className="f-PowerGrotesk text-[12px] sm:text-[17.5px] bg-[#131515] btn-color text-[#E1FF26] leading-tight font-normal px-5 py-4 sm:px-6 sm:py-8 w-full h-[55px] mt-2 rounded-full flex items-center dark:bg-[#000000] justify-center"
+                className="f-PowerGrotesk text-[12px] sm:text-[17.5px] bg-[#131515] btn-color text-[#E1FF26] leading-tight font-normal px-5 py-4 sm:px-6 sm:py-8 w-full h-[55px] mt-2 rounded-full flex items-center dark:bg-[#000000] justify-center custom-button"
                 onClick={handleShareClick}
               >
                 Refer a friend
               </button>
             </div>
+           </div>
           )}
           {/* Footer Secttion */}
           <div className="mt-7 sm:mt-4 flex flex-col items-center text-[#6A9298] space-y-4 max-w-[272px]">
@@ -154,7 +157,7 @@ const Refer = ({ waitlistInfo }) => {
             <div>
               <ul className="flex space-x-3 justify-start items-center">
                 <li className="bg-[#000000] h-10 w-10 rounded-full">
-                  <a href="#" className="hover:text-white flex justify-center">
+                  <a href="https://www.instagram.com/cooasis.in/"  target="_blank" className="hover:text-white flex justify-center">
                     <img
                       src="/images/ins.svg"
                       alt="Instagram"
@@ -163,7 +166,7 @@ const Refer = ({ waitlistInfo }) => {
                   </a>
                 </li>
                 <li className="bg-[#000000] h-10 w-10 rounded-full">
-                  <a href="#" className="hover:text-white flex justify-center">
+                  <a href="https://www.linkedin.com/company/cooasis-in" target="blank" className="hover:text-white flex justify-center">
                     <img
                       src="/images/logo-1.svg"
                       alt="LinkedIn"
@@ -172,7 +175,7 @@ const Refer = ({ waitlistInfo }) => {
                   </a>
                 </li>
                 <li className="bg-[#000000] h-10 w-10 rounded-full">
-                  <a href="#" className="hover:text-white flex justify-center">
+                  <a href="https://www.behance.net/coasis" target="blank" className="hover:text-white flex justify-center">
                     <img
                       src="/images/logo-2.svg"
                       alt="Behance"
@@ -181,7 +184,7 @@ const Refer = ({ waitlistInfo }) => {
                   </a>
                 </li>
                 <li className="bg-[#000000] h-10 w-10 rounded-full">
-                  <a href="#" className="hover:text-white flex justify-center">
+                  <a href="https://dribbble.com/Cooasis" target="blank" className="hover:text-white flex justify-center">
                     <img
                       src="/images/logo-3.svg"
                       alt="Dribbble"
@@ -190,7 +193,7 @@ const Refer = ({ waitlistInfo }) => {
                   </a>
                 </li>
                 <li className="bg-[#000000] h-10 w-10 rounded-full">
-                  <a href="#" className="hover:text-white flex justify-center">
+                  <a href="https://www.facebook.com/cooasis.in"  target="_blank" className="hover:text-white flex justify-center">
                     <img
                       src="/images/logo-4.svg"
                       alt="Facebook"
@@ -199,7 +202,7 @@ const Refer = ({ waitlistInfo }) => {
                   </a>
                 </li>
                 <li className="bg-[#000000] h-10 w-10 rounded-full">
-                  <a href="#" className="hover:text-white flex justify-center">
+                  <a href="https://www.behance.net/coasis" target="_blank" className="hover:text-white flex justify-center">
                     <img
                       src="/images/logo-5.svg"
                       alt="Your Icon"
@@ -218,6 +221,8 @@ const Refer = ({ waitlistInfo }) => {
         </div>
       </div>
     </section>
+    </>
+    
   );
 };
 
