@@ -14,6 +14,10 @@ const userSchema = new mongoose.Schema({
     referrer: {
         type: String,
         default: null
+    },
+    waitlistNumber: {
+        type: Number,
+        required: true
     }
 });
 
