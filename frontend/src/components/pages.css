@@ -14,6 +14,11 @@
   transition: transform 300ms linear, background 300ms linear, color 300ms linear;
 } */
 
+.custom-button {
+  border: 1px solid transparent;
+  transition: all ease-in-out .3s;
+}
+
 .custom-button:hover {
   background: linear-gradient(rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.05)),
     radial-gradient(circle at 10% 10%, rgba(0, 100, 120, 0.4) 0%, transparent 70%),
@@ -23,7 +28,7 @@
   /* border-radius: 30px; */
   color: #FFF5D9;
   border: 1px solid;
-  transform: scale(1.05);
+  /* transform: scale(1.05); */
 }
 
 
@@ -277,6 +282,54 @@
 .card:hover:after {
   top: 65%;
   opacity: 1;
+}
+
+@media (max-width: 768px) {
+
+   .set-image img {
+    margin-top: -140px !important;
+   }
+  
+}
+
+@media (max-width: 640px) {
+
+  .res-margin-fix {
+   margin-top: -30px !important;
+  }
+ 
+}
+
+@media (max-width: 615px) {
+
+  .set-image img {
+   margin-top: -140px !important;
+  }
+ 
+}
+
+@media (max-width: 530px) {
+
+  .set-image img {
+   margin-top: -120px !important;
+  }
+ 
+}
+
+@media (max-width: 470px) {
+
+  .set-image img {
+   margin-top: -100px !important;
+  }
+ 
+}
+
+@media (max-width: 410px) {
+
+  .set-image img {
+   margin-top: -80px !important;
+  }
+ 
 }
 
 .adjest-res {

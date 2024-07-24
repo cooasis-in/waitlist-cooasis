@@ -63,19 +63,19 @@ const LandingPage = () => {
           />
         </div>
       </div>
-      <section className="bg-color !min-h-screen adjest-res pt-[100px]">
+      <section className="bg-color !min-h-screen adjest-res">
         <div className="container mx-auto">
-          <div className="mt-6 sm:mt-0">
+          <div className="pt-[100px]">
             <h1 className="text-[12px] leading-[12px] text-center bg-waitlist-gradient bg-clip-text text-transparent f-PowerGrotesk">
               Join waitlist for
             </h1>
             <div className="larg-pb relative text-center mt-4 sm:mt-0 mb-4">
-              <h2 className="text-[30px] sm:text-[70px] leading-[30px] sm:leading-[70px] xxl:text-7xl f-PowerGrotesk text-[#FCFCD8]">
+              <h2 className="text-[40px] sm:text-[70px] leading-[40px] sm:leading-[70px] xxl:text-7xl f-PowerGrotesk text-[#FCFCD8]">
                 <span className="bg-nexgen-gradient bg-clip-text fade-in">
                   Nex-gen
                 </span>
               </h2>
-              <h2 className="text-[30px] sm:text-[70px] leading-[30px] sm:leading-[70px] xxl:text-7xl f-PowerGrotesk text-[#FCFCD8] typing-text">
+              <h2 className="text-[40px] sm:text-[70px] leading-[40px] sm:leading-[70px] xxl:text-7xl f-PowerGrotesk text-[#FCFCD8] typing-text">
                 design ecosystem
               </h2>
 
@@ -127,7 +127,7 @@ const LandingPage = () => {
               </Button>
             </form>
             <div className="mt-8 sm:mt-6">
-              <div className="flex justify-center items-center ml-2">
+              <div className="flex justify-center items-center pl-2">
                 <img
                   src="/images/avtar-1.svg"
                   alt="People Join"
@@ -148,11 +148,12 @@ const LandingPage = () => {
                 +200 people joined
               </span>
             </div>
-            <div>
+            <div className="set-image">
+              <img src="images/moon-1.png" alt="" className="max-w-[800px] w-full m-auto mt-[-190px] hidden sm:block" />
               <img
                 src="images/moon.png"
                 alt=""
-                className="max-w-[900px] w-full m-auto mt-[-130px]"
+                className="max-w-[700px] w-full m-auto mt-[-130px] block sm:hidden"
               />
             </div>
             {/* <div className="relative">
@@ -170,12 +171,13 @@ const LandingPage = () => {
               <img src="images/globelight.png" alt="" className="absolute bottom-[10px]" />
             </div>
           </div> */}
-            <div className="sm:mt-[-2rem] flex flex-col justify-center items-center space-x-4">
-              <span className="f-PowerGrotesk text-[14.5px] xxl:text-[17.5px] leading-[14.54px] text-[#6A92985E] text-center mb-4">
+           <div className="hidden sm:block mt-[-70px]">
+           <div className="sm:mt-[-2rem] flex flex-col justify-center items-center space-x-4">
+              <span className="f-PowerGrotesk text-[14.5px] xxl:text-[17.5px] leading-[14.54px] text-[#6A92985E] text-center mb-2">
                 Backed by
               </span>
 
-              <div className="res-align flex hidden md:flex lg:flex items-center justify-center space-x-4 sm:space-x-7 max-w-[642px] !ml-0 !pb-4">
+              <div className="res-align flex  items-center justify-center space-x-4 sm:space-x-7 max-w-[642px] !ml-0 !pb-4 sm:pt-3">
                 <img src="images/start.svg" alt="" className="max-w-[75px]" />
                 <img
                   src="images/yourstory.svg"
@@ -187,8 +189,9 @@ const LandingPage = () => {
                 <img src="images/google.svg" alt="" className="max-w-[75px]" />
               </div>
             </div>
+           </div>
           </div>
-          <div className="block text-center  sm:hidden py-4 px-6 fixed bottom-0 left-0 w-full">
+          <div className="block text-center  sm:hidden py-4 w-full res-margin-fix">
             <span className="f-PowerGrotesk text-[14.5px] xxl:text-[17.5px] leading-[14.54px] text-[#6A92985E] text-center">
               Backed by
             </span>

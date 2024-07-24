@@ -63,10 +63,7 @@ const Refer = ({ waitlistInfo }) => {
               <span className="mb-[4px] sm:mb-[7px]">updates</span>
             </button>
           </div>
-        </header>
-        <section className="bg-colorRefer adjest !min-h-screen bg-color-res">
-      <div className="container mx-auto relative">
-        {isBoxVisible && (
+          {isBoxVisible && (
           <div className="absolute right-0">
             <div className="bg-[#0000006B] rounded-[20px] border-[0.5px] border-[#99999982] h-[400px] w-[267px] flex items-center justify-center">
               <div className="flex items-center justify-center h-full w-full">
@@ -80,14 +77,17 @@ const Refer = ({ waitlistInfo }) => {
             </div>
           </div>
         )}
-        <div className="flex flex-col items-center relative overflow-hidden">
+        </header>
+        <section className="bg-colorRefer adjest !min-h-screen bg-color-res">
+      <div className="container mx-auto relative">
+          <div className="flex flex-col items-center relative overflow-hidden">
           <ConfettiBackground />
           <div className="heading hidden sm:block pt-[100px] larg-pb">
             <h1 className="text-[12px] text-center bg-waitlist-gradient bg-clip-text text-transparent f-PowerGrotesk">
               Welcome to the
             </h1>
             <div className="mb-0">
-              <h1 className="text-[#FFF5D9] f-PowerGrotesk text-[60px] leading-[0px] mt-[27px] mb-[37px]">
+              <h1 className="text-[#FFF5D9] f-PowerGrotesk text-[60px] leading-[0px] pt-[35px] pb-[55px]">
                 <span className="bg-nexgen-gradient bg-clip-text mr-3">
                   exclusive
                 </span>
@@ -127,7 +127,7 @@ const Refer = ({ waitlistInfo }) => {
               {/* Button 2 */}
               <button
                 type="submit"
-                className="f-PowerGrotesk  bg-[#131515] text-[9px] sm:text-[10px] gap-2 btn-color text-[#505050] leading-tight font-normal px-5 py-4 sm:px-6 sm:py-8 w-full h-[55px] mt-6 rounded-full flex items-center dark:bg-[#000000] justify-between custom-button"
+                className="f-PowerGrotesk  bg-[#131515] opacity-[75%] text-[9px] sm:text-[10px] gap-2 btn-color text-[#505050] leading-tight font-normal px-5 py-4 sm:px-6 sm:py-8 w-full h-[55px] mt-6 rounded-full flex items-center dark:bg-[#000000] justify-between hover:opacity-[100%] duration-300 !hover:border-[solid] !hover:border-[#FFF5D9]"
                 onClick={handlePaste}
               >
                 {/* {waitlistInfo.referralLink} */}
