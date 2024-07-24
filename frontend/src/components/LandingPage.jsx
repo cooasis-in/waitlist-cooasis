@@ -22,7 +22,7 @@ const LandingPage = () => {
     e.preventDefault();
     const email = e.target.email.value;
     try {
-      const response = await axios.post("http://3.25.112.171:3001/users", {
+      const response = await axios.post("http://localhost:3001/users", {
         email,
         referrer,
       });
@@ -43,7 +43,7 @@ const LandingPage = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowImage(true);
-    }, 3000);
+    }, 1000);
     return () => clearTimeout(timer);
   }, []);
 
@@ -64,7 +64,7 @@ const LandingPage = () => {
       </div>
       <section className="bg-color !min-h-screen adjest-res">
         <div className="container mx-auto">
-          <div className="pt-[100px]">
+          <div className="pt-[75px] sm:pt-[100px]">
             <h1 className="text-[12px] leading-[12px] text-center bg-waitlist-gradient bg-clip-text text-transparent f-PowerGrotesk">
               Join waitlist for
             </h1>
@@ -74,7 +74,7 @@ const LandingPage = () => {
                   Nex-gen
                 </span>
               </h2>
-              <h2 className="text-[40px] sm:text-[70px] leading-[40px] sm:leading-[70px] xxl:text-7xl f-PowerGrotesk text-[#FCFCD8] typing-text">
+              <h2 className="text-[40px] sm:text-[70px] leading-[40px] sm:leading-[70px] xxl:text-7xl f-PowerGrotesk text-[#FCFCD8] typing-text fade-in">
                 design ecosystem
               </h2>
 
@@ -86,11 +86,11 @@ const LandingPage = () => {
                 <img
                   src={cursorImage}
                   alt="Cursor"
-                  className="absolute w-10 ml-[870px] mt-6 hidden lg:block fade-in"
+                  className="absolute w-14 ml-[890px] mt-4 hidden lg:block fade-in"
                 />
               )}
 
-              <div className="absolute bottom-[40px] left-20 md:left-[200px] lg:bottom-[120px] lg:left-[400px] fade-in">
+              <div className="absolute bottom-[40px] left-20 md:left-[200px] lg:bottom-[120px] lg:left-[400px] fade-in hidden lg:block">
                 <img
                   src="images/james.svg"
                   alt="James"
@@ -155,7 +155,7 @@ const LandingPage = () => {
                 className="max-w-[700px] w-full m-auto mt-[-130px] block sm:hidden"
               />
             </div>
-            <div className="hidden sm:block mt-[-70px]">
+            <div className="hidden sm:block mt-[-80px]">
               <div className="sm:mt-[-2rem] flex flex-col justify-center items-center space-x-4">
                 <span className="f-PowerGrotesk text-[14.5px] xxl:text-[17.5px] leading-[14.54px] text-[#6A92985E] text-center mb-2">
                   Backed by
