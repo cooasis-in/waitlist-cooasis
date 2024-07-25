@@ -5,6 +5,7 @@ import { Button } from "../ui/moving-border";
 import Refer from "./Refer";
 import cursorImage from "../../public/images/cursorImg.png";
 import ImageSlider from "./ImageSlider";
+import EmailVerify from "./EmailVerify";
 
 const LandingPage = () => {
   const [showRefer, setShowRefer] = useState(false);
@@ -99,8 +100,12 @@ const LandingPage = () => {
               </div>
             </div>
 
+            <div>
+              <EmailVerify />
+            </div>
+
             {/* Form */}
-            <form
+            {/* <form
               className="set-large-align flex flex-col items-center my-16 sm:my-0"
               onSubmit={handleSubmit}
             >
@@ -124,7 +129,7 @@ const LandingPage = () => {
               >
                 Get Early Access
               </Button>
-            </form>
+            </form> */}
             <div className="mt-8 sm:mt-6">
               <div className="flex justify-center items-center pl-2">
                 <img
