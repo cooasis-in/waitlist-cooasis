@@ -12,8 +12,8 @@ const ShareLinks = ({ setShowShareLink,sharelink }) => {
   const title = "Check this out!"; // Customize your message
 
   return (
-    <div className="set-large-align">
-       <div className="card gradient-box mt-6 sm:mt-2 border-[1px] border-[#FFFFFF21] max-w-[340px] md:max-w-[400px] lg:max-w-[340px] rounded-[40px] p-4 text-center shadow-lg relative z-10">
+    <div className="set-large-align w-[100%]">
+       <div className="card gradient-box mt-6 sm:mt-2 border-[1px] border-[#FFFFFF21] sm:mx-auto max-w-[100%] sm:max-w-[340px] md:max-w-[400px] lg:max-w-[340px] rounded-[40px] p-4 text-center shadow-lg relative z-10">
       {/* 200 People Joined */}
       <div className="mt-2 mb-4">
         <div className="flex justify-center items-center">

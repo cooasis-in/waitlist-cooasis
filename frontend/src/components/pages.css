@@ -13,22 +13,6 @@
 /* .custom-button {
   transition: transform 300ms linear, background 300ms linear, color 300ms linear;
 } */
-/* Animation to design ecosystem */
-
-/* @keyframes flyIn {
-  0% {
-    transform: translateY(-100px);
-    opacity: 0;
-  }
-  100% {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-.animate-fly {
-  animation: flyIn 2s ease-in-out;
-} */
-
 
 .custom-button {
   border: 1px solid transparent;
@@ -57,12 +41,6 @@
       #131515 70%
     ) !important;
     width: 100% !important;
-  }
-}
-
-@media (max-width: 400px) {
-  .card {
-    max-width: 270px !important;
   }
 }
 
@@ -196,7 +174,7 @@
 
 /* typing text */
 
-/* @keyframes typing {
+@keyframes typing {
   from {
     width: 0;
   }
@@ -213,19 +191,20 @@
   50% {
     border-color: #fcfcd8;
   }
-} */
+}
 
 /* Typing Animatoion */
+/*
 
-/* @media screen and (min-width: 1024px) {
+ @media screen and (min-width: 1024px) {
   .typing-text {
     display: inline-block;
     overflow: hidden   ;
-    border-right: 5px solid #fcfcd8; 
+    border-right: 5px solid #fcfcd8; /* Same as text color 
     white-space: nowrap;
     animation: typing 2s steps(30, end) 1s 1 normal both,
       blink 0.75s step-end infinite;
-    line-height: 1.2; 
+    line-height: 1.2; /* Adjust if necessary 
   }
 
   .typing-text.design {
@@ -240,7 +219,7 @@
   }
   to {
     width: 46%;
-  } 
+  } /* Increased width to accommodate descender
 }
 
 @keyframes blink {
@@ -251,15 +230,15 @@
   50% {
     border-color: #fcfcd8;
   }
-} */
-
-/* Card Border */
-:root {
-  --primary-color: #e1ff26;
 }
 
+/* Card Border 
+:root {
+  --primary-color: #e1ff26;
+} */
+
 .card {
-  width: 640px;
+  max-width: 640px;
   position: relative;
   background-color: rgb(16 16 16);
   border: 1px solid rgb(255 255 255 / 5%);
@@ -298,6 +277,14 @@
 .card:hover:after {
   top: 65%;
   opacity: 1;
+}
+
+@media (max-width: 1100px) {
+
+  .change-bg-samll {
+    background: #000000 !important;
+  }
+
 }
 
 @media (max-width: 768px) {
