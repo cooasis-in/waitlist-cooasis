@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./pages.css";
 import Refer from "./Refer";
@@ -13,24 +13,34 @@ const LandingPage = () => {
   const [errorMessage, setErrorMessage] = useState("");
   const [showImage, setShowImage] = useState(false);
   const [referrer, setReferrer] = useState(null);
-  const [showVerify, setshowVerify] = useState(false);
+  const [showVerify, setShowVerify] = useState(false);
+  const [email, setEmail] = useState("");
 
   useEffect(() => {
     const queryParams = new URLSearchParams(window.location.search);
     setReferrer(queryParams.get("refer"));
   }, []);
 
-  const handleSubmit = async (e) => {
+  const handleShowVerifyEmail = async (e) => {
     e.preventDefault();
     const email = e.target.email.value;
+    console.log(email);
+    setEmail(email);
     try {
-      const response = await axios.post("http://3.25.112.171:3001/users", {
+      const response = await axios.post("http://localhost:3001/users", {
         email,
         referrer,
       });
-      setWaitlistInfo(response.data);
-      console.log(response.data);
-      setShowRefer(true);
+      const responseData = response.data;
+      setWaitlistInfo(responseData);
+      console.log(responseData);
+      console.log(responseData.isVerified);
+
+      if (responseData.isVerified) {
+        setShowRefer(true);
+      } else {
+        setShowVerify(true);
+      }
       setErrorMessage("");
     } catch (error) {
       if (error.response && error.response.status === 400) {
@@ -48,15 +58,6 @@ const LandingPage = () => {
     }, 1000);
     return () => clearTimeout(timer);
   }, []);
-
-  // if (showRefer) {
-  //   return <Refer waitlistInfo={waitlistInfo} />;
-  // }
-
-  const handleShoweverifyEmail = () => {
-    setshowVerify(true)
-  };
-
 
   return (
     <>
@@ -105,13 +106,15 @@ const LandingPage = () => {
                 />
               </div>
             </div>
-            {showVerify ? (
-              <EmailVerify  setverifyEmail = {setshowVerify} />
+            {showRefer ? (
+              <Refer waitlistInfo={waitlistInfo} />
+            ) : showVerify ? (
+              <EmailVerify setverifyEmail={setShowVerify} email={email} referrer={referrer} />
             ) : (
               <div>
                 <form
                   className="set-large-align flex flex-col items-center my-16 sm:my-0"
-                  onSubmit={handleShoweverifyEmail}
+                  onSubmit={handleShowVerifyEmail}
                 >
                   <div className="relative">
                     <input
@@ -204,10 +207,21 @@ const LandingPage = () => {
             <span className="f-PowerGrotesk text-[14.5px] xxl:text-[17.5px] leading-[14.54px] text-[#6A92985E] text-center">
               Backed by
             </span>
-            <ImageSlider />
+            <div className=" flex items-center justify-center space-x-2 mt-2">
+              <img src="images/start.svg" alt="" className="max-w-[60px]" />
+              <img
+                src="images/yourstory.svg"
+                alt=""
+                className="max-w-[60px]"
+              />
+              <img src="images/aws.svg" alt="" className="max-w-[60px]" />
+              <img src="images/launch.svg" alt="" className="max-w-[60px]" />
+              <img src="images/google.svg" alt="" className="max-w-[60px]" />
+            </div>
           </div>
         </div>
       </section>
+      <ImageSlider />
     </>
   );
 };
