@@ -37,9 +37,9 @@ const Waitlist = () => {
                   <li className="bg-[#000000] h-8 sm:h-9 w-8 sm:w-9 rounded-full">
                     <a href="https://www.instagram.com/cooasis.in/" target="_blank" className="hover:text-white flex justify-center">
                       <img
-                        src="/images/waitlist-2.svg"
+                        src="/images/waitlist-1.svg"
                         alt="Instagram"
-                        className="w-[14px] sm:w-[16px] mt-[9px] sm:mt-[10px]"
+                        className="w-[25px] sm:w-[30px] mt-[5px] sm:mt-[4px]"
                       />
                     </a>
                   </li>
