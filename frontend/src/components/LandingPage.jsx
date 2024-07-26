@@ -1,10 +1,11 @@
 import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import "./pages.css";
-import { Button } from "../ui/moving-border";
 import Refer from "./Refer";
 import cursorImage from "../../public/images/cursorImg.png";
 import ImageSlider from "./ImageSlider";
+import EmailVerify from "./EmailVerify";
+import { Button } from "../ui/moving-border";
 
 const LandingPage = () => {
   const [showRefer, setShowRefer] = useState(false);
@@ -12,6 +13,7 @@ const LandingPage = () => {
   const [errorMessage, setErrorMessage] = useState("");
   const [showImage, setShowImage] = useState(false);
   const [referrer, setReferrer] = useState(null);
+  const [showVerify, setshowVerify] = useState(false);
 
   useEffect(() => {
     const queryParams = new URLSearchParams(window.location.search);
@@ -47,9 +49,14 @@ const LandingPage = () => {
     return () => clearTimeout(timer);
   }, []);
 
-  if (showRefer) {
-    return <Refer waitlistInfo={waitlistInfo} />;
-  }
+  // if (showRefer) {
+  //   return <Refer waitlistInfo={waitlistInfo} />;
+  // }
+
+  const handleShoweverifyEmail = () => {
+    setshowVerify(true)
+  };
+
 
   return (
     <>
@@ -98,33 +105,39 @@ const LandingPage = () => {
                 />
               </div>
             </div>
-
-            {/* Form */}
-            <form
-              className="set-large-align flex flex-col items-center my-16 sm:my-0"
-              onSubmit={handleSubmit}
-            >
-              <div className="relative">
-                <input
-                  type="email"
-                  name="email"
-                  placeholder="Eg. Jeff@cooasis.in"
-                  className="f-HelveticaNeueUltraLight bg-transparent text-[14px] xxl:text-[17px] text-[white] leading-[14.13px] w-[290px] h-[55px] px-6 py-4 mt-0 lg:mt-3 border-[1px] border-[#FFFFFF17] rounded-full custom-inset custom-gradient"
-                />
-                <div className="absolute right-[18px] bottom-[20px] cursor-pointer">
-                  <img src="/images/maillandingpage.svg" alt="Email Icon" />
-                </div>
+            {showVerify ? (
+              <EmailVerify  setverifyEmail = {setshowVerify} />
+            ) : (
+              <div>
+                <form
+                  className="set-large-align flex flex-col items-center my-16 sm:my-0"
+                  onSubmit={handleShoweverifyEmail}
+                >
+                  <div className="relative">
+                    <input
+                      type="email"
+                      name="email"
+                      placeholder="Eg. Jeff@cooasis.in"
+                      className="f-HelveticaNeueUltraLight bg-transparent text-[14px] xxl:text-[17px] text-[white] leading-[14.13px] w-[290px] h-[55px] px-6 py-4 mt-0 lg:mt-3 border-[1px] border-[#FFFFFF17] rounded-full custom-inset custom-gradient"
+                    />
+                    <div className="absolute right-[18px] bottom-[20px] cursor-pointer">
+                      <img src="/images/maillandingpage.svg" alt="Email Icon" />
+                    </div>
+                  </div>
+                  {errorMessage && (
+                    <p className="text-red-500 text-[12px] mt-1">
+                      {errorMessage}
+                    </p>
+                  )}
+                  <Button
+                    borderRadius="2rem"
+                    className="bg-[#131515] f-PowerGrotesk text-[#E1FF26] rounded-full hover:shadow-lg hover:bg-[#E1FF26] hover:text-black hover:font-bold transform transition-all duration-300 ease-in-out"
+                  >
+                    Get Early Access
+                  </Button>
+                </form>
               </div>
-              {errorMessage && (
-                <p className="text-red-500 text-[12px] mt-1">{errorMessage}</p>
-              )}
-              <Button
-                borderRadius="2rem"
-                className="bg-[#131515] f-PowerGrotesk text-[#E1FF26] rounded-full hover:shadow-lg hover:bg-[#E1FF26] hover:text-black hover:font-bold transform transition-all duration-300 ease-in-out"
-              >
-                Get Early Access
-              </Button>
-            </form>
+            )}
             <div className="mt-8 sm:mt-6">
               <div className="flex justify-center items-center pl-2">
                 <img
@@ -148,7 +161,11 @@ const LandingPage = () => {
               </span>
             </div>
             <div className="set-image">
-              <img src="images/moon-1.png" alt="" className="max-w-[800px] w-full m-auto mt-[-190px] hidden sm:block" />
+              <img
+                src="images/moon-1.png"
+                alt=""
+                className="max-w-[800px] w-full m-auto mt-[-190px] hidden sm:block"
+              />
               <img
                 src="images/moon.png"
                 alt=""
@@ -169,8 +186,16 @@ const LandingPage = () => {
                     className="max-w-[75px]"
                   />
                   <img src="images/aws.svg" alt="" className="max-w-[75px]" />
-                  <img src="images/launch.svg" alt="" className="max-w-[75px]" />
-                  <img src="images/google.svg" alt="" className="max-w-[75px]" />
+                  <img
+                    src="images/launch.svg"
+                    alt=""
+                    className="max-w-[75px]"
+                  />
+                  <img
+                    src="images/google.svg"
+                    alt=""
+                    className="max-w-[75px]"
+                  />
                 </div>
               </div>
             </div>
