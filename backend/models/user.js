@@ -18,6 +18,12 @@ const userSchema = new mongoose.Schema({
     waitlistNumber: {
         type: Number,
         required: true
+    },
+    otp: String,
+    otpExpires: Date,
+    isVerified: {
+        type: Boolean,
+        default: false
     }
 });
 
