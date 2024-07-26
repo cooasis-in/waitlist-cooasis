@@ -8,6 +8,34 @@
   width: 100%;
 }
 
+/* Waitlist Page Bg-color */
+
+.bg-grediant-waitlist {
+  background-image: radial-gradient(
+    farthest-side at 25% 56%,
+    #7d22ff -150%,
+    #00000063 100%
+  )
+}
+
+@media (max-width: 640px) {
+
+  .bg-grediant-waitlist {
+   background: #00000063; 
+   background-image: none;
+  }
+
+  .waitlist-res-bg {
+    background-image: radial-gradient(
+      farthest-side at 5% 28%,
+      #7d22ff -200%,
+      #131515 60%
+    ) !important;
+    width: 100% !important;
+  }
+
+}
+
 /* styles.css */
 
 /* .custom-button {

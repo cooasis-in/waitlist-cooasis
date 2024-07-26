@@ -76,14 +76,14 @@ const EmailVerify = ({ setverifyEmail }) => {
         </div>
         <div className=" flex justify-center">
         <button
-          className="f-HelveticaNeueRoman  cursor-pointer  text-[15px] text-[#6A929857] leading-[23.46px] mt-4"
+          className="f-HelveticaNeueRoman cursor-pointer text-[15px] text-[#6A929857] leading-[23.46px] mt-4"
           onClick={handlesubmit}
         >
           Change email
         </button>
         </div>
         <button
-          className="f-PowerGrotesk max-w-[421px] w-full text-[17.5px] text-[#E1FF26] leading-[17.5px] mt-4 px-8 py-6 bg-[#0000006B] rounded-full"
+          className="f-PowerGrotesk max-w-[421px] w-full !cursor-pointer text-[17.5px] text-[#E1FF26] leading-[17.5px] mt-4 px-8 py-6 bg-[#0000006B] rounded-full"
           onClick={handleSubmit}
         >
           Verify email
