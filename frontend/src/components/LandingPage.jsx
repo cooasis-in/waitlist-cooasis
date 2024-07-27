@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import "./pages.css";
 import Refer from "./Refer";
@@ -13,34 +13,24 @@ const LandingPage = () => {
   const [errorMessage, setErrorMessage] = useState("");
   const [showImage, setShowImage] = useState(false);
   const [referrer, setReferrer] = useState(null);
-  const [showVerify, setShowVerify] = useState(false);
-  const [email, setEmail] = useState("");
+  const [showVerify, setshowVerify] = useState(false);
 
   useEffect(() => {
     const queryParams = new URLSearchParams(window.location.search);
     setReferrer(queryParams.get("refer"));
   }, []);
 
-  const handleShowVerifyEmail = async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const email = e.target.email.value;
-    console.log(email);
-    setEmail(email);
     try {
       const response = await axios.post("http://localhost:3001/users", {
         email,
         referrer,
       });
-      const responseData = response.data;
-      setWaitlistInfo(responseData);
-      console.log(responseData);
-      console.log(responseData.isVerified);
-
-      if (responseData.isVerified) {
-        setShowRefer(true);
-      } else {
-        setShowVerify(true);
-      }
+      setWaitlistInfo(response.data);
+      console.log(response.data);
+      setShowRefer(true);
       setErrorMessage("");
     } catch (error) {
       if (error.response && error.response.status === 400) {
@@ -58,6 +48,15 @@ const LandingPage = () => {
     }, 1000);
     return () => clearTimeout(timer);
   }, []);
+
+  // if (showRefer) {
+  //   return <Refer waitlistInfo={waitlistInfo} />;
+  // }
+
+  const handleShoweverifyEmail = () => {
+    setshowVerify(true)
+  };
+
 
   return (
     <>
@@ -106,15 +105,13 @@ const LandingPage = () => {
                 />
               </div>
             </div>
-            {showRefer ? (
-              <Refer waitlistInfo={waitlistInfo} />
-            ) : showVerify ? (
-              <EmailVerify setverifyEmail={setShowVerify} email={email} referrer={referrer} />
+            {showVerify ? (
+              <EmailVerify  setverifyEmail = {setshowVerify} />
             ) : (
               <div>
                 <form
                   className="set-large-align flex flex-col items-center my-16 sm:my-0"
-                  onSubmit={handleShowVerifyEmail}
+                  onSubmit={handleShoweverifyEmail}
                 >
                   <div className="relative">
                     <input
@@ -175,7 +172,7 @@ const LandingPage = () => {
                 className="max-w-[700px] w-full m-auto mt-[-130px] block sm:hidden"
               />
             </div>
-            <div className="hidden sm:block">
+            <div className="hidden sm:block mt-[-80px]">
               <div className="sm:mt-[-2rem] flex flex-col justify-center items-center space-x-4">
                 <span className="f-PowerGrotesk text-[14.5px] xxl:text-[17.5px] leading-[14.54px] text-[#6A92985E] text-center mb-2">
                   Backed by
