@@ -175,7 +175,7 @@ const LandingPage = () => {
                 className="max-w-[700px] w-full m-auto mt-[-130px] block sm:hidden"
               />
             </div>
-            <div className="hidden sm:block mt-[-80px]">
+            <div className="hidden sm:block">
               <div className="sm:mt-[-2rem] flex flex-col justify-center items-center space-x-4">
                 <span className="f-PowerGrotesk text-[14.5px] xxl:text-[17.5px] leading-[14.54px] text-[#6A92985E] text-center mb-2">
                   Backed by
@@ -207,21 +207,10 @@ const LandingPage = () => {
             <span className="f-PowerGrotesk text-[14.5px] xxl:text-[17.5px] leading-[14.54px] text-[#6A92985E] text-center">
               Backed by
             </span>
-            <div className=" flex items-center justify-center space-x-2 mt-2">
-              <img src="images/start.svg" alt="" className="max-w-[60px]" />
-              <img
-                src="images/yourstory.svg"
-                alt=""
-                className="max-w-[60px]"
-              />
-              <img src="images/aws.svg" alt="" className="max-w-[60px]" />
-              <img src="images/launch.svg" alt="" className="max-w-[60px]" />
-              <img src="images/google.svg" alt="" className="max-w-[60px]" />
-            </div>
+            <ImageSlider />
           </div>
         </div>
       </section>
-      <ImageSlider />
     </>
   );
 };

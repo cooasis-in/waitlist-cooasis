@@ -1,8 +1,13 @@
 import React, { useState, useEffect, useRef } from "react";
+import axios from "axios";
+import Refer from "./Refer";
 
-const EmailVerify = ({ setverifyEmail }) => {
+const EmailVerify = ({ setverifyEmail, email, referrer }) => {
+  const [verificationError, setVerificationError] = useState("");
+  const [isVerified, setIsVerified] = useState(false);
+  const [waitlistInfo, setWaitlistInfo] = useState({});
   const [otp, setOtp] = useState(new Array(4).fill(""));
-  const [time, setTime] = useState(60); // Set timer for 60 seconds
+  const [time, setTime] = useState(60);
 
   const inputRefs = useRef([]);
 
@@ -13,16 +18,9 @@ const EmailVerify = ({ setverifyEmail }) => {
     newOtp[index] = element.value;
     setOtp(newOtp);
 
-    // Focus next input
     if (element.value && index < 3) {
       inputRefs.current[index + 1].focus();
     }
-  };
-
-  const handleResend = () => {
-    setOtp([...otp.map(() => "")]); // Clear the OTP input
-    setTime(60); // Reset the timer
-    // Call the resend OTP API here
   };
 
   useEffect(() => {
@@ -32,30 +30,64 @@ const EmailVerify = ({ setverifyEmail }) => {
     }
   }, [time]);
 
-  const handleSubmit = () => {
-    const otpCode = otp.join("");
-    // Send the OTP code to the backend for verification
-    console.log(otpCode);
+  const handleResend = async () => {
+    try {
+      const response = await axios.post("http://localhost:3001/resend-otp", { email });
+      if (response.status === 200) {
+        setVerificationError("OTP has been resent to your email.");
+        setTime(60);  // Reset the timer
+      } else {
+        setVerificationError("Failed to resend OTP. Please try again.");
+      }
+    } catch (error) {
+      console.error("Error resending OTP:", error);
+      setVerificationError("Failed to resend OTP. Please try again.");
+    }
+  };
+
+  const handleSubmit = async () => {
+    try {
+      const otpCode = otp.join("");
+      const response = await axios.post(
+        "http://localhost:3001/verify-email",
+        { otpCode, email, referrer },
+        { withCredentials: true }
+      );
+
+      if (response.status === 200) {
+        const { waitlistNumber, referralLink } = response.data;
+        setWaitlistInfo({ waitlistNumber, referralLink });
+        setIsVerified(true);
+      }
+    } catch (error) {
+      console.error("Verification Error:", error);
+      if (error.response && error.response.status === 400) {
+        setVerificationError("Invalid OTP. Please try again.");
+      } else {
+        setVerificationError("Server error. Please try again later.");
+      }
+    }
   };
 
   const handleKeyDown = (e, index) => {
     if (e.key === "Backspace" && !otp[index]) {
-      // Move to previous input field
       if (index > 0) {
         inputRefs.current[index - 1].focus();
       }
     }
   };
 
-  // Back To Previous Page
-
   const handlesubmit = () => {
     setverifyEmail(false);
   };
 
+  if (isVerified) {
+    return <Refer waitlistInfo={waitlistInfo} />;
+  }
+
   return (
     <div className="flex flex-col items-center justify-center">
-      <div className="max-w-[600px]">
+      <div className="max-w-[600px] email-container">
         <div className="flex space-x-3 mt-3 px-6">
           {otp.map((data, index) => {
             return (
@@ -74,13 +106,13 @@ const EmailVerify = ({ setverifyEmail }) => {
             );
           })}
         </div>
-        <div className=" flex justify-center">
-        <button
-          className="f-HelveticaNeueRoman cursor-pointer text-[15px] text-[#6A929857] leading-[23.46px] mt-4"
-          onClick={handlesubmit}
-        >
-          Change email
-        </button>
+        <div className="flex justify-center">
+          <button
+            className="f-HelveticaNeueRoman cursor-pointer text-[15px] text-[#6A929857] leading-[23.46px] mt-4"
+            onClick={handlesubmit}
+          >
+            Change email
+          </button>
         </div>
         <button
           className="f-PowerGrotesk max-w-[421px] w-full !cursor-pointer text-[17.5px] text-[#E1FF26] leading-[17.5px] mt-4 px-8 py-6 bg-[#0000006B] rounded-full"
