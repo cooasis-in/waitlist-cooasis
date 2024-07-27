@@ -18,6 +18,11 @@
   )
 }
 
+.email-container {
+  position: relative;
+  z-index: 2;
+}
+
 @media (max-width: 640px) {
 
   .bg-grediant-waitlist {
@@ -93,10 +98,10 @@
 
   .bg-color {
     background-image:
-      radial-gradient(
-      farthest-side at 47% 31%,
-      #7d22ff -100%,
-      #131515 60%
+    radial-gradient(
+      farthest-side at 45% 30%,
+      #7d22ff -420%,
+      #131515 100%
     );
     min-height: 100vh;
     width: 100%;
