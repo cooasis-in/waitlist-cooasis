@@ -34,7 +34,7 @@ const EmailVerify = ({ setverifyEmail, email, referrer, showVerify  }) => {
 
   const handleResend = async () => {
     try {
-      const response = await axios.post("http://localhost:3001/resend-otp", { email });
+      const response = await axios.post("http://3.25.112.171:3001/resend-otp", { email });
       if (response.status === 200) {
         setVerificationError("OTP has been resent to your email.");
         setTime(60);  // Reset the timer
@@ -51,7 +51,7 @@ const EmailVerify = ({ setverifyEmail, email, referrer, showVerify  }) => {
     try {
       const otpCode = otp.join("");
       const response = await axios.post(
-        "http://localhost:3001/verify-email",
+        "http://3.25.112.171:3001/verify-email",
         { otpCode, email, referrer },
         { withCredentials: true }
       );
