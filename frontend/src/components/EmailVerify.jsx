@@ -10,7 +10,8 @@ const EmailVerify = ({ setverifyEmail, email, referrer, showVerify }) => {
   const [showImage, setShowImage] = useState(false);
   const [waitlistInfo, setWaitlistInfo] = useState({});
   const [otp, setOtp] = useState(new Array(4).fill(""));
-  const [time, setTime] = useState(60);
+  const [resendDisabled, setResendDisabled] = useState(true);
+  const [timerSeconds, setTimerSeconds] = useState(60);
 
   const inputRefs = useRef([]);
 
@@ -27,18 +28,29 @@ const EmailVerify = ({ setverifyEmail, email, referrer, showVerify }) => {
   };
 
   useEffect(() => {
-    if (time > 0) {
-      const timer = setTimeout(() => setTime(time - 1), 1000);
-      return () => clearTimeout(timer);
+    if (resendDisabled) {
+      const interval = setInterval(() => {
+        setTimerSeconds((prev) => {
+          if (prev === 1) {
+            clearInterval(interval);
+            setResendDisabled(false);
+          }
+          return prev - 1;
+        });
+      }, 1000);
     }
-  }, [time]);
+  }, [resendDisabled]);
 
   const handleResend = async () => {
     try {
-      const response = await axios.post("http://localhost:3001/resend-otp", { email });
+      setResendDisabled(true); // Disable the button
+      setTimerSeconds(60); // Reset timer duration to 60 seconds
+      const response = await axios.post("http://localhost:3001/resend-otp", {
+        email,
+      });
       if (response.status === 200) {
         setVerificationError("OTP has been resent to your email.");
-        setTime(60);  // Reset the timer
+        setTime(60); // Reset the timer
       } else {
         setVerificationError("Failed to resend OTP. Please try again.");
       }
@@ -172,12 +184,18 @@ const EmailVerify = ({ setverifyEmail, email, referrer, showVerify }) => {
                     })}
                   </div>
                   <div className="flex justify-center">
-                    <button
-                      className="f-HelveticaNeueRoman cursor-pointer text-[15px] text-[#6A929857] leading-[23.46px] mt-4"
-                      onClick={handlesubmit}
-                    >
-                      Change email
-                    </button>
+                    {verificationError ? (
+                      <p className="text-red-500 text-[12px] text-center mt-2">
+                        {verificationError}
+                      </p>
+                    ) : (
+                      <button
+                        className="f-HelveticaNeueRoman cursor-pointer text-[15px] text-[#6A929857] leading-[23.46px] mt-4"
+                        onClick={handlesubmit}
+                      >
+                        Change email
+                      </button>
+                    )}
                   </div>
                   <button
                     id="verify-email-button"
@@ -186,22 +204,31 @@ const EmailVerify = ({ setverifyEmail, email, referrer, showVerify }) => {
                   >
                     Verify email
                   </button>
-                  {verificationError && (
+                  {/* {verificationError && (
                     <p className="text-red-500 text-[12px] text-center mt-2">
                       {verificationError}
                     </p>
-                  )}
+                  )} */}
                   <div className="flex justify-center">
                     <button
-                      className="mt-4 f-HelveticaNeueRoman cursor-pointer text-[15px] text-[#6A929857] leading-[23.46px] text-center"
                       onClick={handleResend}
-                      disabled={time > 0}
+                      disabled={resendDisabled}
+                      className={`f-HelveticaNeueLight text-[#5A5A5A] text-[12px] xxl:text-[18px] leading-[17.59px] font-light mt-2 lg:font-medium ${
+                        resendDisabled ? "cursor-not-allowed opacity-50" : ""
+                      }`}
                     >
-                      Resend Code in{" "}
-                      <span className="text-[#6A9298] text-center">
-                        00:{time < 10 ? `0${time}` : time}
-                      </span>
+                      <span className="text-[#C8C8C8] dark:text-[#FCFCD8]">
+                        {resendDisabled
+                          ? `Resend OTP in ${timerSeconds}s`
+                          : "Didn't get the code?"}
+                      </span>{" "}
+                      {resendDisabled ? null : "Click to resend"}
                     </button>
+                    {/* {resendDisabled && (
+                      <p className="text-gray-500 text-center mt-2">
+                        Resend OTP in {timerSeconds}s
+                      </p>
+                    )} */}
                   </div>
                 </div>
               </div>

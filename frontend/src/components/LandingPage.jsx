@@ -72,7 +72,14 @@ const LandingPage = () => {
   }
 
   if (showVerify) {
-    return <EmailVerify setverifyEmail={setShowVerify} email={email} referrer={referrer} showVerify={true} />;
+    return (
+      <EmailVerify
+        setverifyEmail={setShowVerify}
+        email={email}
+        referrer={referrer}
+        showVerify={true}
+      />
+    );
   }
 
   return (
@@ -128,7 +135,11 @@ const LandingPage = () => {
               </div>
             </div>
             {showVerify ? (
-              <EmailVerify setverifyEmail={setShowVerify} email={email} referrer={referrer} />
+              <EmailVerify
+                setverifyEmail={setShowVerify}
+                email={email}
+                referrer={referrer}
+              />
             ) : (
               <div>
                 <form
