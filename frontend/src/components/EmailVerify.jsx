@@ -47,7 +47,7 @@ const EmailVerify = ({ setverifyEmail, email, referrer, showVerify }) => {
     try {
       setResendDisabled(true); // Disable the button
       setTimerSeconds(60); // Reset timer duration to 60 seconds
-      const response = await axios.post("http://localhost:3001/resend-otp", {
+      const response = await axios.post("http://3.25.112.171:3001/resend-otp", {
         email,
       });
 
