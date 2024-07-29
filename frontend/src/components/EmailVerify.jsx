@@ -50,7 +50,7 @@ const EmailVerify = ({ setverifyEmail, email, referrer, showVerify }) => {
       const response = await axios.post("http://localhost:3001/resend-otp", {
         email,
       });
-      
+
       if (response.status === 200) {
         setVerificationError(""); // Clear any previous errors
         setTimerSeconds(60); // Reset the timer
@@ -63,9 +63,9 @@ const EmailVerify = ({ setverifyEmail, email, referrer, showVerify }) => {
       setVerificationError("Failed to resend OTP. Please try again.");
     }
   };
-  
 
   const handleSubmit = async () => {
+    console.time("Verification");
     try {
       const otpCode = otp.join("");
       const response = await axios.post(
@@ -87,6 +87,7 @@ const EmailVerify = ({ setverifyEmail, email, referrer, showVerify }) => {
         setVerificationError("Server error. Please try again later.");
       }
     }
+    console.timeEnd("Verification");
   };
 
   const handleKeyDown = (e, index) => {
@@ -222,13 +223,18 @@ const EmailVerify = ({ setverifyEmail, email, referrer, showVerify }) => {
                         resendDisabled ? "cursor-not-allowed opacity-50" : ""
                       }`}
                     >
-                      <span className="text-[#C8C8C8] dark:text-[#FCFCD8]">
+                      <span
+                        className={`f-HelveticaNeueRoman cursor-pointer text-[15px] text-center ${
+                          resendDisabled ? "text-[#6A9298]" : "text-[#6A929857]"
+                        } leading-[23.46px]`}
+                      >
                         {resendDisabled
                           ? `Resend Code in ${timerSeconds}s`
                           : "Didn't get the code?"}
                       </span>{" "}
                       {resendDisabled ? null : "Click to resend"}
                     </button>
+
                     {/* {resendDisabled && (
                       <p className="text-gray-500 text-center mt-2">
                         Resend OTP in {timerSeconds}s
