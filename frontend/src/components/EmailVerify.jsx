@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import Refer from "./Refer";
 import ImageSlider from "./ImageSlider";
+import { ClipLoader } from "react-spinners";
 
 const EmailVerify = ({ setverifyEmail, email, referrer, showVerify }) => {
   const [verificationError, setVerificationError] = useState("");
@@ -10,6 +11,7 @@ const EmailVerify = ({ setverifyEmail, email, referrer, showVerify }) => {
   const [otp, setOtp] = useState(new Array(4).fill(""));
   const [resendDisabled, setResendDisabled] = useState(true);
   const [timerSeconds, setTimerSeconds] = useState(60);
+  const [loading, setLoading] = useState(false);
 
   const inputRefs = useRef([]);
 
@@ -37,20 +39,20 @@ const EmailVerify = ({ setverifyEmail, email, referrer, showVerify }) => {
           }
           return prev - 1;
         });
-      }, 1000); // Ensuring the interval is set to 1000 milliseconds (1 second)
+      }, 1000);
     }
 
     return () => clearInterval(interval);
   }, [resendDisabled]);
 
   const handleResend = async () => {
+    setLoading(true); // Show loader
     try {
       setResendDisabled(true); // Disable the button
       setTimerSeconds(60); // Reset timer duration to 60 seconds
-      const response = await axios.post("http://3.25.112.171:3001/resend-otp", {
+      const response = await axios.post("http://localhost:3001/resend-otp", {
         email,
       });
-
       if (response.status === 200) {
         setVerificationError(""); // Clear any previous errors
         setTimerSeconds(60); // Reset the timer
@@ -62,10 +64,11 @@ const EmailVerify = ({ setverifyEmail, email, referrer, showVerify }) => {
       console.error("Error resending OTP:", error);
       setVerificationError("Failed to resend OTP. Please try again.");
     }
+    setLoading(false); // Hide loader
   };
 
   const handleSubmit = async () => {
-    console.time("Verification");
+    setLoading(true); // Show loader
     try {
       const otpCode = otp.join("");
       const response = await axios.post(
@@ -87,7 +90,7 @@ const EmailVerify = ({ setverifyEmail, email, referrer, showVerify }) => {
         setVerificationError("Server error. Please try again later.");
       }
     }
-    console.timeEnd("Verification");
+    setLoading(false); // Hide loader
   };
 
   const handleKeyDown = (e, index) => {
@@ -203,18 +206,25 @@ const EmailVerify = ({ setverifyEmail, email, referrer, showVerify }) => {
                       </button>
                     )}
                   </div>
-                  <button
-                    id="verify-email-button"
-                    className="f-PowerGrotesk max-w-[421px] w-full !cursor-pointer text-[17.5px] text-[#E1FF26] bg-[#0000006B] hover:text-black hover:font-bold transform transition-all duration-300 ease-in-out hover:bg-[#E1FF26] leading-[17.5px] mt-4 px-8 py-6 rounded-full opacity-100"
-                    onClick={handleSubmit}
-                  >
-                    Verify email
-                  </button>
-                  {/* {verificationError && (
-                    <p className="text-red-500 text-[12px] text-center mt-2">
-                      {verificationError}
-                    </p>
-                  )} */}
+                  <div className="flex justify-center items-center">
+                    <button
+                      id="verify-email-button"
+                      className="f-PowerGrotesk h-[55px] w-[290px] !cursor-pointer text-[17.5px] text-[#E1FF26] bg-[#0000006B] hover:text-black hover:font-bold transform transition-all duration-300 ease-in-out hover:bg-[#E1FF26] leading-[17.5px] mt-4 px-8 py-6 rounded-full opacity-100 items-center flex justify-center"
+                      onClick={handleSubmit}
+                      style={{ opacity: "0.5" }}
+                      disabled={loading}
+                    >
+                      {loading ? (
+                        <ClipLoader
+                          color={"#E1FF26"}
+                          loading={loading}
+                          size={20}
+                        />
+                      ) : (
+                        "Verify email"
+                      )}
+                    </button>
+                  </div>
                   <div className="flex justify-center">
                     <button
                       onClick={handleResend}

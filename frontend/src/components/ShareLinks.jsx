@@ -8,8 +8,9 @@ import {
 } from "react-share";
 
 const ShareLinks = ({ setShowShareLink,sharelink }) => {
-  const shareUrl = sharelink; // Replace with your actual URL
-  const title = "Check this out!"; // Customize your message
+  const shareUrl = sharelink; 
+  const title = `Hope you’re doing awesome! 😊 I just signed up for cooasis, and they’re currently accepting early access waitlist. I thought you might want in too!
+Here’s a special referral link for you ${sharelink} Signing up through this link gives you a priority spot on the waitlist and helps me out too. Win-win!`
 
   return (
     <div className="set-large-align w-[100%]">
