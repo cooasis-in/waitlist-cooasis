@@ -1,13 +1,11 @@
 import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import Refer from "./Refer";
-import cursorImage from "../../public/images/cursorImg.png";
 import ImageSlider from "./ImageSlider";
 
 const EmailVerify = ({ setverifyEmail, email, referrer, showVerify }) => {
   const [verificationError, setVerificationError] = useState("");
   const [isVerified, setIsVerified] = useState(false);
-  const [showImage, setShowImage] = useState(false);
   const [waitlistInfo, setWaitlistInfo] = useState({});
   const [otp, setOtp] = useState(new Array(4).fill(""));
   const [resendDisabled, setResendDisabled] = useState(true);
@@ -28,17 +26,21 @@ const EmailVerify = ({ setverifyEmail, email, referrer, showVerify }) => {
   };
 
   useEffect(() => {
+    let interval;
     if (resendDisabled) {
-      const interval = setInterval(() => {
+      interval = setInterval(() => {
         setTimerSeconds((prev) => {
           if (prev === 1) {
             clearInterval(interval);
             setResendDisabled(false);
+            return 0;
           }
           return prev - 1;
         });
-      }, 1000);
+      }, 1000); // Ensuring the interval is set to 1000 milliseconds (1 second)
     }
+
+    return () => clearInterval(interval);
   }, [resendDisabled]);
 
   const handleResend = async () => {
@@ -48,9 +50,11 @@ const EmailVerify = ({ setverifyEmail, email, referrer, showVerify }) => {
       const response = await axios.post("http://localhost:3001/resend-otp", {
         email,
       });
+      
       if (response.status === 200) {
+        setVerificationError(""); // Clear any previous errors
+        setTimerSeconds(60); // Reset the timer
         setVerificationError("OTP has been resent to your email.");
-        setTime(60); // Reset the timer
       } else {
         setVerificationError("Failed to resend OTP. Please try again.");
       }
@@ -59,6 +63,7 @@ const EmailVerify = ({ setverifyEmail, email, referrer, showVerify }) => {
       setVerificationError("Failed to resend OTP. Please try again.");
     }
   };
+  
 
   const handleSubmit = async () => {
     try {
@@ -153,13 +158,13 @@ const EmailVerify = ({ setverifyEmail, email, referrer, showVerify }) => {
                 <div className="absolute hidden lg:block bottom-[40px] left-[-25px] fade-in">
                   <img src="images/star.svg" alt="Star" />
                 </div>
-                {showImage && (
+                <div>
                   <img
-                    src={cursorImage}
+                    src="/images/cursorImg.png"
                     alt="Cursor"
                     className="absolute right-[-10px] mt-3 w-14 hidden lg:block fade-in"
                   />
-                )}
+                </div>
               </div>
             </div>
             {showVerify ? (
@@ -185,7 +190,7 @@ const EmailVerify = ({ setverifyEmail, email, referrer, showVerify }) => {
                   </div>
                   <div className="flex justify-center">
                     {verificationError ? (
-                      <p className="text-red-500 text-[12px] text-center mt-2">
+                      <p className="text-red-500 text-[12px] text-center mt-4 f-HelveticaNeueRoman cursor-pointer  leading-[23.46px]">
                         {verificationError}
                       </p>
                     ) : (
@@ -213,13 +218,13 @@ const EmailVerify = ({ setverifyEmail, email, referrer, showVerify }) => {
                     <button
                       onClick={handleResend}
                       disabled={resendDisabled}
-                      className={`f-HelveticaNeueLight text-[#5A5A5A] text-[12px] xxl:text-[18px] leading-[17.59px] font-light mt-2 lg:font-medium ${
+                      className={`f-HelveticaNeueLight text-[#5A5A5A] text-[12px] xxl:text-[18px] leading-[17.59px] font-light mt-4 lg:font-medium ${
                         resendDisabled ? "cursor-not-allowed opacity-50" : ""
                       }`}
                     >
                       <span className="text-[#C8C8C8] dark:text-[#FCFCD8]">
                         {resendDisabled
-                          ? `Resend OTP in ${timerSeconds}s`
+                          ? `Resend Code in ${timerSeconds}s`
                           : "Didn't get the code?"}
                       </span>{" "}
                       {resendDisabled ? null : "Click to resend"}

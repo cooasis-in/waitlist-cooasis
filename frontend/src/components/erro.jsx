@@ -1,84 +1,103 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
-import "./pages.css";
 import Refer from "./Refer";
+import cursorImage from "../../public/images/cursorImg.png";
 import ImageSlider from "./ImageSlider";
-import EmailVerify from "./EmailVerify";
-import { Button } from "../ui/moving-border";
 
-const LandingPage = () => {
-  const [showRefer, setShowRefer] = useState(false);
-  const [waitlistInfo, setWaitlistInfo] = useState(null);
-  const [errorMessage, setErrorMessage] = useState("");
-  const [referrer, setReferrer] = useState(null);
-  const [showVerify, setShowVerify] = useState(false);
-  const [email, setEmail] = useState("");
+const EmailVerify = ({ setverifyEmail, email, referrer, showVerify }) => {
+  const [verificationError, setVerificationError] = useState("");
+  const [isVerified, setIsVerified] = useState(false);
+  const [showImage, setShowImage] = useState(false);
+  const [waitlistInfo, setWaitlistInfo] = useState({});
+  const [otp, setOtp] = useState(new Array(4).fill(""));
+  const [time, setTime] = useState(60);
 
-  useEffect(() => {
-    const queryParams = new URLSearchParams(window.location.search);
-    setReferrer(queryParams.get("refer"));
-  }, []);
+  const inputRefs = useRef([]);
 
-  const handleShowVerifyEmail = async (e) => {
-    e.preventDefault();
-    const email = e.target.email.value;
-    console.log(email);
-    setEmail(email);
-    try {
-      const response = await axios.post("http://localhost:3001/users", {
-        email,
-        referrer,
-      });
-      const responseData = response.data;
-      setWaitlistInfo(responseData);
-      console.log(responseData);
-      console.log(responseData.isVerified);
+  const handleChange = (element, index) => {
+    if (isNaN(element.value)) return;
 
-      if (responseData.isVerified) {
-        setShowRefer(true);
-      } else {
-        setShowVerify(true);
-      }
-      setErrorMessage("");
-    } catch (error) {
-      if (error.response && error.response.status === 400) {
-        setErrorMessage("This email is already on the waitlist.");
-      } else {
-        setErrorMessage("An error occurred. Please try again.");
-      }
-      console.error("Error creating user", error);
+    let newOtp = [...otp];
+    newOtp[index] = element.value;
+    setOtp(newOtp);
+
+    if (element.value && index < 3) {
+      inputRefs.current[index + 1].focus();
     }
   };
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setShowImage(true);
-    }, 1000);
-    return () => clearTimeout(timer);
-  }, []);
+    if (time > 0) {
+      const timer = setTimeout(() => setTime(time - 1), 1000);
+      return () => clearTimeout(timer);
+    }
+  }, [time]);
+
+  const handleResend = async () => {
+    try {
+      const response = await axios.post("http://localhost:3001/resend-otp", {
+        email,
+      });
+      if (response.status === 200) {
+        setVerificationError("OTP has been resent to your email.");
+        setTime(60); // Reset the timer
+      } else {
+        setVerificationError("Failed to resend OTP. Please try again.");
+      }
+    } catch (error) {
+      console.error("Error resending OTP:", error);
+      setVerificationError("Failed to resend OTP. Please try again.");
+    }
+  };
+
+  const handleSubmit = async () => {
+    try {
+      const otpCode = otp.join("");
+      const response = await axios.post(
+        "http://localhost:3001/verify-email",
+        { otpCode, email, referrer },
+        { withCredentials: true }
+      );
+
+      if (response.status === 200) {
+        const { waitlistNumber, referralLink } = response.data;
+        setWaitlistInfo({ waitlistNumber, referralLink });
+        setIsVerified(true);
+      }
+    } catch (error) {
+      console.error("Verification Error:", error);
+      if (error.response && error.response.status === 400) {
+        setVerificationError("Invalid OTP. Please try again.");
+      } else {
+        setVerificationError("Server error. Please try again later.");
+      }
+    }
+  };
+
+  const handleKeyDown = (e, index) => {
+    if (e.key === "Backspace" && !otp[index]) {
+      if (index > 0) {
+        inputRefs.current[index - 1].focus();
+      }
+    }
+  };
+
+  const handlesubmit = () => {
+    setverifyEmail(false);
+  };
 
   useEffect(() => {
-    const button = document.getElementById("get-early-access-button");
-    if (email && email.endsWith("@gmail.com")) {
-      button.style.opacity = "1";
+    const verifyButton = document.getElementById("verify-email-button");
+    const isOtpComplete = otp.every((digit) => digit !== "");
+    if (isOtpComplete) {
+      verifyButton.style.opacity = "1";
     } else {
-      button.style.opacity = "0.5";
+      verifyButton.style.opacity = "0.5";
     }
-  }, [email]);
+  }, [otp]);
 
-  if (showRefer) {
+  if (isVerified) {
     return <Refer waitlistInfo={waitlistInfo} />;
-  }
-
-  if (showVerify) {
-    return (
-      <EmailVerify
-        setverifyEmail={setShowVerify}
-        email={email}
-        referrer={referrer}
-        showVerify={true}
-      />
-    );
   }
 
   return (
@@ -94,7 +113,7 @@ const LandingPage = () => {
       </div>
       <section className="bg-color !min-h-screen adjest-res">
         <div className="container mx-auto">
-          <div className="pt-[75px] sm:pt-[100px] lg:pt-[130px] xxl:pt-[100px]">
+          <div className="pt-[75px] sm:pt-[100px]">
             <h1 className="upper-index relative text-[12px] sm:text-[18px] leading-[12px] sm:leading-[25px] text-center bg-waitlist-gradient bg-clip-text text-transparent f-PowerGrotesk sm:mb-2">
               Join waitlist for
             </h1>
@@ -124,21 +143,76 @@ const LandingPage = () => {
                 <div className="absolute hidden lg:block bottom-[40px] left-[-25px] fade-in">
                   <img src="images/star.svg" alt="Star" />
                 </div>
-                  <div>
+                {showImage && (
                   <img
-                    src="/images/cursorImg.png"
+                    src={cursorImage}
                     alt="Cursor"
                     className="absolute right-[-10px] mt-3 w-14 hidden lg:block fade-in"
                   />
-                </div>
+                )}
               </div>
             </div>
             {showVerify ? (
-              <EmailVerify
-                setverifyEmail={setShowVerify}
-                email={email}
-                referrer={referrer}
-              />
+              <div className="flex flex-col items-center justify-center">
+                <div className="max-w-[600px] email-container">
+                  <div className="flex space-x-3 mt-3 px-6">
+                    {otp.map((data, index) => {
+                      return (
+                        <input
+                          className="f-PowerGrotesk max-w-[65px] h-[65px] text-[#FCFCD8] text-center text-lg border-[1px] border-[#FFFFFF17] bg-transparent rounded-full focus:outline-none focus:border-[#FFFFFF17]"
+                          type="text"
+                          name="otp"
+                          maxLength="1"
+                          key={index}
+                          value={data}
+                          onChange={(e) => handleChange(e.target, index)}
+                          onFocus={(e) => e.target.select()}
+                          ref={(el) => (inputRefs.current[index] = el)}
+                          onKeyDown={(e) => handleKeyDown(e, index)}
+                        />
+                      );
+                    })}
+                  </div>
+                  <div className="flex justify-center">
+                    {verificationError ? (
+                      <p className="text-red-500 text-[12px] text-center mt-2">
+                        {verificationError}
+                      </p>
+                    ) : (
+                      <button
+                        className="f-HelveticaNeueRoman cursor-pointer text-[15px] text-[#6A929857] leading-[23.46px] mt-4"
+                        onClick={handlesubmit}
+                      >
+                        Change email
+                      </button>
+                    )}
+                  </div>
+                  <button
+                    id="verify-email-button"
+                    className="f-PowerGrotesk max-w-[421px] w-full !cursor-pointer text-[17.5px] text-[#E1FF26] bg-[#0000006B] hover:text-black hover:font-bold transform transition-all duration-300 ease-in-out hover:bg-[#E1FF26] leading-[17.5px] mt-4 px-8 py-6 rounded-full opacity-100"
+                    onClick={handleSubmit}
+                  >
+                    Verify email
+                  </button>
+                  {/* {verificationError && (
+                    <p className="text-red-500 text-[12px] text-center mt-2">
+                      {verificationError}
+                    </p>
+                  )} */}
+                  <div className="flex justify-center">
+                    <button
+                      className="mt-4 f-HelveticaNeueRoman cursor-pointer text-[15px] text-[#6A929857] leading-[23.46px] text-center"
+                      onClick={handleResend}
+                      disabled={time > 0}
+                    >
+                      Resend Code in{" "}
+                      <span className="text-[#6A9298] text-center">
+                        00:{time < 10 ? `0${time}` : time}
+                      </span>
+                    </button>
+                  </div>
+                </div>
+              </div>
             ) : (
               <div>
                 <form
@@ -151,7 +225,6 @@ const LandingPage = () => {
                       name="email"
                       placeholder="Eg. Jeff@cooasis.in"
                       className="f-HelveticaNeueUltraLight bg-transparent text-[14px] xxl:text-[17px] text-[white] leading-[14.13px] w-[290px] h-[55px] px-6 py-4 mt-0 lg:mt-3 border-[1px] border-[#FFFFFF17] rounded-full custom-inset custom-gradient"
-                      onChange={(e) => setEmail(e.target.value)}
                     />
                     <div className="absolute right-[18px] bottom-[20px] cursor-pointer">
                       <img src="/images/maillandingpage.svg" alt="Email Icon" />
@@ -163,9 +236,8 @@ const LandingPage = () => {
                     </p>
                   )}
                   <Button
-                    id="get-early-access-button"
                     borderRadius="2rem"
-                    className="bg-[#131515] f-PowerGrotesk text-[#E1FF26] rounded-full hover:shadow-lg hover:bg-[#E1FF26] hover:text-black hover:font-bold transform transition-all duration-300 ease-in-out opacity-100"
+                    className="bg-[#131515] f-PowerGrotesk text-[#E1FF26] rounded-full hover:shadow-lg hover:bg-[#E1FF26] hover:text-black hover:font-bold transform transition-all duration-300 ease-in-out"
                   >
                     Get Early Access
                   </Button>
@@ -246,4 +318,4 @@ const LandingPage = () => {
   );
 };
 
-export default LandingPage;
+export default EmailVerify;
