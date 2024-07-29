@@ -50,21 +50,6 @@ const LandingPage = () => {
     }
   };
 
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setShowImage(true);
-    }, 1000);
-    return () => clearTimeout(timer);
-  }, []);
-
-  useEffect(() => {
-    const button = document.getElementById("get-early-access-button");
-    if (email && email.endsWith("@gmail.com")) {
-      button.style.opacity = "1";
-    } else {
-      button.style.opacity = "0.5";
-    }
-  }, [email]);
 
   if (showRefer) {
     return <Refer waitlistInfo={waitlistInfo} />;
