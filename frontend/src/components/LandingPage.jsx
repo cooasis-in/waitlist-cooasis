@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./pages.css";
 import Refer from "./Refer";
-import cursorImage from "../../public/images/cursorImg.png";
 import ImageSlider from "./ImageSlider";
 import EmailVerify from "./EmailVerify";
 import { Button } from "../ui/moving-border";
@@ -11,7 +10,6 @@ const LandingPage = () => {
   const [showRefer, setShowRefer] = useState(false);
   const [waitlistInfo, setWaitlistInfo] = useState(null);
   const [errorMessage, setErrorMessage] = useState("");
-  const [showImage, setShowImage] = useState(false);
   const [referrer, setReferrer] = useState(null);
   const [showVerify, setShowVerify] = useState(false);
   const [email, setEmail] = useState("");
@@ -59,12 +57,28 @@ const LandingPage = () => {
     return () => clearTimeout(timer);
   }, []);
 
+  useEffect(() => {
+    const button = document.getElementById("get-early-access-button");
+    if (email && email.endsWith("@gmail.com")) {
+      button.style.opacity = "1";
+    } else {
+      button.style.opacity = "0.5";
+    }
+  }, [email]);
+
   if (showRefer) {
     return <Refer waitlistInfo={waitlistInfo} />;
   }
 
   if (showVerify) {
-    return <EmailVerify setverifyEmail={setShowVerify} email={email} referrer={referrer} showVerify={true} />;
+    return (
+      <EmailVerify
+        setverifyEmail={setShowVerify}
+        email={email}
+        referrer={referrer}
+        showVerify={true}
+      />
+    );
   }
 
   return (
@@ -80,42 +94,51 @@ const LandingPage = () => {
       </div>
       <section className="bg-color !min-h-screen adjest-res">
         <div className="container mx-auto">
-          <div className="pt-[75px] sm:pt-[100px]">
-            <h1 className="text-[12px] leading-[12px] text-center bg-waitlist-gradient bg-clip-text text-transparent f-PowerGrotesk">
+          <div className="pt-[75px] sm:pt-[100px] lg:pt-[130px] xxl:pt-[100px]">
+            <h1 className="upper-index relative text-[12px] sm:text-[18px] leading-[12px] sm:leading-[25px] text-center bg-waitlist-gradient bg-clip-text text-transparent f-PowerGrotesk sm:mb-2">
               Join waitlist for
             </h1>
-            <div className="larg-pb relative text-center mt-4 sm:mt-0 mb-4">
-              <h2 className="text-[40px] sm:text-[70px] leading-[40px] sm:leading-[70px] xxl:text-7xl f-PowerGrotesk text-[#FCFCD8]">
-                <span className="bg-nexgen-gradient bg-clip-text fade-in">
-                  Nex-gen
-                </span>
-              </h2>
-              <h2 className="text-[40px] sm:text-[70px] leading-[40px] sm:leading-[70px] xxl:text-7xl f-PowerGrotesk text-[#FCFCD8] typing-text fade-in">
-                design ecosystem
-              </h2>
-
-              <div className="absolute hidden lg:block bottom-16 left-[340px] fade-in">
-                <img src="images/star.svg" alt="Star" />
-              </div>
-
-              {showImage && (
-                <img
-                  src={cursorImage}
-                  alt="Cursor"
-                  className="absolute w-14 ml-[890px] mt-4 hidden lg:block fade-in"
-                />
-              )}
-
-              <div className="absolute bottom-[40px] left-20 md:left-[200px] lg:bottom-[120px] lg:left-[400px] fade-in hidden lg:block">
-                <img
-                  src="images/james.svg"
-                  alt="James"
-                  className="w-10 lg:w-20"
-                />
+            <div className="larg-pb text-center mt-4 sm:mt-0 mb-4">
+              <div className="relative inline-block">
+                <h2 className="upper-index relative text-[40px] sm:text-[70px] leading-[40px] sm:leading-[70px] xxl:text-7xl f-PowerGrotesk text-[#FCFCD8]">
+                  <span className="bg-nexgen-gradient bg-clip-text fade-in">
+                    Nex-gen
+                  </span>
+                  <br />
+                  design ecosystem
+                </h2>
+                <div className="absolute bottom-[-12px] left-[82px] fade-in hidden lg:block">
+                  <img
+                    src="images/borderNexgen.svg"
+                    alt="border-image"
+                    className="max-w-[78%]"
+                  />
+                </div>
+                <div className="absolute bottom-[90px] left-[45px] fade-in hidden lg:block">
+                  <img
+                    src="images/james.svg"
+                    alt="James"
+                    className="max-w-[4.5rem]"
+                  />
+                </div>
+                <div className="absolute hidden lg:block bottom-[40px] left-[-25px] fade-in">
+                  <img src="images/star.svg" alt="Star" />
+                </div>
+                  <div>
+                  <img
+                    src="/images/cursorImg.png"
+                    alt="Cursor"
+                    className="absolute right-[-10px] mt-3 w-14 hidden lg:block fade-in"
+                  />
+                </div>
               </div>
             </div>
-              {showVerify ? (
-              <EmailVerify setverifyEmail={setShowVerify} email={email} referrer={referrer} />
+            {showVerify ? (
+              <EmailVerify
+                setverifyEmail={setShowVerify}
+                email={email}
+                referrer={referrer}
+              />
             ) : (
               <div>
                 <form
@@ -128,6 +151,7 @@ const LandingPage = () => {
                       name="email"
                       placeholder="Eg. Jeff@cooasis.in"
                       className="f-HelveticaNeueUltraLight bg-transparent text-[14px] xxl:text-[17px] text-[white] leading-[14.13px] w-[290px] h-[55px] px-6 py-4 mt-0 lg:mt-3 border-[1px] border-[#FFFFFF17] rounded-full custom-inset custom-gradient"
+                      onChange={(e) => setEmail(e.target.value)}
                     />
                     <div className="absolute right-[18px] bottom-[20px] cursor-pointer">
                       <img src="/images/maillandingpage.svg" alt="Email Icon" />
@@ -139,8 +163,9 @@ const LandingPage = () => {
                     </p>
                   )}
                   <Button
+                    id="get-early-access-button"
                     borderRadius="2rem"
-                    className="bg-[#131515] f-PowerGrotesk text-[#E1FF26] rounded-full hover:shadow-lg hover:bg-[#E1FF26] hover:text-black hover:font-bold transform transition-all duration-300 ease-in-out"
+                    className="bg-[#131515] f-PowerGrotesk text-[#E1FF26] rounded-full hover:shadow-lg hover:bg-[#E1FF26] hover:text-black hover:font-bold transform transition-all duration-300 ease-in-out opacity-100"
                   >
                     Get Early Access
                   </Button>

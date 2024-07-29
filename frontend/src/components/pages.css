@@ -1,21 +1,22 @@
 .bg-color {
-  background-image: radial-gradient(
-    farthest-side at 47% 28%,
-    #7d22ff -100%,
-    #131515 36%
-  );
-  min-height: calc(100vh - 80px) !important;
+  background-image:
+    radial-gradient(farthest-side at 47% 40%,
+    #7d22ff -100%, #131515 45%);
   width: 100%;
+}
+
+/* landing page nexgen heading css */
+
+.upper-index {
+  z-index: 2;
 }
 
 /* Waitlist Page Bg-color */
 
 .bg-grediant-waitlist {
-  background-image: radial-gradient(
-    farthest-side at 25% 56%,
-    #7d22ff -150%,
-    #00000063 100%
-  )
+  background-image: radial-gradient(farthest-side at 25% 56%,
+      #7d22ff -150%,
+      #00000063 100%)
 }
 
 .email-container {
@@ -26,16 +27,14 @@
 @media (max-width: 640px) {
 
   .bg-grediant-waitlist {
-   background: #00000063; 
-   background-image: none;
+    background: #00000063;
+    background-image: none;
   }
 
   .waitlist-res-bg {
-    background-image: radial-gradient(
-      farthest-side at 5% 28%,
-      #7d22ff -200%,
-      #131515 60%
-    ) !important;
+    background-image: radial-gradient(farthest-side at 5% 28%,
+        #7d22ff -200%,
+        #131515 60%) !important;
     width: 100% !important;
   }
 
@@ -68,11 +67,9 @@
 /* Media Query */
 @media (max-width: 640px) {
   .bg-color-res {
-    background-image: radial-gradient(
-      farthest-side at 5% 42%,
-      #7d22ff -200%,
-      #131515 70%
-    ) !important;
+    background-image: radial-gradient(farthest-side at 5% 42%,
+        #7d22ff -200%,
+        #131515 70%) !important;
     width: 100% !important;
   }
 }
@@ -89,7 +86,7 @@
 @media (max-width: 768px) {
 
   .set-alignment {
-     padding: 20px !important;
+    padding: 20px !important;
   }
 
 }
@@ -98,11 +95,9 @@
 
   .bg-color {
     background-image:
-    radial-gradient(
-      farthest-side at 45% 30%,
-      #7d22ff -420%,
-      #131515 100%
-    );
+      radial-gradient(farthest-side at 45% 30%,
+        #7d22ff -420%,
+        #131515 100%);
     min-height: 100vh;
     width: 100%;
   }
@@ -150,32 +145,24 @@
 .bg-colorRefer {
   /* min-height: calc(100vh - 80px) !important;
   width: 100%; */
-  background-image: radial-gradient(
-    farthest-side at 47% 28%,
-    #7d22ff -100%,
-    #131515 36%
-  );
+  background-image: radial-gradient(farthest-side at 47% 28%,
+      #7d22ff -100%,
+      #131515 36%);
   min-height: calc(100vh - 80px) !important;
   width: 100%;
 }
 
 .gradient-box {
   background: linear-gradient(rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.05)),
-    radial-gradient(
-      circle at 10% 10%,
+    radial-gradient(circle at 10% 10%,
       rgba(0, 100, 120, 0.4) 0%,
-      transparent 70%
-    ),
-    radial-gradient(
-      circle at 70% 70%,
+      transparent 70%),
+    radial-gradient(circle at 70% 70%,
       rgba(190, 190, 217, 0.15) 0%,
-      transparent 70%
-    ),
-    radial-gradient(
-      circle at center,
+      transparent 70%),
+    radial-gradient(circle at center,
       rgba(0, 190, 135, 0.2) 0%,
-      transparent 70%
-    );
+      transparent 70%);
   background-blend-mode: screen;
   border-radius: 30px;
 }
@@ -186,6 +173,7 @@
   0% {
     opacity: 0;
   }
+
   100% {
     opacity: 1;
   }
@@ -211,16 +199,19 @@
   from {
     width: 0;
   }
+
   to {
     width: 44%;
   }
 }
 
 @keyframes blink {
+
   0%,
   100% {
     border-color: transparent;
   }
+
   50% {
     border-color: #fcfcd8;
   }
@@ -322,50 +313,50 @@
 
 @media (max-width: 768px) {
 
-   .set-image img {
+  .set-image img {
     margin-top: -140px !important;
-   }
-  
+  }
+
 }
 
 @media (max-width: 640px) {
 
   .res-margin-fix {
-   margin-top: -30px !important;
+    margin-top: -30px !important;
   }
- 
+
 }
 
 @media (max-width: 615px) {
 
   .set-image img {
-   margin-top: -140px !important;
+    margin-top: -140px !important;
   }
- 
+
 }
 
 @media (max-width: 530px) {
 
   .set-image img {
-   margin-top: -120px !important;
+    margin-top: -120px !important;
   }
- 
+
 }
 
 @media (max-width: 470px) {
 
   .set-image img {
-   margin-top: -100px !important;
+    margin-top: -100px !important;
   }
- 
+
 }
 
 @media (max-width: 410px) {
 
   .set-image img {
-   margin-top: -80px !important;
+    margin-top: -80px !important;
   }
- 
+
 }
 
 .adjest-res {
