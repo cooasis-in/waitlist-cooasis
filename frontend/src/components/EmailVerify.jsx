@@ -50,7 +50,6 @@ const EmailVerify = ({ setverifyEmail, email, referrer, showVerify }) => {
       const response = await axios.post("http://3.25.112.171:3001/resend-otp", {
         email,
       });
-
       if (response.status === 200) {
         setVerificationError(""); // Clear any previous errors
         setTimerSeconds(60); // Reset the timer
@@ -69,7 +68,7 @@ const EmailVerify = ({ setverifyEmail, email, referrer, showVerify }) => {
     try {
       const otpCode = otp.join("");
       const response = await axios.post(
-        "http://localhost:3001/verify-email",
+        "http://3.25.112.171:3001/verify-email",
         { otpCode, email, referrer },
         { withCredentials: true }
       );
