@@ -137,7 +137,7 @@ const EmailVerify = ({ setverifyEmail, email, referrer, showVerify }) => {
               Join waitlist for
             </h1>
             <div className="larg-pb text-center mt-4 sm:mt-0 mb-4">
-              <div className="relative inline-block">
+            <div className="relative inline-block">
                 <h2 className="upper-index relative text-[40px] sm:text-[70px] leading-[40px] sm:leading-[70px] xxl:text-7xl f-PowerGrotesk text-[#FCFCD8]">
                   <span className="bg-nexgen-gradient bg-clip-text fade-in">
                     Nex-gen
@@ -145,29 +145,40 @@ const EmailVerify = ({ setverifyEmail, email, referrer, showVerify }) => {
                   <br />
                   design ecosystem
                 </h2>
-                <div className="absolute bottom-[-12px] left-[82px] fade-in hidden lg:block">
+                <div className="absolute bottom-[-12px] left-[82px] fade-in hidden sm:block">
                   <img
                     src="images/borderNexgen.svg"
                     alt="border-image"
                     className="max-w-[78%]"
                   />
                 </div>
-                <div className="absolute bottom-[90px] left-[45px] fade-in hidden lg:block">
+                <div className="absolute bottom-[90px] left-[45px] fade-in hidden sm:block">
                   <img
                     src="images/james.svg"
                     alt="James"
                     className="max-w-[4.5rem]"
                   />
                 </div>
-                <div className="absolute hidden lg:block bottom-[40px] left-[-25px] fade-in">
+                <div className="absolute hidden sm:block bottom-[40px] left-[-25px] fade-in">
                   <img src="images/star.svg" alt="Star" />
                 </div>
                 <div>
                   <img
                     src="/images/cursorImg.png"
                     alt="Cursor"
-                    className="absolute right-[-10px] mt-3 w-14 hidden lg:block fade-in"
+                    className="absolute right-[-10px] mt-3 w-14 hidden sm:block fade-in"
                   />
+                </div>
+                {/* mobile screen img align */}
+                <div className="absolute bottom-[-7px] left-[47px] fade-in block sm:hidden">
+                  <img
+                    src="images/borderNexgen.svg"
+                    alt="border-image"
+                    className="max-w-[78%]"
+                  />
+                </div>
+                <div className="absolute bottom-[20px] left-[-16px] fade-in block sm:hidden">
+                  <img src="images/star.svg" alt="Star" className="max-w-[60%]" />
                 </div>
               </div>
             </div>
@@ -209,7 +220,7 @@ const EmailVerify = ({ setverifyEmail, email, referrer, showVerify }) => {
                   <div className="flex justify-center items-center">
                     <button
                       id="verify-email-button"
-                      className="f-PowerGrotesk h-[55px] w-[290px] !cursor-pointer text-[17.5px] text-[#E1FF26] bg-[#3A3A3A2B]  hover:text-black hover:font-bold transform transition-all duration-300 ease-in-out hover:bg-[#E1FF26] leading-[17.5px] mt-4 px-8 py-6 rounded-full opacity-100 items-center flex justify-center"
+                      className="f-PowerGrotesk h-[55px] w-[290px] !cursor-pointer text-[17.5px] text-[#E1FF26] bg-[#0000006B] hover:text-black hover:font-bold transform transition-all duration-300 ease-in-out hover:bg-[#E1FF26] leading-[17.5px] mt-4 px-8 py-6 rounded-full opacity-100 items-center flex justify-center"
                       onClick={handleSubmit}
                       style={{ opacity: "0.5" }}
                       disabled={loading}

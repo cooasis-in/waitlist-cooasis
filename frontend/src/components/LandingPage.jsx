@@ -92,29 +92,40 @@ const LandingPage = () => {
                   <br />
                   design ecosystem
                 </h2>
-                <div className="absolute bottom-[-12px] left-[82px] fade-in hidden lg:block">
+                <div className="absolute bottom-[-12px] left-[82px] fade-in hidden sm:block">
                   <img
                     src="images/borderNexgen.svg"
                     alt="border-image"
                     className="max-w-[78%]"
                   />
                 </div>
-                <div className="absolute bottom-[90px] left-[45px] fade-in hidden lg:block">
+                <div className="absolute bottom-[90px] left-[45px] fade-in hidden sm:block">
                   <img
                     src="images/james.svg"
                     alt="James"
                     className="max-w-[4.5rem]"
                   />
                 </div>
-                <div className="absolute hidden lg:block bottom-[40px] left-[-25px] fade-in">
+                <div className="absolute hidden sm:block bottom-[40px] left-[-25px] fade-in">
                   <img src="images/star.svg" alt="Star" />
                 </div>
-                  <div>
+                <div>
                   <img
                     src="/images/cursorImg.png"
                     alt="Cursor"
-                    className="absolute right-[-10px] mt-3 w-14 hidden lg:block fade-in"
+                    className="absolute right-[-10px] mt-3 w-14 hidden sm:block fade-in"
                   />
+                </div>
+                {/* mobile screen img align */}
+                <div className="absolute bottom-[-7px] left-[47px] fade-in block sm:hidden">
+                  <img
+                    src="images/borderNexgen.svg"
+                    alt="border-image"
+                    className="max-w-[78%]"
+                  />
+                </div>
+                <div className="absolute bottom-[20px] left-[-16px] fade-in block sm:hidden">
+                  <img src="images/star.svg" alt="Star" className="max-w-[60%]" />
                 </div>
               </div>
             </div>
@@ -150,7 +161,7 @@ const LandingPage = () => {
                   <Button
                     id="get-early-access-button"
                     borderRadius="2rem"
-                    className="bg-[#3A3A3A2B] f-PowerGrotesk text-[#E1FF26] rounded-full hover:shadow-lg hover:bg-[#E1FF26] hover:text-black hover:font-bold transform transition-all duration-300 ease-in-out border-0"
+                    className="bg-[#131515] f-PowerGrotesk text-[#E1FF26] rounded-full hover:shadow-lg hover:bg-[#E1FF26] hover:text-black hover:font-bold transform transition-all duration-300 ease-in-out border-0"
                   >
                     Get Early Access
                   </Button>
@@ -198,22 +209,28 @@ const LandingPage = () => {
                 </span>
 
                 <div className="res-align flex  items-center justify-center space-x-4 sm:space-x-7 max-w-[642px] !ml-0 !pb-4 sm:pt-3">
-                  <img src="images/start.svg" alt="" className="max-w-[75px]" />
                   <img
-                    src="images/yourstory.svg"
+                    src="images/Artboard-1.svg"
                     alt=""
-                    className="max-w-[75px]"
-                  />
-                  <img src="images/aws.svg" alt="" className="max-w-[75px]" />
+                    className="max-w-[110px]" />
                   <img
-                    src="images/launch.svg"
+                    src="images/Artboard-2.svg"
                     alt=""
-                    className="max-w-[75px]"
+                    className="max-w-[110px]"
                   />
                   <img
-                    src="images/google.svg"
+                    src="images/Artboard-3.svg"
                     alt=""
-                    className="max-w-[75px]"
+                    className="max-w-[110px]" />
+                  <img
+                    src="images/Artboard-4.svg"
+                    alt=""
+                    className="max-w-[110px]"
+                  />
+                  <img
+                    src="images/Artboard-5.svg"
+                    alt=""
+                    className="max-w-[110px]"
                   />
                 </div>
               </div>

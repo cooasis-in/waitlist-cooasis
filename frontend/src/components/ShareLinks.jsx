@@ -14,9 +14,9 @@ Here’s a special referral link for you ${sharelink} Signing up through this li
 
   return (
     <div className="set-large-align w-[100%]">
-      <div className="card gradient-box mt-6 sm:mt-2 border-[1px] border-[#FFFFFF21] h-[437px] sm:h-auto sm:mx-auto max-w-[100%] sm:max-w-[340px] md:max-w-[400px] lg:max-w-[340px] rounded-[40px] p-4 text-center shadow-lg relative z-10">
+      <div className="card gradient-box mt-6 sm:mt-2 border-[1px] border-[#FFFFFF21] h-[400px] sm:h-auto sm:mx-auto max-w-[100%] sm:max-w-[340px] md:max-w-[400px] lg:max-w-[340px] rounded-[45px] sm:rounded-[40px] p-4 text-center shadow-lg relative z-10">
         {/* 200 People Joined */}
-        <div className="mt-2 mb-4">
+        <div className="mt-[1.5rem] sm:mt-2 mb-4">
           <div className="flex justify-center items-center">
             <img
               src="/images/avtar-1.svg"
@@ -39,7 +39,7 @@ Here’s a special referral link for you ${sharelink} Signing up through this li
           </span>
         </div>
 
-        <div className="mt-6">
+        <div className="mt-12">
           {/* Close Button button */}
           <button
             type="button"

@@ -86,7 +86,7 @@ const Refer = ({ waitlistInfo }) => {
         </div>
         {isBoxVisible && (
           <div className="absolute top-[70px] sm:top-[100px] right-[20px] sm:right-[50px]">
-            <div className="change-bg-samll bg-[#0000006B] rounded-[20px] border-[0.5px] border-[#99999982] h-[300px] w-[267px] flex items-center justify-center">
+            <div className="change-bg-samll bg-[#1515158C] rounded-[20px] border-[0.5px] border-[#99999982] h-[300px] w-[267px] flex items-center justify-center">
               <div className="flex items-center justify-center h-full w-full">
                 <p className="mx-auto max-w-[146px] f-PowerGrotesk text-[12px] text-[#6A929857] leading-[12px] text-center">
                   <span className="flex justify-center mb-1">
@@ -107,45 +107,60 @@ const Refer = ({ waitlistInfo }) => {
               <h1 className="text-[12px] text-center bg-waitlist-gradient bg-clip-text text-transparent f-PowerGrotesk">
                 Welcome to the
               </h1>
-              <div className="mb-0">
-                <h1 className="text-[#FFF5D9] f-PowerGrotesk text-[60px] leading-[0px] pt-[35px] pb-[55px]">
+              <div className="relative inline-block mb-0">
+                <h1 className="relative z-20 text-[#FFF5D9] f-PowerGrotesk text-[60px] leading-[0px] pt-[35px] pb-[55px]">
                   <span className="bg-nexgen-gradient bg-clip-text mr-3">
                     exclusive
                   </span>
                   waitlist
                 </h1>
+                <div className="absolute top-[-49px] left-[-59px] fade-in hidden sm:block">
+                  <img
+                    src="images/borderNexgen.svg"
+                    alt="border-image"
+                    className="max-w-[67%]"
+                  />
+                </div>
               </div>
             </div>
             <div className="heading-res block sm:hidden">
-              <h1 className="pt-[70px] text-[40px] !text-white leading-[40px] text-center f-PowerGrotesk">
-                Welcome to the&nbsp;
-                <span className="bg-nexgen-gradient bg-clip-text mr-3">
-                  exclusive
-                </span> <br />
-                waitlist
-              </h1>
+              <div className="relative inline-block px-[20px]">
+                <h1 className="relative z-20 pt-[50px] text-[40px] !text-white leading-[40px] text-center f-PowerGrotesk">
+                  Welcome to  <br /> the&nbsp;
+                  <span className="bg-nexgen-gradient bg-clip-text mr-3">
+                    exclusive
+                  </span> <br />
+                  waitlist
+                </h1>
+                <div className="absolute top-[54px] left-[49px] fade-in block sm:hidden">
+                  <img
+                    src="images/borderNexgen.svg"
+                    alt="border-image"
+                    className="w-[230px]"
+                  />
+                </div>
+              </div>
             </div>
             {/* Conditional Rendering for Card */}
             {showShareLink ? (
               <ShareLink setShowShareLink={setShowShareLink} sharelink={waitlistInfo.referralLink} />
             ) : (
               <div className="set-large-align w-[100%] px-[12px] sm:px-0">
-                <div className="card gradient-box border-[1px] border-[#FFFFFF21] sm:mx-auto h-[437px] sm:h-auto sm:max-w-[360px] mt-6  rounded-[40px] p-4 text-center shadow-lg relative z-10 sm:mt-0">
-                  <div className=" ">
+                <div className="card gradient-box border-[1px] border-[#FFFFFF21] sm:mx-auto flex items-center justify-center h-[400px] sm:h-auto sm:max-w-[360px] mt-8  rounded-[40px] p-4 text-center shadow-lg relative z-10 sm:mt-0">
+                  <div>
                     <h1 className="text-[#FFF5D9] f-PowerGrotesk text-[50px]">
                       {waitlistInfo.waitlistNumber}
                     </h1>
                     <p className="f-PowerGrotesk text-[12px] md:text-[14px] mt-2 leading-[1] text-[#FFF5D9]">
                       You are on the waitlist <br /> Get ahead of the crowd!
-                    </p>
+                    </p>                 
                     <p className="text-[#FFF5D947] max-w-[268px] sm:max-w-[] mx-auto mt-4  text-[10px] md:text-[12px] leading-[12px] md:leading-[16px]">
                       We’ve added you to our waitlist. We will notify you once we
                       are ready to launch our beta version. In the meantime, you can
                       share it and get a chance to earn 500 for early access to the
                       platform.
-                    </p>
-                  </div>
-                  {/* Button 2 */}
+                    </p>                
+                  {/* Button 2 */}        
                   <button
                     type="submit"
                     className="f-PowerGrotesk  bg-[#131515] opacity-[75%] text-[10px] sm:text-[11px] gap-2 btn-color text-[#505050] leading-tight font-normal px-5 py-4 sm:px-6 sm:py-8 w-full h-[55px] mt-6 rounded-full flex items-center dark:bg-[#000000] justify-between hover:opacity-[100%] duration-300 !hover:border-[solid] !hover:border-[#FFF5D9]"
@@ -158,7 +173,6 @@ const Refer = ({ waitlistInfo }) => {
                       className="f-PowerGrotesk h-7 ml-[4px] sm:ml-auto max-w-[12px] sm:max-w-[16px]"
                     />
                   </button>
-
                   {/* Refer Friend */}
                   <button
                     type="submit"
@@ -167,6 +181,7 @@ const Refer = ({ waitlistInfo }) => {
                   >
                     Refer a friend
                   </button>
+                  </div>
                 </div>
               </div>
             )}
