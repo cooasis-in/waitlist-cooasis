@@ -25,7 +25,7 @@ const LandingPage = () => {
     console.log(email);
     setEmail(email);
     try {
-      const response = await axios.post("http://localhost:3001/users", {
+      const response = await axios.post("http://3.25.112.171:3001/users", {
         email,
         referrer,
       });
@@ -50,7 +50,6 @@ const LandingPage = () => {
     }
   };
 
-
   if (showRefer) {
     return <Refer waitlistInfo={waitlistInfo} />;
   }
@@ -70,11 +69,7 @@ const LandingPage = () => {
     <>
       <div className="set-alignment set-alignment-logo flex justify-between items-center">
         <div className="flex set-width">
-          <img
-            src="images/darkmode.svg"
-            alt="Cooasis Logo"
-            className="w-30"
-          />
+          <img src="images/darkmode.svg" alt="Cooasis Logo" className="w-30" />
         </div>
       </div>
       <section className="bg-color !min-h-screen adjest-res">
@@ -125,7 +120,11 @@ const LandingPage = () => {
                   />
                 </div>
                 <div className="absolute bottom-[20px] left-[-16px] fade-in block sm:hidden">
-                  <img src="images/star.svg" alt="Star" className="max-w-[60%]" />
+                  <img
+                    src="images/star.svg"
+                    alt="Star"
+                    className="max-w-[60%]"
+                  />
                 </div>
               </div>
             </div>
@@ -190,7 +189,7 @@ const LandingPage = () => {
                 +200 people joined
               </span>
             </div>
-           <div className="set-image">
+            <div className="set-image">
               <img
                 src="images/moon-arch-1.svg"
                 alt=""
@@ -211,7 +210,8 @@ const LandingPage = () => {
                   <img
                     src="images/Artboard-1.svg"
                     alt=""
-                    className="max-w-[110px]" />
+                    className="max-w-[110px]"
+                  />
                   <img
                     src="images/Artboard-2.svg"
                     alt=""
@@ -220,7 +220,8 @@ const LandingPage = () => {
                   <img
                     src="images/Artboard-3.svg"
                     alt=""
-                    className="max-w-[110px]" />
+                    className="max-w-[110px]"
+                  />
                   <img
                     src="images/Artboard-4.svg"
                     alt=""

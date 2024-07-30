@@ -146,8 +146,8 @@ const Refer = ({ waitlistInfo }) => {
               <ShareLink setShowShareLink={setShowShareLink} sharelink={waitlistInfo.referralLink} />
             ) : (
               <div className="set-large-align w-[100%] px-[12px] sm:px-0">
-                <div className="card gradient-box border-[1px] border-[#FFFFFF21] sm:mx-auto flex items-center justify-center h-[430px] lg:h-[400px] sm:h-auto sm:max-w-[360px] mt-9  rounded-[40px] p-6 text-center shadow-lg relative z-10 sm:mt-0">
-                  <div className="">
+                <div className="card gradient-box border-[1px] border-[#FFFFFF21] sm:mx-auto flex items-center justify-center h-[430px] lg:h-[400px] sm:h-auto sm:max-w-[360px] mt-9  rounded-[40px] p-4 text-center shadow-lg relative z-10 sm:mt-0">
+                  <div className="mt-7 lg:mt-0">
                     <h1 className="text-[#FFF5D9] f-PowerGrotesk text-[50px]">
                       {waitlistInfo.waitlistNumber}
                     </h1>
