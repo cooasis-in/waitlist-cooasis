@@ -2,7 +2,7 @@
   background-image: radial-gradient(
     farthest-side at 47% 40%,
     #7d22ff -100%,
-    #131515 45%
+    #000000 45%
   );
   width: 100%;
 }
@@ -38,7 +38,7 @@
     background-image: radial-gradient(
       farthest-side at 5% 28%,
       #7d22ff -200%,
-      #131515 60%
+      #000000 60%
     ) !important;
     width: 100% !important;
   }
@@ -96,7 +96,7 @@
 
 @media (max-width: 768px) {
   .set-alignment {
-    padding: 20px !important;
+    padding: 32px !important;
   }
 }
 
