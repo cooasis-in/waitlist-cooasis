@@ -50,7 +50,7 @@ const EmailVerify = ({ setverifyEmail, email, referrer, showVerify }) => {
     try {
       setResendDisabled(true); // Disable the button
       setTimerSeconds(60); // Reset timer duration to 60 seconds
-      const response = await axios.post("http://localhost:3001/resend-otp", {
+      const response = await axios.post("http://3.25.112.171:3001/resend-otp", {
         email,
       });
       if (response.status === 200) {
@@ -72,7 +72,7 @@ const EmailVerify = ({ setverifyEmail, email, referrer, showVerify }) => {
     try {
       const otpCode = otp.join("");
       const response = await axios.post(
-        "http://localhost:3001/verify-email",
+        "http://3.25.112.171:3001/verify-email",
         { otpCode, email, referrer },
         { withCredentials: true }
       );
@@ -317,7 +317,7 @@ const EmailVerify = ({ setverifyEmail, email, referrer, showVerify }) => {
                 +200 people joined
               </span>
             </div>
-           <div className="set-image">
+            <div className="set-image">
               <img
                 src="images/moon-arch-1.svg"
                 alt=""
@@ -338,7 +338,8 @@ const EmailVerify = ({ setverifyEmail, email, referrer, showVerify }) => {
                   <img
                     src="images/Artboard-1.svg"
                     alt=""
-                    className="max-w-[110px]" />
+                    className="max-w-[110px]"
+                  />
                   <img
                     src="images/Artboard-2.svg"
                     alt=""
@@ -347,7 +348,8 @@ const EmailVerify = ({ setverifyEmail, email, referrer, showVerify }) => {
                   <img
                     src="images/Artboard-3.svg"
                     alt=""
-                    className="max-w-[110px]" />
+                    className="max-w-[110px]"
+                  />
                   <img
                     src="images/Artboard-4.svg"
                     alt=""
