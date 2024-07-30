@@ -46,7 +46,7 @@ const EmailVerify = ({ setverifyEmail, email, referrer, showVerify }) => {
   }, [resendDisabled]);
 
   const handleResend = async () => {
-    setLoading(true); // Show loader
+    // setLoading(true);
     try {
       setResendDisabled(true); // Disable the button
       setTimerSeconds(60); // Reset timer duration to 60 seconds
@@ -123,11 +123,7 @@ const EmailVerify = ({ setverifyEmail, email, referrer, showVerify }) => {
     <>
       <div className="set-alignment set-alignment-logo flex justify-between items-center">
         <div className="flex set-width">
-          <img
-            src="images/darkmode.svg"
-            alt="Cooasis Logo"
-            className="h-10 w-30"
-          />
+          <img src="images/darkmode.svg" alt="Cooasis Logo" className="w-30" />
         </div>
       </div>
       <section className="bg-color !min-h-screen adjest-res">
@@ -145,28 +141,43 @@ const EmailVerify = ({ setverifyEmail, email, referrer, showVerify }) => {
                   <br />
                   design ecosystem
                 </h2>
-                <div className="absolute bottom-[-12px] left-[82px] fade-in hidden lg:block">
+                <div className="absolute bottom-[-12px] left-[82px] fade-in hidden sm:block">
                   <img
                     src="images/borderNexgen.svg"
                     alt="border-image"
                     className="max-w-[78%]"
                   />
                 </div>
-                <div className="absolute bottom-[90px] left-[45px] fade-in hidden lg:block">
+                <div className="absolute bottom-[90px] left-[45px] fade-in hidden sm:block">
                   <img
                     src="images/james.svg"
                     alt="James"
                     className="max-w-[4.5rem]"
                   />
                 </div>
-                <div className="absolute hidden lg:block bottom-[40px] left-[-25px] fade-in">
+                <div className="absolute hidden sm:block bottom-[40px] left-[-25px] fade-in">
                   <img src="images/star.svg" alt="Star" />
                 </div>
                 <div>
                   <img
                     src="/images/cursorImg.png"
                     alt="Cursor"
-                    className="absolute right-[-10px] mt-3 w-14 hidden lg:block fade-in"
+                    className="absolute right-[-10px] mt-3 w-14 hidden sm:block fade-in"
+                  />
+                </div>
+                {/* mobile screen img align */}
+                <div className="absolute bottom-[-7px] left-[47px] fade-in block sm:hidden">
+                  <img
+                    src="images/borderNexgen.svg"
+                    alt="border-image"
+                    className="max-w-[78%]"
+                  />
+                </div>
+                <div className="absolute bottom-[20px] left-[-16px] fade-in block sm:hidden">
+                  <img
+                    src="images/star.svg"
+                    alt="Star"
+                    className="max-w-[60%]"
                   />
                 </div>
               </div>

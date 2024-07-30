@@ -1,11 +1,11 @@
 .bg-color {
-  background-image:
-    radial-gradient(farthest-side at 47% 40%,
-    #7d22ff -100%, #131515 45%);
+  background-image: radial-gradient(
+    farthest-side at 47% 40%,
+    #7d22ff -100%,
+    #131515 45%
+  );
   width: 100%;
 }
-
-
 
 /* landing page nexgen heading css */
 
@@ -16,9 +16,11 @@
 /* Waitlist Page Bg-color */
 
 .bg-grediant-waitlist {
-  background-image: radial-gradient(farthest-side at 25% 56%,
-      #7d22ff -150%,
-      #00000063 100%)
+  background-image: radial-gradient(
+    farthest-side at 25% 56%,
+    #7d22ff -150%,
+    #00000063 100%
+  );
 }
 
 .email-container {
@@ -27,51 +29,58 @@
 }
 
 @media (max-width: 640px) {
-
   .bg-grediant-waitlist {
     background: #00000063;
     background-image: none;
   }
 
   .waitlist-res-bg {
-    background-image: radial-gradient(farthest-side at 5% 28%,
-        #7d22ff -200%,
-        #131515 60%) !important;
+    background-image: radial-gradient(
+      farthest-side at 5% 28%,
+      #7d22ff -200%,
+      #131515 60%
+    ) !important;
     width: 100% !important;
   }
-
 }
-
-/* styles.css */
-
-/* .custom-button {
-  transition: transform 300ms linear, background 300ms linear, color 300ms linear;
-} */
 
 .custom-button {
   border: 1px solid transparent;
-  transition: all ease-in-out .3s;
+  transition: all ease-in-out 0.3s;
 }
 
 .custom-button:hover {
   background: linear-gradient(rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.05)),
-    radial-gradient(circle at 10% 10%, rgba(0, 100, 120, 0.4) 0%, transparent 70%),
-    radial-gradient(circle at 70% 70%, rgba(190, 190, 217, 0.15) 0%, transparent 70%),
-    radial-gradient(circle at center, rgba(0, 190, 135, 0.2) 0%, transparent 70%);
+    radial-gradient(
+      circle at 10% 10%,
+      rgba(0, 100, 120, 0.4) 0%,
+      transparent 70%
+    ),
+    radial-gradient(
+      circle at 70% 70%,
+      rgba(190, 190, 217, 0.15) 0%,
+      transparent 70%
+    ),
+    radial-gradient(
+      circle at center,
+      rgba(0, 190, 135, 0.2) 0%,
+      transparent 70%
+    );
   background-blend-mode: screen;
   /* border-radius: 30px; */
-  color: #FFF5D9;
+  color: #fff5d9;
   border: 1px solid;
   /* transform: scale(1.05); */
 }
 
-
 /* Media Query */
 @media (max-width: 640px) {
   .bg-color-res {
-    background-image: radial-gradient(farthest-side at 5% 42%,
-        #7d22ff -200%,
-        #131515 70%) !important;
+    background-image: radial-gradient(
+      farthest-side at 5% 42%,
+      #7d22ff -200%,
+      #131515 70%
+    ) !important;
     width: 100% !important;
   }
 }
@@ -86,20 +95,18 @@
 /* Landing Page Icon Res */
 
 @media (max-width: 768px) {
-
   .set-alignment {
     padding: 20px !important;
   }
-
 }
 
 @media (max-width: 640px) {
-
   .bg-color {
-    background-image:
-      radial-gradient(farthest-side at 45% 30%,
-        #7d22ff -420%,
-        #131515 100%);
+    background-image: radial-gradient(
+      farthest-side at 45% 30%,
+      #7d22ff -420%,
+      #131515 100%
+    );
     min-height: 100vh;
     width: 100%;
   }
@@ -147,24 +154,32 @@
 .bg-colorRefer {
   /* min-height: calc(100vh - 80px) !important;
   width: 100%; */
-  background-image: radial-gradient(farthest-side at 47% 28%,
-      #7d22ff -100%,
-      #131515 36%);
+  background-image: radial-gradient(
+    farthest-side at 47% 28%,
+    #7d22ff -100%,
+    #131515 36%
+  );
   min-height: calc(100vh - 80px) !important;
   width: 100%;
 }
 
 .gradient-box {
   background: linear-gradient(rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.05)),
-    radial-gradient(circle at 10% 10%,
+    radial-gradient(
+      circle at 10% 10%,
       rgba(0, 100, 120, 0.4) 0%,
-      transparent 70%),
-    radial-gradient(circle at 70% 70%,
+      transparent 70%
+    ),
+    radial-gradient(
+      circle at 70% 70%,
       rgba(190, 190, 217, 0.15) 0%,
-      transparent 70%),
-    radial-gradient(circle at center,
+      transparent 70%
+    ),
+    radial-gradient(
+      circle at center,
       rgba(0, 190, 135, 0.2) 0%,
-      transparent 70%);
+      transparent 70%
+    );
   background-blend-mode: screen;
   border-radius: 30px;
 }
@@ -208,7 +223,6 @@
 }
 
 @keyframes blink {
-
   0%,
   100% {
     border-color: transparent;
@@ -219,50 +233,9 @@
   }
 }
 
-/* Typing Animatoion */
-/*
-
- @media screen and (min-width: 1024px) {
-  .typing-text {
-    display: inline-block;
-    overflow: hidden   ;
-    border-right: 5px solid #fcfcd8; /* Same as text color 
-    white-space: nowrap;
-    animation: typing 2s steps(30, end) 1s 1 normal both,
-      blink 0.75s step-end infinite;
-    line-height: 1.2; /* Adjust if necessary 
-  }
-
-  .typing-text.design {
-    animation: typing 5s steps(30, end) 1s 1 normal both,
-      blink 0.75s step-end infinite;
-  }
-}
-
-@keyframes typing {
-  from {
-    width: 0;
-  }
-  to {
-    width: 46%;
-  } /* Increased width to accommodate descender
-}
-
-@keyframes blink {
-  from,
-  to {
-    border-color: transparent;
-  }
-  50% {
-    border-color: #fcfcd8;
-  }
-}
-
-/* Card Border 
 :root {
   --primary-color: #e1ff26;
-} */
-
+}
 .card {
   max-width: 640px;
   position: relative;
@@ -306,59 +279,45 @@
 }
 
 @media (max-width: 1100px) {
-
   .change-bg-samll {
     background: #000000 !important;
   }
-
 }
 
 @media (max-width: 768px) {
-
   .set-image img {
     margin-top: -140px !important;
   }
-
 }
 
 @media (max-width: 640px) {
-
   .res-margin-fix {
     margin-top: -30px !important;
   }
-
 }
 
 @media (max-width: 615px) {
-
   .set-image img {
     margin-top: -140px !important;
   }
-
 }
 
 @media (max-width: 530px) {
-
   .set-image img {
     margin-top: -120px !important;
   }
-
 }
 
 @media (max-width: 470px) {
-
   .set-image img {
     margin-top: -100px !important;
   }
-
 }
 
 @media (max-width: 410px) {
-
   .set-image img {
     margin-top: -80px !important;
   }
-
 }
 
 .adjest-res {
@@ -381,31 +340,30 @@
 }
 
 @media (max-width: 640px) {
+  .set-alignment-logo {
+    padding-top: 0px !important;
+  }
+}
 
+@media (max-width: 640px) {
   .adjest-res {
     padding-top: 50px !important;
   }
-
 }
 
 @media (max-width: 480px) {
-
   .adjest-res {
     padding-top: 30px !important;
   }
-
 }
 
 @media (max-width: 420px) {
-
   .adjest-res {
     padding-top: 0px !important;
   }
-
 }
 
-@media(min-width: 1450px) {
-
+@media (min-width: 1450px) {
   .larg-pb {
     padding-bottom: 3rem;
   }
@@ -417,11 +375,9 @@
   .adjest-res {
     padding-top: 4rem;
   }
-
 }
 
-@media(min-width: 1700px) {
-
+@media (min-width: 1700px) {
   .larg-pb {
     padding-bottom: 6rem;
   }
@@ -433,5 +389,4 @@
   .adjest-res {
     padding-top: 4rem;
   }
-
 }
