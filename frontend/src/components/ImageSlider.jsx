@@ -1,22 +1,17 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
 const imageData = [
-  { src: 'images/Artboard-1.svg', alt: 'Start' },
-  { src: 'images/Artboard-2.svg', alt: 'Your Story' },
-  { src: 'images/Artboard-3.svg', alt: 'AWS' },
-  { src: 'images/Artboard-4.svg', alt: 'Launch' },
-  { src: 'images/Artboard-5.svg', alt: 'Google' },
+  { src: 'images/start.svg', alt: 'Start' },
+  { src: 'images/yourstory.svg', alt: 'Your Story' },
+  { src: 'images/aws.svg', alt: 'AWS' },
+  { src: 'images/launch.svg', alt: 'Launch' },
+  { src: 'images/google.svg', alt: 'Google' },
 ];
 
 const ImageSlider = () => {
-
-  useEffect(() => {
-    console.log("LandingPage mounted");
-  }, []);
-
   const settings = {
     dots: false,
     infinite: true,
@@ -25,26 +20,30 @@ const ImageSlider = () => {
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 2000,
+    centerMode: true,
+    variableWidth: true,
     responsive: [
       {
         breakpoint: 1024,
         settings: {
-          slidesToShow: 4,
+          slidesToShow: 2,
           slidesToScroll: 1,
+          infinite: true,
           dots: false
         }
       },
       {
         breakpoint: 600,
         settings: {
-          slidesToShow: 4,
+          slidesToShow: 1,
           slidesToScroll: 1,
+          initialSlide: 1
         }
       },
       {
         breakpoint: 480,
         settings: {
-          slidesToShow: 3,
+          slidesToShow: 1,
           slidesToScroll: 1
         }
       }
@@ -55,8 +54,8 @@ const ImageSlider = () => {
     <div className="w-full overflow-hidden">
     <Slider {...settings} className="flex justify-center items-center">
       {imageData.map((image, index) => (
-        <div key={index} className="w-1/5 flex justify-center items-center px-2 py-4">
-          <img src={image.src} alt={image.alt} className='max-w-[100px]' />
+        <div key={index} className="w-1/5 flex justify-center items-center p-4">
+          <img src={image.src} alt={image.alt} className="max-w-[75px]" />
         </div>
       ))}
     </Slider>
