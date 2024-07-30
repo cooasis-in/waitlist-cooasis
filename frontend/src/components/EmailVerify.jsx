@@ -46,7 +46,7 @@ const EmailVerify = ({ setverifyEmail, email, referrer, showVerify }) => {
   }, [resendDisabled]);
 
   const handleResend = async () => {
-    setLoading(true); // Show loader
+    // setLoading(true);
     try {
       setResendDisabled(true); // Disable the button
       setTimerSeconds(60); // Reset timer duration to 60 seconds
@@ -123,11 +123,7 @@ const EmailVerify = ({ setverifyEmail, email, referrer, showVerify }) => {
     <>
       <div className="set-alignment set-alignment-logo flex justify-between items-center">
         <div className="flex set-width">
-          <img
-            src="images/darkmode.svg"
-            alt="Cooasis Logo"
-            className="w-30"
-          />
+          <img src="images/darkmode.svg" alt="Cooasis Logo" className="w-30" />
         </div>
       </div>
       <section className="bg-color !min-h-screen adjest-res">
@@ -137,7 +133,7 @@ const EmailVerify = ({ setverifyEmail, email, referrer, showVerify }) => {
               Join waitlist for
             </h1>
             <div className="larg-pb text-center mt-4 sm:mt-0 mb-4">
-            <div className="relative inline-block">
+              <div className="relative inline-block">
                 <h2 className="upper-index relative text-[40px] sm:text-[70px] leading-[40px] sm:leading-[70px] xxl:text-7xl f-PowerGrotesk text-[#FCFCD8]">
                   <span className="bg-nexgen-gradient bg-clip-text fade-in">
                     Nex-gen
@@ -178,7 +174,11 @@ const EmailVerify = ({ setverifyEmail, email, referrer, showVerify }) => {
                   />
                 </div>
                 <div className="absolute bottom-[20px] left-[-16px] fade-in block sm:hidden">
-                  <img src="images/star.svg" alt="Star" className="max-w-[60%]" />
+                  <img
+                    src="images/star.svg"
+                    alt="Star"
+                    className="max-w-[60%]"
+                  />
                 </div>
               </div>
             </div>
