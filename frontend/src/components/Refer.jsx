@@ -146,15 +146,15 @@ const Refer = ({ waitlistInfo }) => {
               <ShareLink setShowShareLink={setShowShareLink} sharelink={waitlistInfo.referralLink} />
             ) : (
               <div className="set-large-align w-[100%] px-[12px] sm:px-0">
-                <div className="card gradient-box border-[1px] border-[#FFFFFF21] sm:mx-auto flex items-center justify-center h-[400px] sm:h-auto sm:max-w-[360px] mt-8  rounded-[40px] p-4 text-center shadow-lg relative z-10 sm:mt-0">
-                  <div>
+                <div className="card gradient-box border-[1px] border-[#FFFFFF21] sm:mx-auto flex items-center justify-center h-[430px] sm:h-auto sm:max-w-[360px] mt-9  rounded-[40px] p-6 text-center shadow-lg relative z-10 sm:mt-0">
+                  <div className="">
                     <h1 className="text-[#FFF5D9] f-PowerGrotesk text-[50px]">
                       {waitlistInfo.waitlistNumber}
                     </h1>
-                    <p className="f-PowerGrotesk text-[12px] md:text-[14px] mt-2 leading-[1] text-[#FFF5D9]">
+                    <p className="f-PowerGrotesk text-[20px] md:text-[14px] mt-4 leading-[1] text-[#FFF5D9]">
                       You are on the waitlist <br /> Get ahead of the crowd!
                     </p>                 
-                    <p className="text-[#FFF5D947] max-w-[268px] sm:max-w-[] mx-auto mt-4  text-[10px] md:text-[12px] leading-[12px] md:leading-[16px]">
+                    <p className="text-[#FFF5D947] max-w-[268px] sm:max-w-[] mx-auto mt-5 text-[12px] md:text-[12px] leading-[15px] md:leading-[16px]">
                       We’ve added you to our waitlist. We will notify you once we
                       are ready to launch our beta version. In the meantime, you can
                       share it and get a chance to earn 500 for early access to the
@@ -163,7 +163,7 @@ const Refer = ({ waitlistInfo }) => {
                   {/* Button 2 */}        
                   <button
                     type="submit"
-                    className="f-PowerGrotesk  bg-[#131515] opacity-[75%] text-[10px] sm:text-[11px] gap-2 btn-color text-[#505050] leading-tight font-normal px-5 py-4 sm:px-6 sm:py-8 w-full h-[55px] mt-6 rounded-full flex items-center dark:bg-[#000000] justify-between hover:opacity-[100%] duration-300 !hover:border-[solid] !hover:border-[#FFF5D9]"
+                    className="f-PowerGrotesk  bg-[#131515] opacity-[75%] text-[10px] sm:text-[11px] gap-2 btn-color text-[#505050] leading-tight font-normal px-5 py-6 sm:px-6 sm:py-8 w-full h-[55px] mt-7 md:mt-6 rounded-full flex items-center dark:bg-[#000000] justify-between hover:opacity-[100%] duration-300 !hover:border-[solid] !hover:border-[#FFF5D9]"
                     onClick={handlePaste}
                   >
                     {waitlistInfo.referralLink}
