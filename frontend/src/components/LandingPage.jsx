@@ -25,7 +25,7 @@ const LandingPage = () => {
     console.log(email);
     setEmail(email);
     try {
-      const response = await axios.post("http://3.25.112.171:3001/users", {
+      const response = await axios.post("http://localhost:3001/users", {
         email,
         referrer,
       });
@@ -73,7 +73,7 @@ const LandingPage = () => {
           <img
             src="images/darkmode.svg"
             alt="Cooasis Logo"
-            className="h-10 w-30"
+            className="w-30"
           />
         </div>
       </div>
@@ -150,7 +150,7 @@ const LandingPage = () => {
                   <Button
                     id="get-early-access-button"
                     borderRadius="2rem"
-                    className="bg-[#131515] f-PowerGrotesk text-[#E1FF26] rounded-full hover:shadow-lg hover:bg-[#E1FF26] hover:text-black hover:font-bold transform transition-all duration-300 ease-in-out opacity-100"
+                    className="bg-[#3A3A3A2B] f-PowerGrotesk text-[#E1FF26] rounded-full hover:shadow-lg hover:bg-[#E1FF26] hover:text-black hover:font-bold transform transition-all duration-300 ease-in-out border-0"
                   >
                     Get Early Access
                   </Button>

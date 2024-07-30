@@ -61,12 +61,12 @@ const Refer = ({ waitlistInfo }) => {
 
   return (
     <>
-      <header className="set-alignment set-alignment-logo flex justify-between items-center">
+      <header className="set-alignment set-alignment-logo flex justify-between items-start">
         <div className="set-width">
           <img
             src="images/darkmode.svg"
             alt="Cooasis Logo"
-            className="h-10 w-30"
+            className="w-30"
           />
         </div>
         <div className="bg-[#0000006B] rounded-full border-[0.5px] border-[#99999982]">
@@ -129,8 +129,8 @@ const Refer = ({ waitlistInfo }) => {
             {showShareLink ? (
               <ShareLink setShowShareLink={setShowShareLink} sharelink={waitlistInfo.referralLink} />
             ) : (
-              <div className="set-large-align w-[100%]">
-                <div className="card gradient-box border-[1px] border-[#FFFFFF21] sm:mx-auto sm:max-w-[360px] mt-6  rounded-[40px] p-4 text-center shadow-lg relative z-10 sm:mt-0">
+              <div className="set-large-align w-[100%] px-[12px] sm:px-0">
+                <div className="card gradient-box border-[1px] border-[#FFFFFF21] sm:mx-auto h-[437px] sm:h-auto sm:max-w-[360px] mt-6  rounded-[40px] p-4 text-center shadow-lg relative z-10 sm:mt-0">
                   <div className=" ">
                     <h1 className="text-[#FFF5D9] f-PowerGrotesk text-[50px]">
                       {waitlistInfo.waitlistNumber}
@@ -162,7 +162,7 @@ const Refer = ({ waitlistInfo }) => {
                   {/* Refer Friend */}
                   <button
                     type="submit"
-                    className="f-PowerGrotesk text-[12px] sm:text-[17.5px] bg-[#131515] btn-color text-[#E1FF26] leading-tight font-normal px-5 py-4 sm:px-6 sm:py-8 w-full h-[55px] mt-2 rounded-full flex items-center dark:bg-[#000000] justify-center custom-button"
+                    className="f-PowerGrotesk text-[12px] sm:text-[14px] bg-[#131515] btn-color text-[#E1FF26] leading-tight font-normal px-5 py-4 sm:px-6 sm:py-8 w-full h-[55px] mt-2 rounded-full flex items-center dark:bg-[#000000] justify-center custom-button"
                     onClick={handleShareClick}
                   >
                     Refer a friend

@@ -50,7 +50,7 @@ const EmailVerify = ({ setverifyEmail, email, referrer, showVerify }) => {
     try {
       setResendDisabled(true); // Disable the button
       setTimerSeconds(60); // Reset timer duration to 60 seconds
-      const response = await axios.post("http://3.25.112.171:3001/resend-otp", {
+      const response = await axios.post("http://localhost:3001/resend-otp", {
         email,
       });
       if (response.status === 200) {
@@ -72,7 +72,7 @@ const EmailVerify = ({ setverifyEmail, email, referrer, showVerify }) => {
     try {
       const otpCode = otp.join("");
       const response = await axios.post(
-        "http://3.25.112.171:3001/verify-email",
+        "http://localhost:3001/verify-email",
         { otpCode, email, referrer },
         { withCredentials: true }
       );
@@ -126,7 +126,7 @@ const EmailVerify = ({ setverifyEmail, email, referrer, showVerify }) => {
           <img
             src="images/darkmode.svg"
             alt="Cooasis Logo"
-            className="h-10 w-30"
+            className="w-30"
           />
         </div>
       </div>
@@ -209,7 +209,7 @@ const EmailVerify = ({ setverifyEmail, email, referrer, showVerify }) => {
                   <div className="flex justify-center items-center">
                     <button
                       id="verify-email-button"
-                      className="f-PowerGrotesk h-[55px] w-[290px] !cursor-pointer text-[17.5px] text-[#E1FF26] bg-[#0000006B] hover:text-black hover:font-bold transform transition-all duration-300 ease-in-out hover:bg-[#E1FF26] leading-[17.5px] mt-4 px-8 py-6 rounded-full opacity-100 items-center flex justify-center"
+                      className="f-PowerGrotesk h-[55px] w-[290px] !cursor-pointer text-[17.5px] text-[#E1FF26] bg-[#3A3A3A2B]  hover:text-black hover:font-bold transform transition-all duration-300 ease-in-out hover:bg-[#E1FF26] leading-[17.5px] mt-4 px-8 py-6 rounded-full opacity-100 items-center flex justify-center"
                       onClick={handleSubmit}
                       style={{ opacity: "0.5" }}
                       disabled={loading}

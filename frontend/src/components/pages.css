@@ -1,7 +1,7 @@
 .bg-color {
   background-image:
     radial-gradient(farthest-side at 47% 40%,
-    #7d22ff -100%, #131515 45%);
+      #7d22ff -100%, #131515 45%);
   width: 100%;
 }
 
@@ -378,6 +378,14 @@
   padding: 30px 50px;
   width: 100%;
   z-index: 9999;
+}
+
+@media (max-width: 640px) {
+
+  .set-alignment-logo {
+    padding-top: 0px !important;
+  }
+
 }
 
 @media (max-width: 640px) {

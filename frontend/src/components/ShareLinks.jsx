@@ -14,7 +14,7 @@ Here’s a special referral link for you ${sharelink} Signing up through this li
 
   return (
     <div className="set-large-align w-[100%]">
-      <div className="card gradient-box mt-6 sm:mt-2 border-[1px] border-[#FFFFFF21] sm:mx-auto max-w-[100%] sm:max-w-[340px] md:max-w-[400px] lg:max-w-[340px] rounded-[40px] p-4 text-center shadow-lg relative z-10">
+      <div className="card gradient-box mt-6 sm:mt-2 border-[1px] border-[#FFFFFF21] h-[437px] sm:h-auto sm:mx-auto max-w-[100%] sm:max-w-[340px] md:max-w-[400px] lg:max-w-[340px] rounded-[40px] p-4 text-center shadow-lg relative z-10">
         {/* 200 People Joined */}
         <div className="mt-2 mb-4">
           <div className="flex justify-center items-center">
@@ -61,7 +61,7 @@ Here’s a special referral link for you ${sharelink} Signing up through this li
             <img
               src="images/instagram-2.svg"
               alt=""
-              className="mr-[8px] max-w-[25px]  xxl:max-w-[100%]"
+              className="mr-[3px] max-w-[25px]  xxl:max-w-[100%]"
             />
             Share on Instagram
           </button>
@@ -79,7 +79,7 @@ Here’s a special referral link for you ${sharelink} Signing up through this li
               <img
                 src="images/face-book.svg"
                 alt=""
-                className="mr-[8px] max-w-[13px]  xxl:max-w-[100%]"
+                className="mr-[6px] max-w-[13px]  xxl:max-w-[100%]"
               />
               Share on Facebook
             </button>
