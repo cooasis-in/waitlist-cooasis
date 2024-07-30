@@ -50,7 +50,6 @@ const LandingPage = () => {
     }
   };
 
-
   if (showRefer) {
     return <Refer waitlistInfo={waitlistInfo} />;
   }
@@ -70,11 +69,7 @@ const LandingPage = () => {
     <>
       <div className="set-alignment set-alignment-logo flex justify-between items-center">
         <div className="flex set-width">
-          <img
-            src="images/darkmode.svg"
-            alt="Cooasis Logo"
-            className="w-30"
-          />
+          <img src="images/darkmode.svg" alt="Cooasis Logo" className="w-30" />
         </div>
       </div>
       <section className="bg-color !min-h-screen adjest-res">
@@ -85,7 +80,7 @@ const LandingPage = () => {
             </h1>
             <div className="larg-pb text-center mt-4 sm:mt-0 mb-4">
               <div className="relative inline-block">
-                <h2 className="upper-index relative text-[40px] sm:text-[70px] leading-[40px] sm:leading-[70px] xxl:text-7xl f-PowerGrotesk text-[#FCFCD8]">
+                <h2 className="upper-index relative text-[40px] sm:text-[70px] leading-[40px] sm:leading-[70px] xxl:text-7xl f-PowerGrotesk text-[#FFF5D9]">
                   <span className="bg-nexgen-gradient bg-clip-text fade-in">
                     Nex-gen
                   </span>
@@ -125,7 +120,11 @@ const LandingPage = () => {
                   />
                 </div>
                 <div className="absolute bottom-[20px] left-[-16px] fade-in block sm:hidden">
-                  <img src="images/star.svg" alt="Star" className="max-w-[60%]" />
+                  <img
+                    src="images/star.svg"
+                    alt="Star"
+                    className="max-w-[60%]"
+                  />
                 </div>
               </div>
             </div>
@@ -138,7 +137,7 @@ const LandingPage = () => {
             ) : (
               <div>
                 <form
-                  className="set-large-align flex flex-col items-center my-16 sm:my-0"
+                  className="set-large-align flex flex-col items-center my-32 sm:my-0"
                   onSubmit={handleShowVerifyEmail}
                 >
                   <div className="relative">
@@ -168,7 +167,7 @@ const LandingPage = () => {
                 </form>
               </div>
             )}
-            <div className="mt-8 sm:mt-6">
+            <div className="mt-8 sm:mt-12 relative z-20">
               <div className="flex justify-center items-center pl-2">
                 <img
                   src="/images/avtar-1.svg"
@@ -192,27 +191,27 @@ const LandingPage = () => {
             </div>
             <div className="set-image">
               <img
-                src="images/moon-1.png"
+                src="images/moon-arch-1.svg"
                 alt=""
-                className="max-w-[800px] w-full m-auto mt-[-190px] hidden sm:block"
+                className="set-image-1 max-w-[1000px] w-full m-auto md:mt-[-180px] lg:mt-[-230px] hidden sm:block"
               />
               <img
-                src="images/moon.png"
+                src="images/moon-arch.svg"
                 alt=""
-                className="max-w-[700px] w-full m-auto mt-[-130px] block sm:hidden"
+                className="w-full m-auto mt-[-130px] block sm:hidden"
               />
             </div>
             <div className="hidden sm:block">
-              <div className="sm:mt-[-2rem] flex flex-col justify-center items-center space-x-4">
+              <div className="sm:mt-[-4rem] lg:mt-[-6rem] flex flex-col justify-center items-center space-x-4">
                 <span className="f-PowerGrotesk text-[14.5px] xxl:text-[17.5px] leading-[14.54px] text-[#6A92985E] text-center mb-2">
                   Backed by
                 </span>
-
                 <div className="res-align flex  items-center justify-center space-x-4 sm:space-x-7 max-w-[642px] !ml-0 !pb-4 sm:pt-3">
                   <img
                     src="images/Artboard-1.svg"
                     alt=""
-                    className="max-w-[110px]" />
+                    className="max-w-[110px]"
+                  />
                   <img
                     src="images/Artboard-2.svg"
                     alt=""
@@ -221,7 +220,8 @@ const LandingPage = () => {
                   <img
                     src="images/Artboard-3.svg"
                     alt=""
-                    className="max-w-[110px]" />
+                    className="max-w-[110px]"
+                  />
                   <img
                     src="images/Artboard-4.svg"
                     alt=""

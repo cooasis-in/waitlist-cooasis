@@ -13,11 +13,11 @@ const ShareLinks = ({ setShowShareLink, sharelink }) => {
 Here’s a special referral link for you ${sharelink} Signing up through this link gives you a priority spot on the waitlist and helps me out too. Win-win!`;
 
   return (
-    <div className="set-large-align w-[100%]">
-      <div className="card gradient-box mt-6 sm:mt-2 border-[1px] border-[#FFFFFF21] h-[400px] sm:h-auto sm:mx-auto max-w-[100%] sm:max-w-[340px] md:max-w-[400px] lg:max-w-[340px] rounded-[45px] sm:rounded-[40px] p-4 text-center shadow-lg relative z-10">
+    <div className="set-large-align w-[100%] flex justify-center">
+      <div className="card gradient-box mt-10 sm:mt-2 border-[1px] border-[#FFFFFF21] h-[430px] sm:h-auto sm:mx-auto max-w-[325px] sm:max-w-[360px] md:max-w-[400px] lg:max-w-[360px] rounded-[45px] sm:rounded-[40px] p-4 text-center shadow-lg relative z-10">
         {/* 200 People Joined */}
-        <div className="mt-[1.5rem] sm:mt-2 mb-4">
-          <div className="flex justify-center items-center">
+        <div className="mt-[2.5rem] sm:mt-2 mb-4">
+          <div className="flex justify-center items-center mt-2">
             <img
               src="/images/avtar-1.svg"
               alt="People Join"
@@ -39,7 +39,7 @@ Here’s a special referral link for you ${sharelink} Signing up through this li
           </span>
         </div>
 
-        <div className="mt-12">
+        <div className="mt-14">
           {/* Close Button button */}
           <button
             type="button"
