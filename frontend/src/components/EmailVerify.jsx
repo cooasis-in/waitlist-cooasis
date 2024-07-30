@@ -50,7 +50,7 @@ const EmailVerify = ({ setverifyEmail, email, referrer, showVerify }) => {
     try {
       setResendDisabled(true); // Disable the button
       setTimerSeconds(60); // Reset timer duration to 60 seconds
-      const response = await axios.post("http://3.25.112.171:3001/resend-otp", {
+      const response = await axios.post("http://localhost:3001/resend-otp", {
         email,
       });
       if (response.status === 200) {
@@ -72,7 +72,7 @@ const EmailVerify = ({ setverifyEmail, email, referrer, showVerify }) => {
     try {
       const otpCode = otp.join("");
       const response = await axios.post(
-        "http://3.25.112.171:3001/verify-email",
+        "http://localhost:3001/verify-email",
         { otpCode, email, referrer },
         { withCredentials: true }
       );
@@ -134,7 +134,7 @@ const EmailVerify = ({ setverifyEmail, email, referrer, showVerify }) => {
             </h1>
             <div className="larg-pb text-center mt-4 sm:mt-0 mb-4">
               <div className="relative inline-block">
-                <h2 className="upper-index relative text-[40px] sm:text-[70px] leading-[40px] sm:leading-[70px] xxl:text-7xl f-PowerGrotesk text-[#FCFCD8]">
+                <h2 className="upper-index relative text-[40px] sm:text-[70px] leading-[40px] sm:leading-[70px] xxl:text-7xl f-PowerGrotesk text-[#FFF5D9]">
                   <span className="bg-nexgen-gradient bg-clip-text fade-in">
                     Nex-gen
                   </span>
