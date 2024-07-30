@@ -138,7 +138,7 @@ const LandingPage = () => {
             ) : (
               <div>
                 <form
-                  className="set-large-align flex flex-col items-center my-16 sm:my-0"
+                  className="set-large-align flex flex-col items-center my-32 sm:my-0"
                   onSubmit={handleShowVerifyEmail}
                 >
                   <div className="relative">
@@ -168,7 +168,7 @@ const LandingPage = () => {
                 </form>
               </div>
             )}
-            <div className="mt-8 sm:mt-6">
+            <div className="mt-8 sm:mt-12 relative z-20">
               <div className="flex justify-center items-center pl-2">
                 <img
                   src="/images/avtar-1.svg"
@@ -190,24 +190,23 @@ const LandingPage = () => {
                 +200 people joined
               </span>
             </div>
-            <div className="set-image">
+           <div className="set-image">
               <img
-                src="images/moon-1.png"
+                src="images/moon-arch-1.svg"
                 alt=""
-                className="max-w-[800px] w-full m-auto mt-[-190px] hidden sm:block"
+                className="set-image-1 max-w-[1000px] w-full m-auto md:mt-[-180px] lg:mt-[-230px] hidden sm:block"
               />
               <img
-                src="images/moon.png"
+                src="images/moon-arch.svg"
                 alt=""
-                className="max-w-[700px] w-full m-auto mt-[-130px] block sm:hidden"
+                className="w-full m-auto mt-[-130px] block sm:hidden"
               />
             </div>
             <div className="hidden sm:block">
-              <div className="sm:mt-[-2rem] flex flex-col justify-center items-center space-x-4">
+              <div className="sm:mt-[-4rem] lg:mt-[-6rem] flex flex-col justify-center items-center space-x-4">
                 <span className="f-PowerGrotesk text-[14.5px] xxl:text-[17.5px] leading-[14.54px] text-[#6A92985E] text-center mb-2">
                   Backed by
                 </span>
-
                 <div className="res-align flex  items-center justify-center space-x-4 sm:space-x-7 max-w-[642px] !ml-0 !pb-4 sm:pt-3">
                   <img
                     src="images/Artboard-1.svg"
