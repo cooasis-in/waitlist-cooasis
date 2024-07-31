@@ -65,7 +65,7 @@ const Refer = ({ waitlistInfo }) => {
         <div className="set-width">
           <img src="images/darkmode.svg" alt="Cooasis Logo" className="w-30" />
         </div>
-        <div className="bg-[#0000006B] rounded-full border-[0.5px] border-[#99999982]">
+        <div className="bg-rgb rounded-full border-[0.5px] border-[#99999982]">
           <button
             className="flex justify-center !items-center py-2 px-4 sm:py-3 sm:px-7 max-w-[91px] sm:max-w-[147px] f-PowerGrotesk text-[12px] sm:text-[17.5px] text-[#6A929857] leading-[12px] sm:leading-[17.5px]"
             onClick={toggleBoxVisibility}
@@ -192,7 +192,7 @@ const Refer = ({ waitlistInfo }) => {
               </h1>
               <div>
                 <ul className="flex space-x-3 sm:space-x-3 justify-start items-center">
-                  <li className="bg-[#000000] h-8 sm:h-8 w-8 sm:w-8 rounded-full">
+                  <li className="bg-rgb h-8 sm:h-8 w-8 sm:w-8 rounded-full">
                     <a
                       href="https://www.instagram.com/cooasis.in/"
                       target="_blank"
@@ -205,7 +205,7 @@ const Refer = ({ waitlistInfo }) => {
                       />
                     </a>
                   </li>
-                  <li className="bg-[#000000] h-8 sm:h-8 w-8 sm:w-8 rounded-full">
+                  <li className="bg-rgb h-8 sm:h-8 w-8 sm:w-8 rounded-full">
                     <a
                       href="https://www.linkedin.com/company/cooasis-in"
                       target="blank"
@@ -218,7 +218,7 @@ const Refer = ({ waitlistInfo }) => {
                       />
                     </a>
                   </li>
-                  <li className="bg-[#000000] h-8 sm:h-8 w-8 sm:w-8 rounded-full">
+                  <li className="bg-rgb h-8 sm:h-8 w-8 sm:w-8 rounded-full">
                     <a
                       href="https://www.behance.net/coasis"
                       target="blank"
@@ -231,7 +231,7 @@ const Refer = ({ waitlistInfo }) => {
                       />
                     </a>
                   </li>
-                  <li className="bg-[#000000] h-8 sm:h-8 w-8 sm:w-8 rounded-full">
+                  <li className="bg-rgb h-8 sm:h-8 w-8 sm:w-8 rounded-full">
                     <a
                       href="https://dribbble.com/Cooasis"
                       target="blank"
@@ -244,7 +244,7 @@ const Refer = ({ waitlistInfo }) => {
                       />
                     </a>
                   </li>
-                  <li className="bg-[#000000] h-8 sm:h-8 w-8 sm:w-8 rounded-full">
+                  <li className="bg-rgb h-8 sm:h-8 w-8 sm:w-8 rounded-full">
                     <a
                       href="https://www.facebook.com/cooasis.in"
                       target="_blank"
@@ -257,7 +257,7 @@ const Refer = ({ waitlistInfo }) => {
                       />
                     </a>
                   </li>
-                  <li className="bg-[#000000] h-8 sm:h-8 w-8 sm:w-8 rounded-full">
+                  <li className="bg-rgb h-8 sm:h-8 w-8 sm:w-8 rounded-full">
                     <a
                       href="https://www.behance.net/coasis"
                       target="_blank"

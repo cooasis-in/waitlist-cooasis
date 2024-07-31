@@ -25,7 +25,7 @@ const LandingPage = () => {
     console.log(email);
     setEmail(email);
     try {
-      const response = await axios.post("http://3.25.112.171:3001/users", {
+      const response = await axios.post("http://localhost:3001/users", {
         email,
         referrer,
       });
@@ -112,14 +112,14 @@ const LandingPage = () => {
                   />
                 </div>
                 {/* mobile screen img align */}
-                <div className="absolute bottom-[-7px] left-[47px] fade-in block sm:hidden">
+                <div className="absolute bottom-[-3px] left-[47px] fade-in block sm:hidden">
                   <img
                     src="images/borderNexgen.svg"
                     alt="border-image"
                     className="max-w-[78%]"
                   />
                 </div>
-                <div className="absolute bottom-[20px] left-[-16px] fade-in block sm:hidden">
+                <div className="absolute bottom-[22px] left-[-16px] fade-in block sm:hidden">
                   <img
                     src="images/star.svg"
                     alt="Star"
@@ -195,7 +195,7 @@ const LandingPage = () => {
               <img
                 src="images/moon-arch-1.svg"
                 alt=""
-                className="set-image-1 max-w-[1000px] w-full m-auto md:mt-[-180px] lg:mt-[-230px] hidden sm:block"
+                className="set-image-1 max-w-[1100px] w-full m-auto md:mt-[-180px] lg:mt-[-230px] hidden sm:block"
               />
               <img
                 src="images/moon-arch.svg"
@@ -203,8 +203,8 @@ const LandingPage = () => {
                 className="w-full m-auto mt-[-130px] block sm:hidden"
               />
             </div>
-            <div className="hidden sm:block">
-              <div className="sm:mt-[-4rem] lg:mt-[-6rem] flex flex-col justify-center items-center space-x-4">
+            <div className="hidden md:block">
+              <div className="sm:mt-[-4rem] lg:mt-[-7rem] flex flex-col justify-center items-center space-x-4">
                 <span className="f-PowerGrotesk text-[14.5px] xxl:text-[17.5px] leading-[14.54px] text-[#6A92985E] text-center mb-2">
                   Backed by
                 </span>
@@ -234,11 +234,16 @@ const LandingPage = () => {
                     alt=""
                     className="max-w-[110px]"
                   />
+                   <img
+                    src="images/Artboard-6.svg"
+                    alt=""
+                    className="max-w-[80px] !ml-[10px]"
+                  />
                 </div>
               </div>
             </div>
           </div>
-          <div className="block text-center sm:hidden py-4 w-full res-margin-fix">
+          <div className="block text-center md:hidden py-4 w-full res-margin-fix">
             <span className="f-PowerGrotesk text-[14.5px] xxl:text-[17.5px] leading-[14.54px] text-[#6A92985E] text-center">
               Backed by
             </span>
