@@ -157,13 +157,15 @@ const LandingPage = () => {
                       {errorMessage}
                     </p>
                   )}
-                  <Button
-                    id="get-early-access-button"
-                    borderRadius="2rem"
-                    className="bg-[#131515] f-PowerGrotesk text-[#E1FF26] rounded-full hover:shadow-lg hover:bg-[#E1FF26] hover:text-black hover:font-bold transform transition-all duration-300 ease-in-out border-0"
-                  >
-                    Get Early Access
-                  </Button>
+                  <div>
+                    <Button
+                      id="get-early-access-button"
+                      borderRadius="2rem"
+                      className="bg-[#131515] f-PowerGrotesk text-[#E1FF26] rounded-full hover:shadow-lg hover:bg-[#E1FF26] hover:text-black hover:font-bold transform transition-all duration-300 ease-in-out border-1"
+                    >
+                      <div>Get Early Access</div>
+                    </Button>
+                  </div>
                 </form>
               </div>
             )}

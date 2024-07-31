@@ -317,7 +317,7 @@ const EmailVerify = ({ setverifyEmail, email, referrer, showVerify }) => {
                 +200 people joined
               </span>
             </div>
-           <div className="set-image">
+            <div className="set-image">
               <img
                 src="images/moon-arch-1.svg"
                 alt=""
@@ -338,7 +338,8 @@ const EmailVerify = ({ setverifyEmail, email, referrer, showVerify }) => {
                   <img
                     src="images/Artboard-1.svg"
                     alt=""
-                    className="max-w-[110px]" />
+                    className="max-w-[110px]"
+                  />
                   <img
                     src="images/Artboard-2.svg"
                     alt=""
@@ -347,7 +348,8 @@ const EmailVerify = ({ setverifyEmail, email, referrer, showVerify }) => {
                   <img
                     src="images/Artboard-3.svg"
                     alt=""
-                    className="max-w-[110px]" />
+                    className="max-w-[110px]"
+                  />
                   <img
                     src="images/Artboard-4.svg"
                     alt=""
