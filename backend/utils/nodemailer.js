@@ -32,7 +32,14 @@ const sendVerificationEmail = async (email, otp = null, content = null) => {
   let emailSubject = "Verify your email";
 
   if (otp) {
-    emailContent = `Your OTP is: ${otp}`;
+    // Load the HTML template
+    emailContent = fs.readFileSync(
+      path.join(__dirname, "emailTemplates", "otpVerify.html"),
+      "utf8"
+    );
+    
+    emailContent = emailContent.replace("{{otp}}", otp);
+    emailSubject = "Your OTP Code";
   } else if (content) {
     emailContent = fs.readFileSync(
       path.join(__dirname, "emailTemplates", "waitlistEmailTemplate.html"),
