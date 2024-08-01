@@ -5,6 +5,7 @@ import Refer from "./Refer";
 import ImageSlider from "./ImageSlider";
 import EmailVerify from "./EmailVerify";
 import { Button } from "../ui/moving-border";
+// import { ButtonsCard } from "../ui/tailwindcss-buttons";
 
 const LandingPage = () => {
   const [showRefer, setShowRefer] = useState(false);
@@ -25,7 +26,7 @@ const LandingPage = () => {
     console.log(email);
     setEmail(email);
     try {
-      const response = await axios.post("http://localhost:3001/users",{
+      const response = await axios.post("http://3.25.112.171:3001/users", {
         email,
         referrer,
       });
@@ -167,13 +168,20 @@ const LandingPage = () => {
                     </p>
                   )}
                   <div>
-                    <Button
+                    {/* <Button
                       id="get-early-access-button"
                       borderRadius="2rem"
                       className="bg-[#131515] f-PowerGrotesk text-[#E1FF26] rounded-full hover:shadow-lg hover:bg-[#E1FF26] hover:text-black hover:font-bold transform transition-all duration-300 ease-in-out border-1"
                     >
                       <div>Get Early Access</div>
-                    </Button>
+                    </Button> */}
+                    {/*  */}
+                    <button className="relative inline-flex  overflow-hidden rounded-full p-[1px] focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50 h-[55px] mt-4 w-[290px] ">
+                      <span className="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#E2CBFF_0%,#393BB2_50%,#E2CBFF_100%)]" />
+                      <span className="inline-flex h-full w-full cursor-pointer items-center justify-center rounded-full bg-slate-950 px-3 py-1 text-sm font-medium text-white backdrop-blur-3xl">
+                        Get Early Access
+                      </span>
+                    </button>
                   </div>
                 </form>
               </div>
@@ -201,17 +209,17 @@ const LandingPage = () => {
               </span>
             </div>
             <div className="relative">
-            <div className="flex justify-center items-center mt-11 sm:mt-16">
-              <img src="images/moon-1.svg" alt="" />
+              <div className="flex justify-center items-center mt-11 sm:mt-16">
+                <img src="images/moon-1.svg" alt="" />
+              </div>
+              <div className="flex justify-center items-center">
+                <img
+                  src="images/moon-2.svg"
+                  alt=""
+                  className="absolute max-w-[70px] top-[-20px]"
+                />
+              </div>
             </div>
-            <div className="flex justify-center items-center">
-              <img
-                src="images/moon-2.svg"
-                alt=""
-                className="absolute max-w-[70px] top-[-20px]"
-              />
-            </div>
-          </div>
             <div className="hidden md:block">
               <div className="sm:mt-[-1rem] flex flex-col justify-center items-center space-x-4">
                 <span className="f-PowerGrotesk text-[14.5px] xxl:text-[17.5px] leading-[14.54px] text-[#6A92985E] text-center">

@@ -8,7 +8,6 @@ import CountUp from "react-countup";
 const Refer = ({ waitlistInfo }) => {
   const [showShareLink, setShowShareLink] = useState(false);
 
-
   // confetti
   useEffect(() => {
     confetti({
@@ -88,7 +87,9 @@ const Refer = ({ waitlistInfo }) => {
               <div className="h-full w-full">
                 <div className="flex items-center px-[10px]">
                   <img src="images/bellicon-y.svg" alt="" />
-                  <h4 className="f-PowerGrotesk text-[18px] text-[#FFFBD9] leading-[20px] ml-3">Stay updated !</h4>
+                  <h4 className="f-PowerGrotesk text-[18px] text-[#FFFBD9] leading-[20px] ml-3">
+                    Stay updated !
+                  </h4>
                 </div>
 
                 <div className="p-[10px] bg-[#1515158C] rounded-[10px] border-[0.5px] border-[#99999982] mt-[1.5rem]">
@@ -97,14 +98,28 @@ const Refer = ({ waitlistInfo }) => {
                       <img src="images/ubt-gift.svg" alt="" />
                     </div>
                     <div className="ml-4 max-w-[130px] flex items-center">
-                      <p className="f-HelveticaNeueLight text-[11px] text-[#FFF5D969] leading-[16.25px]">stay updated about all the important notices and information about the launch and early access.</p>
+                      <p className="f-HelveticaNeueLight text-[11px] text-[#FFF5D969] leading-[16.25px]">
+                        stay updated about all the important notices and
+                        information about the launch and early access.
+                      </p>
                     </div>
                   </div>
                   <div className="max-w-[273px] mt-[1.2rem]">
-                    <button className="f-PowerGrotesk bg-[#0000006B] flex items-center text-[12px] text-[#E1FF26] leading-[12px] rounded-full py-[14px] px-4">
-                      <span className="mr-[10px]"><img src="images/community.svg" alt="" /></span>
+                    <a
+                      href="https://chat.whatsapp.com/EgPgI3ahn4GJkFcGFzdkkd"
+                      target="_blank"
+                    >
+                      <button className="f-PowerGrotesk bg-[#0000006B] flex items-center text-[12px] text-[#E1FF26] leading-[12px] rounded-full py-[14px] px-4">
+                        <span className="mr-[10px]">
+                          <img src="images/community.svg" alt="" />
+                        </span>
+                        join our WhatsApp community
+                      </button>
+                      {/*  */}
+                      {/* <button className="inline-flex h-12 animate-shimmer max-w-[273px] items-center justify-center rounded-md border border-slate-800 bg-[linear-gradient(110deg,#000103,45%,#1e2631,55%,#000103)] bg-[length:200%_100%] px-6 font-medium text-slate-400 transition-colors focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50">
                       join our WhatsApp community
-                    </button>
+                      </button> */}
+                    </a>
                   </div>
                 </div>
                 <p className="mx-auto pt-[43px] max-w-[146px] f-PowerGrotesk text-[12px] text-[#6A929857] leading-[12px] text-center">
