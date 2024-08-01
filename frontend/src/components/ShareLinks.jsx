@@ -14,7 +14,7 @@ Here’s a special referral link for you ${sharelink} Signing up through this li
 
   return (
     <div className="set-large-align w-[100%] flex justify-center">
-      <div className="card gradient-box mt-10 sm:mt-2 border-[1px] border-[#FFFFFF21] h-[430px] sm:h-auto sm:mx-auto max-w-[325px] sm:max-w-[360px] md:max-w-[400px] lg:max-w-[360px] rounded-[45px] sm:rounded-[40px] p-4 text-center shadow-lg relative z-10">
+      <div className="card gradient-box mt-10 sm:mt-2 border-[1px] border-[#FFFFFF21] h-[423px] sm:h-auto sm:mx-auto max-w-[325px] sm:max-w-[360px] md:max-w-[400px] lg:max-w-[360px] rounded-[43px] sm:rounded-[46px] p-4 text-center shadow-lg relative z-10">
         {/* 200 People Joined */}
         <div className="mt-[2.5rem] sm:mt-2 mb-4">
           <div className="flex justify-center items-center mt-2">
