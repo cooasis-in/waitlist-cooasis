@@ -7,7 +7,7 @@ import CountUp from "react-countup";
 
 const Refer = ({ waitlistInfo }) => {
   const [showShareLink, setShowShareLink] = useState(false);
-  
+
 
   // confetti
   useEffect(() => {
@@ -84,13 +84,35 @@ const Refer = ({ waitlistInfo }) => {
         </div>
         {isBoxVisible && (
           <div className="absolute top-[70px] sm:top-[100px] right-[20px] sm:right-[50px]">
-            <div className="change-bg-samll bg-[#1515158C] rounded-[20px] border-[0.5px] border-[#99999982] h-[300px] w-[267px] flex items-center justify-center">
-              <div className="flex items-center justify-center h-full w-full">
-                <p className="mx-auto max-w-[146px] f-PowerGrotesk text-[12px] text-[#6A929857] leading-[12px] text-center">
+            <div className="change-bg-samll py-[20px] px-[10px] bg-[#1515158C] rounded-[20px] border-[0.5px] border-[#99999982] h-[367px] w-[287px] flex items-center justify-center">
+              <div className="h-full w-full">
+                <div className="flex items-center px-[10px]">
+                  <img src="images/bellicon-y.svg" alt="" />
+                  <h4 className="f-PowerGrotesk text-[18px] text-[#FFFBD9] leading-[20px] ml-3">Stay updated !</h4>
+                </div>
+
+                <div className="p-[10px] bg-[#1515158C] rounded-[10px] border-[0.5px] border-[#99999982] mt-[1.5rem]">
+                  <div className="flex">
+                    <div className="max-w-[75px] h-[78px] bg-[#00000063] flex justify-center items-center rounded-[5px] px-[15px]">
+                      <img src="images/ubt-gift.svg" alt="" />
+                    </div>
+                    <div className="ml-4 max-w-[130px] flex items-center">
+                      <p className="f-HelveticaNeueLight text-[11px] text-[#FFF5D969] leading-[16.25px]">stay updated about all the important notices and information about the launch and early access.</p>
+                    </div>
+                  </div>
+                  <div className="max-w-[273px] mt-[1.2rem]">
+                    <button className="f-PowerGrotesk bg-[#0000006B] flex items-center text-[12px] text-[#E1FF26] leading-[12px] rounded-full py-[14px] px-4">
+                      <span className="mr-[10px]"><img src="images/community.svg" alt="" /></span>
+                      join our WhatsApp community
+                    </button>
+                  </div>
+                </div>
+                <p className="mx-auto pt-[43px] max-w-[146px] f-PowerGrotesk text-[12px] text-[#6A929857] leading-[12px] text-center">
                   <span className="flex justify-center mb-1">
                     <img src="images/bellicon.svg" alt="" />
                   </span>
-                  No updates yet Check back later!
+                  That’s All ! <br />
+                  You’re all caught up.
                 </p>
               </div>
             </div>
@@ -151,7 +173,7 @@ const Refer = ({ waitlistInfo }) => {
                 <div className="card card-h-res gradient-box border-[1px] border-[#FFFFFF21] sm:mx-auto flex items-center justify-center h-[415px] lg:h-[400px] sm:h-auto sm:max-w-[360px] mt-9 rounded-[43px] sm:rounded-[46px] p-4 text-center shadow-lg relative z-10 sm:mt-0">
                   <div className="grow mt-6 lg:mt-0">
                     <h1 className="text-[#FFF5D9] f-PowerGrotesk text-[50px]">
-                    <CountUp
+                      <CountUp
                         start={1}
                         end={waitlistInfo.waitlistNumber}
                         duration={3} // Animation duration in seconds
