@@ -9,6 +9,7 @@ const imageData = [
   { src: 'images/Artboard-3.svg', alt: 'AWS' },
   { src: 'images/Artboard-4.svg', alt: 'Launch' },
   { src: 'images/Artboard-5.svg', alt: 'Google' },
+  { src: 'images/Artboard-7.svg', alt: 'Google' },
 ];
 
 const ImageSlider = () => {
@@ -48,13 +49,17 @@ const ImageSlider = () => {
 
   return (
     <div className="w-full overflow-hidden">
-    <Slider {...settings} className="flex justify-center items-center">
-      {imageData.map((image, index) => (
-        <div key={index} className="w-1/5 flex justify-center items-center px-2 py-4">
-          <img src={image.src} alt={image.alt} className='max-w-[100px]' />
-        </div>
-      ))}
-    </Slider>
+      <Slider {...settings} className="flex justify-center items-center">
+        {imageData.map((image, index) => (
+          <div key={index} className={`w-1/5 flex justify-center items-center px-2 py-4 ${index === imageData.length - 1 ? '!w-[65%] px-0' : ''}`}>
+            <img 
+              src={image.src} 
+              alt={image.alt} 
+              className={`max-w-[100px] ${index === imageData.length - 1 ? 'max-w-[60px]' : ''}`} 
+            />
+          </div>
+        ))}
+      </Slider>
     </div>
   );
 };

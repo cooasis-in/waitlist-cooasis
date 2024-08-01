@@ -25,7 +25,7 @@ const LandingPage = () => {
     console.log(email);
     setEmail(email);
     try {
-      const response = await axios.post("http://3.25.112.171:3001/users", {
+      const response = await axios.post("http://3.25.112.171:3001/users",{
         email,
         referrer,
       });
@@ -74,18 +74,27 @@ const LandingPage = () => {
       </div>
       <section className="bg-color !min-h-screen adjest-res">
         <div className="container mx-auto">
-          <div className="pt-[75px] sm:pt-[100px] lg:pt-[130px] xxl:pt-[100px]">
-            <h1 className="upper-index relative text-[12px] sm:text-[18px] leading-[12px] sm:leading-[25px] text-center bg-waitlist-gradient bg-clip-text text-transparent f-PowerGrotesk sm:mb-2">
+          <div className="pt-[130px] sm:pt-[100px] lg:pt-[130px] xxl:pt-[100px]">
+            <h1 className="upper-index relative text-[16px] sm:text-[18px] leading-[20px] sm:leading-[25px] text-center bg-waitlist-gradient bg-clip-text text-transparent f-PowerGrotesk sm:mb-2">
               Join waitlist for
             </h1>
             <div className="larg-pb text-center mt-4 sm:mt-0 mb-4">
               <div className="relative inline-block">
-                <h2 className="upper-index relative text-[40px] sm:text-[70px] leading-[40px] sm:leading-[70px] xxl:text-7xl f-PowerGrotesk text-[#FFF5D9]">
+                <h2 className="hidden sm:block upper-index relative text-[40px] sm:text-[70px] leading-[40px] sm:leading-[70px] xxl:text-7xl f-PowerGrotesk text-[#FFF5D9]">
                   <span className="bg-nexgen-gradient bg-clip-text fade-in">
                     Nex-gen
                   </span>
                   <br />
                   design ecosystem
+                </h2>
+                <h2 className="block sm:hidden upper-index relative text-[60px] leading-[60px] f-PowerGrotesk text-[#FFF5D9]">
+                  <span className="bg-nexgen-gradient bg-clip-text fade-in">
+                    Nex-gen
+                  </span>
+                  <br />
+                  design
+                  <br />
+                  ecosystem
                 </h2>
                 <div className="absolute bottom-[-12px] left-[82px] fade-in hidden sm:block">
                   <img
@@ -112,14 +121,14 @@ const LandingPage = () => {
                   />
                 </div>
                 {/* mobile screen img align */}
-                <div className="absolute bottom-[-7px] left-[47px] fade-in block sm:hidden">
+                <div className="absolute bottom-[57px] left-[-22px] fade-in block sm:hidden">
                   <img
                     src="images/borderNexgen.svg"
                     alt="border-image"
-                    className="max-w-[78%]"
+                    className="max-w-[325px]"
                   />
                 </div>
-                <div className="absolute bottom-[20px] left-[-16px] fade-in block sm:hidden">
+                <div className="absolute bottom-[37px] left-[-14px] fade-in block sm:hidden">
                   <img
                     src="images/star.svg"
                     alt="Star"
@@ -191,21 +200,21 @@ const LandingPage = () => {
                 +200 people joined
               </span>
             </div>
-            <div className="set-image">
+            <div className="relative">
+            <div className="flex justify-center items-center mt-11 sm:mt-16">
+              <img src="images/moon-1.svg" alt="" />
+            </div>
+            <div className="flex justify-center items-center">
               <img
-                src="images/moon-arch-1.svg"
+                src="images/moon-2.svg"
                 alt=""
-                className="set-image-1 max-w-[1000px] w-full m-auto md:mt-[-180px] lg:mt-[-230px] hidden sm:block"
-              />
-              <img
-                src="images/moon-arch.svg"
-                alt=""
-                className="w-full m-auto mt-[-130px] block sm:hidden"
+                className="absolute max-w-[70px] top-[-20px]"
               />
             </div>
-            <div className="hidden sm:block">
-              <div className="sm:mt-[-4rem] lg:mt-[-6rem] flex flex-col justify-center items-center space-x-4">
-                <span className="f-PowerGrotesk text-[14.5px] xxl:text-[17.5px] leading-[14.54px] text-[#6A92985E] text-center mb-2">
+          </div>
+            <div className="hidden md:block">
+              <div className="sm:mt-[-1rem] flex flex-col justify-center items-center space-x-4">
+                <span className="f-PowerGrotesk text-[14.5px] xxl:text-[17.5px] leading-[14.54px] text-[#6A92985E] text-center">
                   Backed by
                 </span>
                 <div className="res-align flex  items-center justify-center space-x-4 sm:space-x-7 max-w-[642px] !ml-0 !pb-4 sm:pt-3">
@@ -234,11 +243,16 @@ const LandingPage = () => {
                     alt=""
                     className="max-w-[110px]"
                   />
+                  <img
+                    src="images/Artboard-6.svg"
+                    alt=""
+                    className="max-w-[80px] !ml-[10px]"
+                  />
                 </div>
               </div>
             </div>
           </div>
-          <div className="block text-center sm:hidden py-4 w-full res-margin-fix">
+          <div className="!mt-[-1rem] block text-center md:hidden py-4 w-full res-margin-fix">
             <span className="f-PowerGrotesk text-[14.5px] xxl:text-[17.5px] leading-[14.54px] text-[#6A92985E] text-center">
               Backed by
             </span>

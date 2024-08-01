@@ -121,25 +121,35 @@ const EmailVerify = ({ setverifyEmail, email, referrer, showVerify }) => {
 
   return (
     <>
-      <div className="set-alignment set-alignment-logo flex justify-between items-center">
+    <div className="set-alignment set-alignment-logo flex justify-between items-center">
         <div className="flex set-width">
           <img src="images/darkmode.svg" alt="Cooasis Logo" className="w-30" />
         </div>
       </div>
       <section className="bg-color !min-h-screen adjest-res">
         <div className="container mx-auto">
-          <div className="pt-[75px] sm:pt-[100px]">
+          <div className="pt-[130px] sm:pt-[100px]">
             <h1 className="upper-index relative text-[12px] sm:text-[18px] leading-[12px] sm:leading-[25px] text-center bg-waitlist-gradient bg-clip-text text-transparent f-PowerGrotesk sm:mb-2">
               Join waitlist for
             </h1>
             <div className="larg-pb text-center mt-4 sm:mt-0 mb-4">
-              <div className="relative inline-block">
-                <h2 className="upper-index relative text-[40px] sm:text-[70px] leading-[40px] sm:leading-[70px] xxl:text-7xl f-PowerGrotesk text-[#FFF5D9]">
+            <div className="relative inline-block">
+                <h2 className="hidden sm:block upper-index relative text-[40px] sm:text-[70px] leading-[40px] sm:leading-[70px] xxl:text-7xl f-PowerGrotesk text-[#FFF5D9]">
                   <span className="bg-nexgen-gradient bg-clip-text fade-in">
                     Nex-gen
                   </span>
                   <br />
-                  design ecosystem
+                  design
+                   ecosystem
+                </h2>
+                <h2 className="block sm:hidden upper-index relative text-[60px] leading-[60px] f-PowerGrotesk text-[#FFF5D9]">
+                  <span className="bg-nexgen-gradient bg-clip-text fade-in">
+                    Nex-gen
+                  </span>
+                  <br />
+                  design
+                   <br />
+                   ecosystem
                 </h2>
                 <div className="absolute bottom-[-12px] left-[82px] fade-in hidden sm:block">
                   <img
@@ -166,14 +176,14 @@ const EmailVerify = ({ setverifyEmail, email, referrer, showVerify }) => {
                   />
                 </div>
                 {/* mobile screen img align */}
-                <div className="absolute bottom-[-7px] left-[47px] fade-in block sm:hidden">
+                <div className="absolute bottom-[57px] left-[-22px] fade-in block sm:hidden">
                   <img
                     src="images/borderNexgen.svg"
                     alt="border-image"
-                    className="max-w-[78%]"
+                    className="max-w-[325px]"
                   />
                 </div>
-                <div className="absolute bottom-[20px] left-[-16px] fade-in block sm:hidden">
+                <div className="absolute bottom-[37px] left-[-14px] fade-in block sm:hidden">
                   <img
                     src="images/star.svg"
                     alt="Star"
@@ -183,13 +193,13 @@ const EmailVerify = ({ setverifyEmail, email, referrer, showVerify }) => {
               </div>
             </div>
             {showVerify ? (
-              <div className="flex flex-col items-center justify-center">
-                <div className="max-w-[600px] email-container mb-32 sm:mb-0">
+              <div className="flex flex-col items-center justify-center mt-[50px] sm:mt-0">
+                <div className="max-w-[600px] email-container mb-[6rem] sm:mb-0">
                   <div className="flex space-x-3 mt-3 px-6">
                     {otp.map((data, index) => {
                       return (
                         <input
-                          className="f-PowerGrotesk max-w-[65px] h-[65px] text-[#FCFCD8] text-center text-lg border-[1px] border-[#FFFFFF17] bg-transparent rounded-full focus:outline-none focus:border-[#FFFFFF17]"
+                          className="f-PowerGrotesk max-w-[65px] h-[65px] text-[#FCFCD8] text-center text-lg border-[1px] border-[#FFFFFF17] bg-transparent rounded-full focus:outline-none  focus:border-[#FCFCD8]"
                           type="text"
                           name="otp"
                           maxLength="1"

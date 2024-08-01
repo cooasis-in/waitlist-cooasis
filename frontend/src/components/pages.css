@@ -1,10 +1,19 @@
-.bg-color {
-  background-image: radial-gradient(
-    farthest-side at 47% 40%,
-    #7d22ff -100%,
-    #000000 45%
-  );
+body {
+  background-color: #000000;
+}
+
+/* .bg-color {
+  background-image: radial-gradient(farthest-side at 47% 40%,
+      #7d22ff -100%,
+      #000000 45%);
   width: 100%;
+} */
+
+/* refer rgb color */
+
+.bg-rgb {
+  --tw-bg-opacity: 1;
+  background-color: rgb(19 21 21 / var(--tw-bg-opacity));
 }
 
 /* landing page nexgen heading css */
@@ -19,7 +28,7 @@
   background-image: radial-gradient(
     farthest-side at 25% 56%,
     #7d22ff -150%,
-    #00000063 100%
+    #000000 100%
   );
 }
 
@@ -30,7 +39,7 @@
 
 @media (max-width: 640px) {
   .bg-grediant-waitlist {
-    background: #00000063;
+    background: #000000;
     background-image: none;
   }
 
@@ -75,20 +84,20 @@
 
 /* Media Query */
 @media (max-width: 640px) {
-  .bg-color-res {
+  /* .bg-color-res {
     background-image: radial-gradient(
       farthest-side at 5% 42%,
       #7d22ff -200%,
-      #131515 70%
+      #000000 70%
     ) !important;
     width: 100% !important;
-  }
+  } */
 }
 
 /* Cooasis Logo Set Width */
 @media (max-width: 640px) {
   .set-width img {
-    max-width: 70px;
+    max-width: 85px;
   }
 }
 
@@ -121,17 +130,15 @@
 }
 
 @media (max-width: 640px) {
-  .bg-color {
-    background-image: radial-gradient(
-      farthest-side at 45% 30%,
-      #7d22ff -460%,
-      #000000 100%
-    );
+  /* .bg-color {
+    background-image: radial-gradient(farthest-side at 45% 30%,
+        #7d22ff -460%,
+        #000000 100%);
     background-attachment: fixed !important;
     background-repeat: no-repeat !important;
     min-height: 100vh;
     width: 100%;
-  }
+  } */
 }
 
 @media screen and (min-device-width: 487px) and (max-device-width: 600px) {
@@ -179,7 +186,7 @@
   background-image: radial-gradient(
     farthest-side at 47% 28%,
     #7d22ff -100%,
-    #131515 36%
+    #000000 36%
   );
   min-height: calc(100vh - 80px) !important;
   width: 100%;
@@ -258,6 +265,7 @@
 :root {
   --primary-color: #e1ff26;
 }
+
 .card {
   max-width: 640px;
   position: relative;
@@ -298,6 +306,12 @@
 .card:hover:after {
   top: 65%;
   opacity: 1;
+}
+
+@media (max-width: 365px) {
+  .card-h-res {
+    height: 428px !important;
+  }
 }
 
 @media (max-width: 1100px) {
@@ -357,7 +371,7 @@
 
 @media (max-width: 640px) {
   .set-alignment-logo {
-    padding-top: 0px !important;
+    padding-top: 20px !important;
   }
 }
 
