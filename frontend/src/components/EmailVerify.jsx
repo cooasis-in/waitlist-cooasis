@@ -199,7 +199,7 @@ const EmailVerify = ({ setverifyEmail, email, referrer, showVerify }) => {
                     {otp.map((data, index) => {
                       return (
                         <input
-                          className="f-PowerGrotesk max-w-[65px] h-[65px] text-[#FCFCD8] text-center text-lg border-[1px] border-[#FFFFFF17] bg-transparent rounded-full focus:outline-none focus:border-[#FFFFFF17]"
+                          className="f-PowerGrotesk max-w-[65px] h-[65px] text-[#FCFCD8] text-center text-lg border-[1px] border-[#FFFFFF17] bg-transparent rounded-full focus:outline-none  focus:border-[#FCFCD8]"
                           type="text"
                           name="otp"
                           maxLength="1"

@@ -85,8 +85,7 @@ const LandingPage = () => {
                     Nex-gen
                   </span>
                   <br />
-                  design
-                   ecosystem
+                  design ecosystem
                 </h2>
                 <h2 className="block sm:hidden upper-index relative text-[60px] leading-[60px] f-PowerGrotesk text-[#FFF5D9]">
                   <span className="bg-nexgen-gradient bg-clip-text fade-in">
@@ -94,8 +93,8 @@ const LandingPage = () => {
                   </span>
                   <br />
                   design
-                   <br />
-                   ecosystem
+                  <br />
+                  ecosystem
                 </h2>
                 <div className="absolute bottom-[-12px] left-[82px] fade-in hidden sm:block">
                   <img
@@ -244,7 +243,7 @@ const LandingPage = () => {
                     alt=""
                     className="max-w-[110px]"
                   />
-                   <img
+                  <img
                     src="images/Artboard-6.svg"
                     alt=""
                     className="max-w-[80px] !ml-[10px]"

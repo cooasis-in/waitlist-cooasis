@@ -2,12 +2,12 @@ body {
   background-color: #000000;
 }
 
-.bg-color {
+/* .bg-color {
   background-image: radial-gradient(farthest-side at 47% 40%,
       #7d22ff -100%,
       #000000 45%);
   width: 100%;
-}
+} */
 
 /* refer rgb color */
 
@@ -25,9 +25,11 @@ body {
 /* Waitlist Page Bg-color */
 
 .bg-grediant-waitlist {
-  background-image: radial-gradient(farthest-side at 25% 56%,
-      #7d22ff -150%,
-      #000000 100%);
+  background-image: radial-gradient(
+    farthest-side at 25% 56%,
+    #7d22ff -150%,
+    #000000 100%
+  );
 }
 
 .email-container {
@@ -42,9 +44,11 @@ body {
   }
 
   .waitlist-res-bg {
-    background-image: radial-gradient(farthest-side at 5% 28%,
-        #7d22ff -200%,
-        #000000 60%) !important;
+    background-image: radial-gradient(
+      farthest-side at 5% 28%,
+      #7d22ff -200%,
+      #000000 60%
+    ) !important;
     width: 100% !important;
   }
 }
@@ -56,15 +60,21 @@ body {
 
 .custom-button:hover {
   background: linear-gradient(rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.05)),
-    radial-gradient(circle at 10% 10%,
+    radial-gradient(
+      circle at 10% 10%,
       rgba(0, 100, 120, 0.4) 0%,
-      transparent 70%),
-    radial-gradient(circle at 70% 70%,
+      transparent 70%
+    ),
+    radial-gradient(
+      circle at 70% 70%,
       rgba(190, 190, 217, 0.15) 0%,
-      transparent 70%),
-    radial-gradient(circle at center,
+      transparent 70%
+    ),
+    radial-gradient(
+      circle at center,
       rgba(0, 190, 135, 0.2) 0%,
-      transparent 70%);
+      transparent 70%
+    );
   background-blend-mode: screen;
   /* border-radius: 30px; */
   color: #fff5d9;
@@ -74,12 +84,14 @@ body {
 
 /* Media Query */
 @media (max-width: 640px) {
-  .bg-color-res {
-    background-image: radial-gradient(farthest-side at 5% 42%,
-        #7d22ff -200%,
-        #000000 70%) !important;
+  /* .bg-color-res {
+    background-image: radial-gradient(
+      farthest-side at 5% 42%,
+      #7d22ff -200%,
+      #000000 70%
+    ) !important;
     width: 100% !important;
-  }
+  } */
 }
 
 /* Cooasis Logo Set Width */
@@ -118,7 +130,7 @@ body {
 }
 
 @media (max-width: 640px) {
-  .bg-color {
+  /* .bg-color {
     background-image: radial-gradient(farthest-side at 45% 30%,
         #7d22ff -460%,
         #000000 100%);
@@ -126,7 +138,7 @@ body {
     background-repeat: no-repeat !important;
     min-height: 100vh;
     width: 100%;
-  }
+  } */
 }
 
 @media screen and (min-device-width: 487px) and (max-device-width: 600px) {
@@ -171,24 +183,32 @@ body {
 .bg-colorRefer {
   /* min-height: calc(100vh - 80px) !important;
   width: 100%; */
-  background-image: radial-gradient(farthest-side at 47% 28%,
-      #7d22ff -100%,
-      #000000 36%);
+  background-image: radial-gradient(
+    farthest-side at 47% 28%,
+    #7d22ff -100%,
+    #000000 36%
+  );
   min-height: calc(100vh - 80px) !important;
   width: 100%;
 }
 
 .gradient-box {
   background: linear-gradient(rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.05)),
-    radial-gradient(circle at 10% 10%,
+    radial-gradient(
+      circle at 10% 10%,
       rgba(0, 100, 120, 0.4) 0%,
-      transparent 70%),
-    radial-gradient(circle at 70% 70%,
+      transparent 70%
+    ),
+    radial-gradient(
+      circle at 70% 70%,
       rgba(190, 190, 217, 0.15) 0%,
-      transparent 70%),
-    radial-gradient(circle at center,
+      transparent 70%
+    ),
+    radial-gradient(
+      circle at center,
       rgba(0, 190, 135, 0.2) 0%,
-      transparent 70%);
+      transparent 70%
+    );
   background-blend-mode: screen;
   border-radius: 30px;
 }
@@ -232,7 +252,6 @@ body {
 }
 
 @keyframes blink {
-
   0%,
   100% {
     border-color: transparent;
@@ -290,11 +309,9 @@ body {
 }
 
 @media (max-width: 365px) {
-
   .card-h-res {
     height: 428px !important;
   }
-
 }
 
 @media (max-width: 1100px) {

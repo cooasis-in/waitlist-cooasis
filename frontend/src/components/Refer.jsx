@@ -95,7 +95,7 @@ const Refer = ({ waitlistInfo }) => {
           </div>
         )}
       </header>
-      <section className="bg-colorRefer adjest !min-h-screen bg-color-res">
+      <section className=" adjest !min-h-screen bg-color-res">
         <div className="container mx-auto relative px-[20px]">
           <div className="flex flex-col items-center relative overflow-hidden">
             <ConfettiBackground />
