@@ -3,9 +3,11 @@ import confetti from "canvas-confetti";
 import "./pages.css";
 import { useState } from "react";
 import ShareLink from "../components/ShareLinks";
+import CountUp from "react-countup";
 
 const Refer = ({ waitlistInfo }) => {
   const [showShareLink, setShowShareLink] = useState(false);
+  
 
   // confetti
   useEffect(() => {
@@ -149,7 +151,12 @@ const Refer = ({ waitlistInfo }) => {
                 <div className="card card-h-res gradient-box border-[1px] border-[#FFFFFF21] sm:mx-auto flex items-center justify-center h-[415px] lg:h-[400px] sm:h-auto sm:max-w-[360px] mt-9 rounded-[43px] sm:rounded-[46px] p-4 text-center shadow-lg relative z-10 sm:mt-0">
                   <div className="grow mt-6 lg:mt-0">
                     <h1 className="text-[#FFF5D9] f-PowerGrotesk text-[50px]">
-                      {waitlistInfo.waitlistNumber}
+                    <CountUp
+                        start={1}
+                        end={waitlistInfo.waitlistNumber}
+                        duration={3} // Animation duration in seconds
+                        separator=","
+                      />
                     </h1>
                     <p className="f-PowerGrotesk text-[20px] md:text-[14px] mt-4 leading-[1] text-[#FFF5D9]">
                       You are on the waitlist <br /> Get ahead of the crowd!
