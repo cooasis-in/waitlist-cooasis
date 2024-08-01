@@ -1,7 +1,7 @@
 require("dotenv").config();
 const { sendVerificationEmail } = require("./utils/nodemailer");
 
-const testEmail = "taslimkhan9326@gmail.com";
+const testEmail = "shahbaz.khans976@gmail.com";
 const testOTP = "4848";
 const testContent =
   "Congratulations! You have successfully joined the waitlist.";

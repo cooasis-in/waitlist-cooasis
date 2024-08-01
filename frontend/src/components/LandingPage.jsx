@@ -25,7 +25,7 @@ const LandingPage = () => {
     console.log(email);
     setEmail(email);
     try {
-      const response = await axios.post("http://localhost:3001/users", {
+      const response = await axios.post("http://3.25.112.171:3001/users",{
         email,
         referrer,
       });
