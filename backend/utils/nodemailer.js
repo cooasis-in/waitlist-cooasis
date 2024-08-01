@@ -37,7 +37,7 @@ const sendVerificationEmail = async (email, otp = null, content = null) => {
       path.join(__dirname, "emailTemplates", "otpVerify.html"),
       "utf8"
     );
-s
+
     emailContent = emailContent.replace("{{otp}}", otp);
     emailSubject = "Your OTP Code";
   } else if (content) {
