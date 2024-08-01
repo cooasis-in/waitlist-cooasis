@@ -132,7 +132,7 @@ Here’s a special referral link for you ${sharelink} Signing up through this li
               alt=""
               className="mr-[8px] max-w-[13px]  xxl:max-w-[100%]"
             />
-            Share on email
+            Share on Twitter
           </button>
         </TwitterShareButton>
       </div>

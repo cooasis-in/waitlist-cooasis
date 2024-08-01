@@ -74,18 +74,28 @@ const LandingPage = () => {
       </div>
       <section className="bg-color !min-h-screen adjest-res">
         <div className="container mx-auto">
-          <div className="pt-[75px] sm:pt-[100px] lg:pt-[130px] xxl:pt-[100px]">
-            <h1 className="upper-index relative text-[12px] sm:text-[18px] leading-[12px] sm:leading-[25px] text-center bg-waitlist-gradient bg-clip-text text-transparent f-PowerGrotesk sm:mb-2">
+          <div className="pt-[130px] sm:pt-[100px] lg:pt-[130px] xxl:pt-[100px]">
+            <h1 className="upper-index relative text-[16px] sm:text-[18px] leading-[20px] sm:leading-[25px] text-center bg-waitlist-gradient bg-clip-text text-transparent f-PowerGrotesk sm:mb-2">
               Join waitlist for
             </h1>
             <div className="larg-pb text-center mt-4 sm:mt-0 mb-4">
               <div className="relative inline-block">
-                <h2 className="upper-index relative text-[40px] sm:text-[70px] leading-[40px] sm:leading-[70px] xxl:text-7xl f-PowerGrotesk text-[#FFF5D9]">
+                <h2 className="hidden sm:block upper-index relative text-[40px] sm:text-[70px] leading-[40px] sm:leading-[70px] xxl:text-7xl f-PowerGrotesk text-[#FFF5D9]">
                   <span className="bg-nexgen-gradient bg-clip-text fade-in">
                     Nex-gen
                   </span>
                   <br />
-                  design ecosystem
+                  design
+                   ecosystem
+                </h2>
+                <h2 className="block sm:hidden upper-index relative text-[60px] leading-[60px] f-PowerGrotesk text-[#FFF5D9]">
+                  <span className="bg-nexgen-gradient bg-clip-text fade-in">
+                    Nex-gen
+                  </span>
+                  <br />
+                  design
+                   <br />
+                   ecosystem
                 </h2>
                 <div className="absolute bottom-[-12px] left-[82px] fade-in hidden sm:block">
                   <img
@@ -112,14 +122,14 @@ const LandingPage = () => {
                   />
                 </div>
                 {/* mobile screen img align */}
-                <div className="absolute bottom-[-3px] left-[47px] fade-in block sm:hidden">
+                <div className="absolute bottom-[57px] left-[-22px] fade-in block sm:hidden">
                   <img
                     src="images/borderNexgen.svg"
                     alt="border-image"
-                    className="max-w-[78%]"
+                    className="max-w-[325px]"
                   />
                 </div>
-                <div className="absolute bottom-[22px] left-[-16px] fade-in block sm:hidden">
+                <div className="absolute bottom-[37px] left-[-14px] fade-in block sm:hidden">
                   <img
                     src="images/star.svg"
                     alt="Star"

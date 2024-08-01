@@ -121,7 +121,7 @@ const Refer = ({ waitlistInfo }) => {
             </div>
             <div className="heading-res block sm:hidden">
               <div className="relative inline-block px-[20px]">
-                <h1 className="relative z-20 pt-[50px] text-[40px] !text-white leading-[40px] text-center f-PowerGrotesk">
+                <h1 className="relative z-20 pt-[70px] text-[50px] !text-[#FFF5D9] leading-[50px] text-center f-PowerGrotesk">
                   Welcome to <br /> the&nbsp;
                   <span className="bg-nexgen-gradient bg-clip-text mr-3">
                     exclusive
@@ -129,11 +129,11 @@ const Refer = ({ waitlistInfo }) => {
                   <br />
                   waitlist
                 </h1>
-                <div className="absolute top-[54px] left-[49px] fade-in block sm:hidden">
+                <div className="absolute top-[66px] left-[55px] fade-in block sm:hidden">
                   <img
                     src="images/borderNexgen.svg"
                     alt="border-image"
-                    className="w-[230px]"
+                    className="w-[290px] h-[155px]"
                   />
                 </div>
               </div>
