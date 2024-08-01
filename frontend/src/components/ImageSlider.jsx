@@ -55,7 +55,7 @@ const ImageSlider = () => {
             <img 
               src={image.src} 
               alt={image.alt} 
-              className={`max-w-[100px] ${index === imageData.length - 1 ? 'max-w-[60px]' : ''}`} 
+              className={`max-w-[100px] ${index === imageData.length - 1 ? 'max-w-[40px]' : ''}`} 
             />
           </div>
         ))}
