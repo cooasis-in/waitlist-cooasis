@@ -65,7 +65,7 @@ const Refer = ({ waitlistInfo }) => {
         <div className="set-width">
           <img src="images/darkmode.svg" alt="Cooasis Logo" className="w-30" />
         </div>
-        <div className="bg-[#0000006B] rounded-full border-[0.5px] border-[#99999982]">
+        <div className="bg-rgb rounded-full border-[0.5px] border-[#99999982]">
           <button
             className="flex justify-center !items-center py-2 px-4 sm:py-3 sm:px-7 max-w-[91px] sm:max-w-[147px] f-PowerGrotesk text-[12px] sm:text-[17.5px] text-[#6A929857] leading-[12px] sm:leading-[17.5px]"
             onClick={toggleBoxVisibility}
@@ -121,7 +121,7 @@ const Refer = ({ waitlistInfo }) => {
             </div>
             <div className="heading-res block sm:hidden">
               <div className="relative inline-block px-[20px]">
-                <h1 className="relative z-20 pt-[50px] text-[40px] !text-white leading-[40px] text-center f-PowerGrotesk">
+                <h1 className="relative z-20 pt-[70px] text-[50px] !text-[#FFF5D9] leading-[50px] text-center f-PowerGrotesk">
                   Welcome to <br /> the&nbsp;
                   <span className="bg-nexgen-gradient bg-clip-text mr-3">
                     exclusive
@@ -129,11 +129,11 @@ const Refer = ({ waitlistInfo }) => {
                   <br />
                   waitlist
                 </h1>
-                <div className="absolute top-[54px] left-[49px] fade-in block sm:hidden">
+                <div className="absolute top-[66px] left-[55px] fade-in block sm:hidden">
                   <img
                     src="images/borderNexgen.svg"
                     alt="border-image"
-                    className="w-[230px]"
+                    className="w-[290px] h-[155px]"
                   />
                 </div>
               </div>
@@ -146,8 +146,8 @@ const Refer = ({ waitlistInfo }) => {
               />
             ) : (
               <div className="set-large-align w-[100%] px-[12px] sm:px-0">
-                <div className="card gradient-box border-[1px] border-[#FFFFFF21] sm:mx-auto flex items-center justify-center h-[430px] lg:h-[400px] sm:h-auto sm:max-w-[360px] mt-9 rounded-[40px] p-4 text-center shadow-lg relative z-10 sm:mt-0">
-                  <div className="mt-6 lg:mt-0">
+                <div className="card card-h-res gradient-box border-[1px] border-[#FFFFFF21] sm:mx-auto flex items-center justify-center h-[415px] lg:h-[400px] sm:h-auto sm:max-w-[360px] mt-9 rounded-[43px] sm:rounded-[46px] p-4 text-center shadow-lg relative z-10 sm:mt-0">
+                  <div className="grow mt-6 lg:mt-0">
                     <h1 className="text-[#FFF5D9] f-PowerGrotesk text-[50px]">
                       {waitlistInfo.waitlistNumber}
                     </h1>
@@ -192,7 +192,7 @@ const Refer = ({ waitlistInfo }) => {
               </h1>
               <div>
                 <ul className="flex space-x-3 sm:space-x-3 justify-start items-center">
-                  <li className="bg-[#000000] h-8 sm:h-8 w-8 sm:w-8 rounded-full">
+                  <li className="bg-rgb h-8 sm:h-8 w-8 sm:w-8 rounded-full">
                     <a
                       href="https://www.instagram.com/cooasis.in/"
                       target="_blank"
@@ -205,7 +205,7 @@ const Refer = ({ waitlistInfo }) => {
                       />
                     </a>
                   </li>
-                  <li className="bg-[#000000] h-8 sm:h-8 w-8 sm:w-8 rounded-full">
+                  <li className="bg-rgb h-8 sm:h-8 w-8 sm:w-8 rounded-full">
                     <a
                       href="https://www.linkedin.com/company/cooasis-in"
                       target="blank"
@@ -218,7 +218,7 @@ const Refer = ({ waitlistInfo }) => {
                       />
                     </a>
                   </li>
-                  <li className="bg-[#000000] h-8 sm:h-8 w-8 sm:w-8 rounded-full">
+                  <li className="bg-rgb h-8 sm:h-8 w-8 sm:w-8 rounded-full">
                     <a
                       href="https://www.behance.net/coasis"
                       target="blank"
@@ -231,7 +231,7 @@ const Refer = ({ waitlistInfo }) => {
                       />
                     </a>
                   </li>
-                  <li className="bg-[#000000] h-8 sm:h-8 w-8 sm:w-8 rounded-full">
+                  <li className="bg-rgb h-8 sm:h-8 w-8 sm:w-8 rounded-full">
                     <a
                       href="https://dribbble.com/Cooasis"
                       target="blank"
@@ -244,7 +244,7 @@ const Refer = ({ waitlistInfo }) => {
                       />
                     </a>
                   </li>
-                  <li className="bg-[#000000] h-8 sm:h-8 w-8 sm:w-8 rounded-full">
+                  <li className="bg-rgb h-8 sm:h-8 w-8 sm:w-8 rounded-full">
                     <a
                       href="https://www.facebook.com/cooasis.in"
                       target="_blank"
@@ -257,7 +257,7 @@ const Refer = ({ waitlistInfo }) => {
                       />
                     </a>
                   </li>
-                  <li className="bg-[#000000] h-8 sm:h-8 w-8 sm:w-8 rounded-full">
+                  <li className="bg-rgb h-8 sm:h-8 w-8 sm:w-8 rounded-full">
                     <a
                       href="https://www.behance.net/coasis"
                       target="_blank"
