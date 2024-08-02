@@ -7,6 +7,8 @@ import CountUp from "react-countup";
 
 const Refer = ({ waitlistInfo }) => {
   const [showShareLink, setShowShareLink] = useState(false);
+  const [isBoxVisible, setIsBoxVisible] = useState(false);
+  const [isDotVisible, setIsDotVisible] = useState(true);
 
   // confetti
   useEffect(() => {
@@ -54,10 +56,9 @@ const Refer = ({ waitlistInfo }) => {
     }
   };
 
-  const [isBoxVisible, setIsBoxVisible] = useState(false);
-
   const toggleBoxVisibility = () => {
     setIsBoxVisible(!isBoxVisible);
+    setIsDotVisible(false);
   };
 
   return (
@@ -66,7 +67,7 @@ const Refer = ({ waitlistInfo }) => {
         <div className="set-width">
           <img src="images/darkmode.svg" alt="Cooasis Logo" className="w-30" />
         </div>
-        <div className="bg-rgb rounded-full border-[0.5px] border-[#99999982]">
+        <div className="relative bg-rgb rounded-full border-[0.5px] border-[#99999982]">
           <button
             className="flex justify-center !items-center py-2 px-4 sm:py-3 sm:px-7 max-w-[91px] sm:max-w-[147px] f-PowerGrotesk text-[12px] sm:text-[17.5px] text-[#6A929857] leading-[12px] sm:leading-[17.5px]"
             onClick={toggleBoxVisibility}
@@ -80,6 +81,11 @@ const Refer = ({ waitlistInfo }) => {
             </span>
             <span className="mb-[4px] sm:mb-[7px]">updates</span>
           </button>
+          {isDotVisible && (
+            <div>
+              <img src="images/dot-y.svg" alt="" className="absolute top-[8px] left-[20px] sm:left-[37px] w-[6px] h-[6px] sm:w-[10px] sm:h-[10px]" />
+            </div>
+          )}
         </div>
         {isBoxVisible && (
           <div className="absolute top-[70px] sm:top-[100px] right-[20px] sm:right-[50px]">
