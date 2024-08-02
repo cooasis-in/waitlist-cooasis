@@ -3,8 +3,13 @@ import axios from "axios";
 import Refer from "./Refer";
 import ImageSlider from "./ImageSlider";
 import { ClipLoader } from "react-spinners";
+import { Link } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
-const EmailVerify = ({ setverifyEmail, email, referrer, showVerify }) => {
+const EmailVerify = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const { email, referrer, showVerify } = location.state;
   const [verificationError, setVerificationError] = useState("");
   const [isVerified, setIsVerified] = useState(false);
   const [waitlistInfo, setWaitlistInfo] = useState({});
@@ -45,54 +50,55 @@ const EmailVerify = ({ setverifyEmail, email, referrer, showVerify }) => {
     return () => clearInterval(interval);
   }, [resendDisabled]);
 
-  const handleResend = async () => {
-    // setLoading(true);
-    try {
-      setResendDisabled(true); // Disable the button
-      setTimerSeconds(60); // Reset timer duration to 60 seconds
-      const response = await axios.post("http://3.25.112.171:3001/resend-otp",  {
-        email,
-      });
-      if (response.status === 200) {
-        setVerificationError(""); // Clear any previous errors
-        setTimerSeconds(60); // Reset the timer
-        setVerificationError("OTP has been resent to your email.");
-      } else {
-        setVerificationError("Failed to resend OTP. Please try again.");
-      }
-    } catch (error) {
-      console.error("Error resending OTP:", error);
+const handleResend = async () => {
+  // setLoading(true);
+  try {
+    setResendDisabled(true); // Disable the button
+    setTimerSeconds(60); // Reset timer duration to 60 seconds
+    const response = await axios.post("http://3.25.112.171:3001/resend-otp",{
+      email,
+    });
+    if (response.status === 200) {
+      setVerificationError(""); // Clear any previous errors
+      setTimerSeconds(60); // Reset the timer
+      setVerificationError("OTP has been resent to your email.");
+    } else {
       setVerificationError("Failed to resend OTP. Please try again.");
     }
-    setLoading(false); // Hide loader
-  };
+  } catch (error) {
+    console.error("Error resending OTP:", error);
+    setVerificationError("Failed to resend OTP. Please try again.");
+  }
+  setLoading(false); // Hide loader
+};
 
-  const handleSubmit = async () => {
-    setLoading(true); // Show loader
-    try {
-      const otpCode = otp.join("");
-      const response = await axios.post(
-        "http://3.25.112.171:3001/verify-email",
-        { otpCode, email, referrer },
-        { withCredentials: true }
-      );
+const handleSubmit = async () => {
+  setLoading(true); // Show loader
+  try {
+    const otpCode = otp.join("");
+    const response = await axios.post(
+      "http://3.25.112.171:3001/verify-email",
+      { otpCode, email, referrer },
+      { withCredentials: true }
+    );
 
-      if (response.status === 200) {
-        const { waitlistNumber, referralLink } = response.data;
-        setWaitlistInfo({ waitlistNumber, referralLink });
-        setIsVerified(true);
-      }
-    } catch (error) {
-      console.error("Verification Error:", error);
-      if (error.response && error.response.status === 400) {
-        setVerificationError("Invalid OTP. Please try again.");
-      } else {
-        setVerificationError("Server error. Please try again later.");
-      }
+    if (response.status === 200) {
+      const responseData = response.data;
+      const { waitlistNumber, referralLink } = response.data;
+      setWaitlistInfo({ waitlistNumber, referralLink });
+      // setIsVerified(true);
+      navigate(`/refer?email=${encodeURIComponent(email)}`, { state: { waitlistInfo: responseData } });
     }
-    setLoading(false); // Hide loader
-  };
-
+  } catch (error) {
+    console.error("Verification Error:", error);
+    if (error.response && error.response.status === 400) {
+      setVerificationError("Invalid OTP. Please try again.");
+    } else {
+      setVerificationError("Server error. Please try again later.");
+    }
+  }
+  setLoading(false); // Hide loader
+};
   const handleKeyDown = (e, index) => {
     if (e.key === "Backspace" && !otp[index]) {
       if (index > 0) {
@@ -115,15 +121,13 @@ const EmailVerify = ({ setverifyEmail, email, referrer, showVerify }) => {
     }
   }, [otp]);
 
-  if (isVerified) {
-    return <Refer waitlistInfo={waitlistInfo} />;
-  }
-
   return (
     <>
-    <div className="set-alignment set-alignment-logo flex justify-between items-center">
+      <div className="set-alignment set-alignment-logo flex justify-between items-center">
         <div className="flex set-width">
-          <img src="images/darkmode.svg" alt="Cooasis Logo" className="w-30" />
+          <Link href="/">
+            <img src="images/darkmode.svg" alt="Cooasis Logo" className="w-30" />
+          </Link>
         </div>
       </div>
       <section className="bg-color !min-h-screen adjest-res">
@@ -133,14 +137,14 @@ const EmailVerify = ({ setverifyEmail, email, referrer, showVerify }) => {
               Join waitlist for
             </h1>
             <div className="larg-pb text-center mt-4 sm:mt-0 mb-4">
-            <div className="relative inline-block">
+              <div className="relative inline-block">
                 <h2 className="hidden sm:block upper-index relative text-[40px] sm:text-[70px] leading-[40px] sm:leading-[70px] xxl:text-7xl f-PowerGrotesk text-[#FFF5D9]">
                   <span className="bg-nexgen-gradient bg-clip-text fade-in">
                     Nex-gen
                   </span>
                   <br />
                   design
-                   ecosystem
+                  ecosystem
                 </h2>
                 <h2 className="block sm:hidden upper-index relative text-[60px] leading-[60px] f-PowerGrotesk text-[#FFF5D9]">
                   <span className="bg-nexgen-gradient bg-clip-text fade-in">
@@ -148,8 +152,8 @@ const EmailVerify = ({ setverifyEmail, email, referrer, showVerify }) => {
                   </span>
                   <br />
                   design
-                   <br />
-                   ecosystem
+                  <br />
+                  ecosystem
                 </h2>
                 <div className="absolute bottom-[-12px] left-[82px] fade-in hidden sm:block">
                   <img
@@ -250,14 +254,12 @@ const EmailVerify = ({ setverifyEmail, email, referrer, showVerify }) => {
                     <button
                       onClick={handleResend}
                       disabled={resendDisabled}
-                      className={`f-HelveticaNeueLight text-[#5A5A5A] text-[12px] xxl:text-[18px] leading-[17.59px] font-light mt-4 lg:font-medium ${
-                        resendDisabled ? "cursor-not-allowed opacity-50" : ""
-                      }`}
+                      className={`f-HelveticaNeueLight text-[#5A5A5A] text-[12px] xxl:text-[18px] leading-[17.59px] font-light mt-4 lg:font-medium ${resendDisabled ? "cursor-not-allowed opacity-50" : ""
+                        }`}
                     >
                       <span
-                        className={`f-HelveticaNeueRoman cursor-pointer text-[15px] text-center ${
-                          resendDisabled ? "text-[#6A9298]" : "text-[#6A929857]"
-                        } leading-[23.46px]`}
+                        className={`f-HelveticaNeueRoman cursor-pointer text-[15px] text-center ${resendDisabled ? "text-[#6A9298]" : "text-[#6A929857]"
+                          } leading-[23.46px]`}
                       >
                         {resendDisabled
                           ? `Resend Code in ${timerSeconds}s`
@@ -328,17 +330,17 @@ const EmailVerify = ({ setverifyEmail, email, referrer, showVerify }) => {
               </span>
             </div>
             <div className="relative">
-            <div className="flex justify-center items-center mt-11 sm:mt-16">
-              <img src="images/moon-1.svg" alt="" />
+              <div className="flex justify-center items-center mt-11 sm:mt-16">
+                <img src="images/moon-1.svg" alt="" />
+              </div>
+              <div className="flex justify-center items-center">
+                <img
+                  src="images/moon-2.svg"
+                  alt=""
+                  className="absolute max-w-[70px] top-[-20px]"
+                />
+              </div>
             </div>
-            <div className="flex justify-center items-center">
-              <img
-                src="images/moon-2.svg"
-                alt=""
-                className="absolute max-w-[70px] top-[-20px]"
-              />
-            </div>
-          </div>
             <div className="hidden md:block">
               <div className="sm:mt-[-1rem] flex flex-col justify-center items-center space-x-4">
                 <span className="f-PowerGrotesk text-[14.5px] xxl:text-[17.5px] leading-[14.54px] text-[#6A92985E] text-center">
