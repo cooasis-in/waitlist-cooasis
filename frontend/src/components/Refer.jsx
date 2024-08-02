@@ -14,13 +14,14 @@ const Refer = () => {
   const [showShareLink, setShowShareLink] = useState(false);
   const [isBoxVisible, setIsBoxVisible] = useState(false);
   const [isDotVisible, setIsDotVisible] = useState(true);
+  const [isButtonActive, setIsButtonActive] = useState(false);
 
   // confetti
   const navigate = useNavigate();
 
   useEffect(() => {
     if (!waitlistInfo) {
-      navigate('/');
+      navigate("/");
     }
   }, [waitlistInfo, navigate]);
 
@@ -74,6 +75,7 @@ const Refer = () => {
   const toggleBoxVisibility = () => {
     setIsBoxVisible(!isBoxVisible);
     setIsDotVisible(false);
+    setIsButtonActive(!isButtonActive); // Toggle button active state
   };
 
   return (
@@ -81,26 +83,42 @@ const Refer = () => {
       <header className="set-alignment set-alignment-logo flex justify-between items-start">
         <div className="set-width">
           <Link to="/">
-             <img src="images/darkmode.svg" alt="Cooasis Logo" className="w-30" />
+            <img
+              src="images/darkmode.svg"
+              alt="Cooasis Logo"
+              className="w-30"
+            />
           </Link>
         </div>
         <div className="relative bg-rgb rounded-full border-[0.5px] border-[#99999982]">
           <button
-            className="flex justify-center !items-center py-2 px-4 sm:py-3 sm:px-7 max-w-[91px] sm:max-w-[147px] f-PowerGrotesk text-[12px] sm:text-[17.5px] text-[#6A929857] leading-[12px] sm:leading-[17.5px] hover:text-[#FFF5D9] hover:bg-[#0000006B] duration-300"
+            className={`flex justify-center items-center py-2 px-4 sm:py-3 sm:px-7 max-w-[91px] sm:max-w-[147px] f-PowerGrotesk text-[12px] sm:text-[17.5px] leading-[12px] sm:leading-[17.5px] duration-300 ${
+              isButtonActive
+                ? "text-white bg-[#0000006B]"
+                : "text-[#6A929857] hover:bg-[#0000006B]"
+            }`}
             onClick={toggleBoxVisibility}
           >
             <span className="mr-[7px]">
               <img
-                src="images/bellicon.svg"
+                src={
+                  isButtonActive
+                    ? "/images/bellIconw.svg"
+                    : "images/bellicon.svg"
+                }
                 alt=""
-                className="max-w-[8.91px] sm:max-w-[100%] hover:bg-white"
+                className="max-w-[8.91px] sm:max-w-[100%]"
               />
             </span>
             <span className="mb-[4px] sm:mb-[7px]">updates</span>
           </button>
           {isDotVisible && (
             <div>
-              <img src="images/dot-y.svg" alt="" className="absolute top-[8px] left-[20px] sm:left-[37px] w-[6px] h-[6px] sm:w-[10px] sm:h-[10px]" />
+              <img
+                src="images/dot-y.svg"
+                alt=""
+                className="absolute top-[8px] left-[20px] sm:left-[37px] w-[6px] h-[6px] sm:w-[10px] sm:h-[10px]"
+              />
             </div>
           )}
         </div>
