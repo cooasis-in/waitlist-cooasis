@@ -45,7 +45,9 @@ exports.createUser = async (req, res) => {
     res.status(200).json({
       message:
         "OTP sent to your email. Please verify your email to complete the registration.",
+        userId: newUser._id
     });
+
   } catch (error) {
     console.error("Error creating user:", error);
     if (error.code === 11000) {

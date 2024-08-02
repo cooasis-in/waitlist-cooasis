@@ -4,20 +4,35 @@ import "./pages.css";
 import { useState } from "react";
 import ShareLink from "../components/ShareLinks";
 import CountUp from "react-countup";
+import { Link } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
-const Refer = ({ waitlistInfo }) => {
+const Refer = () => {
+  const location = useLocation();
+  const { waitlistInfo } = location.state || {};
+  console.log(waitlistInfo);
   const [showShareLink, setShowShareLink] = useState(false);
   const [isBoxVisible, setIsBoxVisible] = useState(false);
   const [isDotVisible, setIsDotVisible] = useState(true);
 
   // confetti
+  const navigate = useNavigate();
+
   useEffect(() => {
-    confetti({
-      particleCount: 100,
-      spread: 160,
-      origin: { y: 0.6 },
-    });
-  }, []);
+    if (!waitlistInfo) {
+      navigate('/');
+    }
+  }, [waitlistInfo, navigate]);
+
+  useEffect(() => {
+    if (waitlistInfo) {
+      confetti({
+        particleCount: 100,
+        spread: 160,
+        origin: { y: 0.6 },
+      });
+    }
+  }, [waitlistInfo]);
 
   const handleShareClick = () => {
     setShowShareLink(true);
@@ -65,18 +80,20 @@ const Refer = ({ waitlistInfo }) => {
     <>
       <header className="set-alignment set-alignment-logo flex justify-between items-start">
         <div className="set-width">
-          <img src="images/darkmode.svg" alt="Cooasis Logo" className="w-30" />
+          <Link to="/">
+             <img src="images/darkmode.svg" alt="Cooasis Logo" className="w-30" />
+          </Link>
         </div>
         <div className="relative bg-rgb rounded-full border-[0.5px] border-[#99999982]">
           <button
-            className="flex justify-center !items-center py-2 px-4 sm:py-3 sm:px-7 max-w-[91px] sm:max-w-[147px] f-PowerGrotesk text-[12px] sm:text-[17.5px] text-[#6A929857] leading-[12px] sm:leading-[17.5px]"
+            className="flex justify-center !items-center py-2 px-4 sm:py-3 sm:px-7 max-w-[91px] sm:max-w-[147px] f-PowerGrotesk text-[12px] sm:text-[17.5px] text-[#6A929857] leading-[12px] sm:leading-[17.5px] hover:text-[#FFF5D9] hover:bg-[#0000006B] duration-300"
             onClick={toggleBoxVisibility}
           >
             <span className="mr-[7px]">
               <img
                 src="images/bellicon.svg"
                 alt=""
-                className="max-w-[8.91px] sm:max-w-[100%]"
+                className="max-w-[8.91px] sm:max-w-[100%] hover:bg-white"
               />
             </span>
             <span className="mb-[4px] sm:mb-[7px]">updates</span>
