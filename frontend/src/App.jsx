@@ -5,6 +5,7 @@ import ShareLinks from "./components/ShareLinks";
 import {Routes, Route } from "react-router-dom";
 import Waitlist from "./components/Waitlist";
 import EmailVerify from "./components/EmailVerify";
+import Nift from "./components/Nift"
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
       <Route path="/refer" element={<Refer />} />
       <Route path="/waitlist" element={<Waitlist />} />
       <Route path="/verifyemail" element={<EmailVerify />} />
+      <Route path="/nift" element={<Nift />} />
     </Routes>
   </div>
   );
