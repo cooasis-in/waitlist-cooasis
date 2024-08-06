@@ -60,37 +60,27 @@ const LandingPage = () => {
     }
   };
 
+  const handleClick = () => {
+    console.log('Hey');
+  };
+
   return (
-    <section className="bg-color !min-h-screen">
-      <div className="container mx-auto">
-        <div className="h-20 flex justify-between items-center">
-          <div className="flex set-width">
+    <>
+      <div className="set-alignment set-alignment-logo flex justify-between items-center">
+        <div className="flex items-center sm:items-end set-width">
+          <Link to="/">
+          <img src="images/darkmode.svg" alt="Cooasis Logo" className="w-30 mb-0 sm:mb-1" />
+          </Link>
+          <div className="border-[1px] border-[#FFFFFF29] h-[42px] sm:h-[56px] w-[0] mx-6 sm:mx-8"></div>
+          <div>
+            <Link to="/nift">
             <img
-              src="images/darkmode.svg"
-              alt="Cooasis Logo"
-              className="h-10 w-30"
+              src="images/niff.svg"
+              alt=""
+              className="absolute bottom-[27px] sm:bottom-[20px] w-[32px] sm:w-[56px]"
+              onClick={handleClick}
             />
-<<<<<<<<< Temporary merge branch 1
-            {/* <Typical
-              steps={["", 1000]}
-              wrapper="span"
-              className="text-[#FCFCD8]"
-            /> */}
-            <br />
-            <Typical
-              steps={["design ecosystem", 1000]}
-              wrapper="span"
-              classN
-              ame="text-[#FCFCD8]"
-            />
-            <div className="absolute bottom-10 left-[360px] fade-in ">
-            <img src="images/star.svg" alt="" />
-          </div>
-          </h2>
-          <div className="absolute top-0 left-[450px] fade-in ">
-            <img src="images/james.svg" alt="" />
-=========
->>>>>>>>> Temporary merge branch 2
+            </Link>
           </div>
         </div>
       </div>
