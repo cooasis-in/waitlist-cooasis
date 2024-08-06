@@ -5,7 +5,7 @@ import Refer from "./Refer";
 import ImageSlider from "./ImageSlider";
 import EmailVerify from "./EmailVerify";
 import { Button } from "../ui/moving-border";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 // import { ButtonsCard } from "../ui/tailwindcss-buttons";
 
@@ -18,7 +18,7 @@ const LandingPage = () => {
   const [email, setEmail] = useState("");
 
   const navigate = useNavigate();
-  
+
   useEffect(() => {
     const queryParams = new URLSearchParams(window.location.search);
     setReferrer(queryParams.get("refer"));
@@ -41,12 +41,14 @@ const LandingPage = () => {
         const userEmail = responseData.user.email;
         console.log(userEmail);
         // setShowRefer(true);
-        navigate(`/refer?email=${encodeURIComponent(userEmail)}`, { state: { waitlistInfo: responseData } });
+        navigate(`/refer?email=${encodeURIComponent(userEmail)}`, {
+          state: { waitlistInfo: responseData },
+        });
       } else {
         const userId = responseData.userId;
         // setShowVerify(true);
         navigate(`/verifyemail?userId=${encodeURIComponent(userId)}`, {
-          state: { email: email, referrer, showVerify: true }
+          state: { email: email, referrer, showVerify: true },
         });
       }
       setErrorMessage("");
@@ -61,37 +63,16 @@ const LandingPage = () => {
   };
 
   return (
-    <section className="bg-color !min-h-screen">
-      <div className="container mx-auto">
-        <div className="h-20 flex justify-between items-center">
-          <div className="flex set-width">
+    <>
+      <div className="set-alignment set-alignment-logo flex justify-between items-center">
+        <div className="flex items-center sm:items-center set-width">
+          <Link to="/">
             <img
               src="images/darkmode.svg"
               alt="Cooasis Logo"
-              className="h-10 w-30"
+              className="w-30"
             />
-<<<<<<<<< Temporary merge branch 1
-            {/* <Typical
-              steps={["", 1000]}
-              wrapper="span"
-              className="text-[#FCFCD8]"
-            /> */}
-            <br />
-            <Typical
-              steps={["design ecosystem", 1000]}
-              wrapper="span"
-              classN
-              ame="text-[#FCFCD8]"
-            />
-            <div className="absolute bottom-10 left-[360px] fade-in ">
-            <img src="images/star.svg" alt="" />
-          </div>
-          </h2>
-          <div className="absolute top-0 left-[450px] fade-in ">
-            <img src="images/james.svg" alt="" />
-=========
->>>>>>>>> Temporary merge branch 2
-          </div>
+          </Link>
         </div>
       </div>
       <section className="bg-color !min-h-screen adjest-res">
