@@ -50,55 +50,57 @@ const EmailVerify = () => {
     return () => clearInterval(interval);
   }, [resendDisabled]);
 
-const handleResend = async () => {
-  // setLoading(true);
-  try {
-    setResendDisabled(true); // Disable the button
-    setTimerSeconds(60); // Reset timer duration to 60 seconds
-    const response = await axios.post("http://localhost:3001/resend-otp",{
-      email,
-    });
-    if (response.status === 200) {
-      setVerificationError(""); // Clear any previous errors
-      setTimerSeconds(60); // Reset the timer
-      setVerificationError("OTP has been resent to your email.");
-    } else {
+  const handleResend = async () => {
+    // setLoading(true);
+    try {
+      setResendDisabled(true); // Disable the button
+      setTimerSeconds(60); // Reset timer duration to 60 seconds
+      const response = await axios.post("http://localhost:3001/resend-otp", {
+        email,
+      });
+      if (response.status === 200) {
+        setVerificationError(""); // Clear any previous errors
+        setTimerSeconds(60); // Reset the timer
+        setVerificationError("OTP has been resent to your email.");
+      } else {
+        setVerificationError("Failed to resend OTP. Please try again.");
+      }
+    } catch (error) {
+      console.error("Error resending OTP:", error);
       setVerificationError("Failed to resend OTP. Please try again.");
     }
-  } catch (error) {
-    console.error("Error resending OTP:", error);
-    setVerificationError("Failed to resend OTP. Please try again.");
-  }
-  setLoading(false); // Hide loader
-};
+    setLoading(false); // Hide loader
+  };
 
-const handleSubmit = async () => {
-  setLoading(true); // Show loader
-  try {
-    const otpCode = otp.join("");
-    const response = await axios.post(
-      "http://localhost:3001/verify-email",
-      { otpCode, email, referrer },
-      { withCredentials: true }
-    );
+  const handleSubmit = async () => {
+    setLoading(true); // Show loader
+    try {
+      const otpCode = otp.join("");
+      const response = await axios.post(
+        "http://localhost:3001/verify-email",
+        { otpCode, email, referrer },
+        { withCredentials: true }
+      );
 
-    if (response.status === 200) {
-      const responseData = response.data;
-      const { waitlistNumber, referralLink } = response.data;
-      setWaitlistInfo({ waitlistNumber, referralLink });
-      // setIsVerified(true);
-      navigate(`/refer?email=${encodeURIComponent(email)}`, { state: { waitlistInfo: responseData } });
+      if (response.status === 200) {
+        const responseData = response.data;
+        const { waitlistNumber, referralLink } = response.data;
+        setWaitlistInfo({ waitlistNumber, referralLink });
+        // setIsVerified(true);
+        navigate(`/verified?email=${encodeURIComponent(email)}`, {
+          state: { waitlistInfo: responseData },
+        });
+      }
+    } catch (error) {
+      console.error("Verification Error:", error);
+      if (error.response && error.response.status === 400) {
+        setVerificationError("Invalid OTP. Please try again.");
+      } else {
+        setVerificationError("Server error. Please try again later.");
+      }
     }
-  } catch (error) {
-    console.error("Verification Error:", error);
-    if (error.response && error.response.status === 400) {
-      setVerificationError("Invalid OTP. Please try again.");
-    } else {
-      setVerificationError("Server error. Please try again later.");
-    }
-  }
-  setLoading(false); // Hide loader
-};
+    setLoading(false); // Hide loader
+  };
   const handleKeyDown = (e, index) => {
     if (e.key === "Backspace" && !otp[index]) {
       if (index > 0) {
@@ -126,7 +128,11 @@ const handleSubmit = async () => {
       <div className="set-alignment set-alignment-logo flex justify-between items-center">
         <div className="flex set-width">
           <Link href="/">
-            <img src="images/darkmode.svg" alt="Cooasis Logo" className="w-30" />
+            <img
+              src="images/darkmode.svg"
+              alt="Cooasis Logo"
+              className="w-30"
+            />
           </Link>
         </div>
       </div>
@@ -192,12 +198,14 @@ const handleSubmit = async () => {
                     <button
                       onClick={handleResend}
                       disabled={resendDisabled}
-                      className={`f-HelveticaNeueLight text-[#5A5A5A] text-[12px] xxl:text-[18px] leading-[17.59px] font-light mt-4 lg:font-medium ${resendDisabled ? "cursor-not-allowed opacity-50" : ""
-                        }`}
+                      className={`f-HelveticaNeueLight text-[#5A5A5A] text-[12px] xxl:text-[18px] leading-[17.59px] font-light mt-4 lg:font-medium ${
+                        resendDisabled ? "cursor-not-allowed opacity-50" : ""
+                      }`}
                     >
                       <span
-                        className={`f-HelveticaNeueRoman cursor-pointer text-[15px] text-center ${resendDisabled ? "text-[#6A9298]" : "text-[#6A929857]"
-                          } leading-[23.46px]`}
+                        className={`f-HelveticaNeueRoman cursor-pointer text-[15px] text-center ${
+                          resendDisabled ? "text-[#6A9298]" : "text-[#6A929857]"
+                        } leading-[23.46px]`}
                       >
                         {resendDisabled
                           ? `Resend Code in ${timerSeconds}s`
