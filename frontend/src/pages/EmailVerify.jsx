@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { useLocation, useNavigate } from "react-router-dom";
 import NextgenTitle from "../components/NextgenTitle";
 import BottomPart from "../components/BottomPart";
+import Header from "../components/Header";
 
 const EmailVerify = () => {
   const navigate = useNavigate();
@@ -19,6 +20,8 @@ const EmailVerify = () => {
   const [loading, setLoading] = useState(false);
 
   const inputRefs = useRef([]);
+  const pathParts = location.pathname.split('/');
+  const niftWord = pathParts.includes('nift');
 
   const handleChange = (element, index) => {
     if (isNaN(element.value)) return;
@@ -87,9 +90,15 @@ const EmailVerify = () => {
         const { waitlistNumber, referralLink } = response.data;
         setWaitlistInfo({ waitlistNumber, referralLink });
         // setIsVerified(true);
-        navigate(`/verified?email=${encodeURIComponent(email)}`, {
-          state: { waitlistInfo: responseData },
-        });
+        if(niftWord) {
+          navigate(`/nift/verified?email=${encodeURIComponent(email)}`, {
+            state: { waitlistInfo: responseData },
+          });
+        } else {
+          navigate(`/verified?email=${encodeURIComponent(email)}`, {
+            state: { waitlistInfo: responseData },
+          });
+        }
       }
     } catch (error) {
       console.error("Verification Error:", error);
@@ -125,17 +134,7 @@ const EmailVerify = () => {
 
   return (
     <>
-      <div className="set-alignment set-alignment-logo flex justify-between items-center">
-        <div className="flex set-width">
-          <Link href="/">
-            <img
-              src="images/darkmode.svg"
-              alt="Cooasis Logo"
-              className="w-30"
-            />
-          </Link>
-        </div>
-      </div>
+      <Header />
       <section className="bg-color !min-h-screen adjest-res">
         <div className="container mx-auto">
           <div className="pt-[130px] sm:pt-[100px]">

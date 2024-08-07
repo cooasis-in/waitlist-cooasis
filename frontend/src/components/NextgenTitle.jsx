@@ -26,20 +26,20 @@ export default function NextgenTitle() {
           </h2>
           <div className="absolute bottom-[-12px] left-[82px] fade-in hidden sm:block">
             <img
-              src="images/borderNexgen.svg"
+              src="/images/borderNexgen.svg"
               alt="border-image"
               className="max-w-[78%]"
             />
           </div>
           <div className="absolute bottom-[90px] left-[45px] fade-in hidden sm:block">
             <img
-              src="images/james.svg"
+              src="/images/james.svg"
               alt="James"
               className="max-w-[4.5rem]"
             />
           </div>
           <div className="absolute hidden sm:block bottom-[40px] left-[-25px] fade-in">
-            <img src="images/star.svg" alt="Star" />
+            <img src="/images/star.svg" alt="Star" />
           </div>
           <div>
             <img
@@ -51,14 +51,14 @@ export default function NextgenTitle() {
           {/* mobile screen img align */}
           <div className="absolute bottom-[57px] left-[-22px] fade-in block sm:hidden">
             <img
-              src="images/borderNexgen.svg"
+              src="/images/borderNexgen.svg"
               alt="border-image"
               className="max-w-[325px]"
             />
           </div>
           <div className="absolute bottom-[37px] left-[-14px] fade-in block sm:hidden">
             <img
-              src="images/star.svg"
+              src="/images/star.svg"
               alt="Star"
               className="max-w-[60%]"
             />

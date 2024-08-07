@@ -3,12 +3,16 @@ import axios from "axios";
 import EmailVerify from "./EmailVerify";
 import { Button } from "../ui/moving-border";
 import { useNavigate } from 'react-router-dom';
-import { Link } from "react-router-dom";
 import NextgenTitle from "../components/NextgenTitle";
 import BottomPart from "../components/BottomPart";
+import Header from "../components/Header";
+import { useLocation, Link } from 'react-router-dom';
 // import { ButtonsCard } from "../ui/tailwindcss-buttons";
 
 const EmailPage = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
+
   const [showRefer, setShowRefer] = useState(false);
   const [waitlistInfo, setWaitlistInfo] = useState(null);
   const [errorMessage, setErrorMessage] = useState("");
@@ -16,7 +20,8 @@ const EmailPage = () => {
   const [showVerify, setShowVerify] = useState(false);
   const [email, setEmail] = useState("");
 
-  const navigate = useNavigate();
+  const pathParts = location.pathname.split('/');
+  const niftWord = pathParts.includes('nift');
   
   useEffect(() => {
     const queryParams = new URLSearchParams(window.location.search);
@@ -40,13 +45,24 @@ const EmailPage = () => {
         const userEmail = responseData.user.email;
         console.log(userEmail);
         // setShowRefer(true);
-        navigate(`/refer?email=${encodeURIComponent(userEmail)}`, { state: { waitlistInfo: responseData } });
+        if(niftWord) {
+          navigate(`/nift/refer?email=${encodeURIComponent(userEmail)}`, { state: { waitlistInfo: responseData } });
+        } else {
+          navigate(`/refer?email=${encodeURIComponent(userEmail)}`, { state: { waitlistInfo: responseData } });
+        }
+        
       } else {
         const userId = responseData.userId;
         // setShowVerify(true);
-        navigate(`/verifyemail?userId=${encodeURIComponent(userId)}`, {
-          state: { email: email, referrer, showVerify: true }
-        });
+        if(niftWord){
+          navigate(`/nift/verifyemail?userId=${encodeURIComponent(userId)}`, {
+            state: { email: email, referrer, showVerify: true }
+          });
+        } else {
+          navigate(`/verifyemail?userId=${encodeURIComponent(userId)}`, {
+            state: { email: email, referrer, showVerify: true }
+          });
+        }
       }
       setErrorMessage("");
     } catch (error) {
@@ -61,13 +77,7 @@ const EmailPage = () => {
 
   return (
     <>
-      <div className="set-alignment set-alignment-logo flex justify-between items-center">
-        <div className="flex items-center sm:items-center set-width">
-          <Link to="/">
-          <img src="images/darkmode.svg" alt="Cooasis Logo" className="w-30" />
-          </Link>
-        </div>
-      </div>
+      <Header />
       <section className="bg-color !min-h-screen adjest-res">
         <div className="container mx-auto">
           <div className="pt-[130px] sm:pt-[100px] lg:pt-[130px] xxl:pt-[100px]">

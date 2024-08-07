@@ -4,6 +4,7 @@ import NextgenTitle from "../components/NextgenTitle";
 import BottomPart from "../components/BottomPart";
 // Assuming Button is a custom component
 import { Button } from "../ui/moving-border";
+import Header from "../components/Header";
 
 const NumberVerify = () => {
   const [otp, setOtp] = useState(new Array(4).fill(""));
@@ -35,17 +36,7 @@ const NumberVerify = () => {
   };
   return (
     <>
-      <div className="set-alignment set-alignment-logo flex justify-between items-center">
-        <div className="flex set-width">
-          <Link to="/">
-            <img
-              src="images/darkmode.svg"
-              alt="Cooasis Logo"
-              className="w-30"
-            />
-          </Link>
-        </div>
-      </div>
+      <Header />
       <section className="bg-color !min-h-screen adjest-res">
         <div className="container mx-auto">
           <div className="pt-[130px] sm:pt-[100px]">
