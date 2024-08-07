@@ -1,5 +1,4 @@
 import React from "react";
-import "./pages.css";
 import {
   FacebookShareButton,
   WhatsappShareButton,
@@ -59,7 +58,7 @@ Here’s a special referral link for you ${sharelink} Signing up through this li
             className="f-PowerGrotesk flex items-center bg-[#131515] mb-2 text-[12px] md:text-[12px] xxl:text-[17.5px] btn-color text-[#E1FF26] leading-tight font-normal px-6 py-4 w-full h-[55px] rounded-full dark:bg-[#000000] justify-center custom-button"
           >
             <img
-              src="images/instagram-2.svg"
+              src="/images/instagram-2.svg"
               alt=""
               className="mr-[3px] max-w-[25px]  xxl:max-w-[100%]"
             />
@@ -77,7 +76,7 @@ Here’s a special referral link for you ${sharelink} Signing up through this li
               className="f-PowerGrotesk bg-[#131515] text-[12px] md:text-[12px] xxl:text-[17.5px] btn-color text-[#E1FF26] leading-tight font-normal px-6 py-4 w-full h-[55px] rounded-full flex items-center dark:bg-[#000000] justify-center custom-button"
             >
               <img
-                src="images/face-book.svg"
+                src="/images/face-book.svg"
                 alt=""
                 className="mr-[6px] max-w-[13px]  xxl:max-w-[100%]"
               />
@@ -97,7 +96,7 @@ Here’s a special referral link for you ${sharelink} Signing up through this li
               className="f-PowerGrotesk bg-[#131515] text-[12px] md:text-[12px] xxl:text-[17.5px] btn-color text-[#E1FF26] leading-tight font-normal px-6 py-4 w-full h-[55px] rounded-full flex items-center dark:bg-[#000000] justify-center custom-button"
             >
               <img
-                src="images/whats-app.svg"
+                src="/images/whats-app.svg"
                 alt=""
                 className="mr-[8px] max-w-[13px]  xxl:max-w-[100%]"
               />
@@ -128,7 +127,7 @@ Here’s a special referral link for you ${sharelink} Signing up through this li
             className="f-PowerGrotesk bg-[#131515] text-[12px] md:text-[12px] xxl:text-[17.5px] btn-color text-[#E1FF26] leading-tight font-normal py-2 px-6 sm:py-4 w-full h-[55px] rounded-full flex items-center dark:bg-[#000000] justify-center custom-button"
           >
             <img
-              src="images/insta-gram.svg"
+              src="/images/insta-gram.svg"
               alt=""
               className="mr-[8px] max-w-[13px]  xxl:max-w-[100%]"
             />
