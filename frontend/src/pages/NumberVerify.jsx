@@ -1,12 +1,13 @@
 import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
-import Refer from "./Refer";
-import ImageSlider from "./ImageSlider";
+import ImageSlider from "../components/ImageSlider";
 import { ClipLoader } from "react-spinners";
 import { Link } from "react-router-dom";
 import { useLocation, useNavigate } from "react-router-dom";
+import NextgenTitle from "../components/NextgenTitle";
+import BottomPart from "../components/BottomPart";
 
-const EmailVerify = () => {
+const NumberVerify = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const { email, referrer, showVerify } = location.state;
@@ -55,7 +56,7 @@ const handleResend = async () => {
   try {
     setResendDisabled(true); // Disable the button
     setTimerSeconds(60); // Reset timer duration to 60 seconds
-    const response = await axios.post("https://backend.coasis.in/resend-otp",{
+    const response = await axios.post("http://localhost:3001/resend-otp",{
       email,
     });
     if (response.status === 200) {
@@ -77,7 +78,7 @@ const handleSubmit = async () => {
   try {
     const otpCode = otp.join("");
     const response = await axios.post(
-      "https://backend.coasis.in/verify-email",
+      "http://localhost:3001/verify-email",
       { otpCode, email, referrer },
       { withCredentials: true }
     );
@@ -133,69 +134,7 @@ const handleSubmit = async () => {
       <section className="bg-color !min-h-screen adjest-res">
         <div className="container mx-auto">
           <div className="pt-[130px] sm:pt-[100px]">
-            <h1 className="upper-index relative text-[12px] sm:text-[18px] leading-[12px] sm:leading-[25px] text-center bg-waitlist-gradient bg-clip-text text-transparent f-PowerGrotesk sm:mb-2">
-              Join waitlist for
-            </h1>
-            <div className="larg-pb text-center mt-4 sm:mt-0 mb-4">
-              <div className="relative inline-block">
-                <h2 className="hidden sm:block upper-index relative text-[40px] sm:text-[70px] leading-[40px] sm:leading-[70px] xxl:text-7xl f-PowerGrotesk text-[#FFF5D9]">
-                  <span className="bg-nexgen-gradient bg-clip-text fade-in">
-                    Nex-gen
-                  </span>
-                  <br />
-                  design
-                  ecosystem
-                </h2>
-                <h2 className="block sm:hidden upper-index relative text-[60px] leading-[60px] f-PowerGrotesk text-[#FFF5D9]">
-                  <span className="bg-nexgen-gradient bg-clip-text fade-in">
-                    Nex-gen
-                  </span>
-                  <br />
-                  design
-                  <br />
-                  ecosystem
-                </h2>
-                <div className="absolute bottom-[-12px] left-[82px] fade-in hidden sm:block">
-                  <img
-                    src="images/borderNexgen.svg"
-                    alt="border-image"
-                    className="max-w-[78%]"
-                  />
-                </div>
-                <div className="absolute bottom-[90px] left-[45px] fade-in hidden sm:block">
-                  <img
-                    src="images/james.svg"
-                    alt="James"
-                    className="max-w-[4.5rem]"
-                  />
-                </div>
-                <div className="absolute hidden sm:block bottom-[40px] left-[-25px] fade-in">
-                  <img src="images/star.svg" alt="Star" />
-                </div>
-                <div>
-                  <img
-                    src="/images/cursorImg.png"
-                    alt="Cursor"
-                    className="absolute right-[-10px] mt-3 w-14 hidden sm:block fade-in"
-                  />
-                </div>
-                {/* mobile screen img align */}
-                <div className="absolute bottom-[57px] left-[-22px] fade-in block sm:hidden">
-                  <img
-                    src="images/borderNexgen.svg"
-                    alt="border-image"
-                    className="max-w-[325px]"
-                  />
-                </div>
-                <div className="absolute bottom-[37px] left-[-14px] fade-in block sm:hidden">
-                  <img
-                    src="images/star.svg"
-                    alt="Star"
-                    className="max-w-[60%]"
-                  />
-                </div>
-              </div>
-            </div>
+            <NextgenTitle />
             {showVerify ? (
               <div className="flex flex-col items-center justify-center mt-[50px] sm:mt-0">
                 <div className="max-w-[600px] email-container mb-[6rem] sm:mb-0">
@@ -307,85 +246,7 @@ const handleSubmit = async () => {
                 </form>
               </div>
             )}
-            <div className="mt-8 sm:mt-12 relative z-20">
-              <div className="flex justify-center items-center pl-2">
-                <img
-                  src="/images/avtar-1.svg"
-                  alt="People Join"
-                  className="overflow-hidden image-hover-effect"
-                />
-                <img
-                  src="/images/avtar-2.svg"
-                  alt="People Join"
-                  className="ml-[-7px] overflow-hidden image-hover-effect"
-                />
-                <img
-                  src="/images/avtar-3.svg"
-                  alt="People Join"
-                  className="ml-[-7px] overflow-hidden image-hover-effect"
-                />
-              </div>
-              <span className="f-PowerGrotesk text-[12px] sm:text-[14.5px] text-[#6A92985E] xxl:text-[17.5px] leading-[14.54px] flex justify-center items-center mt-1">
-                +200 people joined
-              </span>
-            </div>
-            <div className="relative">
-              <div className="flex justify-center items-center mt-11 sm:mt-16">
-                <img src="images/moon-1.svg" alt="" />
-              </div>
-              <div className="flex justify-center items-center">
-                <img
-                  src="images/moon-2.svg"
-                  alt=""
-                  className="absolute max-w-[70px] top-[-20px]"
-                />
-              </div>
-            </div>
-            <div className="hidden md:block">
-              <div className="sm:mt-[-1rem] flex flex-col justify-center items-center space-x-4">
-                <span className="f-PowerGrotesk text-[14.5px] xxl:text-[17.5px] leading-[14.54px] text-[#6A92985E] text-center">
-                  Backed by
-                </span>
-                <div className="res-align flex  items-center justify-center space-x-4 sm:space-x-7 max-w-[642px] !ml-0 !pb-4 sm:pt-3">
-                  <img
-                    src="images/Artboard-1.svg"
-                    alt=""
-                    className="max-w-[110px]"
-                  />
-                  <img
-                    src="images/Artboard-2.svg"
-                    alt=""
-                    className="max-w-[110px]"
-                  />
-                  <img
-                    src="images/Artboard-3.svg"
-                    alt=""
-                    className="max-w-[110px]"
-                  />
-                  <img
-                    src="images/Artboard-4.svg"
-                    alt=""
-                    className="max-w-[110px]"
-                  />
-                  <img
-                    src="images/Artboard-5.svg"
-                    alt=""
-                    className="max-w-[110px]"
-                  />
-                  <img
-                    src="images/Artboard-6.svg"
-                    alt=""
-                    className="max-w-[80px] !ml-[10px]"
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="!mt-[-1rem] block text-center md:hidden py-4 w-full res-margin-fix">
-            <span className="f-PowerGrotesk text-[14.5px] xxl:text-[17.5px] leading-[14.54px] text-[#6A92985E] text-center">
-              Backed by
-            </span>
-            <ImageSlider />
+            <BottomPart />
           </div>
         </div>
       </section>
@@ -393,4 +254,4 @@ const handleSubmit = async () => {
   );
 };
 
-export default EmailVerify;
+export default NumberVerify;

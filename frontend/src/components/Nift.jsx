@@ -1,15 +1,14 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import "./pages.css";
 import Refer from "./Refer";
 import ImageSlider from "./ImageSlider";
-import EmailVerify from "./EmailVerify";
+import EmailVerify from "../pages/EmailVerify";
 import { Button } from "../ui/moving-border";
 import { useNavigate } from 'react-router-dom';
 import { Link } from "react-router-dom";
 // import { ButtonsCard } from "../ui/tailwindcss-buttons";
 
-const LandingPage = () => {
+const Nift = () => {
   const [showRefer, setShowRefer] = useState(false);
   const [waitlistInfo, setWaitlistInfo] = useState(null);
   const [errorMessage, setErrorMessage] = useState("");
@@ -278,4 +277,4 @@ const LandingPage = () => {
   );
 };
 
-export default LandingPage;
+export default Nift;

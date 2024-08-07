@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import confetti from "canvas-confetti";
-import "./pages.css";
 import { useState } from "react";
 import ShareLink from "../components/ShareLinks";
 import CountUp from "react-countup";
