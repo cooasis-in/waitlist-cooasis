@@ -173,6 +173,7 @@ const LandingPage = () => {
                       type="email"
                       name="email"
                       placeholder={email || "Eg. Jeff@cooasis.in"}
+                      value={email}
                       className="f-HelveticaNeueUltraLight bg-transparent text-[14px] xxl:text-[17px] text-[white] leading-[14.13px] w-[290px] h-[55px] px-6 py-4 mt-0 lg:mt-3 border-[1px] border-[#FFFFFF17] rounded-full custom-inset custom-gradient"
                       onChange={(e) => setEmail(e.target.value)}
                     />
