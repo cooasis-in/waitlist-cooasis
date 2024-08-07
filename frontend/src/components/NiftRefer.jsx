@@ -81,14 +81,20 @@ const Refer = () => {
   return (
     <>
       <header className="set-alignment set-alignment-logo flex justify-between items-start">
-        <div className="set-width">
+      <div className="flex items-center sm:items-end set-width">
           <Link to="/">
-            <img
-              src="/images/darkmode.svg"
-              alt="Cooasis Logo"
-              className="w-30"
-            />
+          <img src="/images/darkmode.svg" alt="Cooasis Logo" className="w-30 mb-0 sm:mb-1" />
           </Link>
+          <div className="border-[1px] border-[#FFFFFF29] h-[42px] sm:h-[56px] w-[0] mx-6 sm:mx-8"></div>
+          <div>
+            <Link to="/nift">
+            <img
+              src="/images/niff.svg"
+              alt=""
+              className="absolute bottom-[27px] sm:bottom-[20px] w-[32px] sm:w-[56px]"
+            />
+            </Link>
+          </div>
         </div>
         <div className="relative bg-rgb rounded-full border-[0.5px] border-[#99999982]">
           <button

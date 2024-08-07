@@ -41,11 +41,11 @@ const LandingPage = () => {
         const userEmail = responseData.user.email;
         console.log(userEmail);
         // setShowRefer(true);
-        navigate(`/refer?email=${encodeURIComponent(userEmail)}`, { state: { waitlistInfo: responseData } });
+        navigate(`/nift/refer?email=${encodeURIComponent(userEmail)}`, { state: { waitlistInfo: responseData } });
       } else {
         const userId = responseData.userId;
         // setShowVerify(true);
-        navigate(`/verifyemail?userId=${encodeURIComponent(userId)}`, {
+        navigate(`/nift/verifyemail?userId=${encodeURIComponent(userId)}`, {
           state: { email: email, referrer, showVerify: true }
         });
       }
@@ -60,25 +60,20 @@ const LandingPage = () => {
     }
   };
 
-  const handleClick = () => {
-    console.log('Hey');
-  };
-
   return (
     <>
       <div className="set-alignment set-alignment-logo flex justify-between items-center">
         <div className="flex items-center sm:items-end set-width">
           <Link to="/">
-          <img src="images/darkmode.svg" alt="Cooasis Logo" className="w-30 mb-0 sm:mb-1" />
+          <img src="/images/darkmode.svg" alt="Cooasis Logo" className="w-30 mb-0 sm:mb-1" />
           </Link>
           <div className="border-[1px] border-[#FFFFFF29] h-[42px] sm:h-[56px] w-[0] mx-6 sm:mx-8"></div>
           <div>
             <Link to="/nift">
             <img
-              src="images/niff.svg"
+              src="/images/niff.svg"
               alt=""
               className="absolute bottom-[27px] sm:bottom-[20px] w-[32px] sm:w-[56px]"
-              onClick={handleClick}
             />
             </Link>
           </div>
@@ -110,20 +105,20 @@ const LandingPage = () => {
                 </h2>
                 <div className="absolute bottom-[-12px] left-[82px] fade-in hidden sm:block">
                   <img
-                    src="images/borderNexgen.svg"
+                    src="/images/borderNexgen.svg"
                     alt="border-image"
                     className="max-w-[78%]"
                   />
                 </div>
                 <div className="absolute bottom-[90px] left-[45px] fade-in hidden sm:block">
                   <img
-                    src="images/james.svg"
+                    src="/images/james.svg"
                     alt="James"
                     className="max-w-[4.5rem]"
                   />
                 </div>
                 <div className="absolute hidden sm:block bottom-[40px] left-[-25px] fade-in">
-                  <img src="images/star.svg" alt="Star" />
+                  <img src="/images/star.svg" alt="Star" />
                 </div>
                 <div>
                   <img
@@ -135,14 +130,14 @@ const LandingPage = () => {
                 {/* mobile screen img align */}
                 <div className="absolute bottom-[57px] left-[-22px] fade-in block sm:hidden">
                   <img
-                    src="images/borderNexgen.svg"
+                    src="/images/borderNexgen.svg"
                     alt="border-image"
                     className="max-w-[325px]"
                   />
                 </div>
                 <div className="absolute bottom-[37px] left-[-14px] fade-in block sm:hidden">
                   <img
-                    src="images/star.svg"
+                    src="/images/star.svg"
                     alt="Star"
                     className="max-w-[60%]"
                   />
@@ -221,11 +216,11 @@ const LandingPage = () => {
             </div>
             <div className="relative">
               <div className="flex justify-center items-center mt-11 sm:mt-16">
-                <img src="images/moon-1.svg" alt="" />
+                <img src="/images/moon-1.svg" alt="" />
               </div>
               <div className="flex justify-center items-center">
                 <img
-                  src="images/moon-2.svg"
+                  src="/images/moon-2.svg"
                   alt=""
                   className="absolute max-w-[70px] top-[-20px]"
                 />
@@ -238,32 +233,32 @@ const LandingPage = () => {
                 </span>
                 <div className="res-align flex  items-center justify-center space-x-4 sm:space-x-7 max-w-[642px] !ml-0 !pb-4 sm:pt-3">
                   <img
-                    src="images/Artboard-1.svg"
+                    src="/images/Artboard-1.svg"
                     alt=""
                     className="max-w-[110px]"
                   />
                   <img
-                    src="images/Artboard-2.svg"
+                    src="/images/Artboard-2.svg"
                     alt=""
                     className="max-w-[110px]"
                   />
                   <img
-                    src="images/Artboard-3.svg"
+                    src="/images/Artboard-3.svg"
                     alt=""
                     className="max-w-[110px]"
                   />
                   <img
-                    src="images/Artboard-4.svg"
+                    src="/images/Artboard-4.svg"
                     alt=""
                     className="max-w-[110px]"
                   />
                   <img
-                    src="images/Artboard-5.svg"
+                    src="/images/Artboard-5.svg"
                     alt=""
                     className="max-w-[110px]"
                   />
                   <img
-                    src="images/Artboard-6.svg"
+                    src="/images/Artboard-6.svg"
                     alt=""
                     className="max-w-[80px] !ml-[10px]"
                   />

@@ -13,7 +13,7 @@ exports.createUser = async (req, res) => {
     let existingUser = await User.findOne({ email });
     if (existingUser) {
       if (existingUser.isVerified) {
-        const referralLink = `https://waitlist.coasis.app/refer?code=${existingUser.referralCode}`;
+        const referralLink = `waitlist.coasis.in/?refer=${existingUser.referralCode}`;
         return res.status(200).json({
           message: "User already exists",
           user: existingUser,
@@ -83,7 +83,7 @@ module.exports.verifyOTP = async (req, res) => {
       await sendVerificationEmail(email, null, content);
 
       // Return waitlist number and referral link
-      const referralLink = `https://waitlist.coasis.app/refer?code=${referralCode}`;
+      const referralLink = `waitlist.coasis.in/?refer=${referralCode}`;
 
       res.status(200).json({
         message: "User created successfully",
