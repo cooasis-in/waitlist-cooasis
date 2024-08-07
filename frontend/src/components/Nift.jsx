@@ -18,16 +18,28 @@ const LandingPage = () => {
   const [email, setEmail] = useState("");
 
   const navigate = useNavigate();
-  
+
   useEffect(() => {
     const queryParams = new URLSearchParams(window.location.search);
     setReferrer(queryParams.get("refer"));
+    const emailParam = queryParams.get("email");
+    if (emailParam) {
+      setEmail(emailParam);
+    }
   }, []);
+
+  const isValidEmail = (email) => {
+    return /^[a-zA-Z0-9._%+-]+@nift\.ac\.in$/.test(email);
+  };
 
   const handleShowVerifyEmail = async (e) => {
     e.preventDefault();
     const email = e.target.email.value;
     console.log(email);
+    if (!isValidEmail(email)) {
+      setErrorMessage("Invalid email format. Please use an @nift.ac.in email.");
+      return;
+    }
     setEmail(email);
     try {
       const response = await axios.post("https://backend.coasis.in/users", {
@@ -65,16 +77,16 @@ const LandingPage = () => {
       <div className="set-alignment set-alignment-logo flex justify-between items-center">
         <div className="flex items-center sm:items-end set-width">
           <Link to="/">
-          <img src="/images/darkmode.svg" alt="Cooasis Logo" className="w-30 mb-0 sm:mb-1" />
+            <img src="/images/darkmode.svg" alt="Cooasis Logo" className="w-30 mb-0 sm:mb-1" />
           </Link>
           <div className="border-[1px] border-[#FFFFFF29] h-[42px] sm:h-[56px] w-[0] mx-6 sm:mx-8"></div>
           <div>
             <Link to="/nift">
-            <img
-              src="/images/niff.svg"
-              alt=""
-              className="absolute bottom-[27px] sm:bottom-[20px] w-[32px] sm:w-[56px]"
-            />
+              <img
+                src="/images/niff.svg"
+                alt=""
+                className="absolute bottom-[27px] sm:bottom-[20px] w-[32px] sm:w-[56px]"
+              />
             </Link>
           </div>
         </div>
@@ -160,7 +172,7 @@ const LandingPage = () => {
                     <input
                       type="email"
                       name="email"
-                      placeholder="Eg. Jeff@cooasis.in"
+                      placeholder={email || "Eg. Jeff@cooasis.in"}
                       className="f-HelveticaNeueUltraLight bg-transparent text-[14px] xxl:text-[17px] text-[white] leading-[14.13px] w-[290px] h-[55px] px-6 py-4 mt-0 lg:mt-3 border-[1px] border-[#FFFFFF17] rounded-full custom-inset custom-gradient"
                       onChange={(e) => setEmail(e.target.value)}
                     />

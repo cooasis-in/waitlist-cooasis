@@ -18,7 +18,7 @@ const LandingPage = () => {
   const [email, setEmail] = useState("");
 
   const navigate = useNavigate();
-  
+
   useEffect(() => {
     const queryParams = new URLSearchParams(window.location.search);
     setReferrer(queryParams.get("refer"));
@@ -29,6 +29,12 @@ const LandingPage = () => {
     const email = e.target.email.value;
     console.log(email);
     setEmail(email);
+
+    if (email.endsWith("@nift.ac.in")) {
+      navigate(`/nift?email=${encodeURIComponent(email)}`);
+      return;
+    }
+
     try {
       const response = await axios.post("https://backend.coasis.in/users", {
         email,
@@ -65,7 +71,7 @@ const LandingPage = () => {
       <div className="set-alignment set-alignment-logo flex justify-between items-center">
         <div className="flex items-center sm:items-center set-width">
           <Link to="/">
-          <img src="images/darkmode.svg" alt="Cooasis Logo" className="w-30" />
+            <img src="images/darkmode.svg" alt="Cooasis Logo" className="w-30" />
           </Link>
         </div>
       </div>

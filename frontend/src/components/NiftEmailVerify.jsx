@@ -50,55 +50,55 @@ const NiftEmailVerify = () => {
     return () => clearInterval(interval);
   }, [resendDisabled]);
 
-const handleResend = async () => {
-  // setLoading(true);
-  try {
-    setResendDisabled(true); // Disable the button
-    setTimerSeconds(60); // Reset timer duration to 60 seconds
-    const response = await axios.post("https://backend.coasis.in/resend-otp",{
-      email,
-    });
-    if (response.status === 200) {
-      setVerificationError(""); // Clear any previous errors
-      setTimerSeconds(60); // Reset the timer
-      setVerificationError("OTP has been resent to your email.");
-    } else {
+  const handleResend = async () => {
+    // setLoading(true);
+    try {
+      setResendDisabled(true); // Disable the button
+      setTimerSeconds(60); // Reset timer duration to 60 seconds
+      const response = await axios.post("https://backend.coasis.in/resend-otp", {
+        email,
+      });
+      if (response.status === 200) {
+        setVerificationError(""); // Clear any previous errors
+        setTimerSeconds(60); // Reset the timer
+        setVerificationError("OTP has been resent to your email.");
+      } else {
+        setVerificationError("Failed to resend OTP. Please try again.");
+      }
+    } catch (error) {
+      console.error("Error resending OTP:", error);
       setVerificationError("Failed to resend OTP. Please try again.");
     }
-  } catch (error) {
-    console.error("Error resending OTP:", error);
-    setVerificationError("Failed to resend OTP. Please try again.");
-  }
-  setLoading(false); // Hide loader
-};
+    setLoading(false); // Hide loader
+  };
 
-const handleSubmit = async () => {
-  setLoading(true); // Show loader
-  try {
-    const otpCode = otp.join("");
-    const response = await axios.post(
-      "https://backend.coasis.in/verify-email",
-      { otpCode, email, referrer },
-      { withCredentials: true }
-    );
+  const handleSubmit = async () => {
+    setLoading(true); // Show loader
+    try {
+      const otpCode = otp.join("");
+      const response = await axios.post(
+        "https://backend.coasis.in/verify-email",
+        { otpCode, email, referrer },
+        { withCredentials: true }
+      );
 
-    if (response.status === 200) {
-      const responseData = response.data;
-      const { waitlistNumber, referralLink } = response.data;
-      setWaitlistInfo({ waitlistNumber, referralLink });
-      // setIsVerified(true);
-      navigate(`/nift/refer?email=${encodeURIComponent(email)}`, { state: { waitlistInfo: responseData } });
+      if (response.status === 200) {
+        const responseData = response.data;
+        const { waitlistNumber, referralLink } = response.data;
+        setWaitlistInfo({ waitlistNumber, referralLink });
+        // setIsVerified(true);
+        navigate(`/nift/refer?email=${encodeURIComponent(email)}`, { state: { waitlistInfo: responseData } });
+      }
+    } catch (error) {
+      console.error("Verification Error:", error);
+      if (error.response && error.response.status === 400) {
+        setVerificationError("Invalid OTP. Please try again.");
+      } else {
+        setVerificationError("Server error. Please try again later.");
+      }
     }
-  } catch (error) {
-    console.error("Verification Error:", error);
-    if (error.response && error.response.status === 400) {
-      setVerificationError("Invalid OTP. Please try again.");
-    } else {
-      setVerificationError("Server error. Please try again later.");
-    }
-  }
-  setLoading(false); // Hide loader
-};
+    setLoading(false); // Hide loader
+  };
   const handleKeyDown = (e, index) => {
     if (e.key === "Backspace" && !otp[index]) {
       if (index > 0) {
@@ -124,18 +124,18 @@ const handleSubmit = async () => {
   return (
     <>
       <div className="set-alignment set-alignment-logo flex justify-between items-center">
-      <div className="flex items-center sm:items-end set-width">
+        <div className="flex items-center sm:items-end set-width">
           <Link to="/">
-          <img src="/images/darkmode.svg" alt="Cooasis Logo" className="w-30 mb-0 sm:mb-1" />
+            <img src="/images/darkmode.svg" alt="Cooasis Logo" className="w-30 mb-0 sm:mb-1" />
           </Link>
           <div className="border-[1px] border-[#FFFFFF29] h-[42px] sm:h-[56px] w-[0] mx-6 sm:mx-8"></div>
           <div>
             <Link to="/nift">
-            <img
-              src="/images/niff.svg"
-              alt=""
-              className="absolute bottom-[27px] sm:bottom-[20px] w-[32px] sm:w-[56px]"
-            />
+              <img
+                src="/images/niff.svg"
+                alt=""
+                className="absolute bottom-[27px] sm:bottom-[20px] w-[32px] sm:w-[56px]"
+              />
             </Link>
           </div>
         </div>
