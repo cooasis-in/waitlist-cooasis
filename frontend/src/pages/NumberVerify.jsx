@@ -62,7 +62,7 @@ const NumberVerify = () => {
                   })}
                 </div>
                 <div className="flex justify-center">
-                  <Link to="/numberverify">
+                  <Link to="/numberPage">
                     <button className="f-HelveticaNeueRoman cursor-pointer text-[15px] text-[#6A929857] leading-[23.46px] mt-4">
                       Change number
                     </button>
