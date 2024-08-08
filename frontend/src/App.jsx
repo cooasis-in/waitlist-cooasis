@@ -29,7 +29,7 @@ function App() {
         <Route path="/nift/verified" element={<Varefied />} />
         <Route path="/nift/numberPage" element={<NumberPage />} />
         <Route path="/nift/numberverify" element={<NumberVerify />} />
-         <Route path="/nift/refer" element={<Refer />} />
+        <Route path="/nift/refer" element={<Refer />} />
       </Routes>
   );
 }
