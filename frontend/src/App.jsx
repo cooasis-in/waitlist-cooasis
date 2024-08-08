@@ -1,28 +1,36 @@
 import "./App.css";
-import LandingPage from "./components/LandingPage";
 import Refer from "./components/Refer";
 import ShareLinks from "./components/ShareLinks";
-import {Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import Waitlist from "./components/Waitlist";
-import EmailVerify from "./components/EmailVerify";
-import Nift from "./components/Nift";
-import NiftEmailVerify from "./components/NiftEmailVerify";
-import NiftRefer from "./components/NiftRefer";
+import EmailVerify from "./pages/EmailVerify";
+import NumberPage from "./pages/NumberPage";
+import NumberVerify from "./pages/NumberVerify";
+import EmailPage from "./pages/EmailPage";
+import VarefiedNumber from "./pages/Varefied";
+import Varefied from "./pages/Varefied";
+// import Nift from "./components/Nift";
+// import NiftEmailVerify from "./components/NiftEmailVerify";
+// import NiftRefer from "./components/NiftRefer";
 
 function App() {
   return (
-    <div className="">
-    <Routes>
-      <Route path="/" element={<LandingPage />} />
-      <Route path="/share" element={<ShareLinks />} />
-      <Route path="/refer" element={<Refer />} />
-      <Route path="/waitlist" element={<Waitlist />} />
-      <Route path="/verifyemail" element={<EmailVerify />} />
-      <Route path="/nift" element={<Nift />} />
-      <Route path="/nift/verifyemail" element={<NiftEmailVerify />} />
-      <Route path="/nift/refer" element={<NiftRefer />} />
-    </Routes>
-  </div>
+      <Routes>
+        <Route path="/" element={<EmailPage />} />
+        <Route path="/verifyemail" element={<EmailVerify />} />
+        <Route path="/verified" element={<Varefied />} />
+        <Route path="/numberPage" element={<NumberPage />} />
+        <Route path="/numberverify" element={<NumberVerify />} />
+        <Route path="/share" element={<ShareLinks />} />
+        <Route path="/refer" element={<Refer />} />
+        <Route path="/waitlist" element={<Waitlist />} />
+        <Route path="/nift" element={<EmailPage />} />
+        <Route path="/nift/verifyemail" element={<EmailVerify />} />
+        <Route path="/nift/verified" element={<Varefied />} />
+        <Route path="/nift/numberPage" element={<NumberPage />} />
+        <Route path="/nift/numberverify" element={<NumberVerify />} />
+         <Route path="/nift/refer" element={<Refer />} />
+      </Routes>
   );
 }
 
