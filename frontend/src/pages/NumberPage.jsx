@@ -16,6 +16,7 @@ import { useLocation } from 'react-router-dom';
 
 const NumberPage = () => {
   const [number, setNumber] = useState("");
+  const [confirmationResult, setConfirmationResult] = useState(null);
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -36,11 +37,12 @@ const NumberPage = () => {
     console.log("Entered Mobile Number:", number);
 
     try {
-      const confirmationResult = await setupRecaptcha(number);
-      console.log("OTP sent successfully", confirmationResult);
+      const result = await setupRecaptcha(number);
+      console.log("OTP sent successfully", result);
+      setConfirmationResult(result); // Store confirmationResult in state
 
-      // Navigate to NumberVerify with the confirmationResult
-      navigate(niftWord ? "/nift/numberverify" : "/numberverify", { state: { confirmationResult } });
+      // Pass confirmationResult as prop to NumberVerify component
+      navigate("/numberverify", { state: { confirmationResult: result } });
     } catch (e) {
       console.log("Error sending OTP", e);
     }

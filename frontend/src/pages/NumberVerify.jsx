@@ -7,12 +7,12 @@ import { Button } from "../ui/moving-border";
 import Header from "../components/Header";
 import { getAuth, RecaptchaVerifier, signInWithPhoneNumber } from "firebase/auth";
 
-const NumberVerify = () => {
+const NumberVerify = ({ confirmationResult }) => {
   const [otp, setOtp] = useState(new Array(6).fill(""));
   const inputRefs = useRef([]);
   const navigate = useNavigate();
   const location = useLocation();
-  const { confirmationResult } = location.state || {};
+  // const { confirmationResult } = location.state || {};
 
   const handleChange = (element, index) => {
     if (isNaN(element.value)) return;
