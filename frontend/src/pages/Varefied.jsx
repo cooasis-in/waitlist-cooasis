@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+import { useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
 import NextgenTitle from "../components/NextgenTitle";
 import BottomPart from "../components/BottomPart";
@@ -7,6 +8,9 @@ import Header from "../components/Header";
 
 const Varefied = () => {
   const [showNewComponent, setShowNewComponent] = useState(false);
+  const location = useLocation();
+  const { state } = location;
+
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowNewComponent(true);
@@ -24,7 +28,7 @@ const Varefied = () => {
   }, []);
 
   if (showNewComponent) {
-    return <NumberPage/>;
+    return <NumberPage waitlistInfo={state?.waitlistInfo} />;
   }
   return (
     <>

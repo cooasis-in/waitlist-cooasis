@@ -1,15 +1,23 @@
-import React, { useRef, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import React, { useRef, useState,useEffect} from "react";
+import { useLocation, Link, useNavigate } from "react-router-dom";
 import NextgenTitle from "../components/NextgenTitle";
 import BottomPart from "../components/BottomPart";
 // Assuming Button is a custom component
 import { Button } from "../ui/moving-border";
 import Header from "../components/Header";
+import { getAuth, RecaptchaVerifier, signInWithPhoneNumber } from "firebase/auth";
 
-const NumberVerify = () => {
-  const [otp, setOtp] = useState(new Array(4).fill(""));
+const NumberVerify = ({ confirmationResult, waitlistInfo }) => {
+  const [otp, setOtp] = useState(new Array(6).fill(""));
   const inputRefs = useRef([]);
   const navigate = useNavigate();
+  const location = useLocation();
+  // const { confirmationResult } = location.state || {};
+
+  useEffect(() => {
+    console.log("Confirmation Result:", confirmationResult);
+    console.log("Waitlist Info:", waitlistInfo);
+  }, [confirmationResult, waitlistInfo]);
 
   const handleChange = (element, index) => {
     if (isNaN(element.value)) return;
@@ -18,7 +26,7 @@ const NumberVerify = () => {
     newOtp[index] = element.value;
     setOtp(newOtp);
 
-    if (element.value && index < 3) {
+    if (element.value && index < 5) {
       inputRefs.current[index + 1].focus();
     }
   };
@@ -31,9 +39,19 @@ const NumberVerify = () => {
     }
   };
 
-  const handleNavigate = () => {
-    navigate("/refer");
+  const verifyOtp = async () => {
+    const otpValue = otp.join(""); // Combine the OTP digits into a single string
+
+    try {
+      const result = await confirmationResult.confirm(otpValue);
+      console.log("OTP Verified Successfully:", result);
+      // Navigate to the next page after successful verification
+      navigate("/refer", { state: { waitlistInfo } });
+    } catch (error) {
+      console.log("OTP Verification Failed:", error);
+    }
   };
+
   return (
     <>
       <Header />
@@ -72,7 +90,7 @@ const NumberVerify = () => {
                   <button
                     id="verify-email-button"
                     className="f-PowerGrotesk h-[55px] w-[290px] !cursor-pointer text-[17.5px] text-[#E1FF26] bg-[#0000006B] hover:text-black hover:font-bold transform transition-all duration-300 ease-in-out hover:bg-[#E1FF26] leading-[17.5px] mt-4 px-8 py-6 rounded-full opacity-100 items-center flex justify-center"
-                    onClick={handleNavigate}
+                    onClick={verifyOtp}
                   >
                     Verify Mobile
                   </button>

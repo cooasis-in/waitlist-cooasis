@@ -91,7 +91,7 @@ const EmailVerify = () => {
         const { waitlistNumber, referralLink } = response.data;
         setWaitlistInfo({ waitlistNumber, referralLink });
         // setIsVerified(true);
-        if(niftWord) {
+        if (niftWord) {
           navigate(`/nift/verified?email=${encodeURIComponent(email)}`, {
             state: { waitlistInfo: responseData },
           });
@@ -198,14 +198,12 @@ const EmailVerify = () => {
                     <button
                       onClick={handleResend}
                       disabled={resendDisabled}
-                      className={`f-HelveticaNeueLight text-[#5A5A5A] text-[12px] xxl:text-[18px] leading-[17.59px] font-light mt-4 lg:font-medium ${
-                        resendDisabled ? "cursor-not-allowed opacity-50" : ""
-                      }`}
+                      className={`f-HelveticaNeueLight text-[#5A5A5A] text-[12px] xxl:text-[18px] leading-[17.59px] font-light mt-4 lg:font-medium ${resendDisabled ? "cursor-not-allowed opacity-50" : ""
+                        }`}
                     >
                       <span
-                        className={`f-HelveticaNeueRoman cursor-pointer text-[15px] text-center ${
-                          resendDisabled ? "text-[#6A9298]" : "text-[#6A929857]"
-                        } leading-[23.46px]`}
+                        className={`f-HelveticaNeueRoman cursor-pointer text-[15px] text-center ${resendDisabled ? "text-[#6A9298]" : "text-[#6A929857]"
+                          } leading-[23.46px]`}
                       >
                         {resendDisabled
                           ? `Resend Code in ${timerSeconds}s`
