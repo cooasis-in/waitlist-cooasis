@@ -5,9 +5,10 @@ import BottomPart from "../components/BottomPart";
 // Assuming Button is a custom component
 import { Button } from "../ui/moving-border";
 import Header from "../components/Header";
+import { getAuth, RecaptchaVerifier, signInWithPhoneNumber } from "firebase/auth";
 
 const NumberVerify = () => {
-  const [otp, setOtp] = useState(new Array(4).fill(""));
+  onst[otp, setOtp] = useState(new Array(6).fill(""));
   const inputRefs = useRef([]);
   const navigate = useNavigate();
   const location = useLocation();
@@ -20,7 +21,7 @@ const NumberVerify = () => {
     newOtp[index] = element.value;
     setOtp(newOtp);
 
-    if (element.value && index < 3) {
+    if (element.value && index < 5) {
       inputRefs.current[index + 1].focus();
     }
   };
