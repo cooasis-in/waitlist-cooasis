@@ -15,7 +15,7 @@ import { useLocation } from 'react-router-dom';
 // import { ButtonsCard } from "../ui/tailwindcss-buttons";
 import NumberVerify from "./NumberVerify";
 
-const NumberPage = () => {
+const NumberPage = ({ waitlistInfo }) => {
   const [number, setNumber] = useState("");
   const [confirmationResult, setConfirmationResult] = useState(null);
   const [isVerifying, setIsVerifying] = useState(false);
@@ -27,13 +27,8 @@ const NumberPage = () => {
   const niftWord = pathParts?.includes('nift');
 
   useEffect(() => {
-    console.log("Firebase Auth Instance:", auth);
-    console.log("Current User:", auth.currentUser); // To see if a user is currently authenticated
-    console.log("App Name:", auth.app.name); // Name of the Firebase app
-  }, []);
-
-
-
+    console.log("Waitlist Info:", waitlistInfo);
+  }, [waitlistInfo]);
 
   // const getOtp = async (e) => {
   //   e.preventDefault();
@@ -57,11 +52,22 @@ const NumberPage = () => {
   // };
 
   const setupRecaptcha = (number) => {
-    const recaptchaVerifier = new RecaptchaVerifier(auth, 'recaptcha-container', {});
-    recaptchaVerifier.render();
+    const recaptchaVerifier = new RecaptchaVerifier(auth, 'recaptcha-container', {
+      size: 'invisible',
+      callback: (response) => {
+        // reCAPTCHA solved, you can now trigger OTP request
+        console.log("reCAPTCHA resolved:", response);
+      },
+      'expired-callback': () => {
+        // Handle the case when reCAPTCHA response expires
+        console.log("reCAPTCHA expired");
+      }
+    });
 
+    recaptchaVerifier.render();  // Render the reCAPTCHA
     return signInWithPhoneNumber(auth, number, recaptchaVerifier);
-  }
+  };
+
 
   const getOtp = async (e) => {
     e.preventDefault();
@@ -79,7 +85,7 @@ const NumberPage = () => {
 
   if (isVerifying && confirmationResult) {
     // Render NumberVerify component with the confirmationResult prop
-    return <NumberVerify confirmationResult={confirmationResult} />;
+    return <NumberVerify confirmationResult={confirmationResult} waitlistInfo={waitlistInfo} />;
   }
 
   return (
@@ -108,7 +114,7 @@ const NumberPage = () => {
                   </div>
                 </div>
                 {/* Render reCAPTCHA container here */}
-                <div id="recaptcha-container" className="mt-4"></div>
+                <div id="recaptcha-container" style={{ display: "none" }}></div>
                 <div>
                   {/* <Button
                       id="get-early-access-button"

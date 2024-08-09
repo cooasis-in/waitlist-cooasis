@@ -7,12 +7,17 @@ import { Button } from "../ui/moving-border";
 import Header from "../components/Header";
 import { getAuth, RecaptchaVerifier, signInWithPhoneNumber } from "firebase/auth";
 
-const NumberVerify = ({ confirmationResult }) => {
+const NumberVerify = ({ confirmationResult, waitlistInfo }) => {
   const [otp, setOtp] = useState(new Array(6).fill(""));
   const inputRefs = useRef([]);
   const navigate = useNavigate();
   const location = useLocation();
   // const { confirmationResult } = location.state || {};
+
+  useEffect(() => {
+    console.log("Confirmation Result:", confirmationResult);
+    console.log("Waitlist Info:", waitlistInfo);
+  }, [confirmationResult, waitlistInfo]);
 
   const handleChange = (element, index) => {
     if (isNaN(element.value)) return;
@@ -41,7 +46,7 @@ const NumberVerify = ({ confirmationResult }) => {
       const result = await confirmationResult.confirm(otpValue);
       console.log("OTP Verified Successfully:", result);
       // Navigate to the next page after successful verification
-      navigate("/refer");
+      navigate("/refer", { state: { waitlistInfo } });
     } catch (error) {
       console.log("OTP Verification Failed:", error);
     }
