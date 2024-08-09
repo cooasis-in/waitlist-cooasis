@@ -34,18 +34,15 @@ const NumberPage = () => {
   const getOtp = async (e) => {
     e.preventDefault();
     console.log("Entered Mobile Number:", number);
-    // Add navigation logic here if needed, or remove if handled elsewhere
+
     try {
-      const response = await setupRecaptcha(number);
-      console.log(response);
-    }
-    catch (e) {
-      console.log(e);
-    }
-    if (niftWord) {
-      navigate("/nift/numberverify");
-    } else {
-      navigate("/numberverify");
+      const confirmationResult = await setupRecaptcha(number);
+      console.log("OTP sent successfully", confirmationResult);
+
+      // Navigate to NumberVerify with the confirmationResult
+      navigate(niftWord ? "/nift/numberverify" : "/numberverify", { state: { confirmationResult } });
+    } catch (e) {
+      console.log("Error sending OTP", e);
     }
   };
 
