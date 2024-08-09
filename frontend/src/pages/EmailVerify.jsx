@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import { ClipLoader } from "react-spinners";
@@ -21,8 +20,8 @@ const EmailVerify = () => {
   const [loading, setLoading] = useState(false);
 
   const inputRefs = useRef([]);
-  const pathParts = location.pathname.split('/');
-  const niftWord = pathParts.includes('nift');
+  const pathParts = location.pathname.split("/");
+  const niftWord = pathParts.includes("nift");
 
   const handleChange = (element, index) => {
     if (isNaN(element.value)) return;
@@ -81,7 +80,7 @@ const EmailVerify = () => {
     try {
       const otpCode = otp.join("");
       const response = await axios.post(
-        "https://http://localhost:3001/verify-email",
+        "http://localhost:3001/verify-email",
         { otpCode, email, referrer },
         { withCredentials: true }
       );
@@ -117,10 +116,6 @@ const EmailVerify = () => {
         inputRefs.current[index - 1].focus();
       }
     }
-  };
-
-  const handlesubmit = () => {
-    setverifyEmail(false);
   };
 
   useEffect(() => {
@@ -167,12 +162,11 @@ const EmailVerify = () => {
                         {verificationError}
                       </p>
                     ) : (
-                      <button
-                        className="f-HelveticaNeueRoman cursor-pointer text-[15px] text-[#6A929857] leading-[23.46px] mt-4"
-                        onClick={handlesubmit}
-                      >
-                        Change email
-                      </button>
+                      <Link to="/">
+                        <button className="f-HelveticaNeueRoman cursor-pointer text-[15px] text-[#6A929857] leading-[23.46px] mt-4">
+                          Change email
+                        </button>
+                      </Link>
                     )}
                   </div>
                   <div className="flex justify-center items-center">
@@ -198,12 +192,14 @@ const EmailVerify = () => {
                     <button
                       onClick={handleResend}
                       disabled={resendDisabled}
-                      className={`f-HelveticaNeueLight text-[#5A5A5A] text-[12px] xxl:text-[18px] leading-[17.59px] font-light mt-4 lg:font-medium ${resendDisabled ? "cursor-not-allowed opacity-50" : ""
-                        }`}
+                      className={`f-HelveticaNeueLight text-[#5A5A5A] text-[12px] xxl:text-[18px] leading-[17.59px] font-light mt-4 lg:font-medium ${
+                        resendDisabled ? "cursor-not-allowed opacity-50" : ""
+                      }`}
                     >
                       <span
-                        className={`f-HelveticaNeueRoman cursor-pointer text-[15px] text-center ${resendDisabled ? "text-[#6A9298]" : "text-[#6A929857]"
-                          } leading-[23.46px]`}
+                        className={`f-HelveticaNeueRoman cursor-pointer text-[15px] text-center ${
+                          resendDisabled ? "text-[#6A9298]" : "text-[#6A929857]"
+                        } leading-[23.46px]`}
                       >
                         {resendDisabled
                           ? `Resend Code in ${timerSeconds}s`

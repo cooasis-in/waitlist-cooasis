@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import EmailVerify from "./EmailVerify";
@@ -6,14 +5,18 @@ import { Button } from "../ui/moving-border";
 import { useNavigate } from "react-router-dom";
 import PhoneInput from "react-phone-number-input";
 import "react-phone-number-input/style.css";
-import { getAuth, RecaptchaVerifier, signInWithPhoneNumber } from "firebase/auth";
+import {
+  RecaptchaVerifier,
+  signInWithPhoneNumber,
+} from "firebase/auth";
 import { auth } from "../../firebase.config";
 import NextgenTitle from "../components/NextgenTitle";
 import BottomPart from "../components/BottomPart";
 import Header from "../components/Header";
-import { useLocation } from 'react-router-dom';
+import { useLocation } from "react-router-dom";
 // import { ButtonsCard } from "../ui/tailwindcss-buttons";
 import NumberVerify from "./NumberVerify";
+import "./number.css";
 
 const NumberPage = ({ waitlistInfo }) => {
   const [number, setNumber] = useState("");
@@ -22,9 +25,8 @@ const NumberPage = ({ waitlistInfo }) => {
   const navigate = useNavigate();
   const location = useLocation();
 
-
-  const pathParts = location.pathname?.split('/');
-  const niftWord = pathParts?.includes('nift');
+  const pathParts = location.pathname?.split("/");
+  const niftWord = pathParts?.includes("nift");
 
   useEffect(() => {
     console.log("Waitlist Info:", waitlistInfo);
@@ -52,22 +54,25 @@ const NumberPage = ({ waitlistInfo }) => {
   // };
 
   const setupRecaptcha = (number) => {
-    const recaptchaVerifier = new RecaptchaVerifier(auth, 'recaptcha-container', {
-      size: 'invisible',
-      callback: (response) => {
-        // reCAPTCHA solved, you can now trigger OTP request
-        console.log("reCAPTCHA resolved:", response);
-      },
-      'expired-callback': () => {
-        // Handle the case when reCAPTCHA response expires
-        console.log("reCAPTCHA expired");
+    const recaptchaVerifier = new RecaptchaVerifier(
+      auth,
+      "recaptcha-container",
+      {
+        size: "invisible",
+        callback: (response) => {
+          // reCAPTCHA solved, you can now trigger OTP request
+          console.log("reCAPTCHA resolved:", response);
+        },
+        "expired-callback": () => {
+          // Handle the case when reCAPTCHA response expires
+          console.log("reCAPTCHA expired");
+        },
       }
-    });
+    );
 
-    recaptchaVerifier.render();  // Render the reCAPTCHA
+    recaptchaVerifier.render(); // Render the reCAPTCHA
     return signInWithPhoneNumber(auth, number, recaptchaVerifier);
   };
-
 
   const getOtp = async (e) => {
     e.preventDefault();
@@ -85,7 +90,12 @@ const NumberPage = ({ waitlistInfo }) => {
 
   if (isVerifying && confirmationResult) {
     // Render NumberVerify component with the confirmationResult prop
-    return <NumberVerify confirmationResult={confirmationResult} waitlistInfo={waitlistInfo} />;
+    return (
+      <NumberVerify
+        confirmationResult={confirmationResult}
+        waitlistInfo={waitlistInfo}
+      />
+    );
   }
 
   return (
@@ -101,15 +111,15 @@ const NumberPage = ({ waitlistInfo }) => {
                 className="set-large-align flex flex-col items-center my-32 sm:my-0"
                 onSubmit={getOtp}
               >
-                <div className="relative">
+                <div className="phone-input-container">
                   <PhoneInput
                     placeholder="Enter phone number"
                     value={number}
                     onChange={setNumber}
                     defaultCountry="IN"
-                    className="f-HelveticaNeueUltraLight bg-transparent text-[14px] xxl:text-[17px] text-[white] leading-[14.13px] w-[290px] h-[55px] px-6 py-4 mt-0 lg:mt-3 border-[1px] border-[#FFFFFF17] rounded-full custom-inset custom-gradient"
+                    className="phone-input"
                   />
-                  <div className="absolute right-[22px] bottom-[20px] cursor-pointer">
+                  <div className="phone-input-icon">
                     <img src="/images/mobile.svg" alt="mobile Icon" />
                   </div>
                 </div>

@@ -2,11 +2,11 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import EmailVerify from "./EmailVerify";
 import { Button } from "../ui/moving-border";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 import NextgenTitle from "../components/NextgenTitle";
 import BottomPart from "../components/BottomPart";
 import Header from "../components/Header";
-import { useLocation, Link } from 'react-router-dom';
+import { useLocation, Link } from "react-router-dom";
 // import { ButtonsCard } from "../ui/tailwindcss-buttons";
 
 const EmailPage = () => {
@@ -20,9 +20,9 @@ const EmailPage = () => {
   const [showVerify, setShowVerify] = useState(false);
   const [email, setEmail] = useState("");
 
-  const pathParts = location.pathname.split('/');
-  const niftWord = pathParts.includes('nift');
-  
+  const pathParts = location.pathname.split("/");
+  const niftWord = pathParts.includes("nift");
+
   useEffect(() => {
     const queryParams = new URLSearchParams(window.location.search);
     setReferrer(queryParams.get("refer"));
@@ -33,8 +33,21 @@ const EmailPage = () => {
     const email = e.target.email.value;
     console.log(email);
     setEmail(email);
-    if (email.endsWith("@nift.ac.in")) {
-      navigate(`/nift?email=${encodeURIComponent(email)}`);
+    // if (email.endsWith("@nift.ac.in")) {
+    //   navigate(`/nift?email=${encodeURIComponent(email)}`);
+    //   return;
+    // }
+    const isNiftEmail = email.endsWith("@nift.ac.in");
+
+    if (!niftWord && isNiftEmail) {
+      navigate("/nift", { state: { email } });
+      return;
+    }
+
+    if (niftWord && !isNiftEmail) {
+      setErrorMessage(
+        "Please enter a valid NIFT email address ending with @nift.ac.in"
+      );
       return;
     }
     try {
@@ -49,22 +62,25 @@ const EmailPage = () => {
         const userEmail = responseData.user.email;
         console.log(userEmail);
         // setShowRefer(true);
-        if(niftWord) {
-          navigate(`/nift/refer?email=${encodeURIComponent(userEmail)}`, { state: { waitlistInfo: responseData } });
+        if (niftWord) {
+          navigate(`/nift/refer?email=${encodeURIComponent(userEmail)}`, {
+            state: { waitlistInfo: responseData },
+          });
         } else {
-          navigate(`/refer?email=${encodeURIComponent(userEmail)}`, { state: { waitlistInfo: responseData } });
+          navigate(`/refer?email=${encodeURIComponent(userEmail)}`, {
+            state: { waitlistInfo: responseData },
+          });
         }
-        
       } else {
         const userId = responseData.userId;
         // setShowVerify(true);
-        if(niftWord){
+        if (niftWord) {
           navigate(`/nift/verifyemail?userId=${encodeURIComponent(userId)}`, {
-            state: { email: email, referrer, showVerify: true }
+            state: { email: email, referrer, showVerify: true },
           });
         } else {
           navigate(`/verifyemail?userId=${encodeURIComponent(userId)}`, {
-            state: { email: email, referrer, showVerify: true }
+            state: { email: email, referrer, showVerify: true },
           });
         }
       }

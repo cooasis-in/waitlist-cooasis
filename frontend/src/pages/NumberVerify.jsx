@@ -1,14 +1,19 @@
-import React, { useRef, useState,useEffect} from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { useLocation, Link, useNavigate } from "react-router-dom";
 import NextgenTitle from "../components/NextgenTitle";
 import BottomPart from "../components/BottomPart";
 // Assuming Button is a custom component
 import { Button } from "../ui/moving-border";
 import Header from "../components/Header";
-import { getAuth, RecaptchaVerifier, signInWithPhoneNumber } from "firebase/auth";
+import {
+  getAuth,
+  RecaptchaVerifier,
+  signInWithPhoneNumber,
+} from "firebase/auth";
 
 const NumberVerify = ({ confirmationResult, waitlistInfo }) => {
   const [otp, setOtp] = useState(new Array(6).fill(""));
+  const [verificationError, setVerificationError] = useState("");
   const inputRefs = useRef([]);
   const navigate = useNavigate();
   const location = useLocation();
@@ -49,6 +54,7 @@ const NumberVerify = ({ confirmationResult, waitlistInfo }) => {
       navigate("/refer", { state: { waitlistInfo } });
     } catch (error) {
       console.log("OTP Verification Failed:", error);
+      setVerificationError("Wrong otp");
     }
   };
 
@@ -80,12 +86,25 @@ const NumberVerify = ({ confirmationResult, waitlistInfo }) => {
                   })}
                 </div>
                 <div className="flex justify-center">
+                  {verificationError ? (
+                    <p className="text-red-500 text-[12px] text-center mt-4 f-HelveticaNeueRoman cursor-pointer  leading-[23.46px]">
+                      {verificationError}
+                    </p>
+                  ) : (
+                    <Link to="/numberPage">
+                      <button className="f-HelveticaNeueRoman cursor-pointer text-[15px] text-[#6A929857] leading-[23.46px] mt-4">
+                        Change number
+                      </button>
+                    </Link>
+                  )}
+                </div>
+                {/* <div className="flex justify-center">
                   <Link to="/numberPage">
                     <button className="f-HelveticaNeueRoman cursor-pointer text-[15px] text-[#6A929857] leading-[23.46px] mt-4">
                       Change number
                     </button>
                   </Link>
-                </div>
+                </div> */}
                 <div className="flex justify-center items-center">
                   <button
                     id="verify-email-button"
