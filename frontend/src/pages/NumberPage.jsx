@@ -36,21 +36,36 @@ const NumberPage = () => {
     console.log("Entered Mobile Number:", number);
 
     try {
-      const response = await setupRecaptcha(number);
-      console.log("OTP sent successfully", response);
+      const confirmationResult = await setupRecaptcha(number);
+      console.log("OTP sent successfully", confirmationResult);
 
-      // Pass only the serializable data (verificationId)
-      const verificationId = response.verificationId;
-
-      if (niftWord) {
-        navigate("/nift/numberverify", { state: { verificationId } });
-      } else {
-        navigate("/numberverify", { state: { verificationId } });
-      }
+      // Navigate to NumberVerify with the confirmationResult
+      navigate(niftWord ? "/nift/numberverify" : "/numberverify", { state: { confirmationResult } });
     } catch (e) {
       console.log("Error sending OTP", e);
     }
   };
+
+  // const getOtp = async (e) => {
+  //   e.preventDefault();
+  //   console.log("Entered Mobile Number:", number);
+
+  //   try {
+  //     const response = await setupRecaptcha(number);
+  //     console.log("OTP sent successfully", response);
+
+  //     // Pass only the serializable data (verificationId)
+  //     const verificationId = response.verificationId;
+
+  //     if (niftWord) {
+  //       navigate("/nift/numberverify", { state: { verificationId } });
+  //     } else {
+  //       navigate("/numberverify", { state: { verificationId } });
+  //     }
+  //   } catch (e) {
+  //     console.log("Error sending OTP", e);
+  //   }
+  // };
 
   const setupRecaptcha = (number) => {
     const recaptchaVerifier = new RecaptchaVerifier(auth, 'recaptcha-container', {});
