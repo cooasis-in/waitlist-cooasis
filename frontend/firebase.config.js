@@ -13,13 +13,13 @@ import { getAuth } from "firebase/auth";
 // };
 
 const firebaseConfig = {
-    apiKey: "AIzaSyCT3eAmou73SmMIY1Cp6nRFjXj_ldn1vFw",
-    authDomain: "otp-new-c9170.firebaseapp.com",
-    projectId: "otp-new-c9170",
-    storageBucket: "otp-new-c9170.appspot.com",
-    messagingSenderId: "309327532114",
-    appId: "1:309327532114:web:f9553e880a3c9686e90f8b",
-    measurementId: "G-0FVCW7PC5X"
+  apiKey: "AIzaSyCxlC6AJvvLBuul7X8C0Ev5IjAxODi9HfE",
+  authDomain: "cooasistech.firebaseapp.com",
+  projectId: "cooasistech",
+  storageBucket: "cooasistech.appspot.com",
+  messagingSenderId: "523674716469",
+  appId: "1:523674716469:web:7f2ea5c2d0a3e74bb7e47c",
+  measurementId: "G-H1CYY42D4M"
 };
 
 
