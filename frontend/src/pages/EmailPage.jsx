@@ -33,8 +33,12 @@ const EmailPage = () => {
     const email = e.target.email.value;
     console.log(email);
     setEmail(email);
+    if (email.endsWith("@nift.ac.in")) {
+      navigate(`/nift?email=${encodeURIComponent(email)}`);
+      return;
+    }
     try {
-      const response = await axios.post("https://backend.coasis.in/users", {
+      const response = await axios.post("http://localhost:3001/users", {
         email,
         referrer,
       });
