@@ -11,7 +11,7 @@ const NumberVerify = () => {
   const inputRefs = useRef([]);
   const navigate = useNavigate();
   const location = useLocation();
-  const { confirmationResult } = location.state || {};
+  const { verificationId } = location.state || {};
 
   const handleChange = (element, index) => {
     if (isNaN(element.value)) return;
@@ -34,15 +34,15 @@ const NumberVerify = () => {
   };
 
   const verifyOtp = async () => {
-    const otpValue = otp.join(""); // Combine the OTP digits into a single string
-
     try {
-      const result = await confirmationResult.confirm(otpValue);
-      console.log("OTP Verified Successfully:", result);
-      // Navigate to the next page after successful verification
-      navigate("/refer");
+      const code = otp.join("");
+      const auth = getAuth();
+      const credential = auth.PhoneAuthProvider.credential(verificationId, code);
+      const result = await signInWithCredential(auth, credential);
+      console.log("OTP verified successfully:", result);
+      navigate("/refer");  // Navigate to the next page
     } catch (error) {
-      console.log("OTP Verification Failed:", error);
+      console.error("Error verifying OTP:", error);
     }
   };
 

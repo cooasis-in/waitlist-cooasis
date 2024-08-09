@@ -36,11 +36,17 @@ const NumberPage = () => {
     console.log("Entered Mobile Number:", number);
 
     try {
-      const confirmationResult = await setupRecaptcha(number);
-      console.log("OTP sent successfully", confirmationResult);
+      const response = await setupRecaptcha(number);
+      console.log("OTP sent successfully", response);
 
-      // Navigate to NumberVerify with the confirmationResult
-      navigate(niftWord ? "/nift/numberverify" : "/numberverify", { state: { confirmationResult } });
+      // Pass only the serializable data (verificationId)
+      const verificationId = response.verificationId;
+
+      if (niftWord) {
+        navigate("/nift/numberverify", { state: { verificationId } });
+      } else {
+        navigate("/numberverify", { state: { verificationId } });
+      }
     } catch (e) {
       console.log("Error sending OTP", e);
     }
