@@ -13,10 +13,12 @@ import BottomPart from "../components/BottomPart";
 import Header from "../components/Header";
 import { useLocation } from 'react-router-dom';
 // import { ButtonsCard } from "../ui/tailwindcss-buttons";
+import NumberVerify from "./NumberVerify";
 
 const NumberPage = () => {
   const [number, setNumber] = useState("");
   const [confirmationResult, setConfirmationResult] = useState(null);
+  const [isVerifying, setIsVerifying] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -32,21 +34,6 @@ const NumberPage = () => {
 
 
 
-  const getOtp = async (e) => {
-    e.preventDefault();
-    console.log("Entered Mobile Number:", number);
-
-    try {
-      const result = await setupRecaptcha(number);
-      console.log("OTP sent successfully", result);
-      setConfirmationResult(result); // Store confirmationResult in state
-
-      // Pass confirmationResult as prop to NumberVerify component
-      navigate("/numberverify", { state: { confirmationResult: result } });
-    } catch (e) {
-      console.log("Error sending OTP", e);
-    }
-  };
 
   // const getOtp = async (e) => {
   //   e.preventDefault();
@@ -76,9 +63,24 @@ const NumberPage = () => {
     return signInWithPhoneNumber(auth, number, recaptchaVerifier);
   }
 
-  // useEffect(() => {
-  //   setupRecaptcha();
-  // }, []);
+  const getOtp = async (e) => {
+    e.preventDefault();
+    console.log("Entered Mobile Number:", number);
+
+    try {
+      const result = await setupRecaptcha(number);
+      console.log("OTP sent successfully", result);
+      setConfirmationResult(result); // Store confirmationResult in state
+      setIsVerifying(true); // Update state to render NumberVerify
+    } catch (e) {
+      console.log("Error sending OTP", e);
+    }
+  };
+
+  if (isVerifying && confirmationResult) {
+    // Render NumberVerify component with the confirmationResult prop
+    return <NumberVerify confirmationResult={confirmationResult} />;
+  }
 
   return (
     <>
