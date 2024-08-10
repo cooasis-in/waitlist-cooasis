@@ -45,17 +45,21 @@ const NumberVerify = ({ confirmationResult, waitlistInfo, niftWord }) => {
   };
 
   const verifyOtp = async () => {
-    const otpValue = otp.join(""); // Combine the OTP digits into a single string
+    const otpValue = otp.join("");
 
     try {
       const result = await confirmationResult.confirm(otpValue);
       console.log("OTP Verified Successfully:", result);
 
       const navigationState = { waitlistInfo };
+      let targetUrl = "/refer"; // Default URL
+
       if (niftWord) {
         navigationState.niftWord = niftWord; // Include niftWord if present
+        targetUrl = "/nift/refer"; 
       }
-      navigate("/refer", { state: navigationState });
+
+      navigate(targetUrl, { state: navigationState });
     } catch (error) {
       console.log("OTP Verification Failed:", error);
       setVerificationError("Wrong otp");
