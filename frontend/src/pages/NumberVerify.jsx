@@ -11,7 +11,7 @@ import {
   signInWithPhoneNumber,
 } from "firebase/auth";
 
-const NumberVerify = ({ confirmationResult, waitlistInfo, niftWord }) => {
+const NumberVerify = ({ confirmationResult, waitlistInfo, niftWord, number }) => {
   const [otp, setOtp] = useState(new Array(6).fill(""));
   const [verificationError, setVerificationError] = useState("");
   const inputRefs = useRef([]);
@@ -48,21 +48,44 @@ const NumberVerify = ({ confirmationResult, waitlistInfo, niftWord }) => {
     const otpValue = otp.join("");
 
     try {
+     
       const result = await confirmationResult.confirm(otpValue);
       console.log("OTP Verified Successfully:", result);
 
+      const userId = waitlistInfo?.user?._id;
+      if (userId) {
+   
+        const response = await fetch("/updatePhoneNumber", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            userId,
+            phoneNumber: number,
+          }),
+        });
+
+        // Check if the API response is not OK
+        if (!response.ok) {
+          const errorData = await response.json();
+          throw new Error(errorData.message || "Something went wrong, try again!");
+        }
+      }
+
+     
       const navigationState = { waitlistInfo };
-      let targetUrl = "/refer"; // Default URL
+      let targetUrl = "/refer"; 
 
       if (niftWord) {
-        navigationState.niftWord = niftWord; // Include niftWord if present
-        targetUrl = "/nift/refer"; 
+        navigationState.niftWord = niftWord; 
+        targetUrl = "/nift/refer";
       }
 
       navigate(targetUrl, { state: navigationState });
     } catch (error) {
       console.log("OTP Verification Failed:", error);
-      setVerificationError("Wrong otp");
+      setVerificationError(error.message || "Wrong OTP");
     }
   };
 
