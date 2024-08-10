@@ -28,9 +28,9 @@ const NumberPage = ({ waitlistInfo }) => {
   const pathParts = location.pathname?.split("/");
   const niftWord = pathParts?.includes("nift");
 
-  useEffect(() => {
-    console.log("Waitlist Info:", waitlistInfo);
-  }, [waitlistInfo]);
+  // useEffect(() => {
+  //   console.log("Waitlist Info:", waitlistInfo);
+  // }, [waitlistInfo]);
 
   // const getOtp = async (e) => {
   //   e.preventDefault();
@@ -61,7 +61,7 @@ const NumberPage = ({ waitlistInfo }) => {
         size: "invisible",
         callback: (response) => {
           // reCAPTCHA solved, you can now trigger OTP request
-          console.log("reCAPTCHA resolved:", response);
+          // console.log("reCAPTCHA resolved:", response);
         },
         "expired-callback": () => {
           // Handle the case when reCAPTCHA response expires
@@ -94,9 +94,11 @@ const NumberPage = ({ waitlistInfo }) => {
       <NumberVerify
         confirmationResult={confirmationResult}
         waitlistInfo={waitlistInfo}
+        {...(niftWord && { niftWord })} // Conditionally pass niftWord if it's present
       />
     );
   }
+
 
   return (
     <>
