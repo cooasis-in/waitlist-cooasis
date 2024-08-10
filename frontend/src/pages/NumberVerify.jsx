@@ -55,7 +55,7 @@ const NumberVerify = ({ confirmationResult, waitlistInfo, niftWord, number }) =>
       const userId = waitlistInfo?.user?._id;
       if (userId) {
    
-        const response = await fetch("/updatePhoneNumber", {
+        const response = await fetch("https://backend.coasis.in/updatePhoneNumber", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
