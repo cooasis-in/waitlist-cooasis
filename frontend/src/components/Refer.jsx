@@ -8,7 +8,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 
 const Refer = () => {
   const location = useLocation();
-  const { waitlistInfo, niftWord } = location.state || {};
+  const { waitlistInfo} = location.state || {};
   console.log(waitlistInfo);
   const [showShareLink, setShowShareLink] = useState(false);
   const [isBoxVisible, setIsBoxVisible] = useState(false);
@@ -16,7 +16,7 @@ const Refer = () => {
   const [isButtonActive, setIsButtonActive] = useState(false);
 
   const pathParts = location.pathname.split('/');
-  // const niftWord = pathParts.includes('nift');
+  const niftWord = pathParts.includes('nift');
 
   // confetti
   const navigate = useNavigate();
