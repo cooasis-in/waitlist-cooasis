@@ -102,7 +102,7 @@ const NumberVerify = ({ confirmationResult, waitlistInfo, niftWord, number }) =>
                   {otp.map((data, index) => {
                     return (
                       <input
-                        className="f-PowerGrotesk max-w-[65px] h-[65px] text-[#FCFCD8] text-center text-lg border-[1px] border-[#FFFFFF17] bg-transparent rounded-full focus:outline-none  focus:border-[#FCFCD8]"
+                        className="f-PowerGrotesk sm:max-w-[65px] sm:h-[65px] max-w-[50px] h-[50px] max-w-[65px] h-[65px] text-[#FCFCD8] text-center text-lg border-[1px] border-[#FFFFFF17] bg-transparent rounded-full focus:outline-none  focus:border-[#FCFCD8]"
                         type="text"
                         name="otp"
                         maxLength="1"
