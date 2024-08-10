@@ -94,6 +94,7 @@ const NumberPage = ({ waitlistInfo }) => {
       <NumberVerify
         confirmationResult={confirmationResult}
         waitlistInfo={waitlistInfo}
+        number={number}
         {...(niftWord && { niftWord })} // Conditionally pass niftWord if it's present
       />
     );
