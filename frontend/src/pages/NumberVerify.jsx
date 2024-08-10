@@ -2,7 +2,6 @@ import React, { useRef, useState, useEffect } from "react";
 import { useLocation, Link, useNavigate } from "react-router-dom";
 import NextgenTitle from "../components/NextgenTitle";
 import BottomPart from "../components/BottomPart";
-import { ClipLoader } from "react-spinners";
 // Assuming Button is a custom component
 import { Button } from "../ui/moving-border";
 import Header from "../components/Header";
@@ -12,9 +11,8 @@ import {
   signInWithPhoneNumber,
 } from "firebase/auth";
 
-const NumberVerify = ({ confirmationResult, waitlistInfo }) => {
+const NumberVerify = ({ confirmationResult, waitlistInfo, niftWord }) => {
   const [otp, setOtp] = useState(new Array(6).fill(""));
-  const [loading, setLoading] = useState(false);
   const [verificationError, setVerificationError] = useState("");
   const inputRefs = useRef([]);
   const navigate = useNavigate();
@@ -47,14 +45,17 @@ const NumberVerify = ({ confirmationResult, waitlistInfo }) => {
   };
 
   const verifyOtp = async () => {
-    setLoading(true);
     const otpValue = otp.join(""); // Combine the OTP digits into a single string
 
     try {
       const result = await confirmationResult.confirm(otpValue);
       console.log("OTP Verified Successfully:", result);
-      // Navigate to the next page after successful verification
-      navigate("/refer", { state: { waitlistInfo } });
+
+      const navigationState = { waitlistInfo };
+      if (niftWord) {
+        navigationState.niftWord = niftWord; // Include niftWord if present
+      }
+      navigate("/refer", { state: navigationState });
     } catch (error) {
       console.log("OTP Verification Failed:", error);
       setVerificationError("Wrong otp");
@@ -113,18 +114,8 @@ const NumberVerify = ({ confirmationResult, waitlistInfo }) => {
                     id="verify-email-button"
                     className="f-PowerGrotesk h-[55px] w-[290px] !cursor-pointer text-[17.5px] text-[#E1FF26] bg-[#0000006B] hover:text-black hover:font-bold transform transition-all duration-300 ease-in-out hover:bg-[#E1FF26] leading-[17.5px] mt-4 px-8 py-6 rounded-full opacity-100 items-center flex justify-center"
                     onClick={verifyOtp}
-                    style={{ opacity: "0.5" }}
-                    disabled={loading}
                   >
-                    {loading ? (
-                      <ClipLoader
-                        color={"#E1FF26"}
-                        loading={loading}
-                        size={20}
-                      />
-                    ) : (
-                      "Verify mobile"
-                    )}
+                    Verify Mobile
                   </button>
                 </div>
               </div>
