@@ -58,7 +58,7 @@ const EmailVerify = () => {
     try {
       setResendDisabled(true); // Disable the button
       setTimerSeconds(60); // Reset timer duration to 60 seconds
-      const response = await axios.post("http://localhost:3001/resend-otp", {
+      const response = await axios.post("https://backend.coasis.in/resend-otp", {
         email,
       });
       if (response.status === 200) {
@@ -80,7 +80,7 @@ const EmailVerify = () => {
     try {
       const otpCode = otp.join("");
       const response = await axios.post(
-        "http://localhost:3001/verify-email",
+        "https://backend.coasis.in/verify-email",
         { otpCode, email, referrer },
         { withCredentials: true }
       );
