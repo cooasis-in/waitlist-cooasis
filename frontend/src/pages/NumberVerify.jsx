@@ -62,7 +62,7 @@ const NumberVerify = ({
       const userId = waitlistInfo?.user?._id;
       if (userId) {
         const response = await fetch(
-          "http://localhost:3001/updatePhoneNumber",
+          "https://backend.coasis.in/updatePhoneNumber",
           {
             method: "POST",
             headers: {
