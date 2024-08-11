@@ -5,10 +5,8 @@ import { Button } from "../ui/moving-border";
 import { useNavigate } from "react-router-dom";
 import PhoneInput from "react-phone-number-input";
 import "react-phone-number-input/style.css";
-import {
-  RecaptchaVerifier,
-  signInWithPhoneNumber,
-} from "firebase/auth";
+import { ClipLoader } from "react-spinners";
+import { RecaptchaVerifier, signInWithPhoneNumber } from "firebase/auth";
 import { auth } from "../../firebase.config";
 import NextgenTitle from "../components/NextgenTitle";
 import BottomPart from "../components/BottomPart";
@@ -24,6 +22,7 @@ const NumberPage = ({ waitlistInfo }) => {
   const [isVerifying, setIsVerifying] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
+  const [loading, setLoading] = useState(false);
 
   const pathParts = location.pathname?.split("/");
   const niftWord = pathParts?.includes("nift");
@@ -77,6 +76,7 @@ const NumberPage = ({ waitlistInfo }) => {
   const getOtp = async (e) => {
     e.preventDefault();
     console.log("Entered Mobile Number:", number);
+    setLoading(true);
 
     try {
       const result = await setupRecaptcha(number);
@@ -94,11 +94,11 @@ const NumberPage = ({ waitlistInfo }) => {
       <NumberVerify
         confirmationResult={confirmationResult}
         waitlistInfo={waitlistInfo}
+        number={number}
         {...(niftWord && { niftWord })} // Conditionally pass niftWord if it's present
       />
     );
   }
-
 
   return (
     <>
@@ -136,10 +136,23 @@ const NumberPage = ({ waitlistInfo }) => {
                       <div>Get Early Access</div>
                     </Button> */}
                   {/*  */}
-                  <button className="relative inline-flex  overflow-hidden rounded-full p-[1px] focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50 h-[55px] mt-4 w-[290px]">
+                  <button
+                    className="relative inline-flex  overflow-hidden rounded-full p-[1px] focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50 h-[55px] mt-4 w-[290px]"
+                    style={{ opacity: "0.5" }}
+                    disabled={loading}
+                  >
                     <span className="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#E2CBFF_0%,#393BB2_50%,#E2CBFF_100%)]" />
                     <span className="inline-flex h-full w-full cursor-pointer items-center justify-center rounded-full bg-slate-950 px-3 py-1 text-sm font-medium text-white backdrop-blur-3xl">
-                      Verify Mobile
+                      {loading ? (
+                        <ClipLoader
+                          color={"bg-[conic-gradient(from_90deg_at_50%_50%,#E2CBFF_0%,#393BB2_50%,#E2CBFF_100%)]"}
+                          loading={loading}
+                          size={20}
+                        />
+                      ) : (
+                        "Verify mobile"
+                      )}
+                      {/* Verify Mobile */}
                     </span>
                   </button>
                 </div>

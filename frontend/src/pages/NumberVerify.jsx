@@ -2,7 +2,6 @@ import React, { useRef, useState, useEffect } from "react";
 import { useLocation, Link, useNavigate } from "react-router-dom";
 import NextgenTitle from "../components/NextgenTitle";
 import BottomPart from "../components/BottomPart";
-import { ClipLoader } from "react-spinners";
 // Assuming Button is a custom component
 import { Button } from "../ui/moving-border";
 import Header from "../components/Header";
@@ -11,14 +10,20 @@ import {
   RecaptchaVerifier,
   signInWithPhoneNumber,
 } from "firebase/auth";
+import { ClipLoader } from "react-spinners";
 
-const NumberVerify = ({ confirmationResult, waitlistInfo }) => {
+const NumberVerify = ({
+  confirmationResult,
+  waitlistInfo,
+  niftWord,
+  number,
+}) => {
   const [otp, setOtp] = useState(new Array(6).fill(""));
-  const [loading, setLoading] = useState(false);
   const [verificationError, setVerificationError] = useState("");
   const inputRefs = useRef([]);
   const navigate = useNavigate();
   const location = useLocation();
+  const [loading, setLoading] = useState(false);
   // const { confirmationResult } = location.state || {};
 
   useEffect(() => {
@@ -47,17 +52,50 @@ const NumberVerify = ({ confirmationResult, waitlistInfo }) => {
   };
 
   const verifyOtp = async () => {
+    const otpValue = otp.join("");
     setLoading(true);
-    const otpValue = otp.join(""); // Combine the OTP digits into a single string
 
     try {
       const result = await confirmationResult.confirm(otpValue);
       console.log("OTP Verified Successfully:", result);
-      // Navigate to the next page after successful verification
-      navigate("/refer", { state: { waitlistInfo } });
+
+      const userId = waitlistInfo?.user?._id;
+      if (userId) {
+        const response = await fetch(
+          "http://localhost:3001/updatePhoneNumber",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              userId,
+              phoneNumber: number,
+            }),
+          }
+        );
+
+        // Check if the API response is not OK
+        if (!response.ok) {
+          const errorData = await response.json();
+          throw new Error(
+            errorData.message || "Something went wrong, try again!"
+          );
+        }
+      }
+
+      const navigationState = { waitlistInfo };
+      let targetUrl = "/refer";
+
+      if (niftWord) {
+        navigationState.niftWord = niftWord;
+        targetUrl = "/nift/refer";
+      }
+
+      navigate(targetUrl, { state: navigationState });
     } catch (error) {
       console.log("OTP Verification Failed:", error);
-      setVerificationError("Wrong otp");
+      setVerificationError(error.message || "Wrong OTP");
     }
   };
 
@@ -74,7 +112,7 @@ const NumberVerify = ({ confirmationResult, waitlistInfo }) => {
                   {otp.map((data, index) => {
                     return (
                       <input
-                        className="f-PowerGrotesk sm:max-w-[65px] sm:h-[65px] max-w-[50px] h-[50px] text-[#FCFCD8] text-center text-lg border-[1px] border-[#FFFFFF17] bg-transparent rounded-full focus:outline-none  focus:border-[#FCFCD8]"
+                        className="f-PowerGrotesk sm:max-w-[65px] sm:h-[65px] max-w-[50px] h-[50px]  text-[#FCFCD8] text-center text-lg border-[1px] border-[#FFFFFF17] bg-transparent rounded-full focus:outline-none  focus:border-[#FCFCD8]"
                         type="text"
                         name="otp"
                         maxLength="1"

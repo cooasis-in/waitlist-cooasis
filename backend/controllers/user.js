@@ -45,7 +45,7 @@ exports.createUser = async (req, res) => {
     res.status(200).json({
       message:
         "OTP sent to your email. Please verify your email to complete the registration.",
-        userId: newUser._id
+      userId: newUser._id
     });
 
   } catch (error) {
@@ -78,9 +78,9 @@ module.exports.verifyOTP = async (req, res) => {
       });
       user.isVerified = true;
       await newUser.save();
-      const content =
-        "Lorem Ipsum is simply dummy text of the printing and typesetting industry.";
-      await sendVerificationEmail(email, null, content);
+      // const content =
+      //   "Lorem Ipsum is simply dummy text of the printing and typesetting industry.";
+      // await sendVerificationEmail(email, null, content);
 
       // Return waitlist number and referral link
       const referralLink = `waitlist.coasis.in/?refer=${referralCode}`;
@@ -127,5 +127,30 @@ module.exports.resendOtp = async (req, res) => {
     res
       .status(500)
       .json({ error: "Failed to resend OTP. Please try again later." });
+  }
+};
+
+exports.updateUserPhoneNumber = async (req, res) => {
+  try {
+    const { userId, phoneNumber } = req.body;
+
+    if (!userId || !phoneNumber) {
+      return res.status(400).json({ message: "User ID and phone number are required" });
+    }
+
+    const user = await User.findById(userId);
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    user.phoneNumber = phoneNumber;
+    await user.save();
+    const content =
+    "Lorem Ipsum is simply dummy text of the printing and typesetting industry.";
+  await sendVerificationEmail(user.email, null, content);
+    res.status(200).json({ message: "Phone number updated successfully", user });
+  } catch (error) {
+    console.error("Error updating phone number:", error);
+    res.status(500).json({ message: "Server error", error });
   }
 };

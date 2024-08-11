@@ -7,6 +7,7 @@ import NextgenTitle from "../components/NextgenTitle";
 import BottomPart from "../components/BottomPart";
 import Header from "../components/Header";
 import { useLocation, Link } from "react-router-dom";
+import { ClipLoader } from "react-spinners";
 // import { ButtonsCard } from "../ui/tailwindcss-buttons";
 
 const EmailPage = () => {
@@ -19,6 +20,7 @@ const EmailPage = () => {
   const [referrer, setReferrer] = useState(null);
   const [showVerify, setShowVerify] = useState(false);
   const [email, setEmail] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const pathParts = location.pathname.split("/");
   const niftWord = pathParts.includes("nift");
@@ -33,6 +35,7 @@ const EmailPage = () => {
     const email = e.target.email.value;
     console.log(email);
     setEmail(email);
+    setLoading(true);
     // if (email.endsWith("@nift.ac.in")) {
     //   navigate(`/nift?email=${encodeURIComponent(email)}`);
     //   return;
@@ -95,6 +98,9 @@ const EmailPage = () => {
     }
   };
 
+  const getEmailPlaceholder = () => {
+    return niftWord ? "@nift.ac.in" : "Eg. Jeff@cooasis.in";
+  };
   return (
     <>
       <Header />
@@ -118,9 +124,10 @@ const EmailPage = () => {
                     <input
                       type="email"
                       name="email"
-                      placeholder="Eg. Jeff@cooasis.in"
+                      // placeholder="Eg. Jeff@cooasis.in"
                       className="f-HelveticaNeueUltraLight bg-transparent text-[14px] xxl:text-[17px] text-[white] leading-[14.13px] w-[290px] h-[55px] px-6 py-4 mt-0 lg:mt-3 border-[1px] border-[#FFFFFF17] rounded-full custom-inset custom-gradient"
                       onChange={(e) => setEmail(e.target.value)}
+                      placeholder={getEmailPlaceholder()}
                     />
                     <div className="absolute right-[18px] bottom-[20px] cursor-pointer">
                       <img src="/images/maillandingpage.svg" alt="Email Icon" />
@@ -140,10 +147,25 @@ const EmailPage = () => {
                       <div>Get Early Access</div>
                     </Button> */}
                     {/*  */}
-                    <button className="relative inline-flex  overflow-hidden rounded-full p-[1px] focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50 h-[55px] mt-4 w-[290px] ">
+                    <button
+                      className="relative inline-flex  overflow-hidden rounded-full p-[1px] focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50 h-[55px] mt-4 w-[290px] "
+                      style={{ opacity: "0.5" }}
+                      disabled={loading}
+                    >
                       <span className="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#E2CBFF_0%,#393BB2_50%,#E2CBFF_100%)]" />
                       <span className="inline-flex h-full w-full cursor-pointer items-center justify-center rounded-full bg-slate-950 px-3 py-1 text-sm font-medium text-white backdrop-blur-3xl">
-                        Get Early Access
+                        {loading ? (
+                          <ClipLoader
+                            color={
+                              "bg-[conic-gradient(from_90deg_at_50%_50%,#E2CBFF_0%,#393BB2_50%,#E2CBFF_100%)]"
+                            }
+                            loading={loading}
+                            size={20}
+                          />
+                        ) : (
+                          "Verify mobile"
+                        )}
+                        {/* Get Early Access */}
                       </span>
                     </button>
                   </div>
