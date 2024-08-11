@@ -163,7 +163,7 @@ const EmailPage = () => {
                             size={20}
                           />
                         ) : (
-                          "Verify mobile"
+                          "Verify email"
                         )}
                         {/* Get Early Access */}
                       </span>
