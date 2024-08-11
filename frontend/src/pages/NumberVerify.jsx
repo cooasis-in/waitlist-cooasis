@@ -10,13 +10,20 @@ import {
   RecaptchaVerifier,
   signInWithPhoneNumber,
 } from "firebase/auth";
+import { ClipLoader } from "react-spinners";
 
-const NumberVerify = ({ confirmationResult, waitlistInfo, niftWord, number }) => {
+const NumberVerify = ({
+  confirmationResult,
+  waitlistInfo,
+  niftWord,
+  number,
+}) => {
   const [otp, setOtp] = useState(new Array(6).fill(""));
   const [verificationError, setVerificationError] = useState("");
   const inputRefs = useRef([]);
   const navigate = useNavigate();
   const location = useLocation();
+  const [loading, setLoading] = useState(false);
   // const { confirmationResult } = location.state || {};
 
   useEffect(() => {
@@ -46,39 +53,42 @@ const NumberVerify = ({ confirmationResult, waitlistInfo, niftWord, number }) =>
 
   const verifyOtp = async () => {
     const otpValue = otp.join("");
+    setLoading(true);
 
     try {
-     
       const result = await confirmationResult.confirm(otpValue);
       console.log("OTP Verified Successfully:", result);
 
       const userId = waitlistInfo?.user?._id;
       if (userId) {
-   
-        const response = await fetch("https://backend.coasis.in/updatePhoneNumber", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            userId,
-            phoneNumber: number,
-          }),
-        });
+        const response = await fetch(
+          "http://localhost:3001/updatePhoneNumber",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              userId,
+              phoneNumber: number,
+            }),
+          }
+        );
 
         // Check if the API response is not OK
         if (!response.ok) {
           const errorData = await response.json();
-          throw new Error(errorData.message || "Something went wrong, try again!");
+          throw new Error(
+            errorData.message || "Something went wrong, try again!"
+          );
         }
       }
 
-     
       const navigationState = { waitlistInfo };
-      let targetUrl = "/refer"; 
+      let targetUrl = "/refer";
 
       if (niftWord) {
-        navigationState.niftWord = niftWord; 
+        navigationState.niftWord = niftWord;
         targetUrl = "/nift/refer";
       }
 
@@ -102,7 +112,7 @@ const NumberVerify = ({ confirmationResult, waitlistInfo, niftWord, number }) =>
                   {otp.map((data, index) => {
                     return (
                       <input
-                        className="f-PowerGrotesk sm:max-w-[65px] sm:h-[65px] max-w-[50px] h-[50px] max-w-[65px] h-[65px] text-[#FCFCD8] text-center text-lg border-[1px] border-[#FFFFFF17] bg-transparent rounded-full focus:outline-none  focus:border-[#FCFCD8]"
+                        className="f-PowerGrotesk sm:max-w-[65px] sm:h-[65px] max-w-[50px] h-[50px]  text-[#FCFCD8] text-center text-lg border-[1px] border-[#FFFFFF17] bg-transparent rounded-full focus:outline-none  focus:border-[#FCFCD8]"
                         type="text"
                         name="otp"
                         maxLength="1"
@@ -141,8 +151,18 @@ const NumberVerify = ({ confirmationResult, waitlistInfo, niftWord, number }) =>
                     id="verify-email-button"
                     className="f-PowerGrotesk h-[55px] w-[290px] !cursor-pointer text-[17.5px] text-[#E1FF26] bg-[#0000006B] hover:text-black hover:font-bold transform transition-all duration-300 ease-in-out hover:bg-[#E1FF26] leading-[17.5px] mt-4 px-8 py-6 rounded-full opacity-100 items-center flex justify-center"
                     onClick={verifyOtp}
+                    style={{ opacity: "0.5" }}
+                    disabled={loading}
                   >
-                    Verify Mobile
+                    {loading ? (
+                      <ClipLoader
+                        color={"#E1FF26"}
+                        loading={loading}
+                        size={20}
+                      />
+                    ) : (
+                      "Verify mobile"
+                    )}
                   </button>
                 </div>
               </div>
