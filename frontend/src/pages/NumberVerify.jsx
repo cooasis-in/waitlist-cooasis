@@ -2,6 +2,7 @@ import React, { useRef, useState, useEffect } from "react";
 import { useLocation, Link, useNavigate } from "react-router-dom";
 import NextgenTitle from "../components/NextgenTitle";
 import BottomPart from "../components/BottomPart";
+import { ClipLoader } from "react-spinners";
 // Assuming Button is a custom component
 import { Button } from "../ui/moving-border";
 import Header from "../components/Header";
@@ -11,8 +12,9 @@ import {
   signInWithPhoneNumber,
 } from "firebase/auth";
 
-const NumberVerify = ({ confirmationResult, waitlistInfo, niftWord }) => {
+const NumberVerify = ({ confirmationResult, waitlistInfo }) => {
   const [otp, setOtp] = useState(new Array(6).fill(""));
+  const [loading, setLoading] = useState(false);
   const [verificationError, setVerificationError] = useState("");
   const inputRefs = useRef([]);
   const navigate = useNavigate();
@@ -45,21 +47,14 @@ const NumberVerify = ({ confirmationResult, waitlistInfo, niftWord }) => {
   };
 
   const verifyOtp = async () => {
-    const otpValue = otp.join("");
+    setLoading(true);
+    const otpValue = otp.join(""); // Combine the OTP digits into a single string
 
     try {
       const result = await confirmationResult.confirm(otpValue);
       console.log("OTP Verified Successfully:", result);
-
-      const navigationState = { waitlistInfo };
-      let targetUrl = "/refer"; // Default URL
-
-      if (niftWord) {
-        navigationState.niftWord = niftWord; // Include niftWord if present
-        targetUrl = "/nift/refer"; 
-      }
-
-      navigate(targetUrl, { state: navigationState });
+      // Navigate to the next page after successful verification
+      navigate("/refer", { state: { waitlistInfo } });
     } catch (error) {
       console.log("OTP Verification Failed:", error);
       setVerificationError("Wrong otp");
@@ -79,7 +74,7 @@ const NumberVerify = ({ confirmationResult, waitlistInfo, niftWord }) => {
                   {otp.map((data, index) => {
                     return (
                       <input
-                        className="f-PowerGrotesk max-w-[65px] h-[65px] text-[#FCFCD8] text-center text-lg border-[1px] border-[#FFFFFF17] bg-transparent rounded-full focus:outline-none  focus:border-[#FCFCD8]"
+                        className="f-PowerGrotesk sm:max-w-[65px] sm:h-[65px] max-w-[50px] h-[50px] text-[#FCFCD8] text-center text-lg border-[1px] border-[#FFFFFF17] bg-transparent rounded-full focus:outline-none  focus:border-[#FCFCD8]"
                         type="text"
                         name="otp"
                         maxLength="1"
@@ -118,8 +113,18 @@ const NumberVerify = ({ confirmationResult, waitlistInfo, niftWord }) => {
                     id="verify-email-button"
                     className="f-PowerGrotesk h-[55px] w-[290px] !cursor-pointer text-[17.5px] text-[#E1FF26] bg-[#0000006B] hover:text-black hover:font-bold transform transition-all duration-300 ease-in-out hover:bg-[#E1FF26] leading-[17.5px] mt-4 px-8 py-6 rounded-full opacity-100 items-center flex justify-center"
                     onClick={verifyOtp}
+                    style={{ opacity: "0.5" }}
+                    disabled={loading}
                   >
-                    Verify Mobile
+                    {loading ? (
+                      <ClipLoader
+                        color={"#E1FF26"}
+                        loading={loading}
+                        size={20}
+                      />
+                    ) : (
+                      "Verify mobile"
+                    )}
                   </button>
                 </div>
               </div>
