@@ -4,6 +4,7 @@ import NextgenTitle from "../components/NextgenTitle";
 import BottomPart from "../components/BottomPart";
 // Assuming Button is a custom component
 import { Button } from "../ui/moving-border";
+import { auth } from "../../firebase.config";
 import Header from "../components/Header";
 import {
   getAuth,
