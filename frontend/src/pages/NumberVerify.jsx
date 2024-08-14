@@ -4,7 +4,6 @@ import NextgenTitle from "../components/NextgenTitle";
 import BottomPart from "../components/BottomPart";
 // Assuming Button is a custom component
 import { Button } from "../ui/moving-border";
-import { auth } from "../../firebase.config";
 import Header from "../components/Header";
 import {
   getAuth,
@@ -21,32 +20,16 @@ const NumberVerify = ({
 }) => {
   const [otp, setOtp] = useState(new Array(6).fill(""));
   const [verificationError, setVerificationError] = useState("");
-   const [resendDisabled, setResendDisabled] = useState(true);
-  const [timerSeconds, setTimerSeconds] = useState(60);
-  const [ConfirmationResult, setConfirmationResult] = useState(confirmationResult);
-  const [Loading, SetLoading] = useState(false);
   const inputRefs = useRef([]);
   const navigate = useNavigate();
   const location = useLocation();
   const [loading, setLoading] = useState(false);
   // const { confirmationResult } = location.state || {};
 
- useEffect(() => {
-    let interval;
-    if (resendDisabled) {
-      interval = setInterval(() => {
-        setTimerSeconds((prev) => {
-          if (prev === 1) {
-            clearInterval(interval);
-            setResendDisabled(false);
-            return 0;
-          }
-          return prev - 1;
-        });
-      }, 1000);
-    }
-    return () => clearInterval(interval);
-  }, [resendDisabled]);
+  useEffect(() => {
+    console.log("Confirmation Result:", confirmationResult);
+    console.log("Waitlist Info:", waitlistInfo);
+  }, [confirmationResult, waitlistInfo]);
 
   const handleChange = (element, index) => {
     if (isNaN(element.value)) return;
@@ -73,7 +56,7 @@ const NumberVerify = ({
     setLoading(true);
 
     try {
-      const result = await ConfirmationResult.confirm(otpValue);
+      const result = await confirmationResult.confirm(otpValue);
       console.log("OTP Verified Successfully:", result);
 
       const userId = waitlistInfo?.user?._id;
@@ -114,47 +97,6 @@ const NumberVerify = ({
       console.log("OTP Verification Failed:", error);
       setVerificationError(error.message || "Wrong OTP");
     }
-  };
-
-  const setupRecaptcha = (number) => {
-    const recaptchaVerifier = new RecaptchaVerifier(
-      auth,
-      "recaptcha-container",
-      {
-        size: "invisible",
-        callback: (response) => {
-          // reCAPTCHA solved, you can now trigger OTP request
-          // console.log("reCAPTCHA resolved:", response);
-        },
-        "expired-callback": () => {
-          // Handle the case when reCAPTCHA response expires
-          console.log("reCAPTCHA expired");
-        },
-      }
-    );
-
-    recaptchaVerifier.render(); // Render the reCAPTCHA
-    return signInWithPhoneNumber(auth, number, recaptchaVerifier);
-  };
-
-
-  const handleResend = async () => {
-    SetLoading(true); // Show loader
-    try {
-      setResendDisabled(true); // Disable the resend button
-      setTimerSeconds(60); // Reset the countdown timer
-
-      // Set up the reCAPTCHA
-      const result = await setupRecaptcha(number);
-      console.log("OTP sent successfully", result);
-      setConfirmationResult(result);
-
-      setVerificationError("OTP has been resent to your phone.");
-    } catch (error) {
-      console.error("Error resending OTP:", error);
-      setVerificationError("Failed to resend OTP. Please try again.");
-    }
-    SetLoading(false); // Hide loader
   };
 
   return (
@@ -221,20 +163,6 @@ const NumberVerify = ({
                     ) : (
                       "Verify mobile"
                     )}
-                  </button>
-                </div>
-                 <div className="flex justify-center">
-                  <button
-                    onClick={handleResend}
-                    disabled={resendDisabled}
-                    className={`f-HelveticaNeueLight text-[#5A5A5A] text-[12px] xxl:text-[18px] leading-[17.59px] font-light mt-4 lg:font-medium ${resendDisabled ? "cursor-not-allowed opacity-50" : ""}`}
-                  >
-                    <span
-                      className={`f-HelveticaNeueRoman cursor-pointer text-[15px] text-center ${resendDisabled ? "text-[#6A9298]" : "text-[#6A929857]"} leading-[23.46px]`}
-                    >
-                      {resendDisabled ? `Resend Code in ${timerSeconds}s` : "Didn't get the code?"}
-                    </span>
-                    {resendDisabled ? null : "Click to resend"}
                   </button>
                 </div>
               </div>
