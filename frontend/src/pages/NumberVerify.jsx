@@ -26,10 +26,22 @@ const NumberVerify = ({
   const [loading, setLoading] = useState(false);
   // const { confirmationResult } = location.state || {};
 
-  useEffect(() => {
-    console.log("Confirmation Result:", confirmationResult);
-    console.log("Waitlist Info:", waitlistInfo);
-  }, [confirmationResult, waitlistInfo]);
+ useEffect(() => {
+    let interval;
+    if (resendDisabled) {
+      interval = setInterval(() => {
+        setTimerSeconds((prev) => {
+          if (prev === 1) {
+            clearInterval(interval);
+            setResendDisabled(false);
+            return 0;
+          }
+          return prev - 1;
+        });
+      }, 1000);
+    }
+    return () => clearInterval(interval);
+  }, [resendDisabled]);
 
   const handleChange = (element, index) => {
     if (isNaN(element.value)) return;
@@ -99,6 +111,49 @@ const NumberVerify = ({
     }
   };
 
+  const setupRecaptcha = () => {
+    const auth = getAuth();
+    const recaptchaVerifier = new RecaptchaVerifier(
+      "recaptcha-container", // This should be the ID of your reCAPTCHA container
+      {
+        size: "invisible",
+        callback: () => {
+          // ReCAPTCHA solved - Will trigger when the reCAPTCHA is solved
+          console.log("reCAPTCHA solved");
+        },
+      },
+      auth
+    );
+
+    recaptchaVerifier.render();
+    return recaptchaVerifier;
+  };
+
+
+  const handleResend = async () => {
+    setLoading(true); // Show loader
+    try {
+      setResendDisabled(true); // Disable the resend button
+      setTimerSeconds(60); // Reset the countdown timer
+
+      // Set up the reCAPTCHA
+      const recaptchaVerifier = setupRecaptcha();
+
+      // Re-authenticate the user and resend OTP
+      const auth = getAuth();
+      const result = await signInWithPhoneNumber(auth, number, recaptchaVerifier);
+
+      // Update the confirmationResult with the new result
+      confirmationResult = result;
+
+      setVerificationError("OTP has been resent to your phone.");
+    } catch (error) {
+      console.error("Error resending OTP:", error);
+      setVerificationError("Failed to resend OTP. Please try again.");
+    }
+    setLoading(false); // Hide loader
+  };
+
   return (
     <>
       <Header />
@@ -163,6 +218,20 @@ const NumberVerify = ({
                     ) : (
                       "Verify mobile"
                     )}
+                  </button>
+                </div>
+                 <div className="flex justify-center">
+                  <button
+                    onClick={handleResend}
+                    disabled={resendDisabled}
+                    className={`f-HelveticaNeueLight text-[#5A5A5A] text-[12px] xxl:text-[18px] leading-[17.59px] font-light mt-4 lg:font-medium ${resendDisabled ? "cursor-not-allowed opacity-50" : ""}`}
+                  >
+                    <span
+                      className={`f-HelveticaNeueRoman cursor-pointer text-[15px] text-center ${resendDisabled ? "text-[#6A9298]" : "text-[#6A929857]"} leading-[23.46px]`}
+                    >
+                      {resendDisabled ? `Resend Code in ${timerSeconds}s` : "Didn't get the code?"}
+                    </span>
+                    {resendDisabled ? null : "Click to resend"}
                   </button>
                 </div>
               </div>
