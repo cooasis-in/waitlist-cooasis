@@ -22,6 +22,7 @@ const NumberVerify = ({
   const [verificationError, setVerificationError] = useState("");
    const [resendDisabled, setResendDisabled] = useState(true);
   const [timerSeconds, setTimerSeconds] = useState(60);
+  const [ConfirmationResult, setConfirmationResult] = useState(confirmationResult);
   const [Loading, SetLoading] = useState(false);
   const inputRefs = useRef([]);
   const navigate = useNavigate();
@@ -71,7 +72,7 @@ const NumberVerify = ({
     setLoading(true);
 
     try {
-      const result = await confirmationResult.confirm(otpValue);
+      const result = await ConfirmationResult.confirm(otpValue);
       console.log("OTP Verified Successfully:", result);
 
       const userId = waitlistInfo?.user?._id;
@@ -114,22 +115,25 @@ const NumberVerify = ({
     }
   };
 
-  const setupRecaptcha = () => {
-    const auth = getAuth();
+  const setupRecaptcha = (number) => {
     const recaptchaVerifier = new RecaptchaVerifier(
-      "recaptcha-container", // This should be the ID of your reCAPTCHA container
+      auth,
+      "recaptcha-container",
       {
         size: "invisible",
-        callback: () => {
-          // ReCAPTCHA solved - Will trigger when the reCAPTCHA is solved
-          console.log("reCAPTCHA solved");
+        callback: (response) => {
+          // reCAPTCHA solved, you can now trigger OTP request
+          // console.log("reCAPTCHA resolved:", response);
         },
-      },
-      auth
+        "expired-callback": () => {
+          // Handle the case when reCAPTCHA response expires
+          console.log("reCAPTCHA expired");
+        },
+      }
     );
 
-    recaptchaVerifier.render();
-    return recaptchaVerifier;
+    recaptchaVerifier.render(); // Render the reCAPTCHA
+    return signInWithPhoneNumber(auth, number, recaptchaVerifier);
   };
 
 
@@ -140,14 +144,9 @@ const NumberVerify = ({
       setTimerSeconds(60); // Reset the countdown timer
 
       // Set up the reCAPTCHA
-      const recaptchaVerifier = setupRecaptcha();
-
-      // Re-authenticate the user and resend OTP
-      const auth = getAuth();
-      const result = await signInWithPhoneNumber(auth, number, recaptchaVerifier);
-
-      // Update the confirmationResult with the new result
-      confirmationResult = result;
+      const result = await setupRecaptcha(number);
+      console.log("OTP sent successfully", result);
+      setConfirmationResult(result);
 
       setVerificationError("OTP has been resent to your phone.");
     } catch (error) {
