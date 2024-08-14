@@ -22,7 +22,7 @@ const NumberVerify = ({
   const [verificationError, setVerificationError] = useState("");
    const [resendDisabled, setResendDisabled] = useState(true);
   const [timerSeconds, setTimerSeconds] = useState(60);
-  const [loading, setLoading] = useState(false);
+  const [Loading, SetLoading] = useState(false);
   const inputRefs = useRef([]);
   const navigate = useNavigate();
   const location = useLocation();
@@ -134,7 +134,7 @@ const NumberVerify = ({
 
 
   const handleResend = async () => {
-    setLoading(true); // Show loader
+    SetLoading(true); // Show loader
     try {
       setResendDisabled(true); // Disable the resend button
       setTimerSeconds(60); // Reset the countdown timer
@@ -154,7 +154,7 @@ const NumberVerify = ({
       console.error("Error resending OTP:", error);
       setVerificationError("Failed to resend OTP. Please try again.");
     }
-    setLoading(false); // Hide loader
+    SetLoading(false); // Hide loader
   };
 
   return (
